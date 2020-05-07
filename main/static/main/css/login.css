@@ -1,0 +1,13 @@
+.tabs.tabs-fixed-width{
+    overflow-x:hidden;
+  }
+
+  @media all and (max-width: 600px) {
+    h2 {
+      padding-bottom: 20px;;
+    }
+    
+    .username {
+      margin-bottom: -10px;
+    }
+  }

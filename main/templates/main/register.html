@@ -1,0 +1,63 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+	<div>
+		<form action="{% url 'register' %}" method="post">
+			{% csrf_token %}
+			<div class="row">
+				<div class="input-field col s12">
+					<label class="active">Full Name</label>
+					<input placeholder=" " value="{{ register_name }}" class="validate"
+						id="field_name" type="text" name="name" required>
+				</div>
+
+				<div class="input-field col s12">
+					<label class="active">Email</label>
+					<input placeholder=" " value="{{ register_email }}" class="validate"
+						id="field_mail" type="email"
+						name="email" required>
+				</div>
+
+				<div class="input-field col s12 m6">
+					<label class="active">Mobile Number</label>
+					<input placeholder=" " value="{{ register_number }}" class="validate"
+						id="field_num" type="tel"
+						name="number" required>
+				</div>
+
+				<div class="input-field col s12 m6">
+					<label class="active">Username</label>
+					<input placeholder=" " value="{{ register_username }}" class="validate"
+						id="field_username" type="text"
+						name="username"
+						required>
+				</div>
+
+				<div class="input-field col s12 m6">
+					<label class="active">Password</label>
+					<input placeholder=" " class="validate" id="field_pass" type="password"
+						name="password"
+						required>
+				</div>
+
+				<div class="input-field col s12 m6">
+					<label class="active">Repeat Password</label>
+					<input placeholder=" " class="validate" id="field_rep" type="password"
+						name="password2"
+						required>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12 center-align">
+					<button type="submit" class="btn waves-effect waves-light valign-wrapper">
+						Submit
+					</button>
+				</div>
+			</div>
+		</form>
+		<div>
+			<a href="{% url 'register' %}"> Login </a>
+		</div>
+	</div>
+{% endblock %}

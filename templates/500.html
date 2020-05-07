@@ -1,0 +1,21 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Error 500{% endblock title %}
+
+{% block navbar %} {% endblock navbar %}
+
+{% block content %}
+    <section class="error first">
+        <h1 id="error_h1">500</h1>
+        <h2 id="error_h2">Server Error</h2>
+        <img src="{% static 'common/images/kabootar.png' %}">
+        <p>The Great Kabootar hath many centuries ago prophesied: <q>The server shalt fault one day.</q></p>
+        <div class="buttons">
+            <a href="{% url 'index' %}">Return to safety</a>
+            <a href="mailto:tprocessors@gmail.com?subject=Need a carrier pigeon&body=Please send help.">Hire a carrier pigeon</a>
+        </div>
+    </section>
+{% endblock content %}
+
+{% block footer %} {% endblock footer %}

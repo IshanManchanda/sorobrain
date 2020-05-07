@@ -1,0 +1,50 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+{% endblock css %}
+
+{% block content-container %}
+	<div class="flex-container">
+		<img class="photo wow animated fadeIn" data-wow-delay="0.5s" src="{% static 'common/images/logo-small-round.png' %}">
+	</div>
+{% endblock content-container %}
+
+{% block content %}
+	<div class="container" id="about">
+		<div class="section"></div>
+
+		<div class="row">
+			<div class="col s10 offset-s1 m6 offset-m3 l4 offset-l4">
+				<img src="{% static 'common/images/logo.png' %}" class="photo-full wow animated fadeIn"
+					style="padding-top: 20px; padding-bottom: 20px;">
+			</div>
+
+			<div class="col s12">
+				<p class="wow animated fadeIn" data-wow-delay="0.1s">At Thought Processors, we constantly endeavour to design
+					creative events that enable people to discover new things differently.</p>
+				<p class="wow animated fadeIn" data-wow-delay="0.2s">Our journey began with Perplexor, an online cryptic hunt,
+					held in June 2017. Since then, we've added numerous iterations to our series of cryptic hunts, with the latest being Odyssey.
+					And we're not stopping here; our plan is to branch out to other online events (such as hackathons!) in the future.
+				<p class="wow animated fadeIn" data-wow-delay="0.3s">We’ve spent hours in intelligently
+					crafting puzzles that are sure to leave you baffled, and we hope that you will return the favor by
+					putting in the hard yards in solving them. After all, there’s nothing more satisfying than
+					that ‘Aha!’ moment when it all clicks - and that alone makes it all worth it.</p>
+				<p class="wow animated fadeIn" data-wow-delay="0.4s">In the past, we have also used our ticketed hunts to
+					help ensure a happy and healthy childhood for underprivileged children in India. We've donated 100% of the
+					amount collected from registrations to <a href="https://goonj.org/" target="_blank">Goonj</a>,
+					a non-profit organization that helps in the upliftment of children in need.</p>
+				<p class="wow animated fadeIn" data-wow-delay="0.5s">So, are you ready to lose some hair and
+					stay up all night, all while giving back to society? <a href="{% url 'register' %}">Join us now!</a></p>
+			</div>
+		</div>
+
+		<div class="section"></div>
+	</div>
+{% endblock content %}
+
+{% block js %}
+	<script src="{% static 'main/js/index.js' %}"></script>
+{% endblock js %}

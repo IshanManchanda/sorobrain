@@ -1,0 +1,72 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock title %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'main/css/edit.css' %}">
+{% endblock css %}
+
+{% block content %}
+	<div class="container">
+		<div class="section"></div>
+		<div class="row wow animated fadeIn">
+            <div class="col m1 left-align hide-on-small-only">
+                <h2>
+                    <a href="{% url 'account' %}">
+                        <i class="teal-text material-icons s-icon">keyboard_arrow_left</i>
+                    </a>
+                </h2>
+            </div>
+            <div class="col s12 m10">
+                <h2>Edit Profile</h2>
+                {% if errors %}
+                    <ul style="color: #d84141 !important;">
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row wow animated fadeIn">
+            <form action="{% url 'edit' %}" method="post">
+	            {% csrf_token %}
+                <br>
+                <div class="input-field col s12">
+                    <label class="active">Full Name</label>
+                    <input placeholder=" " class="validate" id="field_name" type="text"
+                        name="name" value="{{ name }}" required>
+                </div>
+
+                <div class="input-field col s12">
+                    <label class="active">Mobile Number</label>
+                    <input placeholder=" " class="validate" id="field_num" type="tel"
+                        name="number" value="{{ mobile_number }}" required>
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <label class="active">New Password</label>
+                    <input placeholder=" " id="field_pass" type="password"
+                        name="password">
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <label class="active">Repeat New Password</label>
+                    <input placeholder=" " id="field_rep" type="password"
+                        name="password2">
+                </div>
+
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn waves-effect waves-light valign-wrapper">
+                        Submit
+                    </button>
+                </div>
+            </form>
+		</div>
+		<div class="section"></div>
+	</div>
+{% endblock content %}
+
+{% block js %}
+	<script src="{% static 'main/js/edit.js' %}"></script>
+{% endblock js %}

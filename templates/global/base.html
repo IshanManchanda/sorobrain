@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+{% block hint %}{% endblock hint %}
+<html lang="en-us">
+	<head>
+		{% block meta %}
+			<meta charset="utf-8">
+			<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+			<meta name="robots" content="NONE,NOARCHIVE"/>
+		{% endblock meta %}
+
+		<title>{% block title %}{% endblock title %}</title>
+		<link rel="icon" type="image/png" href="{% static 'common/images/logo-small-round.png' %}">
+
+		{% block commoncss %}
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400|Quicksand:300,400">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+			<link rel="stylesheet" href="{% static 'common/css/common.css' %}">
+			<!--[if IE]>
+				<link rel = "stylesheet" href = "{% static 'common/css/ie.css' %}">
+			<![endif]-->
+		{% endblock commoncss %}
+
+		{% block css %}{% endblock css %}
+		{% block extrahead %}{% endblock extrahead %}
+	</head>
+
+	<body class="{% block bodyclass %}{% endblock bodyclass %}" data-admin-utc-offset="{% now "Z" %}">
+		<div class="wrapper">
+{#			{% block navbar %}#}
+{#				<div class="navbar-fixed">#}
+{#					<nav class="z-depth-0">#}
+{#						<div class="nav-wrapper">#}
+{#							<a href="#" data-activates="mobile-demo" class="button-collapse">#}
+{#								<i class="material-icons">menu</i>#}
+{#							</a>#}
+{#							<a href="#" class="brand-logo hide-on-med-and-down">#}
+{#								<img src="{% static 'common/images/logo-diagonal.png' %}">#}
+{#							</a>#}
+{#							<ul class="right hide-on-med-and-down">#}
+{#								<li><a href="{% url 'index' %}"> Home </a></li>#}
+{#                                <li><a href="{% url 'team' %}"> Team </a></li>#}
+{#								<li><a href="{% url 'events' %}"> Events </a></li>#}
+{#								<li><a href="{% url 'odyssey:index' %}"> Odyssey </a></li>#}
+{#								<li><a href="{% url 'odyssey:play' %}"> Play </a></li>#}
+{#								<li><a href="{% url 'odyssey:leaderboard' %}"> Leaderboard </a></li>#}
+{#								{% if user_is_logged_in %}#}
+{#									<li><a href="{% url 'account' %}"> My Account </a></li>#}
+{#								{% else %}#}
+{#									<li><a href="{% url 'login' %}"> Login/Register </a></li>#}
+{#								{% endif %}#}
+{#							</ul>#}
+{#						</div>#}
+{#					</nav>#}
+{#				</div>#}
+{##}
+{#				<ul class="side-nav" id="mobile-demo">#}
+{#					<li><a href="{% url 'index' %}"> Home </a></li>#}
+{#                    <li><a href="{% url 'team' %}"> Team </a></li>#}
+{#					<li><a href="{% url 'events' %}"> Events </a></li>#}
+{#					<li><a href="{% url 'odyssey:index' %}"> Odyssey </a></li>#}
+{#					<li><a href="{% url 'odyssey:play' %}"> Play </a></li>#}
+{#					<li><a href="{% url 'odyssey:leaderboard' %}"> Leaderboard </a></li>#}
+{#					{% if user_is_logged_in %}#}
+{#						<li><a href="{% url 'account' %}"> My Account </a></li>#}
+{#					{% else %}#}
+{#						<li><a href="{% url 'login' %}"> Login/Register </a></li>#}
+{#					{% endif %}#}
+{#				</ul>#}
+{#			{% endblock navbar %}#}
+
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-{{ message.tags }}">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
+			{% block content %}{% endblock content %}
+		</div>
+
+		{% block footer %}
+			<footer>&copy; 2020 Thought Processors</footer>
+		{% endblock footer %}
+
+		{% block commonjs %}
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+			<script src="{% static 'common/js/common.js' %}"></script>
+		{% endblock commonjs %}
+		{% block js %}{% endblock js %}
+	</body>
+</html>

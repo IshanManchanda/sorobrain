@@ -1,0 +1,215 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Team{% endblock title %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'main/css/team.css' %}">
+{% endblock css %}
+
+{% block content %}
+	<div class="container hide-on-small-only">
+		<div class="row wow animated fadeIn">
+			<div class="col s12">
+				<h2>The Team</h2><br>
+			</div>
+		</div>
+
+		<div class="row">
+            <div class="col s12 m6 wow animated fadeIn" data-wow-delay="0.5s" style="opacity: 1;">
+                <div class="card hoverable hide-on-med-only" id="card-left">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static 'main/images/jainil.jpeg' %}" class="activator">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator" style="font-size: 1.3em;">Jainil Ajmera</span>
+                        <span class="card-title" style="font-size: 1em;">Co-founder</span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title activator"><i class="material-icons right">close</i></span>
+                        <br>
+                        <p>Hi! I'm Jainil Ajmera, co-founder of Thought Processors. I love tinkering with
+                            robots, and have previously represented India at the international level in the
+                            FIRST Tech Challenge and World Robot Olympiad. Besides robotics, I enjoy
+                            programming, web development, film-making and debating. Oh, and I love chocolate (Lindt
+                            preferably), so if you could hit me up with some, that'd be awesome.</p>
+                    </div>
+                </div>
+
+                <div class="card hide-on-large-only" id="card-left">
+                    <div class="card-image">
+                        <img src="{% static 'main/images/jainil.jpeg' %}">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title" style="font-size: 1.3em;">Jainil A.</span>
+                        <span class="card-title" style="font-size: 1.05em;">Co-founder</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6 wow animated fadeIn" data-wow-delay="0.5s" style="opacity: 1;">
+                <div class="card hoverable hide-on-med-only" id="card-right">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static 'main/images/ishan.jpeg' %}" class="activator">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator" style="font-size: 1.3em;">Ishan Manchanda</span>
+                        <span class="card-title" style="font-size: 1em;">Co-founder</span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title activator"><i class="material-icons right">close</i></span>
+                        <br>
+                        <p>Hey there! I'm Ishan Manchanda, co-founder of Thought Processors. I've always been
+                            interested in programming, and my repertoire includes Python, Java, C++, JavaScript,
+                            and Processing. I've worked on several projects in the past, including an open
+                            source music library tagging tool, Taggr. I also qualified for the Indian National
+                            Olympiad in Informatics in 2018 and 2019.</p>
+                    </div>
+                </div>
+
+                <div class="card hide-on-large-only" id="card-right">
+                    <div class="card-image">
+                        <img src="{% static 'main/images/ishan.jpeg' %}">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title" style="font-size: 1.3em;">Ishan M.</span>
+                        <span class="card-title" style="font-size: 1.05em;">Co-founder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section"></div>
+
+        <div class="row">
+            <div class="col s12 m6 wow animated fadeIn" data-wow-delay="0.5s" style="opacity: 1;">
+                <div class="card hoverable hide-on-med-only" id="card-left">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static 'main/images/prakhar.jpg' %}" class="activator">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator" style="font-size: 1.3em;">Prakhar Mittal</span>
+                        <span class="card-title" style="font-size: 1em;">Organizing Member, Odyssey</span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title activator"><i class="material-icons right">close</i></span>
+                        <br>
+                        <p>Hey! I'm Prakhar Mittal, an organizing member of Odyssey. I'm an aspiring roboticist, having
+                            previously represented India at the World Robot Olympiad and FIRST World Festival. I've been
+                            playing the piano for over nine years, and you'll often find me improvising classical pieces
+                            or composing my own music on Logic. Oh, and if you think you're good at trivia, you are <i>wrong</i>.
+                            Fight me.</p>
+                    </div>
+                </div>
+
+                <div class="card hide-on-large-only" id="card-left">
+                    <div class="card-image">
+                        <img src="{% static 'main/images/prakhar.jpg' %}">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title" style="font-size: 1.3em;">Prakhar M.</span>
+                        <span class="card-title" style="font-size: 1.05em;">Organizing Member</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6 wow animated fadeIn" data-wow-delay="0.5s" style="opacity: 1;">
+                <div class="card hoverable hide-on-med-only" id="card-right">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static 'main/images/sparsh.jpg' %}" class="activator">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator" style="font-size: 1.3em;">Sparsh Jain</span>
+                        <span class="card-title" style="font-size: 1em;">Organizing Member, Odyssey</span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title activator"><i class="material-icons right">close</i></span>
+                        <br>
+                        <p>Hi! I'm Sparsh Jain, an organizing member of Odyssey. I'm a night owl and an aspiring
+                            astrophysicist. My daily drivers are the night sky and tons of caffeine. I've been playing
+                            western classical guitar for over seven years, but I'm also a huge metalhead. Don't ask me to
+                            pick between Metallica or Megadeath though; I would always pick Judas Priest. (Rob Halford is the best metal
+                            vocalist and you can't deny that.)</p>
+                    </div>
+                </div>
+
+                <div class="card hide-on-large-only" id="card-right">
+                    <div class="card-image">
+                        <img src="{% static 'main/images/sparsh.jpg' %}">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title" style="font-size: 1.3em;">Sparsh J.</span>
+                        <span class="card-title" style="font-size: 1.05em;">Organizing Member</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class = "section"></div>
+
+	</div>
+
+    <div class="container hide-on-med-and-up">
+		<div class="row wow animated fadeIn">
+			<div class="col s12">
+				<h2>The Team</h2>
+			</div>
+		</div>
+
+		<div class="row">
+            <div class="col s12 wow animated fadeIn" data-wow-delay="0.2s" style="opacity: 1;">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title activator" style="font-size: 1.3em;">Jainil Ajmera</span>
+                        <span class="card-title" style="font-size: 1.1em;">Co-founder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section"></div>
+
+        <div class="row">
+            <div class="col s12 wow animated fadeIn" data-wow-delay="0.2s" style="opacity: 1;">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title activator" style="font-size: 1.3em;">Ishan Manchanda</span>
+                        <span class="card-title" style="font-size: 1.1em;">Co-founder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "section"></div>
+
+        <div class="row">
+            <div class="col s12 m6 wow animated fadeIn" data-wow-delay="0.2s" style="opacity: 1;">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title activator" style="font-size: 1.3em;">Prakhar Mittal</span>
+                        <span class="card-title" style="font-size: 1.1em;">Organizing Member, Odyssey</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section"></div>
+
+        <div class="row">
+            <div class="col s12 m6 wow animated fadeIn" data-wow-delay="0.2s" style="opacity: 1;">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title activator" style="font-size: 1.3em;">Sparsh Jain</span>
+                        <span class="card-title" style="font-size: 1.1em;">Organizing Member, Odyssey</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+	</div><br><br>
+{% endblock content %}
+
+{% block js %}
+	<script src="{% static 'main/js/events.js' %}"></script>
+{% endblock js %}

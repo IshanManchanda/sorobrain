@@ -1,0 +1,24 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Confirm your Account!{% endblock title %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'main/css/confirm-invalid.css' %}">
+{% endblock css %}
+
+{% block content %}
+	<div id="container" class="valign-wrapper">
+		<div class="section"></div>
+		<div class="row">
+			<div class="col s12">
+				<h3>Thank you for registering!</h3>
+				<h5 style="text-align: center;">Please check your inbox and confirm your email id. (Don't forget to check your spam folder!)</h5>
+			</div>
+		</div>
+		<div class="section"></div>
+	</div>
+{% endblock content %}
+
+{% block js %}
+	<script src="{% static 'main/js/confirm-invalid.js' %}"></script>
+{% endblock js %}

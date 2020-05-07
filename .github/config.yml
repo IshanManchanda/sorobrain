@@ -1,0 +1,3 @@
+todo:
+    autoAssign: false
+    keyword: ['TODO', 'REVIEW', 'FIXME']

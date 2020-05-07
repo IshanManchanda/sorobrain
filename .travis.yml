@@ -1,0 +1,35 @@
+os: linux
+dist: bionic
+
+language: python
+python:
+    - "3.8.2"
+
+branches:
+    only:
+        - master
+        - stable
+        - dev
+        - rewrite
+
+addons:
+    apt:
+        update: true
+
+services:
+    - postgresql
+
+install:
+    - pip install -U pip pipenv
+    - pipenv --python 3.8.2
+    - pipenv install --dev
+
+before_script:
+    - psql -c 'DROP DATABASE IF EXISTS tests;' -U postgres
+    - psql -c 'CREATE DATABASE tests;' -U postgres
+    - pipenv run python manage.py collectstatic --no-input
+    - pipenv run python manage.py migrate --no-input
+
+script:
+    - pipenv run python manage.py check
+#    - pytest
