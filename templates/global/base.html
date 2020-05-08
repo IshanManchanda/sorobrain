@@ -30,47 +30,9 @@
 
 	<body class="{% block bodyclass %}{% endblock bodyclass %}" data-admin-utc-offset="{% now "Z" %}">
 		<div class="wrapper">
-{#			{% block navbar %}#}
-{#				<div class="navbar-fixed">#}
-{#					<nav class="z-depth-0">#}
-{#						<div class="nav-wrapper">#}
-{#							<a href="#" data-activates="mobile-demo" class="button-collapse">#}
-{#								<i class="material-icons">menu</i>#}
-{#							</a>#}
-{#							<a href="#" class="brand-logo hide-on-med-and-down">#}
-{#								<img src="{% static 'common/images/logo-diagonal.png' %}">#}
-{#							</a>#}
-{#							<ul class="right hide-on-med-and-down">#}
-{#								<li><a href="{% url 'index' %}"> Home </a></li>#}
-{#                                <li><a href="{% url 'team' %}"> Team </a></li>#}
-{#								<li><a href="{% url 'events' %}"> Events </a></li>#}
-{#								<li><a href="{% url 'odyssey:index' %}"> Odyssey </a></li>#}
-{#								<li><a href="{% url 'odyssey:play' %}"> Play </a></li>#}
-{#								<li><a href="{% url 'odyssey:leaderboard' %}"> Leaderboard </a></li>#}
-{#								{% if user_is_logged_in %}#}
-{#									<li><a href="{% url 'account' %}"> My Account </a></li>#}
-{#								{% else %}#}
-{#									<li><a href="{% url 'login' %}"> Login/Register </a></li>#}
-{#								{% endif %}#}
-{#							</ul>#}
-{#						</div>#}
-{#					</nav>#}
-{#				</div>#}
-{##}
-{#				<ul class="side-nav" id="mobile-demo">#}
-{#					<li><a href="{% url 'index' %}"> Home </a></li>#}
-{#                    <li><a href="{% url 'team' %}"> Team </a></li>#}
-{#					<li><a href="{% url 'events' %}"> Events </a></li>#}
-{#					<li><a href="{% url 'odyssey:index' %}"> Odyssey </a></li>#}
-{#					<li><a href="{% url 'odyssey:play' %}"> Play </a></li>#}
-{#					<li><a href="{% url 'odyssey:leaderboard' %}"> Leaderboard </a></li>#}
-{#					{% if user_is_logged_in %}#}
-{#						<li><a href="{% url 'account' %}"> My Account </a></li>#}
-{#					{% else %}#}
-{#						<li><a href="{% url 'login' %}"> Login/Register </a></li>#}
-{#					{% endif %}#}
-{#				</ul>#}
-{#			{% endblock navbar %}#}
+			{% block navbar %}
+
+			{% endblock navbar %}
 
 			{% if messages %}
 				{% for message in messages %}
@@ -83,7 +45,7 @@
 		</div>
 
 		{% block footer %}
-			<footer>&copy; 2020 Thought Processors</footer>
+			<footer>&copy; 2020 Sorobrain</footer>
 		{% endblock footer %}
 
 		{% block commonjs %}
@@ -92,6 +54,7 @@
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 			<script src="{% static 'common/js/common.js' %}"></script>
 		{% endblock commonjs %}
+
 		{% block js %}{% endblock js %}
 	</body>
 </html>

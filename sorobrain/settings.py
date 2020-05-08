@@ -10,12 +10,12 @@ with contextlib.suppress(Exception):
 # Core Settings
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 # TODO
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sorobrain.settings')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-ROOT_URLCONF = 'myproject.urls'  # TODO
-WSGI_APPLICATION = 'myproject.wsgi.application'  # TODO
+ROOT_URLCONF = 'sorobrain.urls'  # TODO
+WSGI_APPLICATION = 'sorobrain.wsgi.application'  # TODO
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 

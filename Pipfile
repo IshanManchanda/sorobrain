@@ -28,4 +28,4 @@ python-dotenv = "==0.13.0"
 whitenoise = {extras = ["brotli"], version = "==5.0.1"}
 
 [requires]
-python_full_version = "3.8.2"
+python_version = "3.8"
