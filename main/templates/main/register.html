@@ -6,45 +6,40 @@
 			{% csrf_token %}
 			<div class="row">
 				<div class="input-field col s12">
-					<label class="active">Full Name</label>
+					<label class="active" for="field_name">Full Name</label>
 					<input placeholder=" " value="{{ register_name }}" class="validate"
 						id="field_name" type="text" name="name" required>
 				</div>
 
 				<div class="input-field col s12">
-					<label class="active">Email</label>
+					<label class="active" for="field_mail">Email</label>
 					<input placeholder=" " value="{{ register_email }}" class="validate"
-						id="field_mail" type="email"
-						name="email" required>
+						id="field_mail" type="email" name="email" required>
 				</div>
 
 				<div class="input-field col s12 m6">
-					<label class="active">Mobile Number</label>
+					<label class="active" for="field_num">Mobile Number</label>
 					<input placeholder=" " value="{{ register_number }}" class="validate"
-						id="field_num" type="tel"
-						name="number" required>
+						id="field_num" type="tel" name="number" required>
 				</div>
 
 				<div class="input-field col s12 m6">
-					<label class="active">Username</label>
+					<label class="active" for="field_username">Username</label>
 					<input placeholder=" " value="{{ register_username }}" class="validate"
 						id="field_username" type="text"
-						name="username"
-						required>
+						name="username" required>
 				</div>
 
 				<div class="input-field col s12 m6">
-					<label class="active">Password</label>
+					<label class="active" for="field_pass">Password</label>
 					<input placeholder=" " class="validate" id="field_pass" type="password"
-						name="password"
-						required>
+						name="password" required>
 				</div>
 
 				<div class="input-field col s12 m6">
-					<label class="active">Repeat Password</label>
+					<label class="active" for="field_rep">Repeat Password</label>
 					<input placeholder=" " class="validate" id="field_rep" type="password"
-						name="password2"
-						required>
+						name="password2" required>
 				</div>
 			</div>
 

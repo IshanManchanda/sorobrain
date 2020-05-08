@@ -83,7 +83,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Django Template'  # TODO
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-# Forms to override
+# TODO: Forms to override
 ACCOUNT_FORMS = {
 	'login': 'allauth.account.forms.LoginForm',
 	'signup': 'allauth.account.forms.SignupForm',
@@ -94,12 +94,6 @@ ACCOUNT_FORMS = {
 	'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
 	'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
 }
-
-# Allow confirmation/logout via GET requests
-# The alternative is to use email-JS POST (ugh)
-# and have the logout button be a form (ugh) rather than just a link
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-ACCOUNT_LOGOUT_ON_GET = True
 
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
@@ -141,6 +135,7 @@ INSTALLED_APPS = [
 	# 'allauth.socialaccount.providers.twitter',
 	# Custom apps
 	'main.apps.MainConfig',
+	# TODO: Add other apps
 ]
 
 if DEBUG:
