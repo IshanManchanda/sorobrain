@@ -1,0 +1,15 @@
+.header {
+    background: linear-gradient(19deg, #3F76B7 10% , #83C6EB 100%);
+}
+
+.header img{
+    max-width: inherit;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.header .heading{
+    padding: 50px
+}

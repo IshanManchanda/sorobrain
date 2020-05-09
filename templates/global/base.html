@@ -14,15 +14,24 @@
 		<link rel="icon" type="image/png" href="{% static 'common/images/logo-small-round.png' %}">
 
 		{% block commoncss %}
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+			<!--Bootstrap 4 --><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400|Quicksand:300,400">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+			<!-- FontAwesome --> <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 			<link rel="stylesheet" href="{% static 'common/css/common.css' %}">
 			<!--[if IE]>
 				<link rel = "stylesheet" href = "{% static 'common/css/ie.css' %}">
 			<![endif]-->
 		{% endblock commoncss %}
+
+
+		{% block commonjs %}
+			<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+			<script src="{% static 'common/js/common.js' %}"></script>
+		{% endblock commonjs %}
+
 
 		{% block css %}{% endblock css %}
 		{% block extrahead %}{% endblock extrahead %}
@@ -31,7 +40,45 @@
 	<body class="{% block bodyclass %}{% endblock bodyclass %}" data-admin-utc-offset="{% now "Z" %}">
 		<div class="wrapper">
 			{% block navbar %}
+				<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+				<!-- TODO: [frontend] add logo to navbar brand-->
+				  <a class="navbar-brand" href="#">Sorobrain (logo) </a>
 
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+
+				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+					  <li class="nav-item active">
+						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					  </li>
+					  <li class="nav-item active">
+						<a class="nav-link" href="#">Quizzes</a>
+					  </li>
+					  <li class="nav-item active dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						  Classes
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						  <a class="dropdown-item" href="#">Schedule a Class</a>
+						  <a class="dropdown-item" href="#">Syllabus</a>
+						  <div class="dropdown-divider"></div>
+						  <!-- TODO: [frontend] Add phone number to navbar call us button -->
+						  <a class="dropdown-item" href="#"><button class="btn btn-primary"><i class="fa fa-phone" aria-hidden="true"></i>   Call Us</button> </a>
+						</div>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link disabled" href="#">About Us</a>
+					  </li>
+					</ul>
+				    <button class="btn btn-success mx-1 ">Login/Register</button>
+					<form class="form-inline my-2 my-lg-0">
+					  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+				  </div>
+				</nav>
 			{% endblock navbar %}
 
 			{% if messages %}
@@ -45,15 +92,55 @@
 		</div>
 
 		{% block footer %}
-			<footer>&copy; 2020 Sorobrain</footer>
+			<footer class="container-fluid pt-5">
+				  <div class="row" style="background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(132,132,132,0.95) 100%);">
+					<div class="col-12 col-md">
+					  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+					  <small class="d-block mb-3 text-muted">© Sorobrain 2020</small>
+					  <!-- TODO: [frontend] add kaboo web devs landing page link to footer -->
+					  <small class="d-block mb-3 text-muted">Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#">Kaboo Web Developers</a></small>
+					</div>
+					<div class="col-6 col-md">
+					  <h5>Features</h5>
+					  <ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="#">Cool stuff</a></li>
+						<li><a class="text-muted" href="#">Random feature</a></li>
+						<li><a class="text-muted" href="#">Team feature</a></li>
+						<li><a class="text-muted" href="#">Stuff for developers</a></li>
+						<li><a class="text-muted" href="#">Another one</a></li>
+						<li><a class="text-muted" href="#">Last time</a></li>
+					  </ul>
+					</div>
+					<div class="col-6 col-md">
+					  <h5>Resources</h5>
+					  <ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="#">Resource</a></li>
+						<li><a class="text-muted" href="#">Resource name</a></li>
+						<li><a class="text-muted" href="#">Another resource</a></li>
+						<li><a class="text-muted" href="#">Final resource</a></li>
+					  </ul>
+					</div>
+					<div class="col-6 col-md">
+					  <h5>Resources</h5>
+					  <ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="#">Business</a></li>
+						<li><a class="text-muted" href="#">Education</a></li>
+						<li><a class="text-muted" href="#">Government</a></li>
+						<li><a class="text-muted" href="#">Gaming</a></li>
+					  </ul>
+					</div>
+					<div class="col-6 col-md">
+					  <h5>About</h5>
+					  <ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="#">Team</a></li>
+						<li><a class="text-muted" href="#">Locations</a></li>
+						<li><a class="text-muted" href="#">Privacy</a></li>
+						<li><a class="text-muted" href="#">Terms</a></li>
+					  </ul>
+					</div>
+				  </div>
+				</footer>
 		{% endblock footer %}
-
-		{% block commonjs %}
-			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-			<script src="{% static 'common/js/common.js' %}"></script>
-		{% endblock commonjs %}
 
 		{% block js %}{% endblock js %}
 	</body>

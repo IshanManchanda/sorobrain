@@ -53,12 +53,32 @@ DATABASES = {
 	)
 }
 
+# AWS Settings
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', '')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+	'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+AWS_DEFAULT_ACL = None
+
 # Static files
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'static')]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-WHITENOISE_MAX_AGE = 31536000  # Cache static files for one year
+
+if DEBUG:
+	STATIC_URL = '/static/'
+	STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+	WHITENOISE_MAX_AGE = 31536000  # Cache static files for one year
+else:
+	STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+	STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Media File Storage
+DEFAULT_FILE_STORAGE = 'sorobrain.media_storages.MediaStorage'
+PRIVATE_FILE_STORAGE = 'sorobrain.media_storages.PrivateMediaStorage'
 
 # Internalization Settings
 LANGUAGE_CODE = 'en-us'
@@ -117,6 +137,7 @@ SOCIALACCOUNT_PROVIDERS = {
 # Applications and middleware
 INSTALLED_APPS = [
 	'whitenoise.runserver_nostatic',  # Needs to be first
+
 	# Django apps
 	'django.contrib.admin',
 	'django.contrib.auth',
@@ -126,6 +147,7 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'django.contrib.sites',
 	# Allauth apps
+
 	'allauth',
 	'allauth.account',
 	'allauth.socialaccount',
@@ -133,6 +155,10 @@ INSTALLED_APPS = [
 	# 'allauth.socialaccount.providers.facebook',
 	# 'allauth.socialaccount.providers.microsoft',
 	# 'allauth.socialaccount.providers.twitter',
+
+	# Installed Apps
+	'storages',
+
 	# Custom apps
 	'main.apps.MainConfig',
 	# TODO: Add other apps
