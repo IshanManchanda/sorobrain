@@ -4,6 +4,7 @@ staticfiles
 
 # Files to ignore
 .DS_Store
+runserver.cmd
 
 
 # File types to ignore

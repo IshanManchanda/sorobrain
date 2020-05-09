@@ -9,13 +9,12 @@ with contextlib.suppress(Exception):
 
 # Core Settings
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-# TODO
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sorobrain.settings')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-ROOT_URLCONF = 'sorobrain.urls'  # TODO
-WSGI_APPLICATION = 'sorobrain.wsgi.application'  # TODO
+ROOT_URLCONF = 'sorobrain.urls'
+WSGI_APPLICATION = 'sorobrain.wsgi.application'
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
@@ -100,19 +99,19 @@ SITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Either can be used to login
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http' if DEBUG else 'https'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_SUBJECT_PREFIX = 'Django Template'  # TODO
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Sorobrain]'  # TODO
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 # TODO: Forms to override
 ACCOUNT_FORMS = {
 	'login': 'allauth.account.forms.LoginForm',
 	'signup': 'allauth.account.forms.SignupForm',
-	'add_email': 'allauth.account.forms.AddEmailForm',
-	'change_password': 'allauth.account.forms.ChangePasswordForm',
-	'set_password': 'allauth.account.forms.SetPasswordForm',
-	'reset_password': 'allauth.account.forms.ResetPasswordForm',
-	'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
-	'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+	# 'add_email': 'allauth.account.forms.AddEmailForm',
+	# 'change_password': 'allauth.account.forms.ChangePasswordForm',
+	# 'set_password': 'allauth.account.forms.SetPasswordForm',
+	# 'reset_password': 'allauth.account.forms.ResetPasswordForm',
+	# 'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+	# 'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
 }
 
 # Provider specific settings
