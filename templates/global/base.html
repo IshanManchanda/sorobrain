@@ -37,8 +37,8 @@
 		{% block extrahead %}{% endblock extrahead %}
 	</head>
 
-	<body class="{% block bodyclass %}{% endblock bodyclass %}" data-admin-utc-offset="{% now "Z" %}">
-		<div class="wrapper">
+	<body class="d-flex flex-column min-vh-100 {% block bodyclass %}{% endblock bodyclass %}" data-admin-utc-offset="{% now "Z" %}">
+		<div class="wrapper flex-grow-1">
 			{% block navbar %}
 				<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 				<!-- TODO: [frontend] add logo to navbar brand-->
@@ -72,7 +72,11 @@
 						<a class="nav-link disabled" href="#">About Us</a>
 					  </li>
 					</ul>
-				    <button class="btn btn-success mx-1 ">Login/Register</button>
+				    {% if not user.is_authenticated %}
+				    	<a href="{% url 'account_signup' %}"><button class="btn btn-success mx-1 ">Login/Register</button></a>
+				    {% else %}
+				    	<a href="{% url 'profile' %}"><button class="btn btn-success mx-1 ">My Account</button></a>
+				    {% endif %}
 					<form class="form-inline my-2 my-lg-0">
 					  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 					  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -99,6 +103,7 @@
 					  <small class="d-block mb-3 text-muted">© Sorobrain 2020</small>
 					  <!-- TODO: [frontend] add kaboo web devs landing page link to footer -->
 					  <small class="d-block mb-3 text-muted">Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#">Kaboo Web Developers</a></small>
+					  <small class="d-block mb-3 text-muted"><a href="{% url 'admin:index' %}"> Administrators </a></small>
 					</div>
 					<div class="col-6 col-md">
 					  <h5>Features</h5>

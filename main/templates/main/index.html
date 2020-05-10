@@ -32,6 +32,12 @@
 		<div class="col-md-8">
 			<div style="width:100%; height: 600px;">
 				<h3> Content </h3>
+
+				{% if user.is_authenticated %}
+					<h5>Hello User </h5>
+				{% else %}
+					<h5> Hello anon </h5>
+				{% endif %}
 			</div>
 	</div>
 {% endblock content %}

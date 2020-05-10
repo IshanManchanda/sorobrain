@@ -89,12 +89,14 @@ USE_TZ = True
 # Email Settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'tprocessors@gmail.com'  # TODO
+EMAIL_HOST_USER = 'straightzerodevs@gmail.com'  # TODO
 EMAIL_HOST_PASSWORD = os.environ.get('MAILER_PASSWORD')
 EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = 'Sorobrain'
 
 # Allauth settings
 SITE_ID = 1
+SITE_NAME = 'Sorobrain.com'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Either can be used to login
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http' if DEBUG else 'https'
@@ -157,6 +159,7 @@ INSTALLED_APPS = [
 
 	# Installed Apps
 	'storages',
+	'crispy_forms',
 
 	# Custom apps
 	'main.apps.MainConfig',
@@ -213,3 +216,9 @@ AUTH_PASSWORD_VALIDATORS = [
 	{'NAME':
 		'django.contrib.auth.password_validation.NumericPasswordValidator'}
 ]
+
+
+# External Application Settings
+
+# crispy_forms settings
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
