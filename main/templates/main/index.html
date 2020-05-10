@@ -34,7 +34,7 @@
 				<h3> Content </h3>
 
 				{% if user.is_authenticated %}
-					<h5>Hello User </h5>
+					<h5>Hello {{ user.name }} </h5>
 				{% else %}
 					<h5> Hello anon </h5>
 				{% endif %}
