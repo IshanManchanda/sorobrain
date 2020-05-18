@@ -1,10 +1,13 @@
 from django import forms
 from django.core.files.images import get_image_dimensions
+from django.forms import RadioSelect
 
 from ..models import User
 
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
+
+from sorobrain.utils.widgets import PictureWidget
 
 GENDER_CHOICES = [
 	('M', 'Male'),
@@ -34,6 +37,14 @@ LEVEL_CHOICES = [
 	('beginner', 'Beginner')
 ]
 
+NOTIFICATION_LEVEL_CHOICES = [
+	(0, 'Disable All Notifications'),
+	(1, 'Email me only when its critical'),
+	(2, 'Email me reminders and updates'),
+	(3, 'Email me some promotions'),
+	(4, 'Keep all notifications on')
+]
+
 
 class EditProfileForm(forms.Form):
 	name = forms.CharField(label='Full name', required=True)
@@ -41,10 +52,18 @@ class EditProfileForm(forms.Form):
 	                           required=False)
 	phone = PhoneNumberField(label='Mobile Number', required=False,
 	                         widget=PhoneNumberPrefixWidget)
-	avatar = forms.ImageField(label='Profile Picture', required=False)
+	avatar = forms.ImageField(label='Profile Picture',  widget=PictureWidget,
+	                          required=False)
 	education = forms.ChoiceField(label='Education level',
 	                              choices=EDUCATION_CHOICES,
 	                              required=False)
 	level = forms.ChoiceField(label='French Fluency Level',
 	                          choices=LEVEL_CHOICES,
 	                          required=False)
+
+
+class UpdateNotification(forms.Form):
+	notification_level = forms.ChoiceField(label='Notification Level',
+	                                       choices=NOTIFICATION_LEVEL_CHOICES,
+	                                       widget=RadioSelect,
+	                                       required=False)

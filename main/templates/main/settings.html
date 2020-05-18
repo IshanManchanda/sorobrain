@@ -30,7 +30,7 @@
 			<div class="col-md-8">
 				<div class="card shadow-lg p-3 mb-2">
 					<div class="card-header">
-						<h5 class="card-title">Edit Profile</h5>
+						<h5 class="card-title"><i class="fas fa-user-edit"></i>  Edit Profile</h5>
 					</div>
 					<div class="card-body">
 						<form method="POST" action="{% url 'save_profile' %}" enctype="multipart/form-data">
@@ -50,6 +50,22 @@
 						<a href="{% url 'account_change_password' %}" class="btn btn-primary"><i class="fas fa-key"></i>   Change Password</a>
 					</div>
 				</div>
+
+				<div class="card shadow-lg p-3 mb-2">
+					<div class="card-header">
+						<h5 class="card-title"><i class="fas fa-bell"></i>  Notifications</h5>
+					</div>
+					<div class="card-body">
+						<i class="text-muted">Let's stay in touch! We promise we'll never fill your inbox with spam!</i>
+						<br>
+						<form method="POST" action="{% url 'save_notifications' %}" enctype="multipart/form-data">
+							{% csrf_token %}
+							{{ notification_form | crispy }}
+							<button class="btn btn-primary" type="submit" name="action"><i class="fas fa-save"></i>  Save</button>
+						</form>
+					</div>
+				</div>
+
 				<div class="card shadow-lg p-3 mb-2">
 					<div class="card-header">
 						<h5 class="card-title">Contact Support</h5>
@@ -66,7 +82,7 @@
 			<div class="col-md-12">
 				<div class="card shadow-lg p-3 mb-2 border-danger">
 					<div class="card-header">
-						<h5 class="card-title text-danger">Danger Zone</h5>
+						<h5 class="card-title text-danger"><i class="fas fa-exclamation-triangle"></i>  Danger Zone</h5>
 					</div>
 					<div class="card-body">
 						<h5>Delete Account</h5>

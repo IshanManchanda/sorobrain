@@ -7,7 +7,7 @@ from django.views import View
 from django.shortcuts import render
 from django.urls import reverse
 
-from main.forms.edit_profile import EditProfileForm
+from main.forms.edit_profile import EditProfileForm, UpdateNotification
 from main.views.utils import user_profile_setup_progress
 
 
@@ -38,8 +38,14 @@ class Settings(LoginRequiredMixin, View):
 		empty_fields = user_profile_setup_progress(user)
 		if empty_fields > 0:
 			messages.add_message(request, messages.INFO, f'Complete profile setup below! {empty_fields} fields to fill.')
+
+		notification_form = UpdateNotification(initial={
+			'notification_level': user.notification_level
+		})
+
 		return render(request, 'main/settings.html', {
 			'form': form,
+			'notification_form': notification_form,
 		})
 
 
@@ -58,6 +64,19 @@ class SaveProfileData(LoginRequiredMixin, View):
 			user.save()
 
 		messages.add_message(request, messages.SUCCESS, '<i class="fas fa-check"></i> Profile Successfully Updated!')
+		return redirect(reverse('settings'))
+
+
+class SaveNotificationLevel(LoginRequiredMixin, View):
+	def post(self, request):
+		user = request.user
+		form = UpdateNotification(request.POST)
+		if form.is_valid():
+			data = form.cleaned_data
+			user.notification_level = data['notification_level']
+			user.save()
+
+		messages.add_message(request, messages.SUCCESS, '<i class="fas fa-check"></i> Notification Level Successfully Updated!')
 		return redirect(reverse('settings'))
 
 

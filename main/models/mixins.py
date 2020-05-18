@@ -22,6 +22,9 @@ class UserData(models.Model):
 	level = models.CharField('French Level', max_length=128, null=True,
 	                         blank=True)
 
+	# setting 5 levels of notifications <0 - 4>
+	# 0 is disabled to 4 is all notifications
+	notification_level = models.IntegerField('Notification Level', default='4')
 
 class AttemptData(models.Model):
 	class Meta:
