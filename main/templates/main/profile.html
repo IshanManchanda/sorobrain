@@ -6,17 +6,24 @@
 {% endblock css %}
 
 {% block content %}
-	<div class="container-fluid">
-		<div class="row ">
-			<div class="col-md-6">
-				<h1> Profile </h1>
+	<div class="container-fluid px-5">
+		<div class="row shadow-lg bg-white mt-3 mb-5 p-1 rounded">
+			<div class="col-md-8">
+				<img alt="profile_pic" class="img-fluid img-thumbnail rounded float-left mr-2" src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'common/img/default-user.png' %}{% endif %}" style="max-height: 60px"/>
+				<h3 class="text-dark display-6 align-middle mt-2"> {% if user.gender == 'M' %} Bienvenu {% else %} Bienvenue {% endif %} {{ user.name }}</h3>
 			</div>
-			<div class="col-md-6" style="text-align: right">
-				<a href="{% url 'account_logout' %}"><button class="btn btn-secondary float-right">Log Out</button></a>
+			<div class="col-md-4 float-right mt-2" style="text-align: right;">
+				<a href="{% url 'settings' %}"><button class="btn btn-primary"><i class="fas fa-cog" aria-hidden="true"></i>  Settings </button></a>
+				<a href="{% url 'account_logout' %}"><button class="btn btn-secondary align-middle"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log Out</button></a>
 			</div>
 		</div>
-
-</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 shadow-lg bg-white p-3 mb-5 rounded " style="height: 200px">
+			</div>
+		</div>
+	</div>
 {% endblock content %}
 
 {% block js %}

@@ -1,5 +1,7 @@
 from storages.backends.s3boto3 import S3Boto3Storage
 
+from sorobrain import settings
+
 
 class PublicMediaStorage(S3Boto3Storage):
 	location = 'media/public'

@@ -3,45 +3,267 @@
 
 {% block title %}Home{% endblock title %}
 {% block css %}
-	<link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/index/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="{% static 'main/css/index/features-boxed.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+	<link rel="stylesheet" href="{% static 'main/css/index/pricing-table.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/index/Highlight-Phone.css' %}">
+
 {% endblock css %}
 
+{% block extrahead %}
+{% endblock %}
+
 {% block content %}
-	<div class="container-fluid">
-		<div class="row header">
-			<div class="col-md-6">
-				<div class="heading">
-					<h1 class="font-weight-light"> Welcome to Sorobrain </h1>
-					<h3 class="text-grey font-weight-light"> Start learning today! </h3>
-					<hr>
-					<p> Offering the best in class, interactive, content to learn french alongside expert faculty guidance. </p>
+    <header class="masthead text-white text-center" style="background: url('{% static 'main/img/index/bg-masthead.jpg' %}')no-repeat center center;background-size: cover;height: 483px;">
+        <div class="overlay" style="height: 482px;"></div>
+        <div class="container">
+            <div class="row" style="height: 147px;">
+                <div class="col-xl-9 mx-auto" style="height: 131px;width: 931px;">
+                    <h1 class="display-1 mb-5" data-aos="fade" data-aos-duration="1100" style="height: 23px;margin: -44px;margin-right: 0;margin-top: 0;margin-left: 0;margin-bottom: 32px;">Welcome to Sorobrain!</h1>
+                    <h1 data-aos="zoom-in" class="mb-5" style="margin: 15px;margin-bottom: 10px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 22px;">Transforming talent to genius.&nbsp;</h1>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-12 col-md-3 col-lg-8 offset-lg-2"><button class="btn btn-primary btn-block btn-lg text-center" data-aos="zoom-in" type="submit">Sign up!</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="features-boxed">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="margin-bottom: 8px;">Our Services</h2>
+                <p class="text-center">Our services include many different aspects. Here is a glimpse of your learning experience&nbsp;</p>
+            </div>
+            <div class="row justify-content-center features" style="padding-top: 11px;">
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-map-marker icon"></i>
+                        <h3 class="name">Works everywhere</h3>
+                        <p class="description">Because our platform works entirely in your fgfsd, you can use it from any device.&nbsp;</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-clock-o icon"></i>
+                        <h3 class="name">Always available</h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-list-alt icon"></i>
+                        <h3 class="name">Customizable </h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-leaf icon"></i>
+                        <h3 class="name">Organic </h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-plane icon"></i>
+                        <h3 class="name">Fast </h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+                <div class="col-sm-6 col-md-5 col-lg-4 item">
+                    <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-phone icon"></i>
+                        <h3 class="name">Mobile-first</h3>
+                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="highlight-phone" style="background-color: #eef4f7;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="intro">
+                    <h2>Highlight</h2>
+                    <p>Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. Aliqua sed justo ligula.</p><a class="btn btn-primary" role="button" href="#">Action Button</a></div>
+            </div>
+            <div class="col-sm-4" data-aos="fade-left" data-aos-duration="1000">
+                <div class="d-none d-md-block iphone-mockup"><img class="device" src="{% static 'main/img/index/iphone.svg' %}" />
+                    {# FIXME: add correct 'background: url()' css rule in style attribute below #}
+                    <div class="screen" style=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <section class="testimonials text-center" style="padding-bottom: 39px;padding-top: 10px; background-color: #eef4f7;">
+        <div class="container">
+            <h2 class="mb-5">What people are saying</h2>
+            <div class="row" data-aos="fade-right" data-aos-duration="1000" style="margin-bottom: 50px">
+                <div class="col-lg-4">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="{% static 'main/img/index/testimonials-1.jpg' %}" alt="">
+                        <h5>Margaret E.</h5>
+                        <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="{% static 'main/img/index/testimonials-2.jpg' %}" alt="">
+                        <h5>Fred S.</h5>
+                        <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="{% static 'main/img/index/testimonials-3.jpg' %}" alt="">
+                        <h5>Sarah W.</h5>
+                        <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" data-aos="fade-left" data-aos-duration="1000">
+                <div class="col-lg-4">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="{% static 'main/img/index/testimonials-1.jpg' %}" alt="">
+                        <h5>Margaret E.</h5>
+                        <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="{% static 'main/img/index/testimonials-2.jpg' %}">
+                        <h5>Fred S.</h5>
+                        <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="{% static 'main/img/index/testimonials-3.jpg' %}">
+                        <h5>Sarah W.</h5>
+                        <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pricing py-5" style="background-color: #eef4f7;">
+        <div class="container">
+            <div class="row">
+                <div class="col" style="margin-bottom: 28px;">
+                    <h1 class="text-center text-white">Pricing</h1>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 27px;">
+                <div class="col col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
+                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
+                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
+                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
+                    </div>
+                </div>
+                <div class="col col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
+                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
+                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
+                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
+                    </div>
+                </div>
+                <div class="col col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
+                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
+                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
+                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
+                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
+                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
+                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
+                    </div>
+                </div>
+                <div class="col col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
+                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
+                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
+                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
+                    </div>
+                </div>
+                <div class="col col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
+                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
+                            <hr>
+                            <ul class="fa-ul">
+                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
+                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
+                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	<div class="highlight-phone">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="intro">
+						<h2>About Sorobrain</h2>
+						<p class="text-justify">Since 2009, Sorobrain® has specialized in providing a fun and active learning environment for its French language courses through activities like theatrical performances,<br />karaoke, quizzes &amp; competitions, games, puzzles, etc.
+							where the knowledge is put into action. Our motive is to make students absorb the language. As digital technology continues to evolve, e_Sorobrain® is the digital transformation of Sorobrain® that aims at providing the same at
+							the comfort of one’s place while extending its services to the entire world. <br /><br />“Learning the fun way, is the culture established &amp; promoted at Sorobrain®.&quot;<br /><em>-Seema Jain [Founder]</em><br /></p>
+						{# TODO: [frontend] add link to contact us section #}
+                        <a class="btn btn-primary" role="button" href="#">Get in Touch!</a>
+					</div>
+				</div>
+				<div class="col-sm-4 mt-5" data-aos="fade-left" data-aos-duration="1000">
+					<div class="d-none d-md-block iphone-mockup"><img alt="founder image" style="border: 3px solid" class="device" src="https://yt3.ggpht.com/a/AATXAJwNt_APYiiTjYc2aMCPIbQF_UteR9fHUstfPg=s88-c-k-c0x00ffffff-no-rj" />
+					</div>
 				</div>
 			</div>
-			<div class="col-md-6" style="text-align: right">
-				<img alt="header image" src="{% static 'main/media/french-flag.png' %}">
-				<img alt="header image" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1280px-Flag_of_the_United_Kingdom.svg.png">
-			</div>
 		</div>
 	</div>
-	<div class="row px-5 py-2">
-		<div class="col-md-4">
-			<div style="width:100%; height: 400px;">
-				<h3> Sidebar </h3>
-			</div>
-		</div>
-		<div class="col-md-8">
-			<div style="width:100%; height: 600px;">
-				<h3> Content </h3>
+    <section class="call-to-action text-white text-center" style="background: rgb(63,118,183); background: linear-gradient(219deg, rgba(63,118,183,1) 0%, rgba(131,198,235,1) 100%);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                    <form>
+                        <div class="form-row">
+                            <div class="col">
+                                <p class="text-center" style="font-size: 18px;">Making a free Sorobrain account gets you access to premium content!</p><button class="btn btn-primary" type="button">Sign Up!</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+	</section>
 
-				{% if user.is_authenticated %}
-					<h5>Hello {{ user.name }} </h5>
-				{% else %}
-					<h5> Hello anon </h5>
-				{% endif %}
-			</div>
-	</div>
 {% endblock content %}
 
 {% block js %}
-	<script src="{% static 'main/js/index.js' %}"></script>
+	<script src="{% static 'main/js/index/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
 {% endblock js %}

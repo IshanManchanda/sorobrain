@@ -55,6 +55,8 @@ class User(AbstractBaseUser, PermissionsMixin, UserData):
 	# password field supplied by AbstractBaseUser
 	# last_login field supplied by AbstractBaseUser
 
+	# user data supplied by UserData mixin
+
 	date_joined = models.DateTimeField('date joined', default=timezone.now)
 	is_active = models.BooleanField(
 		'active', default=True,
