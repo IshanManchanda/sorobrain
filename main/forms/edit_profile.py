@@ -10,6 +10,7 @@ from phonenumber_field.widgets import PhoneNumberPrefixWidget
 from sorobrain.utils.widgets import PictureWidget
 
 GENDER_CHOICES = [
+	(None, ''),          # show blank by default
 	('M', 'Male'),
 	('F', 'Female'),
 	('T', 'Transgender'),
@@ -18,6 +19,7 @@ GENDER_CHOICES = [
 ]
 
 EDUCATION_CHOICES = [
+	(None, ''),
 	('college', 'College'),
 	('12', '12th Class'),
 	('11', '11th Class'),
@@ -31,6 +33,7 @@ EDUCATION_CHOICES = [
 ]
 
 LEVEL_CHOICES = [
+	(None, ''),
 	('fluent', 'Fluent/Native Speaker'),
 	('advanced', 'Advanced'),
 	('intermediate', 'Intermediate'),

@@ -60,27 +60,33 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
 	'CacheControl': 'max-age=86400',
 }
+
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = 'ap-south-1'
+
 AWS_LOCATION = 'static'
 AWS_DEFAULT_ACL = None
-AWS_PRIVATE_MEDIA_LOCATION = 'private'
+AWS_MEDIA_LOCATION = 'media'
+AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
 # Static files
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'static')]
 
-if DEBUG:
-	STATIC_URL = '/static/'
-	STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-	WHITENOISE_MAX_AGE = 31536000  # Cache static files for one year
-else:
-	STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-	STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# if DEBUG:
+# 	STATIC_URL = '/static/'
+# 	STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# 	WHITENOISE_MAX_AGE = 31536000  # Cache static files for one year
+# else:
+
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
+MEDIA_ROOT = MEDIA_URL
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Media File Storage
-if DEBUG:
-	MEDIA_URL = '/media/'
-else:
-	DEFAULT_FILE_STORAGE = 'sorobrain.media_storages.MediaStorage'
-	PRIVATE_FILE_STORAGE = 'sorobrain.media_storages.PrivateMediaStorage'
+DEFAULT_FILE_STORAGE = 'sorobrain.media_storages.PublicMediaStorage'
+PRIVATE_FILE_STORAGE = 'sorobrain.media_storages.PrivateMediaStorage'
 
 # Internalization Settings
 LANGUAGE_CODE = 'en-us'
@@ -201,7 +207,6 @@ TEMPLATES = [
 				'django.template.context_processors.request',
 				'django.template.context_processors.csrf',
 				'django.contrib.auth.context_processors.auth',
-				'django.template.context_processors.media',
 				'django.contrib.messages.context_processors.messages',
 			],
 			'loaders'           : [
