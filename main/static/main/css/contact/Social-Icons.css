@@ -1,0 +1,24 @@
+.social-icons {
+  color: #313437;
+  background-color: #fff;
+  text-align: center;
+  padding: 70px 0;
+  display: flex;
+}
+
+@media (max-width:767px) {
+  .social-icons {
+    padding: 50px 0;
+  }
+}
+
+.social-icons.space-around {
+  justify-content: space-around;
+}
+.social-icons.space-between {
+  justify-content: space-between;
+}
+
+.social-icons > i {
+  padding: 100px
+}

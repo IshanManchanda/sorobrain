@@ -15,5 +15,6 @@ urlpatterns = [
 	path('accounts/save_notification', views.SaveNotificationLevel.as_view(), name='save_notifications'),
 	path('register/', views.register, name='register'),
 
+	path('contact/', TemplateView.as_view(template_name='main/contact.html'), name='contact'),
 	path('', views.index, name='index'),
 ]

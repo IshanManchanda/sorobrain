@@ -3,7 +3,6 @@
 {% load crispy_forms_tags %}
 
 {% block title %}Settings{% endblock title %}
-
 {% block content %}
 	<div class="container-fluid px-5">
 		<div class="row mt-2">
@@ -16,7 +15,7 @@
 				</nav>
 			</div>
 		</div>
-		<div class="row shadow-lg bg-white mt-1 mb-5 p-1 rounded align-items-center">
+		<div class="row shadow-lg bg-white mt-1 mb-2 p-1 rounded align-items-center">
 			<div class="col-md-8">
 				<h3 class="text-dark display-6 align-middle mt-2"> <i class="fa fa-cog" aria-hidden="true"></i>   Settings </h3>
 			</div>
@@ -51,12 +50,12 @@
 					</div>
 				</div>
 
-				<div class="card shadow-lg p-3 mb-2">
+				<div class="card shadow-lg p-3 mb-4">
 					<div class="card-header">
 						<h5 class="card-title"><i class="fas fa-bell"></i>  Notifications</h5>
 					</div>
 					<div class="card-body">
-						<i class="text-muted">Let's stay in touch! We promise we'll never fill your inbox with spam!</i>
+						<p class="text-muted">Let's stay in touch! We promise we'll never fill your inbox with spam!</p>
 						<br>
 						<form method="POST" action="{% url 'save_notifications' %}" enctype="multipart/form-data">
 							{% csrf_token %}
@@ -66,7 +65,7 @@
 					</div>
 				</div>
 
-				<div class="card shadow-lg p-3 mb-2">
+				<div class="card shadow-lg p-3 mb-4">
 					<div class="card-header">
 						<h5 class="card-title">Contact Support</h5>
 					</div>

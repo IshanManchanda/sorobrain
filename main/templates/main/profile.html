@@ -7,6 +7,15 @@
 
 {% block content %}
 	<div class="container-fluid px-5">
+		<div class="row mt-2">
+			<div class="col-md-12">
+				<nav aria-label="breadcrumb">
+				  <ol class="breadcrumb">
+				  	<li class="breadcrumb-item active" aria-current="page"><i class="fa fa-user-o" aria-hidden="true"></i>  Profile</li>
+				  </ol>
+				</nav>
+			</div>
+		</div>
 		<div class="row shadow-lg bg-white mt-3 mb-5 p-1 rounded">
 			<div class="col-md-8">
 				<img alt="profile_pic" class="img-fluid img-thumbnail rounded float-left mr-2" src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'common/img/default-user.png' %}{% endif %}" style="max-height: 60px"/>
