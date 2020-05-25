@@ -45,12 +45,21 @@ if not DEBUG:
 	SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Database Settings
-DATABASES = {
-	'default': dj_database_url.config(
-		conn_max_age=600,
-		default=os.environ.get('DATABASE_URL')
-	)
-}
+# set true if you don't want to use a preconfigured database
+if os.environ.get('NO_DATABASE'):
+	DATABASES = {
+		'default': {
+        	'ENGINE': 'django.db.backends.sqlite3',
+        	'NAME': 'mydatabase'
+    	}
+	}
+else:
+	DATABASES = {
+		'default': dj_database_url.config(
+			conn_max_age=600,
+			default=os.environ.get('DATABASE_URL')
+		)
+	}
 
 # AWS Settings
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
