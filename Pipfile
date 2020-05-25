@@ -27,6 +27,12 @@ psycopg2-binary = "==2.8.5"
 python-dotenv = "==0.13.0"
 whitenoise = {extras = ["brotli"],version = "==5.0.1"}
 django-storages = "*"
+django-admin-tools = "*"
+django-phonenumber-field = {extras = ["phonenumbers"],version = "*"}
+pillow = "*"
+boto3 = "*"
+django-ckeditor = "*"
+django-taggit = "*"
 
 [requires]
 python_version = "3.8"

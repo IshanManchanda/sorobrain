@@ -1,0 +1,95 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Settings{% endblock title %}
+{% block content %}
+	<div class="container-fluid px-5">
+		<div class="row mt-2">
+			<div class="col-md-12">
+				<nav aria-label="breadcrumb">
+				  <ol class="breadcrumb">
+				  	<li class="breadcrumb-item"><a href="{% url 'profile' %}"><i class="fa fa-user-o" aria-hidden="true"></i>  Profile</a></li>
+    				<li class="breadcrumb-item active" aria-current="page">Settings</li>
+				  </ol>
+				</nav>
+			</div>
+		</div>
+		<div class="row shadow-lg bg-white mt-1 mb-2 p-1 rounded align-items-center">
+			<div class="col-md-8">
+				<h3 class="text-dark display-6 align-middle mt-2"> <i class="fa fa-cog" aria-hidden="true"></i>   Settings </h3>
+			</div>
+			<div class="col-md-4 float-right mt-2" style="text-align: right;">
+				<a href="{% url 'index' %}"><button class="btn btn-primary"><i class="fa fa-user-o" aria-hidden="true"></i> View Profile </button></a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row mb-3">
+			<div class="col-md-8">
+				<div class="card shadow-lg p-3 mb-2">
+					<div class="card-header">
+						<h5 class="card-title"><i class="fas fa-user-edit"></i>  Edit Profile</h5>
+					</div>
+					<div class="card-body">
+						<form method="POST" action="{% url 'save_profile' %}" enctype="multipart/form-data">
+							{% csrf_token %}
+							{{ form | crispy }}
+							<button class="btn btn-primary" type="submit" name="action"><i class="fas fa-save"></i>  Save</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card shadow-lg p-3 mb-4 border-warning">
+					<div class="card-header">
+						<h5 class="card-title">Change Password</h5>
+					</div>
+					<div class="card-body">
+						<a href="{% url 'account_change_password' %}" class="btn btn-primary"><i class="fas fa-key"></i>   Change Password</a>
+					</div>
+				</div>
+
+				<div class="card shadow-lg p-3 mb-4">
+					<div class="card-header">
+						<h5 class="card-title"><i class="fas fa-bell"></i>  Notifications</h5>
+					</div>
+					<div class="card-body">
+						<p class="text-muted">Let's stay in touch! We promise we'll never fill your inbox with spam!</p>
+						<br>
+						<form method="POST" action="{% url 'save_notifications' %}" enctype="multipart/form-data">
+							{% csrf_token %}
+							{{ notification_form | crispy }}
+							<button class="btn btn-primary" type="submit" name="action"><i class="fas fa-save"></i>  Save</button>
+						</form>
+					</div>
+				</div>
+
+				<div class="card shadow-lg p-3 mb-4">
+					<div class="card-header">
+						<h5 class="card-title">Contact Support</h5>
+					</div>
+					<div class="card-body">
+						{# TODO; [frontend] add link to contact us / contact support #}
+						<a href="#" class="btn btn-primary m-1"><i class="fas fa-phone fa-rotate-90"></i>  Contact Tech Support</a>
+						<a href="#" class="btn btn-primary m-1"><i class="fas fa-phone fa-rotate-90"></i>  Contact Content Support</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card shadow-lg p-3 mb-2 border-danger">
+					<div class="card-header">
+						<h5 class="card-title text-danger"><i class="fas fa-exclamation-triangle"></i>  Danger Zone</h5>
+					</div>
+					<div class="card-body">
+						<h5>Delete Account</h5>
+						<p class="card-text">This action is irreversible and cannot be undone!</p>
+						<a href="{% url 'delete' %}" class="btn btn-danger"><i class="far fa-times-circle"></i>  Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

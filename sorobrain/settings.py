@@ -19,7 +19,7 @@ WSGI_APPLICATION = 'sorobrain.wsgi.application'
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ADMINS = [
-	('Ishan Manchanda', 'ishanmanchanda70@gmail.com'),  # TODO
+	('Sorobrain Developers', 'sorobrain.devs@gmail.com')
 ]
 
 AUTH_USER_MODEL = 'main.User'
@@ -69,23 +69,32 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
 	'CacheControl': 'max-age=86400',
 }
+
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = 'ap-south-1'
+
 AWS_LOCATION = 'static'
 AWS_DEFAULT_ACL = None
-
+AWS_MEDIA_LOCATION = 'media'
+AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
 # Static files
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'static')]
 
-if DEBUG:
-	STATIC_URL = '/static/'
-	STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-	WHITENOISE_MAX_AGE = 31536000  # Cache static files for one year
-else:
-	STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-	STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# if DEBUG:
+# 	STATIC_URL = '/static/'
+# 	STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# 	WHITENOISE_MAX_AGE = 31536000  # Cache static files for one year
+# else:
+
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
+MEDIA_ROOT = MEDIA_URL
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Media File Storage
-DEFAULT_FILE_STORAGE = 'sorobrain.media_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = 'sorobrain.media_storages.PublicMediaStorage'
 PRIVATE_FILE_STORAGE = 'sorobrain.media_storages.PrivateMediaStorage'
 
 # Internalization Settings
@@ -98,41 +107,40 @@ USE_TZ = True
 # Email Settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'straightzerodevs@gmail.com'  # TODO
+EMAIL_HOST_USER = 'sorobrain.devs@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('MAILER_PASSWORD')
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'Sorobrain'
+DEFAULT_FROM_EMAIL = 'Sorobrain - Online French Platfrom'
 
 # Allauth settings
 SITE_ID = 1
-SITE_NAME = 'Sorobrain.com'
+SITE_NAME = 'sorobrain.com'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Either can be used to login
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http' if DEBUG else 'https'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Sorobrain]'  # TODO
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Sorobrain] '
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-# TODO: Forms to override
 ACCOUNT_FORMS = {
-	'login': 'allauth.account.forms.LoginForm',
-	'signup': 'allauth.account.forms.SignupForm',
-	# 'add_email': 'allauth.account.forms.AddEmailForm',
-	# 'change_password': 'allauth.account.forms.ChangePasswordForm',
-	# 'set_password': 'allauth.account.forms.SetPasswordForm',
-	# 'reset_password': 'allauth.account.forms.ResetPasswordForm',
-	# 'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
-	# 'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+	'login'                  : 'allauth.account.forms.LoginForm',
+	'signup'                 : 'allauth.account.forms.SignupForm',
+	'add_email'              : 'allauth.account.forms.AddEmailForm',
+	'change_password'        : 'allauth.account.forms.ChangePasswordForm',
+	'set_password'           : 'allauth.account.forms.SetPasswordForm',
+	'reset_password'         : 'allauth.account.forms.ResetPasswordForm',
+	'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+	'disconnect'             : 'allauth.socialaccount.forms.DisconnectForm',
 }
 
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
 	'google': {
-		'APP': {
+		'APP'        : {
 			'client_id': os.environ.get('OAUTH_GOOGLE_CLIENT_ID'),
-			'secret': os.environ.get('OAUTH_GOOGLE_CLIENT_SECRET'),
+			'secret'   : os.environ.get('OAUTH_GOOGLE_CLIENT_SECRET'),
 		},
-		'SCOPE': [
+		'SCOPE'      : [
 			'profile',
 			'email',
 			'openid',
@@ -148,6 +156,12 @@ SOCIALACCOUNT_PROVIDERS = {
 INSTALLED_APPS = [
 	'whitenoise.runserver_nostatic',  # Needs to be first
 
+	# admin tools
+	'admin_tools',
+	'admin_tools.theming',
+	'admin_tools.menu',
+	'admin_tools.dashboard',
+
 	# Django apps
 	'django.contrib.admin',
 	'django.contrib.auth',
@@ -156,8 +170,8 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'django.contrib.sites',
-	# Allauth apps
 
+	# Allauth apps
 	'allauth',
 	'allauth.account',
 	'allauth.socialaccount',
@@ -169,10 +183,14 @@ INSTALLED_APPS = [
 	# Installed Apps
 	'storages',
 	'crispy_forms',
+	'phonenumber_field',
+	'ckeditor',
+	'ckeditor_uploader',
+	'taggit',
 
 	# Custom apps
 	'main.apps.MainConfig',
-	# TODO: Add other apps
+	'quiz.apps.QuizConfig',
 ]
 
 if DEBUG:
@@ -194,10 +212,9 @@ MIDDLEWARE = [
 TEMPLATES = [
 	{
 		'BACKEND': 'django.template.backends.django.DjangoTemplates',
-		'DIRS': [os.path.join(BASE_DIR, 'templates')],
-		'APP_DIRS': True,
+		'DIRS'   : [os.path.join(BASE_DIR, 'templates')],
+		# 'APP_DIRS': True,
 		'OPTIONS': {
-			# TODO: Look into django.template.loaders.cached.Loader
 			'context_processors': [
 				'django.template.context_processors.debug',
 				'django.template.context_processors.request',
@@ -205,7 +222,17 @@ TEMPLATES = [
 				'django.contrib.auth.context_processors.auth',
 				'django.contrib.messages.context_processors.messages',
 			],
-			'debug': DEBUG,
+			'loaders'           : [
+				# ('django.template.loaders.cached.Loader', [
+				# 	'django.template.loaders.filesystem.Loader',
+				# 	'django.template.loaders.app_directories.Loader',
+				# 	'admin_tools.template_loaders.Loader',
+				# ]),
+				'django.template.loaders.filesystem.Loader',
+				'django.template.loaders.app_directories.Loader',
+				'admin_tools.template_loaders.Loader'
+			],
+			'debug'             : DEBUG,
 		},
 	},
 ]
@@ -217,17 +244,42 @@ AUTHENTICATION_BACKENDS = (
 
 AUTH_PASSWORD_VALIDATORS = [
 	{'NAME':
-		'django.contrib.auth.password_validation'
-		'.UserAttributeSimilarityValidator'},
+		 'django.contrib.auth.password_validation'
+		 '.UserAttributeSimilarityValidator'},
 	{'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
 	{'NAME':
-		'django.contrib.auth.password_validation.CommonPasswordValidator'},
+		 'django.contrib.auth.password_validation.CommonPasswordValidator'},
 	{'NAME':
-		'django.contrib.auth.password_validation.NumericPasswordValidator'}
+		 'django.contrib.auth.password_validation.NumericPasswordValidator'}
 ]
-
 
 # External Application Settings
 
 # crispy_forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# django taggit settings
+TAGGIT_CASE_INSENSITIVE = True
+
+# ckeditor settings
+AWS_QUERYSTRING_AUTH = False
+CKEDITOR_UPLOAD_PATH = 'media/public/ckeditor/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_CONFIGS = {
+	'default': {
+		'toolbar': 'full',
+	},
+	'minimal': {
+		'toolbar'           : 'Custom',
+		'toolbar_Custom'    : [
+			['Bold', 'Italic', 'Underline'],
+			['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+			 'JustifyLeft', 'JustifyCenter',
+			 'JustifyRight', 'JustifyBlock'],
+			['Image']
+		],
+		'height'            : '100%',
+		'width'             : '100%',
+		'toolbarCanCollapse': True,
+	},
+}

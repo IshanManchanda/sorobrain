@@ -1,4 +1,3 @@
-{# TODO #}
 {% load static %}
 <!DOCTYPE html>
 {% block hint %}{% endblock hint %}
@@ -6,18 +5,17 @@
 	<head>
 		{% block meta %}
 			<meta charset="utf-8">
-			<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 			<meta name="robots" content="NONE,NOARCHIVE"/>
 		{% endblock meta %}
 
 		<title>{% block title %}{% endblock title %}</title>
-		<link rel="icon" type="image/png" href="{% static 'common/images/logo-small-round.png' %}">
+		<link rel="icon" type="image/png" href="{% static 'common/img/logo-small-round.png' %}">
 
 		{% block commoncss %}
 			<!--Bootstrap 4 --><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400|Quicksand:300,400">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-			<!-- FontAwesome --> <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 			<link rel="stylesheet" href="{% static 'common/css/common.css' %}">
 			<!--[if IE]>
 				<link rel = "stylesheet" href = "{% static 'common/css/ie.css' %}">
@@ -29,6 +27,7 @@
 			<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+			<script src="https://kit.fontawesome.com/5f613dcc3d.js" crossorigin="anonymous"></script>
 			<script src="{% static 'common/js/common.js' %}"></script>
 		{% endblock commonjs %}
 
@@ -38,7 +37,7 @@
 	</head>
 
 	<body class="d-flex flex-column min-vh-100 {% block bodyclass %}{% endblock bodyclass %}" data-admin-utc-offset="{% now "Z" %}">
-		<div class="wrapper flex-grow-1">
+		<div class="flex-grow-1">
 			{% block navbar %}
 				<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 				<!-- TODO: [frontend] add logo to navbar brand-->
@@ -54,7 +53,7 @@
 						<a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
 					  </li>
 					  <li class="nav-item active">
-						<a class="nav-link" href="#">Quizzes</a>
+						<a class="nav-link" href="{% url 'catalog' %}">Content Catalog</a>
 					  </li>
 					  <li class="nav-item active dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,6 +69,10 @@
 					  </li>
 					  <li class="nav-item">
 						<a class="nav-link disabled" href="#">About Us</a>
+					  </li>
+					  <li class="nav-item active">
+						<a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+
 					  </li>
 					</ul>
 				    {% if not user.is_authenticated %}
@@ -87,8 +90,11 @@
 
 			{% if messages %}
 				{% for message in messages %}
-					<div class="alert alert-{{ message.tags }}">
-						{{ message }}
+					<div class="alert alert-{{ message.tags }} alert-dismissible fade show mx-2 my-1" role="alert">
+						{{ message|safe }}
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    					<span aria-hidden="true">&times;</span>
+					  </button>
 					</div>
 				{% endfor %}
 			{% endif %}

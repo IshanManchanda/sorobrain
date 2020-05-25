@@ -1,6 +1,10 @@
 from django.db import models
 from django.utils import timezone
 
+from phonenumber_field.modelfields import PhoneNumberField
+
+from sorobrain.media_storages import PrivateMediaStorage
+
 
 class UserData(models.Model):
 	class Meta:
@@ -8,7 +12,18 @@ class UserData(models.Model):
 
 	email = models.EmailField('Email Address', max_length=255)
 	name = models.CharField('Full Name', max_length=128)
-	phone = models.CharField('Phone Number', max_length=32)
+	phone = PhoneNumberField(null=True, blank=True)
+	avatar = models.ImageField(storage=PrivateMediaStorage(),
+	                           upload_to='user_data/avatars',
+	                           null=True, blank=True)
+	education = models.CharField('Education Level', max_length=265, null=True,
+	                             blank=True)
+	gender = models.CharField('Gender', max_length=32, null=True, blank=True)
+	level = models.CharField('French Level', max_length=128, null=True,
+	                         blank=True)
+	# setting 5 levels of notifications <0 - 4>
+	# 0 is disabled to 4 is all notifications
+	notification_level = models.IntegerField('Notification Level', default='4')
 
 
 class AttemptData(models.Model):
