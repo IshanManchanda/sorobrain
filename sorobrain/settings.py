@@ -114,14 +114,14 @@ ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Sorobrain] '
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 ACCOUNT_FORMS = {
-	'login' : 'allauth.account.forms.LoginForm',
-	'signup': 'allauth.account.forms.SignupForm',
-	'add_email': 'allauth.account.forms.AddEmailForm',
-	'change_password': 'allauth.account.forms.ChangePasswordForm',
-	'set_password': 'allauth.account.forms.SetPasswordForm',
-	'reset_password': 'allauth.account.forms.ResetPasswordForm',
+	'login'                  : 'allauth.account.forms.LoginForm',
+	'signup'                 : 'allauth.account.forms.SignupForm',
+	'add_email'              : 'allauth.account.forms.AddEmailForm',
+	'change_password'        : 'allauth.account.forms.ChangePasswordForm',
+	'set_password'           : 'allauth.account.forms.SetPasswordForm',
+	'reset_password'         : 'allauth.account.forms.ResetPasswordForm',
 	'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
-	'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+	'disconnect'             : 'allauth.socialaccount.forms.DisconnectForm',
 }
 
 # Provider specific settings
@@ -161,8 +161,8 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'django.contrib.sites',
-	# Allauth apps
 
+	# Allauth apps
 	'allauth',
 	'allauth.account',
 	'allauth.socialaccount',
@@ -175,9 +175,13 @@ INSTALLED_APPS = [
 	'storages',
 	'crispy_forms',
 	'phonenumber_field',
+	'ckeditor',
+	'ckeditor_uploader',
+	'taggit',
 
 	# Custom apps
 	'main.apps.MainConfig',
+	'quiz.apps.QuizConfig',
 ]
 
 if DEBUG:
@@ -244,3 +248,29 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # crispy_forms settings
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# django taggit settings
+TAGGIT_CASE_INSENSITIVE = True
+
+# ckeditor settings
+AWS_QUERYSTRING_AUTH = False
+CKEDITOR_UPLOAD_PATH = 'media/public/ckeditor/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_CONFIGS = {
+	'default': {
+		'toolbar': 'full',
+	},
+	'minimal': {
+		'toolbar'           : 'Custom',
+		'toolbar_Custom'    : [
+			['Bold', 'Italic', 'Underline'],
+			['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+			 'JustifyLeft', 'JustifyCenter',
+			 'JustifyRight', 'JustifyBlock'],
+			['Image']
+		],
+		'height'            : '100%',
+		'width'             : '100%',
+		'toolbarCanCollapse': True,
+	},
+}

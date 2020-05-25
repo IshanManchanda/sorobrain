@@ -1,7 +1,7 @@
 from django.forms.widgets import ClearableFileInput
 from django.utils.safestring import mark_safe
 
-from sorobrain.utils import get_presigned_url
+from sorobrain.utils.utils import get_presigned_url
 
 
 class PictureWidget(ClearableFileInput):

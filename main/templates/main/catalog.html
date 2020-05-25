@@ -1,0 +1,169 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'main/css/catalog/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+
+	<link rel="stylesheet" href="{% static 'main/css/catalog/dh-header-non-rectangular.css' %}">
+{% endblock css %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <header class="dh-header-non-rectangular" style="height: 391px;width: 100%;">
+        <div class="text-center header__bg"></div>
+        <h1>Lorem ipsum</h1>
+        <div class="container">
+            <div class="text-center text-xl-center col-md-12 dh-header-non-rectangular-container" data-aos="slide-right" data-aos-duration="700" data-aos-delay="50" data-aos-once="true" style="padding-top: 7px;">
+                <h1 class="display-4 text-left" style="color: rgb(255,255,255);"><i class="fas fa-book-reader fa-2x"></i>&nbsp;Our Products</h1>
+                <p class="text-left" style="color: rgb(255,255,255);">Presenting the best in class French Learning content.&nbsp;</p>
+            </div>
+        </div>
+    </header>
+    <div class="flex-grow-1 flex-shrink-0 flex-fill justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-3 offset-lg-0" style="margin-bottom: 18px;">
+                    <h2>Our Products<br></h2>
+                    <hr>
+                    <h5 class="text-secondary">Catalog</h5>
+                    <ul class="list-group shadow-lg">
+                        <li class="list-group-item" data-bs-hover-animate="pulse"><span>&nbsp;<a href="#" style="font-size: 21px;">Competitions</a></span></li>
+                        <li class="list-group-item" data-bs-hover-animate="pulse"><span>&nbsp;<a href="#" style="font-size: 21px;">Practice</a></span></li>
+                        <li class="list-group-item" data-bs-hover-animate="pulse"><span>&nbsp;<a href="#" style="font-size: 21px;">Workshops</a></span></li>
+                        <li class="list-group-item" data-bs-hover-animate="pulse"><span>&nbsp;<a href="#" style="font-size: 21px;">Classes</a></span></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-lg-9 content" style="padding-top: 33px;">
+                    <div class="row p-3 mb-5 shadow rounded" style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
+                        <div class="col">
+                            <h3>Competitions</h3>
+                            <p style="margin-bottom: 4px;">Participate in online competitions with your friends and win exiting prizes!</p>
+                            <div class="alert alert-success shadow" role="alert" style="margin-bottom: 9px;"><span><strong>How it Works</strong><br>1. Register for a compeition you're interested in.<br>2. Participate in the competition by giving online quizzes!<br>3. Increase your chances of victory with practice quizzes and workshops!<br>4. Submit your responses before the deadline<br>5. Get a widely recognized certificate of merit or participation!<br></span></div>
+                            <div
+                                class="text-left" style="margin-bottom: 11px;"><a class="btn btn-outline-primary btn-block shadow" data-toggle="collapse" aria-expanded="false" aria-controls="collapse-1" href="#collapse-1" role="button">Information for Schools and Organizations</a>
+                                <div class="collapse"
+                                    id="collapse-1">
+                                    <div class="alert alert-info" role="alert" style="margin-top: 9px;"><span><strong>Registering for your students:</strong>&nbsp;<br>1. Select the competition you want to register your students.<br>2. Select "school register" and fill out the details.<br>3. Once you complete the payment you will get a list of activation codes.&nbsp;<br>4. Give one code to each student and ask them to go to the competition page and select the 'register with code' option. <br>5. With the codes you will also get a directions guide.&nbsp;<br></span></div>
+                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card-group">
+                                    <div class="card"><img class="card-img-top w-100 d-block">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Title</h5>
+                                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button></div>
+                                    </div>
+                                    <div class="card"><img class="card-img-top w-100 d-block">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button></div>
+                                    </div>
+                                    <div class="card"><img class="card-img-top w-100 d-block">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button></div>
+                                    </div>
+                                </div>
+                                <nav>
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-3 mb-5 shadow rounded" style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
+                    <div class="col" style="margin-top: 52px;">
+                        <h3>Practice Quizzes</h3>
+                        <div class="alert alert-success" role="alert"><span><strong>These are a great way to keep on top of your French skills.</strong><br>1. Practice quizzes allow you to get ahead of the competition and maximize retentivity.<br>2. You can give them as many times as you want.<br>3. Get data-driven analysis on your responses to maximize performance.&nbsp;&nbsp;<strong>&nbsp;</strong></span></div>
+                        <p
+                            class="lead" style="margin-bottom: 1px;"><strong><em>You've never learned French like this before, and we can't wait for you to started.</em></strong><br><br></p>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-group">
+                                        <div class="card"><img class="card-img-top w-100 d-block">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Title</h5>
+                                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button></div>
+                                        </div>
+                                        <div class="card"><img class="card-img-top w-100 d-block">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Title</h4>
+                                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="row p-3 mb-5 shadow rounded" style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
+                    <div class="col">
+                        <h3 style="margin-top: 8px;">Online Workshops</h3>
+                        <p class="lead" style="margin-bottom: 10px;"><strong><em>Attend day-long workshops with expert faculty to boost concepts and get an edge.&nbsp;</em></strong><br></p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h5>What will you get?&nbsp;</h5><small>1. A deep and complete understanding of that workshop's topic.<br>2. An interactive session where you can ask questions to the faculty, interact with other learners, all from the comfort of your home.&nbsp;&nbsp;</small>
+                                <hr>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5>How to get started?</h5><small>1. Select the workshop you want to attend below.&nbsp;<br>2. Complete the payment process.&nbsp;<br>3. You will be able to access the details and zoom link for the workshop, you'll also get an email with the details!<br></small>
+                                <hr>
+                            </div>
+                            <div class="col">
+                                <div class="card-group">
+                                    <div class="card"><img class="card-img-top w-100 d-block">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button></div>
+                                    </div>
+                                    <div class="card"><img class="card-img-top w-100 d-block">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button></div>
+                                    </div>
+                                    <div class="card"><img class="card-img-top w-100 d-block">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-3 mb-5 shadow rounded" style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
+                    <div class="col">
+                        <h3 style="margin-top: 12px;">&nbsp;One-on-One Classes</h3>
+                        <p class="lead" style="margin-bottom: 1px;"></p>
+                        <div class="row">
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'main/js/index/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+{% endblock js %}

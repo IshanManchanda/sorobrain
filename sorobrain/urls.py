@@ -15,7 +15,7 @@ Including another URL conf
 """
 from django.contrib import admin
 from django.template.context_processors import static
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 from sorobrain import settings
 
@@ -24,6 +24,8 @@ admin.site.site_header = 'Sorobrain'
 urlpatterns = [
 	path('admin_tools/', include('admin_tools.urls')),
 	path('admin/', admin.site.urls),
+	re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 	path('accounts/', include('allauth.urls')),
+	path('quiz/', include('quiz.urls', namespace='quiz')),
 	path('', include('main.urls')),
 ]
