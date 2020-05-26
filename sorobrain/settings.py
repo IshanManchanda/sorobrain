@@ -190,6 +190,7 @@ INSTALLED_APPS = [
 	# Custom apps
 	'main.apps.MainConfig',
 	'quiz.apps.QuizConfig',
+	'workshops.apps.WorkshopsConfig',
 ]
 
 if DEBUG:

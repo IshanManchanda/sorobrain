@@ -27,5 +27,6 @@ urlpatterns = [
 	re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 	path('accounts/', include('allauth.urls')),
 	path('quiz/', include('quiz.urls', namespace='quiz')),
+	path('workshop/', include('workshops.urls', namespace='workshop')),
 	path('', include('main.urls')),
 ]
