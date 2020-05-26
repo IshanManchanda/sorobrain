@@ -11,11 +11,12 @@ class QuizAdmin(admin.ModelAdmin):
 	list_filter = ('level',)
 	search_fields = ('title', 'tags', 'slug')
 	ordering = ('title', '-created_on',)
+	filter_horizontal = ('questions',)
 
 	fieldsets = (
 		(None, {
-			'fields': ('title', 'description', 'level', 'cost', 'thumbnail',
-			           'total_time', 'tags', 'active')
+			'fields': ('title', 'description', 'questions', 'level', 'cost',
+			           'thumbnail', 'total_time', 'tags', 'active')
 		}),
 	)
 
@@ -33,4 +34,3 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Question, QuestionAdmin)
-

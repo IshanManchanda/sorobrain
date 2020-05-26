@@ -11,62 +11,6 @@ from taggit.managers import TaggableManager
 from sorobrain.mixins.common import CustomIdMixin
 
 
-class Quiz(models.Model):
-	"""
-	A quiz object contains metadata about itself and a m2m field
-	to the Question model. For all quizzes we assume that the
-	ordering of the questions is unimportant, hence we can use an
-	unordered m2m to Questions. Through a related_name attr we can
-	also query the database for the quiz(zes) that a question may exist
-	in.
-	"""
-	
-	LEVEL_CHOICES = [
-		(None, ''),
-		('fluent', 'Fluent/Native Speaker'),
-		('advanced', 'Advanced'),
-		('intermediate', 'Intermediate'),
-		('beginner', 'Beginner')
-	]
-
-	class Meta:
-		ordering = ['-created_on', ]
-		verbose_name = 'Quiz'
-		verbose_name_plural = 'Quizzes'
-
-	id = models.CharField(max_length=128, primary_key=True,
-	                      verbose_name='Quiz ID')
-	title = models.CharField(max_length=256, verbose_name='Quiz Title')
-	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True)
-	description = RichTextUploadingField(config_name='minimal')
-	level = models.CharField(max_length=128, verbose_name='French Level',
-	                         choices=LEVEL_CHOICES)
-	thumbnail = models.ImageField(upload_to='quiz/thumbnails/',
-	                              # TODO: Add default thumbnail for quiz
-	                              # default='quiz/thumbnails/no-thumbnail.png',
-	                              null=True, blank=True)
-	cost = models.IntegerField(verbose_name='Quiz Cost', default=0)
-	total_time = models.DurationField(verbose_name='Total Time',
-	                                  default=timedelta(minutes=15))
-	tags = TaggableManager()
-	active = models.BooleanField(verbose_name='Active')
-	created_on = models.DateTimeField(default=timezone.now,
-	                                  verbose_name='Quiz Created On')
-
-	@staticmethod
-	def generate_key(self):
-		while True:
-			key = secrets.token_urlsafe(16)  # Generates 64-character string
-			if not self.__class__.objects.filter(id=key).exists():
-				break
-		return key
-
-	def save(self, *args, **kwargs):
-		self.id = self.generate_key(self)
-		self.slug = slugify(self.title)
-		super(Quiz, self).save(*args, **kwargs)
-
-
 class Question(CustomIdMixin):
 	"""
 	Question objects store the question and the answers to that question
@@ -118,3 +62,58 @@ class Question(CustomIdMixin):
 
 	def __str__(self):
 		return f'{self.question} | id:{self.id}'
+
+
+class Quiz(CustomIdMixin):
+	"""
+	A quiz object contains metadata about itself and a m2m field
+	to the Question model. For all quizzes we assume that the
+	ordering of the questions is unimportant, hence we can use an
+	unordered m2m to Questions. Through a related_name attr we can
+	also query the database for the quiz(zes) that a question may exist
+	in.
+	"""
+
+	LEVEL_CHOICES = [
+		(None, ''),
+		('fluent', 'Fluent/Native Speaker'),
+		('advanced', 'Advanced'),
+		('intermediate', 'Intermediate'),
+		('beginner', 'Beginner')
+	]
+
+	class Meta:
+		ordering = ['-created_on', ]
+		verbose_name = 'Quiz'
+		verbose_name_plural = 'Quizzes'
+
+	id = models.CharField(max_length=128, primary_key=True,
+	                      verbose_name='Quiz ID')
+	title = models.CharField(max_length=256, verbose_name='Quiz Title')
+	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True)
+	questions = models.ManyToManyField(Question, related_name='quizzes',
+	                                   blank=True)
+	description = RichTextUploadingField(config_name='minimal')
+	level = models.CharField(max_length=128, verbose_name='French Level',
+	                         choices=LEVEL_CHOICES)
+	thumbnail = models.ImageField(upload_to='quiz/thumbnails/',
+	                              # TODO: Add default thumbnail for quiz
+	                              # default='quiz/thumbnails/no-thumbnail.png',
+	                              null=True, blank=True)
+	cost = models.IntegerField(verbose_name='Quiz Cost', default=0)
+	total_time = models.DurationField(verbose_name='Total Time',
+	                                  default=timedelta(minutes=15))
+	tags = TaggableManager()
+	active = models.BooleanField(verbose_name='Active')
+	created_on = models.DateTimeField(default=timezone.now,
+	                                  verbose_name='Quiz Created On')
+
+	# TODO: add get_absolute_url method for Quiz Model
+
+	def save(self, *args, **kwargs):
+		self.id = self.generate_key(self)
+		self.slug = slugify(self.title)
+		super(Quiz, self).save(*args, **kwargs)
+
+	def __str__(self):
+		return self.title
