@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-    <header class="masthead text-white text-center" style="background: url('{% static 'main/img/index/bg-masthead.jpg' %}')no-repeat center center;background-size: cover;height: 483px;">
+    <header class="masthead text-white text-center" style="background: url('{% static 'main/img/index/bg-masthead.png' %}')no-repeat center center;background-size: cover;height: 483px;">
         <div class="overlay" style="height: 482px;"></div>
         <div class="container">
             <div class="row" style="height: 147px;">
@@ -44,33 +44,40 @@
             <div class="row justify-content-center features" style="padding-top: 11px;">
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-map-marker icon"></i>
-                        <h3 class="name">Works everywhere</h3>
-                        <p class="description">Because our platform works entirely in your fgfsd, you can use it from any device.&nbsp;</p><a class="learn-more" href="#">Learn more »</a></div>
+                        <h3 class="name">Online Competitions</h3>
+                        <p class="description">&nbsp Through our rich and interactive online competition experiences, you can compete with your peers from across the globe to win evicting prizes, and widely recognized certificates. </p>
+						<a class="learn-more" href="{% url 'catalog' %}#competitions">Learn more »</a></div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-clock-o icon"></i>
                         <h3 class="name">Always available</h3>
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                        <p class="description">Our support is unmached. Day or Night we will solve your problem so that you don't hit any bumps on your French journey.</p>
+                        <a class="learn-more" href="#">Learn more »</a></div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-list-alt icon"></i>
-                        <h3 class="name">Customizable </h3>
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                        <h3 class="name">Practice Quizzes </h3>
+                        <p class="description">Practice your vocabulary, genders, and other French skills with hundreds of our carefully crafted practice quizzes for all levels.</p>
+                        <a class="learn-more" href="{% url 'catalog' %}#practice">Learn more »</a></div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-leaf icon"></i>
-                        <h3 class="name">Organic </h3>
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                        <h3 class="name">Workshops </h3>
+                        <p class="description">Interact with expert faculty, peers, and other Sorobrainers in our day long, online workshops. Our painstakingly designed Zoom conferences will solve all our doubts and sharpen your skils.</p>
+                        <a class="learn-more" href="#{% url 'catalog' %}#workshops">Learn more »</a></div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-plane icon"></i>
-                        <h3 class="name">Fast </h3>
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                        <h3 class="name">Global </h3>
+                        <p class="description">We're international. French speakers across the globe use our services to boost thier fluency. </p>
+                        <!-- TODO: [frontend] link international feature card to a 'outcomes' page -->
+                        <a class="learn-more" href="#">Learn more »</a></div>
                 </div>
                 <div class="col-sm-6 col-md-5 col-lg-4 item">
                     <div data-bs-hover-animate="bounce" class="box"><i class="fa fa-phone icon"></i>
-                        <h3 class="name">Mobile-first</h3>
-                        <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p><a class="learn-more" href="#">Learn more »</a></div>
+                        <h3 class="name">One-on-One Classes</h3>
+                        <p class="description">For the student looking to rapidly increase their French ablity, we offer personalized one-on-one lessons with our expert faculy.</p>
+                        <a class="learn-more" href="{% url 'catalog' %}#classes">Learn more »</a></div>
                 </div>
             </div>
         </div>
@@ -80,13 +87,17 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="intro">
-                    <h2>Highlight</h2>
-                    <p>Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. Aliqua sed justo ligula.</p><a class="btn btn-primary" role="button" href="#">Action Button</a></div>
+                    <h2> <i class="fas fa-book-open"></i> Our Textbook: Le bleu ou la rose</h2>
+                    <p>Sorobrain's book, Le bleu ou la rose, is a fantastic resource that consolidates all the tips, tricks, and noun categorizations to master French. The book is available for purchase online, but you'll also get access to it after you register for a competition! </p>
+                    <p class="alert alert-success">Our nationally acclaimed book is available, both as an e-book and as a physical publication!</p>
+                    <a class="btn btn-primary" role="button" href="#"><i class="fas fa-book"></i>  Get the eBook</a>
+                    <a class="btn btn-primary" role="button" href="https://www.amazon.in/Bleu-Rose-Gender-Masculin-F%C3%A9minin-ebook/dp/B071V9Z1VS" target="_blank"><i class="fas fa-shopping-cart"></i>  Order on Amazon  <i class="fas fa-external-link-alt"></i></a>
+                </div>
             </div>
             <div class="col-sm-4" data-aos="fade-left" data-aos-duration="1000">
-                <div class="d-none d-md-block iphone-mockup"><img class="device" src="{% static 'main/img/index/iphone.svg' %}" />
+                <div class="d-none d-md-block iphone-mockup"><img alt="iphone-outline" class="device" src="{% static 'main/img/index/iphone.svg' %}" />
                     {# FIXME: add correct 'background: url()' css rule in style attribute below #}
-                    <div class="screen" style=""></div>
+                    <div class="screen" style="margin-top: 10px; margin-left:5px"><img alt="book-thumbnail" src="{% static 'main/img/index/book.jpg' %}"></div>
                 </div>
             </div>
         </div>
@@ -141,85 +152,145 @@
         <div class="container">
             <div class="row">
                 <div class="col" style="margin-bottom: 28px;">
-                    <h1 class="text-center text-white">Pricing</h1>
+                    <h1 class="text-center text-white">Fee Details for Classes</h1>
                 </div>
             </div>
-            <div class="row" style="margin-bottom: 27px;">
-                <div class="col col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
-                        <div class="card-body">
-                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
-                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
-                            <hr>
-                            <ul class="fa-ul">
-                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
-                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
-                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
-                    </div>
-                </div>
-                <div class="col col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
-                        <div class="card-body">
-                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
-                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
-                            <hr>
-                            <ul class="fa-ul">
-                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
-                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
-                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
-                    </div>
-                </div>
-                <div class="col col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
-                        <div class="card-body">
-                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
-                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
-                            <hr>
-                            <ul class="fa-ul">
-                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
-                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
-                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
-                        <div class="card-body">
-                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
-                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
-                            <hr>
-                            <ul class="fa-ul">
-                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
-                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
-                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
-                    </div>
-                </div>
-                <div class="col col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
-                        <div class="card-body">
-                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
-                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
-                            <hr>
-                            <ul class="fa-ul">
-                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
-                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
-                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
-                    </div>
-                </div>
-                <div class="col col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
-                        <div class="card-body">
-                            <h5 class="text-uppercase text-center text-muted card-title">Basic</h5>
-                            <h6 class="text-center card-subtitle mb-2 card-price">Rs. 5,000<span class="period">/Month</span></h6>
-                            <hr>
-                            <ul class="fa-ul">
-                                <li>Hosting Support<span class="fa-li"><i class="fa fa-check" style="color: rgb(116,248,35);"></i></span></li>
-                                <li class="text-muted">Dedicated IP<span class="fa-li"><i class="fa fa-times" style="color: rgba(0,0,0,0.3);"></i></span></li>
-                            </ul><a class="btn btn-success btn-block" role="button" style="color: rgb(255,255,255);">Button</a></div>
-                    </div>
-                </div>
-            </div>
+			<div class="row">
+				<div class="col-12">
+					<table class="table table-secondary table-hover table-sm table-responsive-sm rounded">
+                    <caption class="text-dark">A 10% discount is offered on enrollment of 12hrs for the above classes </caption>
+					<thead>
+					    <tr class="table-primary">
+                            <th scope="col">Course</th>
+                            <th scope="col">Duration(in hrs.)</th>
+                            <th scope="col">Fee(in Rs.)</th>
+                            <th scope="col">Per Hour</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th> IB1 / IB2 / A Levels / AP[Solo] </th>
+                            <td>4</td>
+                            <td>6000</td>
+                            <td>1500</td>
+                        </tr>
+                        <tr>
+                            <th> IGCSE 9th and 10th Standard [Solo] </th>
+                            <td>4</td>
+                            <td>5600</td>
+                            <td>1400</td>
+                        </tr>
+                        <tr>
+                            <th> CBSE/ICSE 9th and 10th Standard [Solo] </th>
+                            <td>4</td>
+                            <td>5000</td>
+                            <td>1250</td>
+                        </tr>
+                        <tr>
+                            <th> IGCSE 6th to 10th Standard [Solo] </th>
+                            <td>4</td>
+                            <td>4800</td>
+                            <td>1200</td>
+                        </tr>
+                        <tr>
+                            <th> CBSE/ICSE 6th to 8th Standard [Solo] </th>
+                            <td>4</td>
+                            <td>4000</td>
+                            <td>1000</td>
+                        </tr>
+                        <tr class="table-dark"><td colspan="4"></td></tr>
+                        <tr>
+                            <th> IB1 / IB2 / A Levels / AP [Duo] </th>
+                            <td>4</td>
+                            <td>5000</td>
+                            <td>1250</td>
+                        </tr>
+                        <tr>
+                            <th> IGCSE 9th and 10th Standard [Duo] </th>
+                            <td>4</td>
+                            <td>4800</td>
+                            <td>1200</td>
+                        </tr>
+                        <tr>
+                            <th> CBSE/ICSE 9th and 10th Standard [Duo] </th>
+                            <td>4</td>
+                            <td>4000</td>
+                            <td>1000</td>
+                        </tr>
+                        <tr>
+                            <th> IGCSE 6th to 10th Standard [Duo] </th>
+                            <td>4</td>
+                            <td>3600</td>
+                            <td>900</td>
+                        </tr>
+                        <tr>
+                            <th> CBSE/ICSE 6th to 8th Standard [Duo] </th>
+                            <td>4</td>
+                            <td>3200</td>
+                            <td>800</td>
+                        </tr>
+                    </tbody>
+					</table>
+
+                    <hr>
+
+					<table class="table table-secondary table-hover table-sm table-responsive-sm rounded">
+					<thead>
+					    <tr class="table-primary">
+                            <th scope="col">Course</th>
+                            <th scope="col">Duration(in hrs.)</th>
+                            <th scope="col">Fee(in Rs.)</th>
+                            <th scope="col">Per Hour</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>All Boards 9th and 10th Standard [Group]</th>
+                            <td>12</td>
+                            <td>9000</td>
+                            <td>750</td>
+                        </tr>
+                        <tr>
+                            <th>All boards 6th to 8th Standard [Group]</th>
+                            <td>12</td>
+                            <td>7200</td>
+                            <td>600</td>
+                        </tr>
+                        <tr class="table-dark"><td colspan="4"></td></tr>
+                        <tr>
+                            <th>DELF Preperation B1/B2 Level [Solo] </th>
+                            <td>12</td>
+                            <td>16800</td>
+                            <td>1400</td>
+                        </tr>
+                        <tr>
+                            <th>DELF Preperation A1/A2 Level [Solo] </th>
+                            <td>12</td>
+                            <td>14400</td>
+                            <td>1200</td>
+                        </tr>
+                        <tr>
+                            <th>DELF Preperation B1/B2 Level [Duo] </th>
+                            <td>12</td>
+                            <td>13200</td>
+                            <td>1100</td>
+                        </tr>
+                        <tr>
+                            <th>DELF Preperation A1/A2 Level [Duo] </th>
+                            <td>12</td>
+                            <td>10800</td>
+                            <td>900</td>
+                        </tr>
+                        <tr class="table-primary">
+                            <th>French via Web Confrencing [Trial Hour]</th>
+                            <td>1</td>
+                            <td>1000</td>
+                            <td>1000</td>
+                        </tr>
+                    </tbody>
+                    </table>
+				</div>
+			</div>
         </div>
     </section>
 	<div class="highlight-phone">

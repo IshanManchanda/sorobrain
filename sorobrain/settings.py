@@ -81,19 +81,18 @@ AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'static')]
 
-# if DEBUG:
-# 	STATIC_URL = '/static/'
-# 	STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# 	WHITENOISE_MAX_AGE = 31536000  # Cache static files for one year
-# else:
+if DEBUG:
+	STATIC_URL = '/static/'
+	STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+	WHITENOISE_MAX_AGE = 31536000  # Cache static files for one year
+else:
+	STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+	STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# Media File Storage
 MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
 MEDIA_ROOT = MEDIA_URL
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# Media File Storage
 DEFAULT_FILE_STORAGE = 'sorobrain.media_storages.PublicMediaStorage'
 PRIVATE_FILE_STORAGE = 'sorobrain.media_storages.PrivateMediaStorage'
 
