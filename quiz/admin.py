@@ -1,5 +1,6 @@
 from django.contrib import admin
 from quiz.models import Quiz
+from quiz.models.quiz import Question
 
 
 class QuizAdmin(admin.ModelAdmin):
@@ -20,3 +21,16 @@ class QuizAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Quiz, QuizAdmin)
+
+
+class QuestionAdmin(admin.ModelAdmin):
+	list_display = ('id', 'type', 'question', 'answer', 'created_on')
+	list_filter = ('type',)
+	search_fields = ('question', 'explanation', 'answer')
+	ordering = ('-created_on',)
+	# REVIEW: Check the fields that need to be made readonly
+	readonly_fields = ('id',)
+
+
+admin.site.register(Question, QuestionAdmin)
+

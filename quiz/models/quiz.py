@@ -2,22 +2,24 @@ import secrets
 from datetime import timedelta
 
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 from taggit.managers import TaggableManager
 
-
-LEVEL_CHOICES = [
-	(None, ''),
-	('fluent', 'Fluent/Native Speaker'),
-	('advanced', 'Advanced'),
-	('intermediate', 'Intermediate'),
-	('beginner', 'Beginner')
-]
+from sorobrain.mixins.common import CustomIdMixin
 
 
 class Quiz(models.Model):
+	LEVEL_CHOICES = [
+		(None, ''),
+		('fluent', 'Fluent/Native Speaker'),
+		('advanced', 'Advanced'),
+		('intermediate', 'Intermediate'),
+		('beginner', 'Beginner')
+	]
+
 	class Meta:
 		ordering = ['-created_on', ]
 		verbose_name = 'Quiz'
@@ -54,3 +56,46 @@ class Quiz(models.Model):
 		self.id = self.generate_key(self)
 		self.slug = slugify(self.title)
 		super(Quiz, self).save(*args, **kwargs)
+
+
+class Question(CustomIdMixin):
+	"""
+	Question objects store the question and the answers to that question
+	There are three types of questions:
+		1. MCQs: The options are stored in question.options as a json
+		and the correct answer is the index value of the option starting
+		from 1.
+		2. True or False: The answer is stored as 'T' of 'F'.
+		3. Text: The answer is stored as some string.
+	"""
+
+	QUESTION_TYPE_CHOICES = [
+		('mcq', 'Multiple Choice Question'),
+		('bool', 'True or False'),
+		('text', 'Text Answer')
+	]
+
+	class Meta:
+		verbose_name = 'Question'
+		verbose_name_plural = 'Questions'
+		ordering = ['-created_on']
+
+	id = models.CharField(max_length=128, primary_key=True,
+	                      verbose_name='Quiz ID')
+	question = RichTextUploadingField()
+	explanation = RichTextUploadingField()
+	type = models.CharField(max_length=32, choices=QUESTION_TYPE_CHOICES)
+	options = models.CharField(max_length=1024, blank=True,
+	                           null=True)  # json array of option text
+	answer = models.CharField(max_length=32)
+	created_on = models.DateTimeField(default=timezone.now)
+
+	def get_absolute_url(self):
+		return reverse('quiz:question', args=[self.id])
+
+	def save(self, *args, **kwargs):
+		self.id = self.generate_key(self)  # provided by CustomIdMixin
+		super(Question, self).save(*args, **kwargs)
+
+	def __str__(self):
+		return f'{self.question} | id:{self.id}'
