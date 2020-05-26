@@ -46,18 +46,18 @@ if not DEBUG:
 
 # Database Settings
 # set true if you don't want to use a preconfigured database
-if os.environ.get('NO_DATABASE'):
+if os.environ.get('NO_DATABASE') == 'True':
 	DATABASES = {
 		'default': {
-        	'ENGINE': 'django.db.backends.sqlite3',
-        	'NAME': 'mydatabase'
-    	}
+			'ENGINE': 'django.db.backends.sqlite3',
+			'NAME'  : 'mydatabase'
+		}
 	}
 else:
 	DATABASES = {
 		'default': dj_database_url.config(
-			conn_max_age=600,
-			default=os.environ.get('DATABASE_URL')
+				conn_max_age=600,
+				default=os.environ.get('DATABASE_URL')
 		)
 	}
 
@@ -262,7 +262,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 TAGGIT_CASE_INSENSITIVE = True
 
 # ckeditor settings
-AWS_QUERYSTRING_AUTH = False
 CKEDITOR_UPLOAD_PATH = 'media/public/ckeditor/'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 CKEDITOR_CONFIGS = {
