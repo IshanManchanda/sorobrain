@@ -12,6 +12,15 @@ from sorobrain.mixins.common import CustomIdMixin
 
 
 class Quiz(models.Model):
+	"""
+	A quiz object contains metadata about itself and a m2m field
+	to the Question model. For all quizzes we assume that the
+	ordering of the questions is unimportant, hence we can use an
+	unordered m2m to Questions. Through a related_name attr we can
+	also query the database for the quiz(zes) that a question may exist
+	in.
+	"""
+	
 	LEVEL_CHOICES = [
 		(None, ''),
 		('fluent', 'Fluent/Native Speaker'),
@@ -67,6 +76,16 @@ class Question(CustomIdMixin):
 		from 1.
 		2. True or False: The answer is stored as 'T' of 'F'.
 		3. Text: The answer is stored as some string.
+
+	answer_options = [
+		('T', 'True'),
+		('F', 'False),
+		('1', 'One'),
+		('2', 'Two'),
+		('3', 'Three'),
+		('4', 'Four'),
+		('<str>', '<str>') # This is why we cannot enforce these options
+	]
 	"""
 
 	QUESTION_TYPE_CHOICES = [
