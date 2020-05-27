@@ -3,19 +3,20 @@
 
 {% block content %}
 	 <div class="container">
-	 	<div class="row">
+	 	<div class="row py-3">
 			<div class="col-md-12">
 				<h3>{{ workshop.title }}</h3>
+				<hr>
 				<p class="text-muted">{{ workshop.description }}</p>
 			</div>
 		</div>
 	 	<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-5 shadow mr-2 p-3 my-2 rounded">
 				<h4>Zoom link:</h4>
 				<p><a href="{{ workshop.zoom_link }}" target="_blank">{{ workshop.zoom_link }}</a></p>
 				<p>Click on this zoom link to register for the workshop!</p>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 shadow ml-4 p-3 my-2 rounded">
 				<h4>Time: {{ workshop.date }}</h4>
 				<p>This is when the workshop will start. Don't be late!</p>
 				<hr>
