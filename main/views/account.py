@@ -16,7 +16,7 @@ class Profile(LoginRequiredMixin, View):
 		empty_fields = user_profile_setup_progress(request.user)
 		if empty_fields > 0:
 			messages.add_message(request, messages.INFO, f"Finish setting up your profile <a href={reverse('settings')}> here</a>. You have {empty_fields} fields to fill.")
-		return render(request, 'main/profile.html')
+		return render(request, 'main/profile.html', {})
 
 
 class Settings(LoginRequiredMixin, View):

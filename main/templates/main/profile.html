@@ -29,8 +29,55 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 shadow-lg bg-white p-3 mb-5 rounded " style="height: 200px">
-			</div>
+<div class="card-columns">
+  <div class="card">
+    <img class="card-img-top" src="{% static 'main/img/catalog/workshops-placeholder.png' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">My Workshops</h5>
+      <p class="card-text">These are all the current workshops you're registered for: </p>
+    </div>
+  	<div class="card-footer">
+		<a href="{% url 'catalog' %}#workshops"><button class="btn btn-primary">Get More</button></a>
+	</div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'main/img/catalog/competitions-placeholder.png' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">My Competitions</h5>
+      <p class="card-text">Coming Soon! </p>
+    </div>
+  	<div class="card-footer">
+		<a href="{% url 'catalog' %}#competitions"><button class="btn btn-primary">Register</button></a>
+	</div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">My Practice Quizzes</h5>
+      <p class="card-text">Coming Soon! </p>
+    </div>
+  	<div class="card-footer">
+		<a href="{% url 'catalog' %}#practice"><button class="btn btn-primary">Get More</button></a>
+	</div>
+  </div>
+	<div class="card mb-3" style="max-width: 540px;">
+	  <div class="row no-gutters">
+		<div class="col-md-4">
+		  <img src="{% static 'main/img/index/book.jpg' %}" class="card-img" alt="...">
+		</div>
+		<div class="col-md-8">
+		  <div class="card-body">
+			<h5 class="card-title">Our Textbook: Le bleu ou la rose!</h5>
+			<p class="card-text">Sorobrain's book, Le bleu ou la rose, is a fantastic resource that consolidates all the tips, tricks, and noun categorizations to master French. The book is available for purchase online, but you'll also get access to it after you register for a competition!</p>
+		  </div>
+		  <div class="card-footer">
+                    <a class="btn btn-primary m-1" role="button" href="#"><i class="fas fa-book"></i>  Get the eBook</a>
+                    <a class="btn btn-primary" role="button" href="https://www.amazon.in/Bleu-Rose-Gender-Masculin-F%C3%A9minin-ebook/dp/B071V9Z1VS" target="_blank"><i class="fas fa-shopping-cart"></i>  Order on Amazon  <i class="fas fa-external-link-alt"></i></a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</div>
 		</div>
 	</div>
 {% endblock content %}

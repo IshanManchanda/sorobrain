@@ -155,11 +155,13 @@
                             </div>
                             <div class="col">
                                 <div class="card-group">
+									{% for w in workshops %}
                                     <div class="card"><img class="card-img-top w-100 d-block" alt="workshops thumbnail" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
                                         <div class="card-body">
-                                            <h4 class="card-title">Coming Soon...</h4>
-                                            <p class="card-text">Please <a href="{% url 'contact' %}"> contact us</a> for more information regarding workshops. You will be able to access them through the website shortly! </p><button class="btn btn-secondary" type="button">Details</button></div>
+                                            <h4 class="card-title">{{ w.title }}</h4>
+                                            <p class="card-text">{{ w.description|truncatechars:200 }}</p><a href="{{ w.get_absolute_url }}"><button class="btn btn-primary" type="button">Register Now!</button></a></div>
                                     </div>
+									{% endfor %}
                                     <div class="card"><img class="card-img-top w-100 d-block" alt="workshops thumbnail" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
                                         <div class="card-body">
                                             <h4 class="card-title">Coming Soon...</h4>

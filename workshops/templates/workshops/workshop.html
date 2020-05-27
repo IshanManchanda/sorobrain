@@ -1,0 +1,113 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block content %}
+	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
+	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/Features-Clean.css' %}">
+<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/Testimonials.css' %}">
+    <div class="container">
+	    <div style="margin-top: 24px;margin-bottom: 28px;">
+        <div class="container-fluid text-left">
+            <div class="row text-center">
+                <div class="col-md-7 col-lg-5 offset-md-0 offset-lg-1 text-center text-sm-right">
+					<img class="img-thumbnail img-fluid d-inline-block align-items-lg-center" src="https://www.axoscape.com/wp-content/uploads/2020/01/workshopbilde_0.png">
+					<div class="alert alert-success" role="alert"><span><strong>Description:</strong>&nbsp;<br></span>
+                        <p>{{ workshop.description }}&nbsp;</p>
+                    </div>
+				</div>
+                <div class="col-md-5 col-lg-5 shadow-sm">
+                    <h3 style="font-family: Adamina, serif;margin-top: 13px;">{{ workshop.title }}&nbsp;</h3>
+                    <p style="color: #282821;font-size: 22px;"><em>Best in class French Learning workshops! Textbook included!&nbsp;</em><br></p>
+                    <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
+					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if workshop.discount %}Discount: {{ workshop.discount }} {% else %}Price: Rs. {{ workshop.cost }}{% endif %}<br><br></strong>
+					<strong style="font-size: 18px;margin-bottom: 3px;">Date: {{ workshop.date }}<br><br></strong>
+					<div class="alert alert-success" role="alert"><span><strong>Number of Participants: 12</strong>&nbsp;<br></span></div><button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" data-toggle="modal" data-target="#checkout"><i class="fas fa-user-plus"></i>&nbsp;Register Induvidually</button>
+                    <button
+                        class="btn btn-outline-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" data-toggle="modal" data-target="#checkout"><i class="fas fa-barcode"></i>&nbsp;Register with Code</button><button class="btn btn-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" data-toggle="modal" data-target="#checkout"><i class="fas fa-school"></i>&nbsp;School / Orgainization Registration</button>
+                        <p
+                            class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br><i class="fab fa-facebook"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>&nbsp;&nbsp;<i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<i class="fas fa-envelope"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+	<hr>
+	<div class="features-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="padding-top: 1px;margin-bottom: 8px;">What do I get?</h2>
+            </div>
+            <div class="row features">
+                <div class="col-sm-6 col-lg-3 item"><i class="fa fa-map-marker icon"></i>
+                    <h3 class="name">Interactive Sessions</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.&nbsp;Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus
+                        eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 offset-lg-0 item"><i class="fas fa-trademark icon"></i>
+                    <h3 class="name">Included Book</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.&nbsp;&nbsp;Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus
+                        eu gravida. Aliquam varius finibus est.<br>Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.<br><br></p>
+                </div>
+                <div class="col-sm-6 col-lg-5 offset-lg-0 item" style="width: 442px;"><i class="fas fa-laptop icon"></i><img class="img-fluid float-left" src="https://i.pinimg.com/originals/87/7c/f5/877cf5694400a6300a390e85fe6e858e.gif" style="width: 398px;padding-top: 2px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="testimonials-clean" style="background-color: #f3f3f3;">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="margin-bottom: 14px;">Reviews</h2>
+            </div>
+            <div class="row people" style="padding-top: 2px;">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <p class="description">I loved this workshop. It really helped me under &nbsp;</p>
+                    </div>
+                    <div class="author">
+                        <h5 class="name">Ben Johnson</h5>
+                        <p class="title">CEO of Company Inc.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <p class="description">Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id.</p>
+                    </div>
+                    <div class="author">
+                        <h5 class="name">Carl Kent</h5>
+                        <p class="title">Founder of Style Co.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <p class="description">Aliquam varius finibus est, et interdum justo suscipit. Vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+                    </div>
+                    <div class="author">
+                        <h5 class="name">Emily Clark</h5>
+                        <p class="title">Owner of Creative Ltd.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<hr>
+        <div class="container" style="margin-bottom: 0px;padding-bottom: 49px;">
+            <h1 class="text-center">Related workshops</h1>
+            <div class="card-group">
+                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                    <div class="card-body">
+                        <h4 class="card-title">Coming Soon</h4>
+                        <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
+				</div>
+                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                    <div class="card-body">
+                        <h4 class="card-title">Coming Soon</h4>
+                        <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
+				</div>
+                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                    <div class="card-body">
+                        <h4 class="card-title">Coming Soon</h4>
+                        <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
+				</div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

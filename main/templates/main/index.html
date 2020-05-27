@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-    <header class="masthead text-white text-center" style="background: url('{% static 'main/img/index/bg-masthead.png' %}')no-repeat center center;background-size: cover;height: 483px;">
+    <header class="masthead text-white text-center" style="background: url('https://www.northeastern.edu/geo/wp-content/uploads/2015/05/Science-Po.jpg')no-repeat center center;background-size: cover;height: 483px;">
         <div class="overlay" style="height: 482px;"></div>
         <div class="container">
             <div class="row" style="height: 147px;">
@@ -28,7 +28,7 @@
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
                     <form>
                         <div class="form-row">
-                            <div class="col-12 col-md-3 col-lg-8 offset-lg-2"><button class="btn btn-primary btn-block btn-lg text-center" data-aos="zoom-in" type="submit">Sign up!</button></div>
+                            <div class="col-12 col-md-3 col-lg-8 offset-lg-2"><a href="{% url 'account_signup' %}"><button class="btn btn-primary btn-block btn-lg text-center" data-aos="zoom-in">{% if user.is_authenticated %} Hi, {{ user.name }} {% else %} Sign up! {% endif %}</button></a></div>
                         </div>
                     </form>
                 </div>
