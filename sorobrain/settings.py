@@ -28,6 +28,7 @@ AUTH_USER_MODEL = 'main.User'
 DEBUG = True if os.environ.get('DEBUG', '0') == '1' else False
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['.citruspay.com', '.payumoney.com']
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 SECURE_CONTENT_TYPE_NOSNIFF = \

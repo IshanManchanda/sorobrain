@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 
+from taggit.managers import TaggableManager
+
 from sorobrain.mixins.common import CustomIdMixin
 from main.models import User
 
@@ -22,6 +24,7 @@ class Workshop(CustomIdMixin):
 	discount = models.IntegerField(verbose_name='Discount Percentage',
 	                               blank=True, null=True)
 	date = models.DateTimeField()
+	tags = TaggableManager()
 	include_book = models.BooleanField(default=False)
 	active = models.BooleanField(default=False)
 	created_on = models.DateTimeField(default=timezone.now)
