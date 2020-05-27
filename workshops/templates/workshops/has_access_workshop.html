@@ -1,0 +1,30 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block content %}
+	 <div class="container">
+	 	<div class="row">
+			<div class="col-md-12">
+				<h3>{{ workshop.title }}</h3>
+				<p class="text-muted">{{ workshop.description }}</p>
+			</div>
+		</div>
+	 	<div class="row">
+			<div class="col-md-6">
+				<h4>Zoom link:</h4>
+				<p><a href="{{ workshop.zoom_link }}" target="_blank">{{ workshop.zoom_link }}</a></p>
+				<p>Click on this zoom link to register for the workshop!</p>
+			</div>
+			<div class="col-md-6">
+				<h4>Time: {{ workshop.date }}</h4>
+				<p>This is when the workshop will start. Don't be late!</p>
+				<hr>
+				{% if workshop.include_book %}
+					<h4>Included Book:</h4>
+					<p>Please don't copy, or share this book with others. It's only for you. Refer to it as we go along the workshop so that you can stay with the class!</p>
+					<a href=""><button class="btn btn-primary"><i class="fas fa-book fa-1x"></i> Download Textbook </button></a>
+				{% endif %}
+			</div>
+		</div>
+	 </div>
+{% endblock %}

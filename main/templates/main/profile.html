@@ -35,6 +35,13 @@
     <div class="card-body">
       <h5 class="card-title">My Workshops</h5>
       <p class="card-text">These are all the current workshops you're registered for: </p>
+	  <ul class="list-group list-group-flush">
+	    {% for wa in access_workshops %}
+			<li class="list-group-item"><a href="{{ wa.workshop.get_absolute_url }}">{{ wa.workshop.title }}</a></li>
+	    {% empty %}
+			<li class="list-group-item">No workshops yet!</li>
+		{% endfor %}
+	  </ul>
     </div>
   	<div class="card-footer">
 		<a href="{% url 'catalog' %}#workshops"><button class="btn btn-primary">Get More</button></a>
