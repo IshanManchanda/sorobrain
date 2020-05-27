@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 
 from sorobrain.mixins.common import CustomIdMixin
+from main.models import User
 
 
 class Workshop(CustomIdMixin):
@@ -34,3 +35,19 @@ class Workshop(CustomIdMixin):
 
 	def __str__(self):
 		return f'{self.title} - {self.id}'
+
+
+class WorkshopAccess(models.Model):
+	class Meta:
+		verbose_name = 'Workshop Access'
+		verbose_name_plural = 'Workshop Accesses'
+		unique_together = ('user', 'workshop')
+		ordering = ('workshop', '-created_on')
+
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE)
+	active = models.BooleanField(default=True)
+	created_on = models.DateTimeField(default=timezone.now)
+
+	def __str__(self):
+		return f'user: {self.user} has access to {self.workshop}'

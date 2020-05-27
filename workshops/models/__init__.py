@@ -1,1 +1,1 @@
-from .models import Workshop
+from .models import Workshop, WorkshopAccess
