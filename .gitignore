@@ -140,3 +140,7 @@ ENV/
 # mypy
 .mypy_cache/
 env
+.gitignore
+.idea/
+.idea/kaboodevs.github.io.iml
+.idea/workspace.xml

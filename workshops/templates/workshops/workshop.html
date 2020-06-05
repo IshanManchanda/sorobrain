@@ -5,7 +5,8 @@
 	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/bootstrap.min.css' %}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
 	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/Features-Clean.css' %}">
-<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/Testimonials.css' %}">
+	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/Testimonials.css' %}">
+
     <div class="container">
 	    <div style="margin-top: 24px;margin-bottom: 28px;">
         <div class="container-fluid text-left">
@@ -109,59 +110,60 @@
         </div>
     </div>
     </div>
-<script id="bolt"
-src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js"></script>
-<script>
-	$('#buy').click(function () {
+	<script id="bolt"
+	src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js"></script>
+	<script>
+		$('#buy').click(function () {
 
-	console.log('Works?');
+		console.log('Works?');
 
-	{% if user.is_authenticated %}
+		{% if user.is_authenticated %}
 
-		$.ajax({
-			type: 'POST',
-			url: '{{ workshop.get_absolute_url }}',
-			data: {
-				'workshop_id': "{{ workshop.id }}",
-				'csrfmiddlewaretoken': '{{ csrf_token }}'
-			},
-			success: function (data, status) {
-				let RequestData = {
-					key: data.merchant_key,
-					txnid: data.txn_id,
-					hash: data.hash,
-					amount: parseFloat(data.amount),
-					firstname: data.first_name,
-					email: data.email_id,
-					phone: data.phone_number,
-					productinfo: data.product_info,
-					surl: data.surl,
-					furl: data.furl,
-					mode: 'dropout',
-				};
-				console.log(RequestData);
-				console.log(typeof RequestData.amount);
+			$.ajax({
+				type: 'POST',
+				url: '{{ workshop.get_absolute_url }}',
+				data: {
+					'workshop_id': "{{ workshop.id }}",
+					'csrfmiddlewaretoken': '{{ csrf_token }}'
+				},
+				success: function (data, status) {
+					let RequestData = {
+						key: data.merchant_key,
+						txnid: data.txn_id,
+						hash: data.hash,
+						amount: parseFloat(data.amount),
+						firstname: data.first_name,
+						email: data.email_id,
+						phone: data.phone_number,
+						productinfo: data.product_info,
+						surl: data.surl,
+						furl: data.furl,
+						mode: 'dropout',
+					};
+					console.log(RequestData);
+					console.log(typeof RequestData.amount);
 
-				let Handler = {
-					responseHandler: function (BOLT) {
-						console.log(BOLT.response.txnStatus);
-					},
-					catchException: function (BOLT) {
-						alert(BOLT.message);
-					},
-				};
+					let Handler = {
+						responseHandler: function (BOLT) {
+							console.log(BOLT.response.txnStatus);
+						},
+						catchException: function (BOLT) {
+							alert(BOLT.message);
+						},
+					};
 
-				bolt.launch(RequestData, Handler);
-			},
-			dataType: 'json',
+					bolt.launch(RequestData, Handler);
+				},
+				dataType: 'json',
+			});
+
+		{% else %}
+
+			location.href = "{% url 'account_signin' %}";
+
+		{% endif %}
+
 		});
+	</script>
 
-	{% else %}
-
-		location.href = "{% url 'account_signin' %}";
-
-	{% endif %}
-
-	});
-</script>
 {% endblock %}
