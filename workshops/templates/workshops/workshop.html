@@ -1,13 +1,14 @@
 {% extends 'global/base.html' %}
 {% load static %}
 
-{% block content %}
+{% block css %}
 	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/bootstrap.min.css' %}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
 	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/Features-Clean.css' %}">
 	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/Testimonials.css' %}">
+{% endblock %}
 
-    <div class="container">
+{% block content %}
 	    <div style="margin-top: 24px;margin-bottom: 28px;">
         <div class="container-fluid text-left">
             <div class="row text-center">
@@ -48,7 +49,7 @@
                     <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.&nbsp;&nbsp;Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus
                         eu gravida. Aliquam varius finibus est.<br>Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.<br><br></p>
                 </div>
-                <div class="col-sm-6 col-lg-5 offset-lg-0 item" style="width: 442px;"><i class="fas fa-laptop icon"></i><img class="img-fluid float-left" src="https://i.pinimg.com/originals/87/7c/f5/877cf5694400a6300a390e85fe6e858e.gif" style="width: 398px;padding-top: 2px;"></div>
+                <div class="col-sm-6 col-lg-5 offset-lg-0 item" style="width: 442px;"><i class="fas fa-laptop icon"></i><img class="img-fluid float-left rounded" src="{% static 'workshops/img/workshop-what-do-i-get.gif' %}" style="width: 398px;padding-top: 2px;"></div>
             </div>
         </div>
     </div>

@@ -6,10 +6,11 @@ from django.utils.text import slugify
 from taggit.managers import TaggableManager
 
 from sorobrain.mixins.common import CustomIdMixin
+from sorobrain.mixins.payment import PaidObjectMixin
 from main.models import User
 
 
-class Workshop(CustomIdMixin):
+class Workshop(CustomIdMixin, PaidObjectMixin):
 	class Meta:
 		verbose_name = 'Workshop'
 		verbose_name_plural = 'Workshops'
@@ -20,9 +21,6 @@ class Workshop(CustomIdMixin):
 	slug = models.SlugField(blank=True)
 	description = models.TextField(max_length=1024)
 	zoom_link = models.CharField(max_length=1024, blank=True)
-	cost = models.IntegerField()
-	discount = models.IntegerField(verbose_name='Discount Percentage',
-	                               blank=True, null=True)
 	date = models.DateTimeField()
 	tags = TaggableManager()
 	include_book = models.BooleanField(default=False)

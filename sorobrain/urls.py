@@ -16,6 +16,7 @@ Including another URL conf
 from django.contrib import admin
 from django.template.context_processors import static
 from django.urls import path, include, re_path
+from django.views.generic import TemplateView
 
 from sorobrain import settings
 
@@ -28,5 +29,6 @@ urlpatterns = [
 	path('accounts/', include('allauth.urls')),
 	path('quiz/', include('quiz.urls', namespace='quiz')),
 	path('workshop/', include('workshops.urls', namespace='workshop')),
+	path('error/payment/', TemplateView.as_view(template_name='global/errors/payment.html'), name='payment_error'),
 	path('', include('main.urls')),
 ]

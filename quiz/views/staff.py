@@ -2,7 +2,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_http_methods
 
-from quiz.models.quiz import Question
+from quiz.models import Question
 
 
 @require_http_methods(["GET"])
