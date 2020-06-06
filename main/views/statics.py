@@ -39,7 +39,7 @@ class Book(View):
 		data = {
 			'merchant_key': os.environ.get('PAYU_MERCHANT_KEY'),
 			'txn_id'      : str(uuid4().hex),
-			'amount'      : int(amount),
+			'amount'      : float(amount),
 			'product_info': 'Le Bleu ou La Rose',
 			'first_name'  : request.user.name.split(' ', 1)[0],
 			'email_id'    : request.user.email,
