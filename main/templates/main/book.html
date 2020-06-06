@@ -86,7 +86,7 @@
 			*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
 			var disqus_config = function () {
-			this.page.url = {{ request.path }};  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.url = "{{ request.scheme }}://{{ request.get_host }}{% url 'book' %}";  // Replace PAGE_URL with your page's canonical URL variable
 			this.page.identifier = 'book'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 			};
 

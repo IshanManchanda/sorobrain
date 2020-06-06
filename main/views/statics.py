@@ -23,7 +23,6 @@ def index(request):
 class Book(View):
 	@staticmethod
 	def get(request):
-		print(f'book access: {has_book_access(request.user)}')
 		if request.user.is_authenticated and has_book_access(request.user):
 			return redirect(get_presigned_url('book/lblr_manuscript.pdf'))
 		return render(request, 'main/book.html', {})
