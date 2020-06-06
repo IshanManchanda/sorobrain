@@ -73,12 +73,18 @@
 		  <img src="{% static 'common/img/book.jpeg' %}" class="card-img" alt="...">
 		</div>
 		<div class="col-md-8">
-		  <div class="card-body">
+		  <div class="card-body" id="textbook">
 			<h5 class="card-title">Our Textbook: Le bleu ou la rose!</h5>
-			<p class="card-text">Sorobrain's book, Le bleu ou la rose, is a fantastic resource that consolidates all the tips, tricks, and noun categorizations to master French. The book is available for purchase online, but you'll also get access to it after you register for a competition!</p>
+			<p class="card-text">
+				{% if not has_book_access %}
+					Sorobrain's book, Le bleu ou la rose, is a fantastic resource that consolidates all the tips, tricks, and noun categorizations to master French. The book is available for purchase online, but you'll also get access to it after you register for a competition!
+				{% else %}
+					You have access to our textbook now! Click on the button below to open up the PDF of the book! Also, we request that you keep the book to yourself and don't share it with anyone else.
+				{% endif %}
+			</p>
 		  </div>
 		  <div class="card-footer">
-                    <a class="btn btn-primary m-1" role="button" href="#"><i class="fas fa-book"></i>  Get the eBook</a>
+				<a class="btn btn-primary m-1" role="button" href="{% url 'book' %}" target="_blank"><i class="fas fa-book"></i> {% if has_book_access %} Open the PDF {% else %} Get the eBook {% endif %}</a>
 		  </div>
 		</div>
 	  </div>

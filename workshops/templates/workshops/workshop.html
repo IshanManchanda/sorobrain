@@ -24,9 +24,20 @@
                     <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
 					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if workshop.discount %}Discount: {{ workshop.discount }} {% else %}Price: Rs. {{ workshop.cost }}{% endif %}<br><br></strong>
 					<strong style="font-size: 18px;margin-bottom: 3px;">Date: {{ workshop.date }}<br><br></strong>
-					<div class="alert alert-success" role="alert"><span><strong>Number of Participants: 12</strong>&nbsp;<br></span></div>
-					<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register Induvidually</button>
-                    <button class="btn btn-outline-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i class="fas fa-barcode"></i>&nbsp;Register with Code</button>
+					<div class="alert alert-success" role="alert">
+						<span><strong>Sessions: </strong>&nbsp;<br></span>
+						<ul style="list-style-type: none">
+							{% for session in workshop.sessions.all %}
+								<li>Session {{ forloop.counter }}: {{ session.title }} is on {{ session.date }}</li>
+							{% endfor %}
+						</ul>
+					</div>
+					{% if not workshop.is_expired %}
+						<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register Individually</button>
+						<a href="{% url 'workshops:register_with_code' slug=workshop.slug %}"><button class="btn btn-outline-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i class="fas fa-barcode"></i>&nbsp;Register with Code</button></a>
+					{% else %}
+						<p>This workshop has expired. Checkout upcoming ones <a href="{% url 'catalog' %}#workshops">here</a></p>
+					{% endif %}
 					<p class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br><i class="fab fa-facebook"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>&nbsp;&nbsp;<i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<i class="fas fa-envelope"></i></p>
                 </div>
             </div>
@@ -41,13 +52,11 @@
             <div class="row features">
                 <div class="col-sm-6 col-lg-3 item"><i class="fa fa-map-marker icon"></i>
                     <h3 class="name">Interactive Sessions</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.&nbsp;Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus
-                        eu gravida. Aliquam varius finibus est.</p>
+                    <p class="description">This workshop contains multiple sessions on various topics. Each session will be conducted online and will be an interactive experience that will enrich your learning experience. You will be given assignments, lectures, and other content. </p>
                 </div>
                 <div class="col-sm-6 col-lg-4 offset-lg-0 item"><i class="fas fa-trademark icon"></i>
                     <h3 class="name">Included Book</h3>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.&nbsp;&nbsp;Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus
-                        eu gravida. Aliquam varius finibus est.<br>Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.<br><br></p>
+                    <p class="description">Le Bleu ou La Rose is an effort to make the most daunting task of learning genders of nouns in French a bit easier for the learners. It’s very important to know if a word is masculine or feminine because this affects the form of other words used with it such as an adjective, an article or a pronoun. It will not only be fun reading this book but one would also gain an easy way out to remember the genders of a noun through various keywords, mnemonics, limericks & anecdotes.<br><br></p>
                 </div>
                 <div class="col-sm-6 col-lg-5 offset-lg-0 item" style="width: 442px;"><i class="fas fa-laptop icon"></i><img class="img-fluid float-left rounded" src="{% static 'workshops/img/workshop-what-do-i-get.gif' %}" style="width: 398px;padding-top: 2px;"></div>
             </div>
@@ -58,35 +67,7 @@
             <div class="intro">
                 <h2 class="text-center" style="margin-bottom: 14px;">Reviews</h2>
             </div>
-            <div class="row people" style="padding-top: 2px;">
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box">
-                        <p class="description">I loved this workshop. It really helped me under &nbsp;</p>
-                    </div>
-                    <div class="author">
-                        <h5 class="name">Ben Johnson</h5>
-                        <p class="title">CEO of Company Inc.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box">
-                        <p class="description">Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id.</p>
-                    </div>
-                    <div class="author">
-                        <h5 class="name">Carl Kent</h5>
-                        <p class="title">Founder of Style Co.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box">
-                        <p class="description">Aliquam varius finibus est, et interdum justo suscipit. Vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-                    </div>
-                    <div class="author">
-                        <h5 class="name">Emily Clark</h5>
-                        <p class="title">Owner of Creative Ltd.</p>
-                    </div>
-                </div>
-            </div>
+			<p>Coming soon... </p>
         </div>
 		<hr>
         <div class="container" style="margin-bottom: 0px;padding-bottom: 49px;">

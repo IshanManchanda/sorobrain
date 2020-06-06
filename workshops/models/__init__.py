@@ -1,1 +1,1 @@
-from .models import Workshop, WorkshopAccess
+from .models import Workshop, WorkshopAccess, Session, Code

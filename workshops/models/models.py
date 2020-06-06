@@ -1,3 +1,6 @@
+import string
+import random
+
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -10,6 +13,22 @@ from sorobrain.mixins.payment import PaidObjectMixin
 from main.models import User
 
 
+class Session(models.Model):
+	class Meta:
+		verbose_name = 'Workshop Session'
+		verbose_name_plural = 'Workshop Sessions'
+		ordering = ('-created_on',)
+
+	title = models.CharField(max_length=128)
+	description = models.TextField(max_length=1024)
+	zoom_link = models.URLField(verbose_name='Link to Zoom Session')
+	date = models.DateTimeField(verbose_name='Date of this Session')
+	created_on = models.DateTimeField(default=timezone.now)
+
+	def __str__(self):
+		return f'session {self.id} - {self.title}'
+
+
 class Workshop(CustomIdMixin, PaidObjectMixin):
 	class Meta:
 		verbose_name = 'Workshop'
@@ -20,12 +39,17 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 	title = models.CharField(max_length=128)
 	slug = models.SlugField(blank=True)
 	description = models.TextField(max_length=1024)
-	zoom_link = models.CharField(max_length=1024, blank=True)
+	sessions = models.ManyToManyField(Session,
+	                                  related_name='workshop_sessions')
 	date = models.DateTimeField()
-	tags = TaggableManager()
+	tags = TaggableManager(blank=True)
 	include_book = models.BooleanField(default=False)
 	active = models.BooleanField(default=False)
 	created_on = models.DateTimeField(default=timezone.now)
+
+	@property
+	def is_expired(self):
+		return timezone.now() > self.date
 
 	def get_absolute_url(self):
 		return reverse('workshops:workshop_store', args=[self.slug])
@@ -52,3 +76,36 @@ class WorkshopAccess(models.Model):
 
 	def __str__(self):
 		return f'user: {self.user} has access to {self.workshop}'
+
+
+class Code(models.Model):
+	class Meta:
+		verbose_name = 'Workshop Code'
+		verbose_name_plural = 'Workshop Codes'
+		ordering = ('workshop', '-created_on')
+
+	code = models.CharField(max_length=256, unique=True)
+	uses = models.IntegerField()
+	expiry_date = models.DateTimeField()
+	workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE)
+	active = models.BooleanField(default=True)
+	created_on = models.DateTimeField(default=timezone.now)
+
+	@property
+	def is_used(self) -> bool:
+		return self.uses == 0
+
+	@property
+	def is_expired(self) -> bool:
+		"""Returns true if the current time is after the education time"""
+		return timezone.now() > self.expiry_date
+
+	def is_valid(self, workshop: Workshop) -> bool:
+		return not self.is_used and not self.is_expired and self.workshop == workshop
+
+	def save(self, *args, **kwargs):
+		self.code = ''.join(
+				(random.choice(string.ascii_letters + string.digits) for i in
+				 range(16)))
+		self.expiry_date = self.workshop.date
+		super(Code, self).save(*args, **kwargs)

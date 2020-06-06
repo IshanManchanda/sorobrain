@@ -8,18 +8,12 @@
         <h1> Workshops Index </h1>
 		<hr>
 		<div class="row">
-			<div class="col-md-6">
-				<h3>Upcoming Workshops</h3>
-				<ul style="list-style-type: none">
+			<div class="col-md-12">
+				<h3>All Workshops</h3>
+				<ul style="list-style-type: none; columns: 4">
 					{% for object in object_list  %}
 						<li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
 					{% endfor %}
-				</ul>
-			</div>
-			<div class="col-md-6">
-				<h3>Previous Workshops</h3>
-				<ul style="list-style-type: none">
-					<li>fsad</li>
 				</ul>
 			</div>
 		</div>

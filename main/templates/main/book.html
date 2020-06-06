@@ -1,0 +1,159 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
+	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/Features-Clean.css' %}">
+	<link rel="stylesheet" href="{% static 'common/css/store/workshop_page/Testimonials.css' %}">
+{% endblock %}
+
+{% block content %}
+	    <div style="margin-top: 24px;margin-bottom: 28px;">
+        <div class="container-fluid text-left">
+            <div class="row text-center">
+                <div class="col-md-7 col-lg-5 offset-md-0 offset-lg-1 text-center text-sm-right">
+{#					TODO: Make this image a link to a sample of the book. #}
+					<img alt="book thumbnail" class="img-thumbnail img-fluid d-inline-block align-items-lg-center" src="{% static 'common/img/book.jpeg' %}">
+				</div>
+                <div class="col-md-5 col-lg-5 shadow-sm">
+                    <h3 style="font-family: Adamina, serif;margin-top: 13px;">Le Bleu ou La Rose: The Gender of a Noun in French: Masculin ou Féminin&nbsp;</h3>
+                    <p style="color: #282821;font-size: 22px;"><em>by Seema Jain&nbsp;</em><br></p>
+                    <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
+					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">Price: Rs. 226<br><br></strong>
+					<strong style="font-size: 18px;margin-bottom: 3px;">Length: 189 pages; Enchanced Typesetting Enabled<br><br></strong>
+					<div class="alert alert-success" role="alert"><span><strong>E-Book Format: PDF</strong>&nbsp;<br></span><p>Once you complete the checkout process, you will be redirected to a page to download the book instantly. It will also be available in your profile page.</p></div>
+					<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-money"></i>&nbsp;Buy Now!</button>
+					<p class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br><i class="fab fa-facebook"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>&nbsp;&nbsp;<i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<i class="fas fa-envelope"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+	<hr>
+	<div class="features-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="padding-top: 1px;margin-bottom: 8px;">What do I get?</h2>
+            </div>
+            <div class="row features">
+                <div class="col-sm-6 col-lg-6 item"><i class="fa fa-map-marker icon"></i>
+                    <h3 class="name">About The Book</h3>
+                    <p class="description">Le Bleu ou La Rose is an effort to make the most daunting task of learning genders of nouns in French a bit easier for the learners. It’s very important to know if a word is masculine or feminine because this affects the form of other words used with it such as an adjective, an article or a pronoun. There are many books and articles that talk about categorising genders of nouns but this book makes it easier to keep those categories in mind. An exhaustive list of vocabulary has been introduced so that not only the debutantes but also those who are at an advance stage of learning French can benefit from this book. It will not only be fun reading this book but one would also gain an easy way out to remember the genders of a noun through various keywords, mnemonics, limericks & anecdotes.</p>
+                </div>
+                <div class="col-sm-6 col-lg-5 offset-lg-0 item" style="width: 442px;"><i class="fas fa-laptop icon"></i><img class="img-fluid float-left rounded" src="{% static 'common/img/both-covers.jpeg' %}" style="width: 398px;padding-top: 2px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="testimonials-clean" style="background-color: #f3f3f3;">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="margin-bottom: 14px;">Reviews</h2>
+            </div>
+            <div class="row people" style="padding-top: 2px;">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+						<p class="description"><b>The quality of the book is absolutely amazing which has glossy and colorful pages containing attractive pictures&nbsp;</b> <br> As a self-study book it is extremely user-friendly, the pages are set out with explanations and examples. The quality of the book is absolutely amazing which has glossy and colorful pages containing attractive pictures. Exceptions play a major role in French language and this book helps us to understand the language in depth very easily. This book contains many easy tricks which help one to remember them. It is a wonderful companion to all French enthusiasts. </p>
+                    </div>
+                    <div class="author">
+                        <h5 class="name">A Valued Customer</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <p class="description"><b> Am really really happy with this book</b> <br> This book not only helps you with the understanding of the gender of the different nouns, but also increases our vocabulary and improves our language. Am really really happy with this book. I have already starting reading it and I can guarantee that you'll never find a more interesting French grammar book.</p>
+                    </div>
+                    <div class="author">
+                        <h5 class="name">A Valued Customer</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <p class="description"><b>Really Good!</b><br>Really Nice to be honest!! <br> The e-book is quite similar to the paperback! <br> Very Informative and child-friendly.... <br> Everything is nicely explained through pictures,challenges,crosswords etc..</p>
+                    </div>
+                    <div class="author">
+                        <h5 class="name">A Valued Customer</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<hr>
+        <div class="container" style="margin-bottom: 0px;padding-bottom: 49px;">
+			<div id="disqus_thread"></div>
+			<script>
+
+			/**
+			*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+			*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+			var disqus_config = function () {
+			this.page.url = {{ request.path }};  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = 'book'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+			};
+
+			(function() { // DON'T EDIT BELOW THIS LINE
+			var d = document, s = d.createElement('script');
+			s.src = 'https://esorobrain-1.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+			})();
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+	<script id="bolt"
+	src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js"></script>
+	<script>
+		$('#buy').click(function () {
+
+		console.log('Works?');
+
+		{% if user.is_authenticated %}
+
+			$.ajax({
+				type: 'POST',
+				url: '{% url 'book' %}',
+				data: {
+					'csrfmiddlewaretoken': '{{ csrf_token }}'
+				},
+				success: function (data, status) {
+					let RequestData = {
+						key: data.merchant_key,
+						txnid: data.txn_id,
+						hash: data.hash,
+						amount: parseFloat(data.amount),
+						firstname: data.first_name,
+						email: data.email_id,
+						phone: data.phone_number,
+						productinfo: data.product_info,
+						surl: data.surl,
+						furl: data.furl,
+						mode: 'dropout',
+					};
+					console.log(RequestData);
+					console.log(typeof RequestData.amount);
+
+					let Handler = {
+						responseHandler: function (BOLT) {
+							console.log(BOLT.response.txnStatus);
+						},
+						catchException: function (BOLT) {
+							alert(BOLT.message);
+						},
+					};
+
+					bolt.launch(RequestData, Handler);
+				},
+				dataType: 'json',
+			});
+
+		{% else %}
+
+			location.href = "{% url 'account_signin' %}";
+
+		{% endif %}
+
+		});
+	</script>
+
+{% endblock %}

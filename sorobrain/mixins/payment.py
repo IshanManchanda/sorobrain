@@ -12,6 +12,7 @@ from django.urls import reverse
 class PaidObjectMixin(models.Model):
 	"""Mixin that makes the object that inherits it payable, this
 	makes the payment process stateless. """
+
 	class Meta:
 		abstract = True
 
@@ -30,10 +31,11 @@ class PaidObjectMixin(models.Model):
 		:param failure_url: url of view to redirect to on payment success
 		:return: json response for BOLT
 		"""
-		login_url = reverse('account_login')
+		login_url = request.build_absolute_uri(reverse('account_login'))
 
 		if not request.user.is_authenticated:
-			messages.add_message(request, messages.WARNING, "You need to login before you can buy something!")
+			messages.add_message(request, messages.WARNING,
+			                     "You need to login before you can buy something!")
 			return redirect(login_url)
 
 		product_info = self.title if not self.title == '' else 'no-product-info'
@@ -66,3 +68,30 @@ class PaidObjectMixin(models.Model):
 		# TODO: Add send customer and admin mail here
 
 		return JsonResponse(data)
+
+	@staticmethod
+	def validate_payment(request):
+		"""
+		This method validates the payment by checking the hash sent from
+		payu against a hash that it creates itself.
+		:param request: the request object from the view
+		:return: Returns a redirect if invalid hash, and a true if valid
+		"""
+		hash_text = "%s|%s|||||||||||%s|%s|%s|%s|%s|%s" % (
+			os.environ.get('PAYU_MERCHANT_SALT'),
+			request.POST['status'],
+			request.POST['email'],
+			request.POST['firstname'],
+			request.POST['productinfo'],
+			request.POST['amount'],
+			request.POST['txnid'],
+			request.POST['key'],
+		)
+
+		if request.POST['hash'] != str(
+				hashlib.sha512(hash_text.encode('utf-8')).hexdigest()):
+			messages.add_message(request, messages.WARNING,
+			                     "Err: 23; Invalid Hash")
+			return redirect(reverse('payment_error'))
+
+		return True

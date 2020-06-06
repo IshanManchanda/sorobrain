@@ -11,19 +11,29 @@
 			</div>
 		</div>
 	 	<div class="row">
-			<div class="col-md-5 shadow mr-2 p-3 my-2 rounded">
-				<h4>Zoom link:</h4>
-				<p><a href="{{ workshop.zoom_link }}" target="_blank">{{ workshop.zoom_link }}</a></p>
-				<p>Click on this zoom link to register for the workshop!</p>
+			<div class="col-md-7 shadow mr-2 p-3 my-2 rounded">
+				<h4>Sessions</h4>
+				<p>Please attend each session on time</p>
+				<ul style="list-style-type: none">
+					{% for session in workshop.sessions.all %}
+						<li>
+							<h5>Session {{ forloop.counter }}: {{ session.title }}</h5>
+							<h6>Date: {{ session.date }}</h6>
+							<p>{{ session.description }}</p>
+							<h5>Zoom Link: <a href="{{ session.zoom_link }}">Click Here to Join</a></h5>
+							<hr>
+							<br>
+						</li>
+					{% endfor %}
+				</ul>
 			</div>
-			<div class="col-md-6 shadow ml-4 p-3 my-2 rounded">
-				<h4>Time: {{ workshop.date }}</h4>
-				<p>This is when the workshop will start. Don't be late!</p>
-				<hr>
+			<div class="col-md-4 shadow ml-4 p-3 my-2 rounded" style="height: min-content">
 				{% if workshop.include_book %}
 					<h4>Included Book:</h4>
-					<p>Please don't copy, or share this book with others. It's only for you. Refer to it as we go along the workshop so that you can stay with the class!</p>
-					<a href=""><button class="btn btn-primary"><i class="fas fa-book fa-1x"></i> Download Textbook </button></a>
+					<p>Please don't copy, or share this book with others. It's only for you. Refer to it as we go along the workshop so that you can stay with the class!
+					   You can now download the book from your account page.
+					</p>
+					<a href="{% url 'profile' %}#textbook"><button class="btn btn-primary"><i class="fas fa-book fa-1x"></i> Download Textbook from Account Page</button></a>
 				{% endif %}
 			</div>
 		</div>

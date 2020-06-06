@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from workshops.models import Workshop, WorkshopAccess
+from workshops.models import Workshop, WorkshopAccess, Session, Code
 
 
 class WorkshopAdmin(admin.ModelAdmin):
@@ -17,5 +17,20 @@ class WorkshopAccessAdmin(admin.ModelAdmin):
 	readonly_fields = ('created_on',)
 
 
+class SessionAdmin(admin.ModelAdmin):
+	list_display = ('title', 'created_on', 'zoom_link')
+	search_fields = ('title',)
+	readonly_fields = ('created_on',)
+
+
+class CodeAdmin(admin.ModelAdmin):
+	list_display = ('code', 'uses', 'workshop', 'expiry_date')
+	search_fields = ('workshop',)
+	list_filter = ('workshop',)
+	readonly_fields = ('created_on', 'expiry_date', 'code')
+
+
+admin.site.register(Code, CodeAdmin)
+admin.site.register(Session, SessionAdmin)
 admin.site.register(Workshop, WorkshopAdmin)
 admin.site.register(WorkshopAccess, WorkshopAccessAdmin)

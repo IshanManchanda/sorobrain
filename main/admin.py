@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .forms import AddUserForm, UpdateUserForm
-from .models import User
+from .models import User, BookAccess
 
 
 class UserAdmin(BaseUserAdmin):
@@ -33,3 +33,13 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(User, UserAdmin)
+
+
+class BookAccessAdmin(admin.ModelAdmin):
+	list_display = ('user', 'active', 'created_on')
+	list_filter = ('active',)
+	search_fields = ('user',)
+	readonly_fields = ('created_on',)
+
+
+admin.site.register(BookAccess, BookAccessAdmin)
