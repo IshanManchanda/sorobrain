@@ -11,10 +11,13 @@ from django.views import View
 
 from main.views.utils import grant_book_access, has_book_access
 from sorobrain.utils import get_presigned_url
+from workshops.models import Workshop
 
 
 def index(request):
-	return render(request, 'main/index.html')
+	return render(request, 'main/index.html', {
+		'workshops': Workshop.objects.filter(active=True)
+	})
 
 
 class Book(View):
