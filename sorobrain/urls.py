@@ -15,13 +15,21 @@ Including another URL conf
 """
 from django.contrib import admin
 from django.template.context_processors import static
+from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include, re_path
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 
 from sorobrain import settings
+from workshops.sitemaps import WorkshopSitemap
+from .sitemaps import StaticViewSitemap
 
 admin.site.site_header = 'Sorobrain'
+
+sitemaps = {
+	'workshops': WorkshopSitemap,
+	'static': StaticViewSitemap
+}
 
 urlpatterns = [
 	path('admin_tools/', include('admin_tools.urls')),
@@ -31,5 +39,6 @@ urlpatterns = [
 	path('quiz/', include('quiz.urls', namespace='quiz')),
 	path('workshop/', include('workshops.urls', namespace='workshop')),
 	path('error/payment/', csrf_exempt(TemplateView.as_view(template_name='global/errors/payment.html')), name='payment_error'),
+	path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 	path('', include('main.urls')),
 ]
