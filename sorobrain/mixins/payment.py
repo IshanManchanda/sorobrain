@@ -27,8 +27,8 @@ class PaidObjectMixin(models.Model):
 		:param self:
 		:param request: The request object from the view
 		:param amount: This is explicit to allow for special pricing etc
-		:param success_url: url of view to redirect to on payment success
-		:param failure_url: url of view to redirect to on payment success
+		:param success_url: absolute url of view to redirect to on payment success
+		:param failure_url: absolute url of view to redirect to on payment success
 		:return: json response for BOLT
 		"""
 		login_url = request.build_absolute_uri(reverse('account_login'))
