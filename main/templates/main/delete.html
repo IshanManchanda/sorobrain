@@ -18,8 +18,7 @@
     <h1>{% trans "Delete Account" %}</h1>
 	<hr>
 	<h1><i class="far fa-sad-tear fa-2x"></i></h1> <p>We're sad to see you go, please let us help before you say goodbye.</p>
-	{# TODO: Add link to contact us / contact support #}
-	<a href="#"><button class="btn btn-primary"><i class="fas fa-phone fa-rotate-90"></i>  Contact Support</button></a>
+	<a href="{% url 'contact' %}"><button class="btn btn-primary"><i class="fas fa-phone fa-rotate-90"></i>  Contact Support</button></a>
 
 	<hr>
     <p>{% blocktrans %}Are you sure that you want to delete your account? This cannot be undone. {% endblocktrans %}</p>

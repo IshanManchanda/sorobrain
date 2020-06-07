@@ -29,7 +29,7 @@ class Book(View):
 
 	@staticmethod
 	def post(request):
-		amount = 1
+		amount = 226
 
 		if not request.user.is_authenticated:
 			messages.add_message(request, messages.WARNING,
