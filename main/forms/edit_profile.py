@@ -20,6 +20,7 @@ GENDER_CHOICES = [
 
 EDUCATION_CHOICES = [
 	(None, ''),
+	('working', 'Graduate or Higher'),
 	('college', 'College'),
 	('12', '12th Class'),
 	('11', '11th Class'),

@@ -1,7 +1,7 @@
 {% extends "global/base.html" %}
 {% load static %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}Content Catalog | Sorobrain {% endblock title %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'main/css/catalog/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
@@ -15,6 +15,14 @@
 {% endblock %}
 
 {% block content %}
+<style>
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+}
+</style>
 
 <div class="container-fluid">
     <header class="dh-header-non-rectangular" style="height: 391px;width: 100%;">
@@ -142,7 +150,7 @@
                 <div id="workshops" class="row p-3 mb-5 shadow rounded" style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
                     <div class="col">
                         <h3 style="margin-top: 8px;">Online Workshops</h3>
-                        <p class="lead" style="margin-bottom: 10px;"><strong><em>Attend day-long workshops with expert faculty to boost concepts and get an edge.&nbsp;</em></strong><br></p>
+                        <p class="lead" style="margin-bottom: 10px;"><strong><em>Attend online workshops with expert faculty to boost concepts and get an edge.&nbsp;</em></strong><br></p>
                         <hr>
                         <div class="row">
                             <div class="col-lg-6">
@@ -154,7 +162,7 @@
                                 <hr>
                             </div>
                             <div class="col">
-                                <div class="card-group">
+                                <div class="card-columns">
 									{% for w in workshops %}
                                     <div class="card"><img class="card-img-top w-100 d-block" alt="workshops thumbnail" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
                                         <div class="card-body">
@@ -190,6 +198,7 @@
         </div>
     </div>
     </div>
+	<a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
 </div>
 {% endblock %}
 
