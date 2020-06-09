@@ -12,7 +12,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(#2306d3, #26cbff);
+  background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #009efd 100%);
+
   transform: skewY(-6deg);
   transform-origin: top left;
 }
