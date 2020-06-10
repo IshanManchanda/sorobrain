@@ -35,9 +35,9 @@
 						data-aos-duration="1100"
 						style="height: 23px;margin: -44px;margin-right: 0;margin-top: 0;margin-left: 0;margin-bottom: 32px;">
 						Welcome to Sorobrain!</h1>
-{#					<h1 data-aos="zoom-in" class="mb-5"#}
-{#						style="margin: 15px;margin-bottom: 10px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 22px;">#}
-{#						Transforming talents into geniuses.&nbsp;</h1>#}
+					<h1 data-aos="zoom-in" class="mb-5"
+						style="margin: 15px;margin-bottom: 10px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 30px;">
+						Une Académie Française&nbsp;</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 					<form>
@@ -56,22 +56,14 @@
 			</div>
 		</div>
 	</header>
-	<div class="container-fluid" style="background-color: #eef4f7;">
-		<div class="row" style="background-color: #eef4f7;">
-			<div class="col-md-12 text-center py-2 shadow-lg rounded"
-				 style="background-color: #eef4f7;">
-				<h1 class="display-5">Une Académie Française</h1>
-			</div>
-		</div>
-	</div>
 	<div class="features-boxed">
 		<div class="container">
 			<div class="intro">
 				<h2 class="text-center" style="margin-bottom: 8px;">Our
 					Services</h2>
-				<p class="text-center">Our services include many different
-					aspects. We offer a variation of services. Here is a
-					glimpse of your learning experience: &nbsp;</p>
+				<p class="text-center">We offer a variation of services. Here
+					is a glimpse of everything you can avail to enrich your
+					learning experience: &nbsp;</p>
 			</div>
 			<div class="row justify-content-center features"
 				 style="padding-top: 11px;">
@@ -115,7 +107,7 @@
 						<h3 class="name">Workshops </h3>
 						<p class="description">Interact with expert faculty,
 							peers, and other Sorobrainers in our day long,
-							online workshops. Our painstakingly designed Online
+							online workshops. Our painstakingly designed online
 							conferences will solve all our doubts and sharpen
 							your skills. Receive a participation certificate on
 							the successful completion of each workshop.</p>
@@ -153,14 +145,14 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="intro">
-						<h2><i class="fas fa-book-open"></i> Our Textbook: Le
+						<h2><i class="fas fa-book-open"></i> Our Handbook: Le
 							bleu ou la rose</h2>
 						<p>Sorobrain's book, Le bleu ou la rose, is a fantastic
 							resource that consolidates all the tips, tricks,
 							and noun categorizations to master French. The book
 							is available for purchase online, but you'll also
 							get access to it after you register for a
-							competition! </p>
+							competition or a relevant workshop!</p>
 						<p class="alert alert-success">Our nationally acclaimed
 							book is available, both as an e-book and as a
 							physical publication!</p>
@@ -197,9 +189,9 @@
 							alt="">
 						<h5>Supriya Mohan</h5>
 						<p class="font-weight-light mb-0">"Seema has been
-							guiding my son Shiv with French through grade 6 and
-							7. He has performed consistently well in the
-							subject since he became her student. More
+							guiding my son Shiv with French and he has
+							performed consistently well in the subject since he
+							became her student. More
 							importantly, he enjoys his French classes and
 							really looks forward to them. Seema provides a
 							consistent bank of practice sheets to help him stay
@@ -338,7 +330,7 @@
 							src="{% static 'main/img/index/test6.jpeg' %}">
 						<h5>Swasti and Pooja Chaudhary</h5>
 						<p class="font-weight-light mb-0">"I have been learning
-							French through Seema ma'am for about two years now,
+							French through Seema ma'am for about four years now,
 							and when I first received the news about online
 							classes I was a little hesitant, however they work
 							even better than regular classes as they allow the
@@ -596,7 +588,7 @@
 									alt="workshops thumbnail"
 									src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
 								<div class="card-body">
-									<h4 class="card-title">{{ w.title }}</h4>
+									<h5>{{ w.title }}</h5>
 									<p class="card-text">{{ w.description|truncatechars:200 }}</p>
 									<a href="{{ w.get_absolute_url }}">
 										<button class="btn btn-primary"
@@ -619,7 +611,7 @@
 						<p class="text-justify">Since 2009, Sorobrain® has
 							specialized in providing a fun and active learning
 							environment for its French language courses through
-							activities like theatrical performances,<br/>karaoke,
+							activities like theatrical performances, karaoke,
 							quizzes &amp; competitions, games, puzzles, etc.
 							where the knowledge is put into action. Our motive
 							is to make students absorb the language. As digital
