@@ -107,5 +107,4 @@ class Code(models.Model):
 		self.code = ''.join(
 				(random.choice(string.ascii_letters + string.digits) for i in
 				 range(16)))
-		self.expiry_date = self.workshop.date
 		super(Code, self).save(*args, **kwargs)
