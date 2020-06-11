@@ -27,7 +27,7 @@ class CodeAdmin(admin.ModelAdmin):
 	list_display = ('code', 'uses', 'workshop', 'expiry_date')
 	search_fields = ('workshop',)
 	list_filter = ('workshop',)
-	readonly_fields = ('created_on', 'expiry_date', 'code')
+	readonly_fields = ('created_on', 'code')
 
 
 admin.site.register(Code, CodeAdmin)
