@@ -95,7 +95,7 @@ class Code(models.Model):
 
 	@property
 	def is_used(self) -> bool:
-		return self.uses == 0
+		return self.uses <= 0
 
 	@property
 	def is_expired(self) -> bool:
