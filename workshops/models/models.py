@@ -17,7 +17,7 @@ class Session(models.Model):
 	class Meta:
 		verbose_name = 'Workshop Session'
 		verbose_name_plural = 'Workshop Sessions'
-		ordering = ('-date',)
+		ordering = ('date',)
 
 	title = models.CharField(max_length=128)
 	description = models.TextField(max_length=1024)
