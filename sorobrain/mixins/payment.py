@@ -20,6 +20,10 @@ class PaidObjectMixin(models.Model):
 	discount = models.IntegerField(verbose_name='Discount Percentage',
 	                               blank=True, null=True)
 
+	@property
+	def sub_total(self):
+		return self.cost * (100 - self.discount)
+
 	def pay(self, request, amount, success_url, failure_url):
 		"""
 		This function takes a payment object and returns the JSON response

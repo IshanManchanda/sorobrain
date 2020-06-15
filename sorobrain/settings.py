@@ -216,7 +216,7 @@ TEMPLATES = [
 	{
 		'BACKEND': 'django.template.backends.django.DjangoTemplates',
 		'DIRS'   : [os.path.join(BASE_DIR, 'templates')],
-#		'APP_DIRS': True,
+		#		'APP_DIRS': True,
 		'OPTIONS': {
 			'context_processors': [
 				'django.template.context_processors.debug',
@@ -268,8 +268,19 @@ TAGGIT_CASE_INSENSITIVE = True
 CKEDITOR_UPLOAD_PATH = 'media/public/ckeditor/'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 CKEDITOR_CONFIGS = {
-	'default': {
+	'full'   : {
 		'toolbar': 'full',
+	},
+	'default': {
+		'toolbar'           : 'Custom',
+		'toolbar_Custom'    : [
+			['Bold', 'Italic', 'Underline'],
+			['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-'],
+			['Image']
+		],
+		'height'            : '50%',
+		'width'             : '100%',
+		'toolbarCanCollapse': True,
 	},
 	'minimal': {
 		'toolbar'           : 'Custom',

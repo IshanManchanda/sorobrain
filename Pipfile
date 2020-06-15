@@ -82,6 +82,7 @@ Pygments = "==2.6.1"
 Sphinx = "==3.0.3"
 Werkzeug = "==1.0.1"
 django-taggit = "*"
+django-picklefield = "*"
 
 [requires]
 python_version = "3.8"

@@ -78,8 +78,6 @@ class BookSuccess(LoginRequiredMixin, View):
 			request.POST['txnid'],
 			request.POST['key'],
 		)
-		print(hash_text)
-		print(str(hashlib.sha512(hash_text.encode('utf-8')).hexdigest()))
 		if request.POST['hash'] != str(
 				hashlib.sha512(hash_text.encode('utf-8')).hexdigest()):
 			messages.add_message(request, messages.WARNING,

@@ -72,7 +72,8 @@ class SaveProfileData(LoginRequiredMixin, View):
 
 
 class SaveNotificationLevel(LoginRequiredMixin, View):
-	def post(self, request):
+	@staticmethod
+	def post(request):
 		user = request.user
 		form = UpdateNotification(request.POST)
 		if form.is_valid():
@@ -87,10 +88,12 @@ class SaveNotificationLevel(LoginRequiredMixin, View):
 class Delete(LoginRequiredMixin, View):
 	permission_denied_message = "Please login or signup before coming here!"
 
-	def get(self, request):
+	@staticmethod
+	def get(request):
 		return render(request, 'main/delete.html')
 
-	def post(self, request):
+	@staticmethod
+	def post(request):
 		user = request.user
 		# REVIEW:
 		#  Currently instead of deleting a user, we are making it
