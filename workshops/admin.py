@@ -7,6 +7,7 @@ class SessionInline(admin.StackedInline):
 	model = Workshop.sessions.through
 	extra = 1
 
+
 class WorkshopAdmin(admin.ModelAdmin):
 	list_display = ('title', 'date', 'cost', 'discount', 'created_on')
 	list_filter = ('active', 'include_book',)

@@ -84,7 +84,7 @@ class Code(models.Model):
 	class Meta:
 		verbose_name = 'Workshop Code'
 		verbose_name_plural = 'Workshop Codes'
-		ordering = ('workshop', '-created_on')
+		ordering = ('-created_on',)
 
 	code = models.CharField(max_length=256, unique=True)
 	uses = models.IntegerField()
