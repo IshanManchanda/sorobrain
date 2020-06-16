@@ -40,7 +40,7 @@ class Quiz(PaidObjectMixin):
 		verbose_name_plural = 'Quizzes'
 
 	title = models.CharField(max_length=256, verbose_name='Quiz Title')
-	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True)
+	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True, unique_for_date=True)
 	description = RichTextUploadingField(config_name='minimal')
 	level = models.CharField(max_length=128, verbose_name='French Level',
 	                         choices=LEVEL_CHOICES)
@@ -55,13 +55,18 @@ class Quiz(PaidObjectMixin):
 	created_on = models.DateTimeField(default=timezone.now,
 	                                  verbose_name='Quiz Created On')
 
+	@property
 	def questions(self):
 		return Question.objects.filter(quiz=self.id)
 
-	# TODO: add get_absolute_url method for Quiz Model
+	def get_start_url(self):
+		return reverse('quiz:start', args=[self.slug])
+
+	def get_absolute_url(self):
+		return reverse('quiz:buy', args=[self.slug])
 
 	def save(self, *args, **kwargs):
-		self.slug = slugify(self.title)
+		self.slug = slugify(f"{self.title}-{self.id}")
 		super(Quiz, self).save(*args, **kwargs)
 
 	def __str__(self):
@@ -98,18 +103,23 @@ class Question(models.Model):
 	class Meta:
 		verbose_name = 'Question'
 		verbose_name_plural = 'Questions'
-		ordering = ['-created_on']
-
+		ordering = ['created_on']
 
 	quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
 	question = RichTextUploadingField()
 	explanation = RichTextUploadingField()
 	type = models.CharField(max_length=32, choices=QUESTION_TYPE_CHOICES)
-	options = JSONField(blank=True, null=True)  # json array of option text
-	answer = models.CharField(max_length=32, verbose_name="Answer: any of the following: T, F, 1, 2, 3, 4 or some text  ")
+	option1 = models.CharField(max_length=512, null=True, blank=True)
+	option2 = models.CharField(max_length=512, null=True, blank=True)
+	option3 = models.CharField(max_length=512, null=True, blank=True)
+	option4 = models.CharField(max_length=512, null=True, blank=True)
+	answer = models.CharField(max_length=32, verbose_name="Answer: any of the following: T, F, 1, 2, 3, 4 or some text")
 	created_on = models.DateTimeField(default=timezone.now)
 
 	@property
+	def options(self):
+		return [self.option1, self.option2, self.option3, self.option4]
+
 	def is_answer_valid(self) -> bool:
 		if self.type == 'text':
 			return True
@@ -119,29 +129,30 @@ class Question(models.Model):
 		else:
 			return False
 
+	def is_options_valid(self):
+		if self.type == 'mcq':
+			return any(self.options)
+		else:
+			return not any(self.options)
+
 	@property
 	def is_valid(self) -> bool:
-		return self.is_answer_valid and (
-				self.type != 'mcq' and self.options != '')
+		return self.is_answer_valid() and (self.is_options_valid())
 
 	def get_absolute_url(self):
 		return reverse('quiz:question', args=[self.id])
 
+	def clean(self):
+		if not self.is_answer_valid():
+			raise ValidationError(f'Answer must any of the following: T, F, 1, 2, 3, 4 or some text, not {self.answer}')
+		if not self.is_options_valid():
+			raise ValidationError(f'Options must be set only for mcq type! not for {self.type} type')
+
 	def save(self, *args, **kwargs):
-		if not self.is_valid:
-			raise FieldError("One of the entered fields is not valid")
 		super(Question, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return f'question_id: {self.id}'
-
-
-class QuizQuestion(models.Model):
-	"""This model is the intermediate class for the Quiz and Question model"""
-
-	quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-	question = models.ForeignKey(Question, on_delete=models.CASCADE)
-	created_on = models.DateTimeField(default=timezone.now)
 
 
 class QuizSubmission(models.Model):

@@ -41,7 +41,7 @@ class WorkshopSuccess(LoginRequiredMixin, View):
 	@staticmethod
 	def post(request, slug):
 		w = get_object_or_404(Workshop, slug=slug)
-		if w.validate_payment(request):
+		if w.is_payment_valid(request):
 			grant_access_to_workshop(request.user, w)
 		return redirect(reverse('workshops:workshop_store', args=[slug]))
 

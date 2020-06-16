@@ -22,7 +22,9 @@ class PaidObjectMixin(models.Model):
 
 	@property
 	def sub_total(self):
-		return self.cost * (100 - self.discount)
+		if type(self.discount) == int and self.discount > 0:
+			return int(self.cost * (1 - self.discount / 100))
+		return self.cost
 
 	def pay(self, request, amount, success_url, failure_url):
 		"""
@@ -74,7 +76,7 @@ class PaidObjectMixin(models.Model):
 		return JsonResponse(data)
 
 	@staticmethod
-	def validate_payment(request):
+	def is_payment_valid(request):
 		"""
 		This method validates the payment by checking the hash sent from
 		payu against a hash that it creates itself.

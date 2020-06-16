@@ -1,18 +1,27 @@
 from django.contrib import admin
-from quiz.models import Quiz
+from django.contrib.postgres.fields import JSONField
+
+from quiz.forms.question import QuestionForm
+from quiz.models import Quiz, QuizAccess
 from quiz.models.quiz import Question
+from sorobrain.utils.widgets import OptionsInputWidget
 
 
 class QuestionInline(admin.StackedInline):
 	model = Question
+	form = QuestionForm
 	fieldsets = (
 		(None, {
 			'fields': ('type',
 			           ('question', 'explanation'),
-			           ('answer', 'options')
+			           'answer',
+			           ('option1', 'option2','option3', 'option4'),
 			           ),
 		}),
 	)
+	# formfield_overrides = {
+	# 	JSONField: {'widget': OptionsInputWidget},
+	# }
 	extra = 1
 	can_delete = True
 
@@ -59,6 +68,10 @@ class QuestionAdmin(admin.ModelAdmin):
 	# REVIEW: Check the fields that need to be made readonly
 	readonly_fields = ('id',)
 
+	formfield_overrides = {
+		JSONField: {'widget': OptionsInputWidget},
+	}
+
 	fieldsets = (
 		(None, {
 			'fields': ('type',
@@ -70,3 +83,13 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Question, QuestionAdmin)
+
+
+class QuizAccessAdmin(admin.ModelAdmin):
+	list_display = ('user', 'quiz', 'created_on')
+	list_filter = ('quiz', 'active')
+	search_fields = ('user', 'quiz')
+	readonly_fields = ('created_on',)
+
+
+admin.site.register(QuizAccess, QuizAccessAdmin)

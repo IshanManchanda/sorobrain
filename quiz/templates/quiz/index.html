@@ -1,5 +1,7 @@
 {% extends "global/base.html"%}
 
+{% block title %} All Quizzes | Sorobrain {% endblock %}
+
 {% block css %}
 {% endblock %}
 
@@ -7,7 +9,9 @@
     <div class="container">
         <h1> Quiz App Index </h1>
         <ul>
-            <li><a href="#">Quiz Intermediate</a></li>
+			{% for quiz in quizzes %}
+            <li><a href="{{ quiz.get_absolute_url }}">{{ quiz.title }}</a></li>
+			{% endfor %}
         </ul>
     </div>
 {% endblock %}

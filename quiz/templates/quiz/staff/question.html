@@ -1,5 +1,9 @@
 {% extends 'global/base.html' %}
 
+{% block title %}
+	Question - {{ question.id }} | Sorobrain | Staff Only
+{% endblock %}
+
 {% block content %}
 	<div class="container py-2">
 		<div class="row">
@@ -16,7 +20,7 @@
 					<tbody>
 						<tr>
 							<th scope="row">Question</th>
-							<td>{{ question.question }}</td>
+							<td>{{ question.question|safe }}</td>
 						</tr>
 						<tr>
 							<th scope="row">Type</th>
@@ -24,10 +28,10 @@
 						</tr>
 						<tr>
 							<th scope="row">Options</th>
-							{% if question.options %}
+							{% if question.type == 'mcq' %}
 								<td>{{ question.options }}</td>
 							{% else %}
-								<td class="text-muted">No Options</td>
+								<td class="text-muted">No options: question is not an Multiple Choice</td>
 							{% endif %}
 						</tr>
 						<tr>
@@ -36,7 +40,7 @@
 						</tr>
 						<tr>
 							<th scope="row">Explanation</th>
-							<td>{{ question.explanation }}</td>
+							<td>{{ question.explanation|safe }}</td>
 						</tr>
 					</tbody>
 				</table>

@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block title %}
-	SB Workshop: {{ workshop.title }}
+	SB Quiz: {{ quiz.title }}
 {% endblock %}
 
 {% block content %}
@@ -18,30 +18,23 @@
             <div class="row text-center">
                 <div class="col-md-7 col-lg-5 offset-md-0 offset-lg-1 text-center text-sm-right">
 					<img class="img-thumbnail img-fluid d-inline-block align-items-lg-center" src="https://www.axoscape.com/wp-content/uploads/2020/01/workshopbilde_0.png">
-					<div class="alert alert-success" role="alert"><span><strong>Description:</strong>&nbsp;<br></span>
-                        <p>{{ workshop.description }}&nbsp;</p>
-                    </div>
+					<div class="alert alert-success" role="alert"><span><strong>Description:</strong>&nbsp;<br></span><p>{{ quiz.description|safe }}&nbsp;</p></div>
+
 				</div>
                 <div class="col-md-5 col-lg-5 shadow-sm">
-                    <h3 style="font-family: Adamina, serif;margin-top: 13px;">{{ workshop.title }}&nbsp;</h3>
-                    <p style="color: #282821;font-size: 22px;"><em>Best in class French Learning workshops! Handbook included!&nbsp;</em><br></p>
+                    <h3 style="font-family: Adamina, serif;margin-top: 13px;">{{ quiz.title }}&nbsp;</h3>
+                    <p style="color: #282821;font-size: 22px;"><em>Interactive online quizzes with instant analysis!</em><br></p>
                     <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if workshop.discount %}Discount: {{ workshop.discount }} {% else %}Price: Rs. {{ workshop.cost }}{% endif %}<br><br></strong>
-					<strong style="font-size: 18px;margin-bottom: 3px;">Date: {{ workshop.date }}<br><br></strong>
-					<div class="alert alert-success" role="alert">
-						<span><strong>Sessions: </strong>&nbsp;<br></span>
-						<ul style="list-style-type: none">
-							{% for session in workshop.sessions.all %}
-								<li>Session {{ forloop.counter }}: {{ session.title }} is on {{ session.date }}</li>
-							{% endfor %}
-						</ul>
-					</div>
-					{% if not workshop.is_expired %}
-						<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register Individually</button>
-						<a href="{% url 'workshops:register_with_code' slug=workshop.slug %}"><button class="btn btn-outline-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i class="fas fa-barcode"></i>&nbsp;Register with Code</button></a>
-					{% else %}
-						<p>This workshop has expired. Checkout upcoming ones <a href="{% url 'catalog' %}#workshops">here</a></p>
-					{% endif %}
+					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if quiz.discount %}Discount: {{ quiz.discount }}% <br> Rs.{{ quiz.sub_total }}; <i class="text-muted small">Original Cost: <strike>Rs. {{ quiz.cost }}</strike></i>{% else %}Price: Rs. {{ quiz.cost }}{% endif %}<br><small class="small text-muted">Inclusive of taxes</small><br><br></strong>
+					<p class="text-muted">Quizzes are provided on the web platform itself. After buying you will be able to attempt the quiz through your account page with our interactive interface. </p>
+					<hr>
+					<p> This Quiz was added on {{ quiz.created_on }}
+					<br> and it is aimed at learners of the <i>{{ quiz.level }}</i> level.</p>
+					<label for="code"></label><input type="text" id="code" class="form-control mb-1" placeholder="Enter discount code...">
+					<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register</button>
+{# TODO: Add register with code for quizzes too #}
+{#					<a href=""><button class="btn btn-outline-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i class="fas fa-barcode"></i>&nbsp;Register with Code</button></a>#}
+
 					<p class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br><i class="fab fa-facebook"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>&nbsp;&nbsp;<i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<i class="fas fa-envelope"></i></p>
                 </div>
             </div>
@@ -56,7 +49,7 @@
             <div class="row features">
                 <div class="col-sm-6 col-lg-3 item"><i class="fa fa-map-marker icon"></i>
                     <h3 class="name">Interactive Sessions</h3>
-                    <p class="description">This workshop contains multiple sessions on various topics. Each session will be conducted online and will be an interactive experience that will enrich your learning experience. You will be given assignments, lectures, and other content. </p>
+                    <p class="description">This quiz contains multiple sessions on various topics. Each session will be conducted online and will be an interactive experience that will enrich your learning experience. You will be given assignments, lectures, and other content. </p>
                 </div>
                 <div class="col-sm-6 col-lg-4 offset-lg-0 item"><i class="fas fa-trademark icon"></i>
                     <h3 class="name">Included Book</h3>
@@ -74,7 +67,7 @@
 			<div class="row people" style="padding-top: 2px;">
                 <div class="col-md-6 col-lg-4 item">
                     <div class="box">
-						<p class="description"><b>Sorobrain's workshop on gender of nouns is simply fantastic.</b><br> I thoroughly enjoy myself and the workshop is highly interactive. It is a great way to improve your vocabulary while having fun through crosswords, word searches and the super fun quizzes. Seema Ma'am needless to say is a fantastic teacher and I love being her student and a part of this fabulous workshop.</p>
+						<p class="description"><b>Sorobrain's quiz on gender of nouns is simply fantastic.</b><br> I thoroughly enjoy myself and the quiz is highly interactive. It is a great way to improve your vocabulary while having fun through crosswords, word searches and the super fun quizzes. Seema Ma'am needless to say is a fantastic teacher and I love being her student and a part of this fabulous quiz.</p>
                     </div>
                     <div class="author">
                         <h5 class="name">Kabir Menon</h5>
@@ -82,7 +75,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 item">
                     <div class="box">
-                        <p class="description"><b>The workshop has been a fun, interactive way to learn about the genders of nouns- </b><br>something that is usually a cumbersome task has been made easy! Through games and activities all students are kept engaged. Moreover, Seema ma’am always makes sessions pleasant and uplifting. </p>
+                        <p class="description"><b>The quiz has been a fun, interactive way to learn about the genders of nouns- </b><br>something that is usually a cumbersome task has been made easy! Through games and activities all students are kept engaged. Moreover, Seema ma’am always makes sessions pleasant and uplifting. </p>
                     </div>
                     <div class="author">
                         <h5 class="name">Gaurika Kapoor</h5>
@@ -90,7 +83,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 item">
                     <div class="box">
-                        <p class="description"><b>L'Atelier Français is the series of workshops that absolutely no beginner should miss!</b><br>The most daunting part of french are the exceptions in rules, grammar, and sentence structure but instead of mugging them up, we remember them all by playing games, forming mnemonics and studying origins. While it is the easiest and fastest way to learn french, the best part is how the pronunciation is embedded in our memory because of Seema ma'am's teaching style. For me, her guidance in differentiating between spoken and written french has helped me understand a lot about the language, as well as the french culture. This is an immersive course and one of the best in field! Merci pour vos conseils en français madame!</p>
+                        <p class="description"><b>L'Atelier Français is the series of quizzes that absolutely no beginner should miss!</b><br>The most daunting part of french are the exceptions in rules, grammar, and sentence structure but instead of mugging them up, we remember them all by playing games, forming mnemonics and studying origins. While it is the easiest and fastest way to learn french, the best part is how the pronunciation is embedded in our memory because of Seema ma'am's teaching style. For me, her guidance in differentiating between spoken and written french has helped me understand a lot about the language, as well as the french culture. This is an immersive course and one of the best in field! Merci pour vos conseils en français madame!</p>
                     </div>
                     <div class="author">
                         <h5 class="name">Tanvi Rattan</h5>
@@ -98,24 +91,24 @@
                 </div>
             </div>
         </div>
-        <div class="container" style="margin-bottom: 0px; padding-bottom: 49px; margin-top: 290p">
-			<hr>
-            <h1 class="text-center">Related workshops</h1>
+		<hr>
+        <div class="container" style="margin-bottom: 0px;padding-bottom: 49px;">
+            <h1 class="text-center">Related quizzes</h1>
             <div class="card-group">
-                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
                     <div class="card-body">
                         <h4 class="card-title">Coming Soon</h4>
-                        <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
+                        <p class="card-text">We're working hard to get other quizzes up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
 				</div>
-                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
                     <div class="card-body">
                         <h4 class="card-title">Coming Soon</h4>
-                        <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
+                        <p class="card-text">We're working hard to get other quizzes up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
 				</div>
-                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
                     <div class="card-body">
                         <h4 class="card-title">Coming Soon</h4>
-                        <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
+                        <p class="card-text">We're working hard to get other quizzes up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
 				</div>
             </div>
         </div>
@@ -128,8 +121,8 @@
 			*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
 			var disqus_config = function () {
-			this.page.url = "{{ request.scheme }}://{{ request.get_host }}{{ workshop.get_absolute_url }}";  // Replace PAGE_URL with your page's canonical URL variable
-			this.page.identifier = '{{ workshop.slug }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+			this.page.url = "{{ request.scheme }}://{{ request.get_host }}{{ quiz.get_absolute_url }}";  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = '{{ quiz.slug }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 			};
 
 			(function() { // DON'T EDIT BELOW THIS LINE
@@ -154,9 +147,9 @@
 
 			$.ajax({
 				type: 'POST',
-				url: '{{ workshop.get_absolute_url }}',
+				url: '{{ quiz.get_absolute_url }}',
 				data: {
-					'workshop_id': "{{ workshop.id }}",
+					'quiz_id': "{{ quiz.id }}",
 					'csrfmiddlewaretoken': '{{ csrf_token }}'
 				},
 				success: function (data, status) {
