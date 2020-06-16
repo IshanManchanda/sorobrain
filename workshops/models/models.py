@@ -51,7 +51,7 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 	def is_expired(self):
 		"""Returns true if the current time is after the time of the
 		last session in that workshop"""
-		return timezone.now() > self.sessions.order_by('-date')[0].date
+		return timezone.now() > self.date
 
 	def get_absolute_url(self):
 		return reverse('workshops:workshop_store', args=[self.slug])

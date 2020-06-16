@@ -20,6 +20,7 @@ from django.urls import path, include, re_path
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 
+from quiz.sitemaps import QuizSitemap
 from sorobrain import settings
 from workshops.sitemaps import WorkshopSitemap
 from .sitemaps import StaticViewSitemap
@@ -27,6 +28,7 @@ from .sitemaps import StaticViewSitemap
 admin.site.site_header = 'Sorobrain'
 
 sitemaps = {
+	'quizzes': QuizSitemap,
 	'workshops': WorkshopSitemap,
 	'static': StaticViewSitemap
 }

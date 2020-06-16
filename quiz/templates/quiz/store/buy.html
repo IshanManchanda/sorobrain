@@ -149,7 +149,7 @@
 				type: 'POST',
 				url: '{{ quiz.get_absolute_url }}',
 				data: {
-					'quiz_id': "{{ quiz.id }}",
+					'code': $('#code').val(),
 					'csrfmiddlewaretoken': '{{ csrf_token }}'
 				},
 				success: function (data, status) {
