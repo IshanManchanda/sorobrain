@@ -31,7 +31,6 @@ class BuyQuiz(View):
 	@staticmethod
 	def post(request, slug):
 		quiz = get_object_or_404(Quiz, slug=slug)
-		print(request.POST)
 		return quiz.pay(request, amount=quiz.sub_total,
 		                success_url=request.build_absolute_uri(
 			                reverse('quiz:success', args=[quiz.slug])),

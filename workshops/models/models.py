@@ -49,8 +49,7 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 
 	@property
 	def is_expired(self):
-		"""Returns true if the current time is after the time of the
-		last session in that workshop"""
+		"""Returns true if the current time is after the workshop starts"""
 		return timezone.now() > self.date
 
 	def get_absolute_url(self):

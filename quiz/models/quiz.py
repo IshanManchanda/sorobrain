@@ -10,6 +10,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from taggit.managers import TaggableManager
 
+from main.models import User
 from .utils import is_answer_valid
 from sorobrain.mixins.payment import PaidObjectMixin
 
@@ -61,6 +62,9 @@ class Quiz(PaidObjectMixin):
 
 	def get_start_url(self):
 		return reverse('quiz:start', args=[self.slug])
+
+	def get_attempt_url(self):
+		return reverse('quiz:attempt', args=[self.slug])
 
 	def get_absolute_url(self):
 		return reverse('quiz:buy', args=[self.slug])
@@ -175,15 +179,20 @@ class QuizSubmission(models.Model):
 		verbose_name = 'Quiz Submission'
 		verbose_name_plural = 'Quiz Submissions'
 
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	quiz = models.ForeignKey(Quiz, related_name='quiz_submission_quiz',
 	                         on_delete=models.CASCADE)
 	# TODO: Add competition ID here
 
-	submission = JSONField()
+	submission = JSONField(null=True)
 	score = models.FloatField(null=True)
 	start_time = models.DateTimeField()
-	submit_time = models.DateTimeField()
+	submit_time = models.DateTimeField(null=True)
 	creation_time = models.DateTimeField(default=timezone.now)
+
+	@property
+	def expiry_time(self):
+		return self.start_time + self.quiz.total_time
 
 	@property
 	def attempt_time(self):

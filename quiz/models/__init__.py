@@ -1,2 +1,2 @@
-from .quiz import Quiz, Question
+from .quiz import Quiz, Question, QuizSubmission
 from .store import QuizAccess

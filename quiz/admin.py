@@ -3,7 +3,7 @@ from django.contrib.postgres.fields import JSONField
 
 from quiz.forms.question import QuestionForm
 from quiz.models import Quiz, QuizAccess
-from quiz.models.quiz import Question
+from quiz.models.quiz import Question, QuizSubmission
 from sorobrain.utils.widgets import OptionsInputWidget
 
 
@@ -93,3 +93,6 @@ class QuizAccessAdmin(admin.ModelAdmin):
 
 
 admin.site.register(QuizAccess, QuizAccessAdmin)
+
+
+admin.site.register(QuizSubmission)

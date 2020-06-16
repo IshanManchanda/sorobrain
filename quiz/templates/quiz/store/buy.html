@@ -30,11 +30,8 @@
 					<hr>
 					<p> This Quiz was added on {{ quiz.created_on }}
 					<br> and it is aimed at learners of the <i>{{ quiz.level }}</i> level.</p>
-					<label for="code"></label><input type="text" id="code" class="form-control mb-1" placeholder="Enter discount code...">
+					<label for="code"></label><input type="text" id="code" class="form-control mb-1" placeholder="Enter discount code, if you have one...">
 					<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register</button>
-{# TODO: Add register with code for quizzes too #}
-{#					<a href=""><button class="btn btn-outline-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i class="fas fa-barcode"></i>&nbsp;Register with Code</button></a>#}
-
 					<p class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br><i class="fab fa-facebook"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>&nbsp;&nbsp;<i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<i class="fas fa-envelope"></i></p>
                 </div>
             </div>
@@ -135,9 +132,8 @@
 			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
     </div>
-    </div>
-	<script id="bolt"
-	src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js"></script>
+
+	<script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js"></script>
 	<script>
 		$('#buy').click(function () {
 
@@ -166,8 +162,8 @@
 						furl: data.furl,
 						mode: 'dropout',
 					};
-					console.log(RequestData);
-					console.log(typeof RequestData.amount);
+					/* console.log(RequestData);
+					console.log(typeof RequestData.amount); */
 
 					let Handler = {
 						responseHandler: function (BOLT) {
