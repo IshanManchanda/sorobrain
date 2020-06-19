@@ -1,0 +1,122 @@
+{% extends 'global/base.html' %}
+{% load static humanize %}
+
+{% block title %} Attempt Quiz {{ quiz.title }} | Sorobrain {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+			<!-- main content -->
+			<div class="col-md-8 col-sm-12 col-xs-1">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-4 mb-2 rounded shadow ">
+				  <a class="navbar-brand" href="#">Quiz</a>
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+					  <li class="nav-item active">
+						<a class="nav-link" href="#">{{ quiz.title }} <span class="sr-only">(current)</span></a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="#">Time Started: {{ qs.start_time|naturaltime }}</a>
+						<a class="nav-linkd d-sm-none" href="#">Time Submitted: {{ qs.submit_time|naturaltime }}</a>
+
+					  </li>
+					</ul>
+				  </div>
+				</nav>
+				{% for question, selected_answer, evaluation in result %}
+					{% if question.type == 'mcq' %}
+						{% include 'quiz/attempt/questions/checked/mcq.html' with eval=evaluation %}
+					{% elif question.type == 'bool' %}
+						{% include 'quiz/attempt/questions/checked/bool.html' with eval=evaluation%}
+					{% else %}
+						{% include 'quiz/attempt/questions/checked/text.html' with eval=evaluation%}
+					{% endif %}
+				{% empty %}
+					<div>
+						<h3>Hmm... something is wrong.</h3>
+						<p>There are no questions in this quiz! Please
+							<a href="{% url 'contact' %}">Contact the content team</a>
+						to report your issue. We'll get it resolved ASAP.
+						We're very sorry for the inconvenience, in the meantime, please try another quiz.
+						</p>
+					</div>
+				{% endfor %}
+			</div>
+			<!-- .main content -->
+
+			<!-- sidebar -->
+			<div class="col-md-4 d-none d-sm-none d-md-block">
+				<div class="sticky-top" style="top: 90px;">
+					<div class="card mt-4">
+					  <div class="card-header">
+						Result Details
+					  </div>
+					  <div class="card-body">
+					    <div id="timerWrapper">
+							<h5 class="card-title">Score</h5>
+							<ul>
+								<li>Score: {{ qs.score|floatformat }} </li>
+								<li>Correct / Incorrect: {{ qs.correct_answers }}/{{ qs.incorrect_answers }}</li>
+								<li>Time Taken: {{ qs.attempt_time_human }} minutes</li>
+							</ul>
+						</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<!-- .sidebar -->
+        </div>
+
+		<!-- floating bar -->
+		<div class="sticky-top d-sm-none" style="bottom:10px; background: #343A40; border: solid 1px; border-radius: 5px; padding: 3px; display:inline-block; width: inherit">
+			<div>
+				<h6 class="text-white" style="float: left; margin-top: 9px; margin-left: 6px">Result Details</h6>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#progress_modal"
+						id="trigger" style="float: right; margin:3px">
+					Open Analysis
+				</button>
+			</div>
+		</div>
+		<!-- .floating bar -->
+
+		<!-- modals -->
+	<div class="modal fade" id="progress_modal" tabindex="-1" role="dialog" aria-labelledby="progress_modal_label" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="progress_modal_label">Quiz Controls</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<div class="card mt-4">
+				  <div class="card-header">
+					Result Details
+				  </div>
+				  <div class="card-body">
+						<h5 class="card-title">Score</h5>
+						<ul>
+							<li>Score: {{ qs.score }} </li>
+							<li>Correct / Incorrect: {{ qs.correct_answers }}</li>
+							<li>Time Taken: {{ qs.attempt_time_human }} minutes</li>
+						</ul>
+				  </div>
+			    </div>
+			  </div>
+			  <div class="modal-footer">
+			    <a href="{% url 'profile' %}"><button class="btn btn-info">Back to Profile</button></a>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		</div>
+	</div>
+		<!-- .modals -->
+    </div>
+{% endblock%}
+
+{% block js %}
+{% endblock %}

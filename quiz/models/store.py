@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import QuerySet
 from django.utils import timezone
 
 from main.models import User
@@ -16,8 +17,6 @@ class QuizAccess(models.Model):
 	quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
 	active = models.BooleanField(default=True)
 	created_on = models.DateTimeField(default=timezone.now)
-
-	# TODO: add get_absolute_url method for checked submission; handle if not attempted yet there
 
 	def __str__(self):
 		return f'user: {self.user} has access to {self.quiz}'

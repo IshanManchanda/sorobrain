@@ -1,0 +1,35 @@
+<div class="card my-4 p-2 shadow" id="{{ question.id }}_card">
+	<div class="card-header  {% if eval == True %} bg-success {% elif eval == False %} bg-warning {% else %}{% endif %}" id="{{ question.id }}_card_header">
+		Question {{ forloop.counter }} MCQ Type
+	</div>
+	<div class="card-body">
+		<p class="card-text">{{ question.question|safe }}</p>
+		<hr>
+		<div class="form-check border mb-2 rounded pl-2" id="{{ question.id }}_option1_list_item" style="padding: 0px">
+			<label class="form-check-label mb-2 mt-2">
+				{{ question.option1 }}
+			</label>
+		</div>
+		<div class="form-check border mb-2 rounded pl-2" id="{{ question.id }}_option2_list_item" style="padding: 0px">
+			<label class="form-check-label mb-2 mt-2">
+				{{ question.option2 }}
+			</label>
+		</div>
+		<div class="form-check border mb-2 rounded pl-2" id="{{ question.id }}_option3_list_item" style="padding: 0px">
+			<label class="form-check-label mb-2 mt-2">
+				{{ question.option3 }}
+			</label>
+		</div>
+		<div class="form-check border mb-2 rounded pl-2" id="{{ question.id }}_option4_list_item" style="padding: 0px">
+			<label class="form-check-label mb-2 mt-2">
+				{{ question.option4 }}
+			</label>
+		</div>
+		<hr>
+		<h5>You answered: {% if selected_answer == "" or selected_answer == "-1" %} Left Blank {% else %} Option Number {{ selected_answer }} {% endif %}</h5>
+		<h5>Correct Answer: {% with ca=question.answer %}Option Number {{ ca }}{% endwith %}</h5>
+		<hr>
+		<h5>Explanation: </h5>
+		<p>{{ question.explanation|safe }}</p>
+	</div>
+</div>

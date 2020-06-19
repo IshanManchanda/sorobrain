@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block title %}Profile | Sorobrain{% endblock title %}
+
 {% block css %}
+	<!-- data tables --> <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css"/>
 {% endblock css %}
 
 {% block content %}
@@ -61,10 +63,12 @@
     <img class="card-img-top" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">My Practice Quizzes</h5>
-      <p class="card-text">Coming Soon! </p>
+      <p class="card-text">Get practice quizzes from the catalog section. Below you will find the quizzes that you have bought, and all the quizzes that you have attempted until now.</p>
     </div>
   	<div class="card-footer">
-		<a href="{% url 'catalog' %}#practice"><button class="btn btn-primary">Get More</button></a>
+		<a href="{% url 'catalog' %}#practice"><button class="btn btn-primary m-1">Get More</button></a>
+		<button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#bought_quizzes">Bought Quizzes</button>
+		<button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#quiz_attempts">Quiz Attempts</button>
 	</div>
   </div>
 	<div class="card mb-3" style="max-width: 540px;">
@@ -90,10 +94,15 @@
 	  </div>
 	</div>
 </div>
-		</div>
-	</div>
+</div>
+	<!-- modals -->
+	{% include 'main/modals/quiz_submissions.html' %}
+	{% include 'main/modals/quizzes_with_access.html' %}
+</div>
 {% endblock content %}
 
 {% block js %}
 	<script src="{% static 'main/js/index.js' %}"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 {% endblock js %}

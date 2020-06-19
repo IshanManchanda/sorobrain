@@ -37,6 +37,7 @@
 						</ul>
 					</div>
 					{% if not workshop.is_expired %}
+						<label for="code"></label><input type="text" id="code" class="form-control mb-1" placeholder="Enter discount code, if you have one...">
 						<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register Individually</button>
 						<a href="{% url 'workshops:register_with_code' slug=workshop.slug %}"><button class="btn btn-outline-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i class="fas fa-barcode"></i>&nbsp;Register with Code</button></a>
 					{% else %}
@@ -157,6 +158,7 @@
 				url: '{{ workshop.get_absolute_url }}',
 				data: {
 					'workshop_id': "{{ workshop.id }}",
+					'code': $('#code').val(),
 					'csrfmiddlewaretoken': '{{ csrf_token }}'
 				},
 				success: function (data, status) {
@@ -171,6 +173,7 @@
 						productinfo: data.product_info,
 						surl: data.surl,
 						furl: data.furl,
+						udf1: data.udf1,
 						mode: 'dropout',
 					};
 					console.log(RequestData);

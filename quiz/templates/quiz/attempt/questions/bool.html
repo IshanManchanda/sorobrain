@@ -1,0 +1,49 @@
+<div class="card my-4 p-2 shadow" id="{{ question.id }}_card">
+	<div class="card-header" id="{{ question.id }}_card_header">Question {{ forloop.counter }} <button id="{{ question.id }}_mark" class="btn btn-outline-primary btn-sm float-right">Mark for Later</button> </div>
+	<div class="card-body">
+		<p class="card-text">{{ question.question|safe }}</p>
+		<hr>
+		<div class="row">
+			<div class="col-6"><button id="{{ question.id }}_true" class="btn btn-outline-primary" style="width: 100%"><i class="far fa-thumbs-up"></i>True</button></div>
+			<div class="col-6"><button id="{{ question.id }}_false" class="btn btn-outline-primary" style="width: 100%"><i class="far fa-thumbs-down"></i>False</button></div>
+		</div>
+	</div>
+</div>
+<script>
+	// update quiz state json and change card colors on button click
+	$('#{{ question.id }}_true').click(function() {
+	    quiz_state[{{ question.id }}] = 'T';
+	    $('#{{ question.id }}_true').removeClass('btn-outline-primary').addClass('btn-primary'); // change button color
+		$('#{{ question.id }}_false').removeClass('btn-primary').addClass('btn-outline-primary'); // change button color for false
+		$('#{{ question.id }}_card_header').removeClass('bg-light').removeClass('bg-warning').addClass('bg-success');
+		progress('{{ question.id }}_progress_badge', 'badge-success');
+	});
+	$('#{{ question.id }}_false').click(function() {
+	    quiz_state[{{ question.id }}] = 'F';
+		$('#{{ question.id }}_false').removeClass('btn-outline-primary').addClass('btn-primary'); // change button color
+		$('#{{ question.id }}_true').removeClass('btn-primary').addClass('btn-outline-primary'); // change button color for true
+		$('#{{ question.id }}_card_header').removeClass('bg-light').removeClass('bg-warning').addClass('bg-success');
+		progress('{{ question.id }}_progress_badge', 'badge-success');
+	});
+	$('#{{ question.id }}_mark').click(function() {
+	   quiz_state[{{ question.id }}] = '-1';
+	   $('#{{ question.id }}_card_header').removeClass('bg-success').addClass('bg-warning');
+	   $('#{{ question.id }}_true').removeClass('btn-primary').addClass('btn-outline-primary');
+	   $('#{{ question.id }}_false').removeClass('btn-primary').addClass('btn-outline-primary');
+  	   progress('{{ question.id }}_progress_badge', 'badge-warning');
+	});
+
+
+	// change card colors based on quiz_state from the server
+	if (quiz_state[{{ question.id }}] === "") {
+		$('#{{ question.id }}_card_header').removeClass('bg-success');
+	} else if (quiz_state[{{ question.id }}] === 'T') {
+        $('#{{ question.id }}_card_header').addClass('bg-success');
+        $('#{{ question.id }}_true').removeClass('btn-outline-primary').addClass('btn-primary'); // change button color
+    } else if (quiz_state[{{ question.id }}] === "-1") {
+        $('#{{ question.id }}_card_header').removeClass('bg-success').addClass('bg-warning');
+	} else {
+		$('#{{ question.id }}_card_header').addClass('bg-success');
+		$('#{{ question.id }}_false').removeClass('btn-outline-primary').addClass('btn-primary'); // change button color
+	}
+</script>

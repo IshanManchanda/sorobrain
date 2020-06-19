@@ -1,0 +1,14 @@
+<div class="card my-4 p-2 shadow" id="{{ question.id }}_card">
+	<div class="card-header {% if eval == True %} bg-success {% elif eval == False %} bg-warning {% else %}{% endif %}" id="{{ question.id }}_card_header">
+		Question {{ forloop.counter }}: True or False Type
+	</div>
+	<div class="card-body">
+		<p class="card-text">{{ question.question|safe }}</p>
+		<hr>
+		<h5>You answered: {% if selected_answer == 'T' %} True {% elif selected_answer == 'F'%} False {% else %} Left Blank {% endif %}</h5>
+		<h5>Correct Answer: {% with ca=question.answer %}{% if ca == 'T' %}True{% else %}False{% endif %}{% endwith %}</h5>
+		<hr>
+		<h6>Explanation: </h6>
+		<p>{{ question.explanation|safe }}</p>
+	</div>
+</div>

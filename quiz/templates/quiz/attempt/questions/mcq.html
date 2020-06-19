@@ -1,0 +1,82 @@
+<div class="card my-4 p-2 shadow" id="{{ question.id }}_card">
+	<div class="card-header" id="{{ question.id }}_card_header">Question {{ forloop.counter }} <button id="{{ question.id }}_mark" class="btn btn-outline-primary btn-sm float-right">Mark for Later</button></div>
+	<div class="card-body">
+		<p class="card-text">{{ question.question|safe }}</p>
+		<hr>
+		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option1_list_item" style="padding: 0px">
+			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option1_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+			<label class="form-check-label mb-2 mt-2">
+				{{ question.option1 }}
+			</label>
+		</div>
+		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option2_list_item" style="padding: 0px">
+			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option2_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+			<label class="form-check-label mb-2 mt-2">
+				{{ question.option2 }}
+			</label>
+		</div>
+		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option3_list_item" style="padding: 0px">
+			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option3_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+			<label class="form-check-label mb-2 mt-2">
+				{{ question.option3 }}
+			</label>
+		</div>
+		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option4_list_item" style="padding: 0px">
+			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option4_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
+			<label class="form-check-label mb-2 mt-2">
+				{{ question.option4 }}
+			</label>
+		</div>
+	</div>
+</div>
+<script>
+	// save selection to quiz_state and change colors
+	$('#{{ question.id }}_option1_select').click(function() {
+	    quiz_state[{{ question.id }}] = "1";
+		for (let i=1; i <= 4; i++) {$('#{{ question.id }}_option' + i.toString() + '_select').removeClass('btn-primary').addClass('btn-outline-primary')}
+	    $('#{{ question.id }}_option1_select').removeClass('btn-outline-primary').addClass('btn-primary');
+		$('#{{ question.id }}_card_header').removeClass('bg-light').removeClass('bg-warning').addClass('bg-success'); // card header color
+		progress('{{ question.id }}_progress_badge', 'badge-success');
+	});
+	$('#{{ question.id }}_option2_select').click(function() {
+		quiz_state[{{ question.id }}] = "2";
+		for (let i=1; i <= 4; i++) {$('#{{ question.id }}_option' + i.toString() + '_select').removeClass('btn-primary').addClass('btn-outline-primary')}
+	    $('#{{ question.id }}_option2_select').removeClass('btn-outline-primary').addClass('btn-primary');
+		$('#{{ question.id }}_card_header').removeClass('bg-light').removeClass('bg-warning').addClass('bg-success'); // card header color
+		progress('{{ question.id }}_progress_badge', 'badge-success');
+	});
+	$('#{{ question.id }}_option3_select').click(function() {
+		quiz_state[{{ question.id }}] = "3";
+		for (let i=1; i <= 4; i++) {$('#{{ question.id }}_option' + i.toString() + '_select').removeClass('btn-primary').addClass('btn-outline-primary')}
+	    $('#{{ question.id }}_option3_select').removeClass('btn-outline-primary').addClass('btn-primary');
+		$('#{{ question.id }}_card_header').removeClass('bg-light').removeClass('bg-warning').addClass('bg-success'); // card header color
+		progress('{{ question.id }}_progress_badge', 'badge-success');
+	});
+	$('#{{ question.id }}_option4_select').click(function() {
+	    quiz_state[{{ question.id }}] = "4";
+		for (let i=1; i <= 4; i++) {$('#{{ question.id }}_option' + i.toString() + '_select').removeClass('btn-primary').addClass('btn-outline-primary')}
+	    $('#{{ question.id }}_option4_select').removeClass('btn-outline-primary').addClass('btn-primary');
+		$('#{{ question.id }}_card_header').removeClass('bg-light').removeClass('bg-warning').addClass('bg-success'); // card header color
+		progress('{{ question.id }}_progress_badge', 'badge-success');
+	});
+
+	$('#{{ question.id }}_mark').click(function() {
+	   quiz_state[{{ question.id }}] = '-1';
+	   $('#{{ question.id }}_card_header').removeClass('bg-success').addClass('bg-warning');
+  	   $('#{{ question.id }}_option1_select').removeClass('btn-primary').addClass('btn-outline-primary');
+  	   $('#{{ question.id }}_option2_select').removeClass('btn-primary').addClass('btn-outline-primary');
+  	   $('#{{ question.id }}_option3_select').removeClass('btn-primary').addClass('btn-outline-primary');
+  	   $('#{{ question.id }}_option4_select').removeClass('btn-primary').addClass('btn-outline-primary');
+	   progress('{{ question.id }}_progress_badge', 'badge-warning');
+	});
+	// select option based on response form server
+	if (quiz_state[{{ question.id }}] === "") {
+		$('#{{ question.id }}_card_header').removeClass('bg-success');
+	} else if (parseInt(quiz_state[{{ question.id }}]) >= 1 && parseInt(quiz_state[{{ question.id }}]) <= 4) {
+	    sel = quiz_state[{{ question.id }}];
+		$('#{{ question.id }}_option'+ sel + '_select').removeClass('btn-outline-primary').addClass('btn-primary');
+		$('#{{ question.id }}_card_header').removeClass('bg-light').addClass('bg-success'); // card header color
+	} else if (quiz_state[{{ question.id }}] === "-1") {
+        $('#{{ question.id }}_card_header').removeClass('bg-success').addClass('bg-warning');
+    }
+</script>

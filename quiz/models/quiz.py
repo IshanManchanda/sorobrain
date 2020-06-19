@@ -11,7 +11,7 @@ from django.utils.text import slugify
 from taggit.managers import TaggableManager
 
 from main.models import User
-from .utils import is_answer_valid
+from .utils import is_answer_valid, evaluate_mcq, evaluate_bool, evaluate_text
 from sorobrain.mixins.payment import PaidObjectMixin
 
 
@@ -41,7 +41,8 @@ class Quiz(PaidObjectMixin):
 		verbose_name_plural = 'Quizzes'
 
 	title = models.CharField(max_length=256, verbose_name='Quiz Title')
-	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True, unique_for_date=True)
+	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True,
+	                        unique_for_date=True)
 	description = RichTextUploadingField(config_name='minimal')
 	level = models.CharField(max_length=128, verbose_name='French Level',
 	                         choices=LEVEL_CHOICES)
@@ -60,11 +61,18 @@ class Quiz(PaidObjectMixin):
 	def questions(self):
 		return Question.objects.filter(quiz=self.id)
 
+	@property
+	def question_id_list(self):
+		return [question.id for question in self.questions]
+
 	def get_start_url(self):
 		return reverse('quiz:start', args=[self.slug])
 
-	def get_attempt_url(self):
-		return reverse('quiz:attempt', args=[self.slug])
+	def get_attempt_url(self, quiz_submission):
+		return reverse('quiz:attempt', args=[self.slug, quiz_submission.id])
+
+	def get_checked_url(self, quiz_submission):
+		return reverse('quiz:checked', args=[self.slug, quiz_submission.id])
 
 	def get_absolute_url(self):
 		return reverse('quiz:buy', args=[self.slug])
@@ -117,7 +125,8 @@ class Question(models.Model):
 	option2 = models.CharField(max_length=512, null=True, blank=True)
 	option3 = models.CharField(max_length=512, null=True, blank=True)
 	option4 = models.CharField(max_length=512, null=True, blank=True)
-	answer = models.CharField(max_length=32, verbose_name="Answer: any of the following: T, F, 1, 2, 3, 4 or some text")
+	answer = models.CharField(max_length=32,
+	                          verbose_name="Answer: any of the following: T, F, 1, 2, 3, 4 or some text")
 	created_on = models.DateTimeField(default=timezone.now)
 
 	@property
@@ -148,9 +157,11 @@ class Question(models.Model):
 
 	def clean(self):
 		if not self.is_answer_valid():
-			raise ValidationError(f'Answer must any of the following: T, F, 1, 2, 3, 4 or some text, not {self.answer}')
+			raise ValidationError(
+					f'Answer must any of the following: T, F, 1, 2, 3, 4 or some text, not {self.answer}')
 		if not self.is_options_valid():
-			raise ValidationError(f'Options must be set only for mcq type! not for {self.type} type')
+			raise ValidationError(
+					f'Options must be set only for mcq type! not for {self.type} type')
 
 	def save(self, *args, **kwargs):
 		super(Question, self).save(*args, **kwargs)
@@ -184,8 +195,10 @@ class QuizSubmission(models.Model):
 	                         on_delete=models.CASCADE)
 	# TODO: Add competition ID here
 
-	submission = JSONField(null=True)
+	submission = JSONField(null=True, default=dict)
 	score = models.FloatField(null=True)
+	correct_answers = models.IntegerField(null=True)
+	incorrect_answers = models.IntegerField(null=True)
 	start_time = models.DateTimeField()
 	submit_time = models.DateTimeField(null=True)
 	creation_time = models.DateTimeField(default=timezone.now)
@@ -199,6 +212,10 @@ class QuizSubmission(models.Model):
 		return self.submit_time - self.start_time
 
 	@property
+	def attempt_time_human(self):
+		return int((self.submit_time - self.start_time).seconds / 60)
+
+	@property
 	def took_too_long(self) -> bool:
 		return self.quiz.total_time > self.attempt_time
 
@@ -209,18 +226,56 @@ class QuizSubmission(models.Model):
 			if not is_answer_valid(answer, Question.objects.get(id=question)):
 				valid = False
 				raise ValidationError(
-					f"Answer format for {question}:{answer} is invalid")
+						f"Answer format for {question}:{answer} is invalid")
 		return valid
 
 	@property
 	def is_valid(self) -> bool:
 		return self.is_submission_valid and not self.took_too_long
 
-	# TODO: Finish this method for QuizSubmission
+	def get_result(self):
+		submission = [(Question.objects.get(id=q_id), sa) for q_id, sa in
+		              json.loads(self.submission).items()]
+		result = []
+		for question, selected_answer in submission:
+			if question.type == 'mcq':
+				result.append(
+						(question, selected_answer, evaluate_mcq(question,
+						                                         selected_answer)))
+			if question.type == 'bool':
+				result.append(
+						(question, selected_answer, evaluate_bool(question,
+						                                          selected_answer)))
+			if question.type == 'text':
+				result.append(
+						(question, selected_answer, evaluate_text(question,
+						                                          selected_answer)))
+
+		return result
+
 	def check_and_score(self):
 		"""
 		This method checks the QuizSubmission.submission against the
 		correct answer for each question. Depending on the result of
 		this is scores the test and saves the score to the database.
+		returns: result array of the form
+		result = [(question_id, right_or_wrong)]
 		"""
-		pass
+
+		result = self.get_result()
+
+		correct_answers_number = 0
+		incorrect_answers_number = 0
+
+		for question_id, selected_answer, evaluation in result:
+			if evaluation:
+				correct_answers_number += 1
+			else:
+				incorrect_answers_number += 1
+
+		self.correct_answers = correct_answers_number
+		self.incorrect_answers = incorrect_answers_number
+		self.score = correct_answers_number * ((self.quiz.total_time - self.attempt_time).seconds / 60)/10
+		self.save()
+
+		return result

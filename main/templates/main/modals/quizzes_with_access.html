@@ -1,0 +1,52 @@
+<div class="modal fade" id="bought_quizzes" tabindex="-1" role="dialog"
+	 aria-labelledby="bought_quizzes_title" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="bought_quizzes_title">Quiz
+					Attempts</h5>
+				<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body table-responsive">
+				<table class="table table-striped" id="bought_quizzes_table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Quiz</th>
+							<th scope="col">Level</th>
+{#							<th scope="col">Time</th>#}
+							<th scope="col">Date</th>
+						</tr>
+					</thead>
+					<tbody class="table-hover">
+						{% for quiz in bought_quizzes %}
+						<tr>
+							<th scope="row"><a href="{{ quiz.get_start_url }}"><button class="btn btn-outline-primary btn-sm"><i class="fas fa-external-link-alt"></i></button></a></th>
+							<td>{{ quiz.title }}</td>
+							<td>{{ quiz.level }}</td>
+{#							<td>{{ qs.attempt_time_human }} mins</td>#}
+							<td>{{ quiz.created_on|date:"d M, y" }}</td>
+						</tr>
+						{% empty %}
+							<p>You haven't bought any quizzes yet!</p>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(document).ready( function () {
+    $('#bought_quizzes_table').DataTable();
+} );
+</script>
+

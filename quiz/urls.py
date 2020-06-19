@@ -14,8 +14,8 @@ urlpatterns = [
 
 	# attempts
 	path('start/<str:slug>/', views.StartQuiz.as_view(), name='start'),
-	path('q/<str:slug>/', views.AttemptQuiz.as_view(), name='attempt'),
-	path('q/checked/<str:slug>/', views.CheckQuiz.as_view(), name='check'),
+	path('q/<str:quiz_slug>/<int:quiz_submission_id>/', views.AttemptQuiz.as_view(), name='attempt'),
+	path('q/checked/<str:quiz_slug>/<int:quiz_submission_id>/', views.CheckQuiz.as_view(), name='check'),
 
 	# require staff
 	path('question/<int:question_id>/', views.question, name='question')

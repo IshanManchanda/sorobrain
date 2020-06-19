@@ -1,0 +1,12 @@
+<div class="card my-4 p-2 shadow" id="{{ question.id }}_card">
+	<div class="card-header {% if eval == True %} bg-success {% elif eval == False %} bg-warning {% else %}{% endif %}" id="{{ question.id }}_card_header">Question {{ forloop.counter }} Text Input Type</div>
+	<div class="card-body">
+		<p class="card-text">{{ question.question|safe }}</p>
+		<hr>
+		<h5>You answered: {% if selected_answer == "" or selected_answer == "-1" %} Left Blank {% else %} {{ selected_answer }} {% endif %}</h5>
+		<h5>Correct Answer: {% with ca=question.answer %}{{ ca }}{% endwith %}</h5>
+		<hr>
+		<h5>Explanation: </h5>
+		<p>{{ question.explanation|safe }}</p>
+	</div>
+</div>

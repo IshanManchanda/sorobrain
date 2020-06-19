@@ -17,7 +17,7 @@
         <div class="container-fluid text-left">
             <div class="row text-center">
                 <div class="col-md-7 col-lg-5 offset-md-0 offset-lg-1 text-center text-sm-right">
-					<img class="img-thumbnail img-fluid d-inline-block align-items-lg-center" src="https://www.axoscape.com/wp-content/uploads/2020/01/workshopbilde_0.png">
+					<img class="img-thumbnail img-fluid d-inline-block align-items-lg-center" src="{% static 'quiz/img/quiz_buy.jpg' %}">
 					<div class="alert alert-success" role="alert"><span><strong>Description:</strong>&nbsp;<br></span><p>{{ quiz.description|safe }}&nbsp;</p></div>
 
 				</div>
@@ -160,6 +160,7 @@
 						productinfo: data.product_info,
 						surl: data.surl,
 						furl: data.furl,
+						udf1: data.udf1,
 						mode: 'dropout',
 					};
 					/* console.log(RequestData);

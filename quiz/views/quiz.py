@@ -1,8 +1,9 @@
+import json
 from datetime import timedelta
 
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.utils import timezone
@@ -29,38 +30,64 @@ class StartQuiz(LoginRequiredMixin, View):
 		quiz = get_object_or_404(Quiz, slug=slug)
 		# TODO: Check if quiz is part of a competition and perform appropriate validation.
 		# give the user an extra minute to account for any delay in starting
-		QuizSubmission.objects.create(
+		qs = QuizSubmission.objects.create(
 				user=request.user, quiz=quiz,
-				start_time=timezone.now() + timedelta(seconds=60))
+				start_time=timezone.now())
 
-		return quiz.get_attempt_url()
+		return redirect(quiz.get_attempt_url(qs))
 
 
 class AttemptQuiz(LoginRequiredMixin, View):
 	@staticmethod
-	def get(request, slug):
-		quiz = get_object_or_404(Quiz, slug=slug)
+	def get(request, quiz_slug, quiz_submission_id):
+		quiz = get_object_or_404(Quiz, slug=quiz_slug)
+		qs = get_object_or_404(QuizSubmission, id=quiz_submission_id)
 		if not has_access_to_quiz(request.user, quiz):
 			messages.add_message(request, messages.INFO,
 			                     'Please buy this quiz first, then try to attempt it!')
 			return redirect(quiz.get_absolute_url())
+		if qs.submit_time:
+			messages.add_message(request, messages.WARNING, 'This quiz has already been submitted, please start it again!')
+			return redirect(quiz.get_absolute_url())
 		return render(request, 'quiz/attempt/attempt.html', {
-			'quiz': quiz
+			'quiz'           : quiz,
+			'quiz_submission': qs
 		})
 
 	@staticmethod
-	def post(request, slug):
-		# TODO: save the current quiz submission
-		pass
+	def post(request, quiz_slug, quiz_submission_id):
+		qs = get_object_or_404(QuizSubmission, id=quiz_submission_id)
+		qs.submission = request.POST['quiz_state']
+		qs.save()
+
+		return HttpResponse(status=204)
 
 
 class CheckQuiz(View):
 	@staticmethod
-	def get(request, slug):
-		pass
+	def get(request, quiz_slug, quiz_submission_id):
+		quiz = get_object_or_404(Quiz, slug=quiz_slug)
+		qs = get_object_or_404(QuizSubmission, id=quiz_submission_id)
+
+		return render(request, 'quiz/attempt/checked.html', {
+			'quiz'  : quiz,
+			'result': qs.get_result(),
+			'qs': qs
+		})
 
 	@staticmethod
-	def post(request, slug):
+	def post(request, quiz_slug, quiz_submission_id):
 		# TODO: update quiz submission object with submit time
 		# TODO: check the quiz submission and return the score and analysis
-		pass
+		print(request.POST)
+
+		quiz = get_object_or_404(Quiz, slug=quiz_slug)
+		qs = get_object_or_404(QuizSubmission, id=quiz_submission_id)
+
+		qs.submit_time = timezone.now() - timedelta(seconds=2)
+		qs.submission = request.POST['quiz_state']
+		qs.save()
+
+		qs.check_and_score()
+
+		return HttpResponse(status=204)

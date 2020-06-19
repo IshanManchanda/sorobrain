@@ -4,9 +4,13 @@
 {% block title %} Start Quiz {{ quiz.title }} | Sorobrain {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container bg-inverse">
         <div class="row">
-			<div class="col-md-3 d-none d-sm-block"><img alt="question mark" src="http://www.pngall.com/wp-content/uploads/2/Question-Mark-PNG-File-Download-Free.png" class="img-responsive" style="width:inherit; margin-top:100px"></div>
+			<div class="col-md-3 d-none d-sm-block">
+				<img alt="question mark" src="http://www.pngall.com/wp-content/uploads/2/Question-Mark-PNG-File-Download-Free.png" class="img-responsive" style="width:inherit; margin-top:100px">
+				<img alt="question mark" src="http://www.pngall.com/wp-content/uploads/2/Question-Mark-PNG-File-Download-Free.png" class="img-responsive" style="width:inherit; margin-top:100px">
+				<img alt="question mark" src="http://www.pngall.com/wp-content/uploads/2/Question-Mark-PNG-File-Download-Free.png" class="img-responsive" style="width:inherit; margin-top:100px">
+			</div>
             <div class="col-md-6 col-sm-12 my-4  p-3 rounded shadow-lg" style="height: min-content; background: white">
                 <h2>Start Quiz: <br> {{ quiz.title }}</h2>
 				<hr>
@@ -15,7 +19,7 @@
 				<h5>Total Time: {{ quiz.total_time|naturaltime }} <small class="text-muted">hrs:min:sec</small></h5>
 				<hr>
 				<h5>Attempt Instructions:  </h5>
-				<img class="img-responsive img-thumbnail rounded" alt="quiz interface gif" src="https://via.placeholder.com/400x250" style="display:block;margin-left: auto;margin-right: auto;">
+				<img class="img-responsive img-thumbnail rounded" alt="quiz interface gif" src="{% static 'quiz/img/how_to_use_quiz.gif' %}" style="display:block;margin-left: auto;margin-right: auto;">
 				<br>
 				<p>After clicking the button below you will be redirected to the quiz attempt interface.
 					You will have to submit the quiz within the total time,
@@ -30,7 +34,11 @@
 					<input type="submit" value="Start Quiz" class="btn btn-outline-primary" style="width: 100%">
 				</form>
             </div>
-			<div class="col-md-3 d-none d-sm-block"><img alt="question mark" src="http://www.pngall.com/wp-content/uploads/2/Question-Mark-PNG-File-Download-Free.png" class="img-responsive" style="width:inherit; margin-top:100px"></div>
+			<div class="col-md-3 d-none d-sm-block">
+				<img alt="question mark" src="http://www.pngall.com/wp-content/uploads/2/Question-Mark-PNG-File-Download-Free.png" class="img-responsive" style="width:inherit; margin-top:100px">
+				<img alt="question mark" src="http://www.pngall.com/wp-content/uploads/2/Question-Mark-PNG-File-Download-Free.png" class="img-responsive" style="width:inherit; margin-top:100px">
+				<img alt="question mark" src="http://www.pngall.com/wp-content/uploads/2/Question-Mark-PNG-File-Download-Free.png" class="img-responsive" style="width:inherit; margin-top:100px">
+			</div>
         </div>
     </div>
 {% endblock%}

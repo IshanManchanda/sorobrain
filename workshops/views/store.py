@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
 
+from main.models.code import DiscountCode
 from workshops.models import Workshop, Code
 from .utils import has_access_to_workshop, get_workshop_amount, \
 	grant_access_to_workshop
@@ -30,11 +31,21 @@ class WorkshopStore(View):
 		if w.is_expired:
 			messages.add_message(request, messages.WARNING, "This workshop has expired")
 			return redirect(reverse('workshops:workshop_store', args=[slug]))
+		if request.POST['code'] != '':
+			try:
+				discount_code = DiscountCode.objects.get(
+						code=request.POST['code'])
+			except DiscountCode.DoesNotExist:
+				messages.add_message(request, messages.WARNING, 'That discount code is not valid')
+				return redirect(w.get_absolute_url())
+		else:
+			discount_code = ''
 		return w.pay(request, amount=get_workshop_amount(w),
 		             success_url=request.build_absolute_uri(
 			             reverse('workshop:payment_success',
 			                     args=[slug])),
-		             failure_url=reverse('payment_error'))
+		             failure_url=reverse('payment_error'),
+		             code=discount_code)
 
 
 class WorkshopSuccess(LoginRequiredMixin, View):

@@ -9,15 +9,19 @@ from django.urls import reverse
 
 from main.forms.edit_profile import EditProfileForm, UpdateNotification
 from main.views.utils import user_profile_setup_progress, has_book_access
+from quiz.models import QuizAccess, QuizSubmission
 from workshops.models import WorkshopAccess
 
 
 class Profile(LoginRequiredMixin, View):
-	def get(self, request):
+	@staticmethod
+	def get(request):
 		empty_fields = user_profile_setup_progress(request.user)
 		if empty_fields > 0:
 			messages.add_message(request, messages.INFO, f"Finish setting up your profile <a href={reverse('settings')}> here</a>. You have {empty_fields} fields to fill.")
 		return render(request, 'main/profile.html', {
+			'bought_quizzes': [qa.quiz for qa in QuizAccess.objects.filter(user=request.user)],
+			'quiz_submissions': QuizSubmission.objects.filter(user=request.user, score__isnull=False),
 			'access_workshops': WorkshopAccess.objects.filter(user=request.user),
 			'has_book_access': has_book_access(user=request.user)
 		})

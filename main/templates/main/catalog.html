@@ -109,26 +109,25 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="card-group">
+										{% for q in quizzes  %}
                                         <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
                                             <div class="card-body">
-                                                <h5 class="card-title">Coming Soon</h5>
-                                                <p class="card-text">We'll be releasing the Beta version of our online quizzes module very soon. Stay Tuned!</p><button class="btn btn-secondary" type="button">Attempt Quiz</button></div>
+                                                <h5 class="card-title">{{ q.title }}</h5>
+                                                <p class="card-text">{{ q.description|safe }}</p><a href="{{ q.get_absolute_url }}"><button class="btn btn-primary" type="button">Attempt Quiz</button></a></div>
                                         </div>
-                                        <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Coming Soon</h5>
-                                                <p class="card-text">We'll be releasing the Beta version of our online quizzes module very soon. Stay Tuned!</p><button class="btn btn-secondary" type="button">Attempt Quiz</button></div>
-                                        </div>
-                                        <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Coming Soon</h5>
-                                                <p class="card-text">We'll be releasing the Beta version of our online quizzes module very soon. Stay Tuned!</p><button class="btn btn-secondary" type="button">Attempt Quiz</button></div>
-                                        </div>
-										<div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Coming Soon</h5>
-                                                <p class="card-text">We'll be releasing the Beta version of our online quizzes module very soon. Stay Tuned!</p><button class="btn btn-secondary" type="button">Attempt Quiz</button></div>
-                                        </div>
+										{% empty %}
+											<div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
+												<div class="card-body">
+													<h5 class="card-title">Coming Soon</h5>
+													<p class="card-text">We'll be releasing the Beta version of our online quizzes module very soon. Stay Tuned!</p><button class="btn btn-secondary" type="button">Attempt Quiz</button></div>
+											</div>
+											<div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
+												<div class="card-body">
+													<h5 class="card-title">Coming Soon</h5>
+													<p class="card-text">We'll be releasing the Beta version of our online quizzes module very soon. Stay Tuned!</p><button class="btn btn-secondary" type="button">Attempt Quiz</button></div>
+											</div>
+										{% endfor %}
+
                                     </div>
 
                                 <nav>
@@ -170,16 +169,6 @@
                                             <p class="card-text">{{ w.description|truncatechars:200 }}</p><a href="{{ w.get_absolute_url }}"><button class="btn btn-primary" type="button">Register Now!</button></a></div>
                                     </div>
 									{% endfor %}
-                                    <div class="card"><img class="card-img-top w-100 d-block" alt="workshops thumbnail" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Coming Soon...</h4>
-                                            <p class="card-text">Please <a href="{% url 'contact' %}"> contact us</a> for more information regarding workshops. You will be able to access them through the website shortly! </p><button class="btn btn-secondary" type="button">Details</button></div>
-                                    </div>
-                                    <div class="card"><img class="card-img-top w-100 d-block" alt="workshops thumbnail" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Coming Soon...</h4>
-                                            <p class="card-text">Please <a href="{% url 'contact' %}"> contact us</a> for more information regarding workshops. You will be able to access them through the website shortly! </p><button class="btn btn-secondary" type="button">Details</button></div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

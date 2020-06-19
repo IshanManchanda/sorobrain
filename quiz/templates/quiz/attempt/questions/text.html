@@ -1,0 +1,38 @@
+<div class="card my-4 p-2 shadow" id="{{ question.id }}_card">
+	<div class="card-header" id="{{ question.id }}_card_header">Question {{ forloop.counter }} <button id="{{ question.id }}_mark" class="btn btn-outline-primary btn-sm float-right">Mark for Later</button></div>
+	<div class="card-body">
+		<p class="card-text">{{ question.question|safe }}</p>
+		<hr>
+		<div class="row">
+			<div class="col-9"><label for="{{ question.id }}_text" class="text-muted small">Enter your answer below. Watch out for spelling mistakes!</label><input type="text" id="{{ question.id }}_text" class="form-control"></div>
+			<div class="col-3"><button id="{{ question.id }}_save" class="btn btn-outline-primary mt-4" style="width: 100%"> <i class="fa fa-check-square" aria-hidden="true"></i> </button></div>
+		</div>
+	</div>
+</div>
+<script>
+	// save text to quiz_state and change colors
+	$('#{{ question.id }}_save').click( function() {
+	    quiz_state[{{ question.id }}] = $('#{{ question.id }}_text').val();
+		$('#{{ question.id }}_save').removeClass('btn-outline-primary').addClass('btn-primary'); // change button color
+		$('#{{ question.id }}_card_header').removeClass('bg-light').removeClass('bg-warning').addClass('bg-success'); // card header color
+		progress('{{ question.id }}_progress_badge', 'badge-success');
+	});
+	$('#{{ question.id }}_mark').click(function() {
+	   quiz_state[{{ question.id }}] = '-1';
+	   $('#{{ question.id }}_card_header').removeClass('bg-success').addClass('bg-warning');
+	   $('#{{ question.id }}_save').removeClass('btn-primary'); // change button color
+	   progress('{{ question.id }}_progress_badge', 'badge-warning');
+
+	});
+
+	// update after response from server
+	if (quiz_state[{{ question.id }}] === "") {
+		$('#{{ question.id }}_card_header').removeClass('bg-success');
+	} else if (quiz_state[{{ question.id }}] === "-1") {
+        $('#{{ question.id }}_card_header').removeClass('bg-success').addClass('bg-warning');
+	} else {
+	    $('#{{ question.id }}_text').val(quiz_state[{{ question.id }}]); // set text input to value from server
+		$('#{{ question.id }}_card_header').addClass('bg-success'); // change header color
+		$('#{{ question.id }}_save').removeClass('btn-outline-primary').addClass('btn-primary'); // change button color
+	}
+</script>
