@@ -1,0 +1,54 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block title %} Compete: {{ competition.title }} | Sorobrain {% endblock%}
+
+{% block content %}
+    <div class="container p-3 my-5 shadow-lg rounded">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Compete in</h1><h2>{{ competition.title }}</h2>
+				<div class="alert alert-success"><p>{{ competition.description|safe }}</p></div>
+				<hr>
+				<p>1. Complete the quizzes below in order to finish the competition. Take your time, you have until {{ competition.end_date }} to finish all of them. Please
+				<br>2.  Remember though, you have to finish all of them to be considered in the winning pool!
+				<br>3.  Also make sure that you finish each quiz on time to have a valid score. Check back after <b>{{ competition.end_date }}</b> to see the leader board.
+				</p>
+				<h4 class="text-success text-center">Good luck!</h4>
+				<hr>
+				<div class="row">
+					<div class="col-md-6">
+						<h4>Quizzes to be Completed: </h4>
+						{% if competition.is_started %}
+						<ul style="list-style-type: none">
+						{% for quiz in competition.quizzes.all %}
+							{% if quiz == active_quiz %}
+								<li><a href="{% url 'quiz:competition_start' competition_slug=competition.slug quiz_slug=quiz.slug %}" class="btn btn-primary">{{ quiz.title }}<i class="fas fa-external-link"></i></a></li>
+							{% else %}
+								<li><button class="btn btn-outline-secondary">{{ quiz.title }}</button></li>
+							{% endif %}
+						{% endfor %}
+						</ul>
+						{% else %}
+							<h6>This competition starts on {{ competition.start_date }}</h6>
+							<p>Check back then to be able to attempt the quizzes below. </p>
+							<ul style="list-style-type: none">
+							{% for quiz in competition.quizzes.all %}
+								{% if quiz == active_quiz %}
+									<li><a href="{% url 'quiz:competition_start' competition_slug=competition.slug quiz_slug=quiz.slug %}" class="btn btn-primary">{{ quiz.title }}<i class="fas fa-external-link"></i></a></li>
+								{% else %}
+									<li><button class="btn btn-outline-secondary">{{ quiz.title }}</button></li>
+								{% endif %}
+							{% endfor %}
+							</ul>
+						{% endif %}
+					</div>
+					<div class="col-md-6">
+						<img class="img-responsive img-thumbnail" src="{% static 'competition/img/compete-graphic.png' %}" alt="graphic">
+					</div>
+				</div>
+
+			</div>
+		</div>
+    </div>
+{% endblock %}

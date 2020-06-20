@@ -53,10 +53,12 @@
     <img class="card-img-top" src="{% static 'main/img/catalog/competitions-placeholder.png' %}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">My Competitions</h5>
-      <p class="card-text">Coming Soon! </p>
+      <p class="card-text">Below are all the competitions that you have resisted for, make sure to participate when it starts.  </p>
     </div>
   	<div class="card-footer">
-		<a href="{% url 'catalog' %}#competitions"><button class="btn btn-primary">Register</button></a>
+		<a href="{% url 'catalog' %}#competitions"><button class="btn btn-primary p-1">Get More</button></a>
+		<button class="btn btn-primary p-1" data-toggle="modal" data-target="#bought_competitions">View Registered Competitions</button>
+
 	</div>
   </div>
   <div class="card">
@@ -98,6 +100,8 @@
 	<!-- modals -->
 	{% include 'main/modals/quiz_submissions.html' %}
 	{% include 'main/modals/quizzes_with_access.html' %}
+	{% include 'main/modals/competitions_with_access.html' %}
+
 </div>
 {% endblock content %}
 

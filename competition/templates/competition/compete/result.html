@@ -1,0 +1,54 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block title %} Compete: {{ competition.title }} | Sorobrain {% endblock %}
+
+{% block content %}
+	<div class="container p-3 my-5 shadow-lg rounded">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Compete in</h1>
+				<h2>{{ competition.title }}</h2>
+				<div class="alert alert-success">
+					<p>{{ competition.description|safe }}</p></div>
+				<hr>
+				<p>Thank you all for participating in this competition! Please
+					check your scores below, and for the top three, we will be
+					reaching out to you soon!</p>
+				<h4 class="text-success text-center">Happy Quizzing</h4>
+				<hr>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<h4>Leader board: </h4>
+						<table class="table table-striped">
+							<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Username</th>
+								<th scope="col">Score</th>
+							</tr>
+							</thead>
+							<tbody>
+							{% for user, score in result.items %}
+								<tr>
+									<th scope="row">{{ forloop.counter }}</th>
+									<td>{{ user }}</td>
+									<td>{{ score|floatformat }}</td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<img class="img-responsive img-thumbnail"
+							 src="{% static 'competition/img/compete-graphic.png' %}"
+							 alt="graphic">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

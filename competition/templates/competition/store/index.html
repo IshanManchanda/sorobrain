@@ -1,0 +1,17 @@
+{% extends "global/base.html"%}
+
+{% block title %} All Competitions | Sorobrain {% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1> Competition App Index </h1>
+        <ul>
+			{% for competition in competitions %}
+            <li><a href="{{ competition.get_absolute_url }}">{{ competition.title }}</a></li>
+			{% endfor %}
+        </ul>
+    </div>
+{% endblock %}

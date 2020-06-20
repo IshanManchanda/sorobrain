@@ -193,6 +193,7 @@ INSTALLED_APPS = [
 
 	# Custom apps
 	'main.apps.MainConfig',
+	'competition.apps.CompetitionConfig',
 	'quiz.apps.QuizConfig',
 	'workshops.apps.WorkshopsConfig',
 ]

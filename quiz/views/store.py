@@ -33,7 +33,6 @@ class BuyQuiz(View):
 	@staticmethod
 	def post(request, slug):
 		quiz = get_object_or_404(Quiz, slug=slug)
-		print(request.POST)
 		if request.POST['code'] != '':
 			try:
 				discount_code = DiscountCode.objects.get(

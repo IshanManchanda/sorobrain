@@ -9,8 +9,43 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views import View
 
+from competition.models.competition import Competition
+from competition.views.utils import has_access_to_competition
 from quiz.models import Quiz, QuizSubmission
 from quiz.views.utils import has_access_to_quiz
+
+
+class StartCompetitionQuiz(LoginRequiredMixin, View):
+	@staticmethod
+	def get(request, competition_slug, quiz_slug):
+		quiz = get_object_or_404(Quiz, slug=quiz_slug)
+		competition = get_object_or_404(Competition, slug=competition_slug)
+		if competition.is_in_progress:
+			if has_access_to_competition(request.user, competition):
+				if quiz in competition.quizzes.all():
+					if competition.can_user_attempt_quiz(request.user, quiz):
+						return render(request, 'quiz/attempt/start_competition_quiz.html', {
+							'quiz': quiz, 'competition': competition})
+					else:
+						messages.add_message(request, messages.INFO, 'Please attempt the quizzes before this one to continue.')
+						return redirect(competition.get_compete_url())
+				else:
+					messages.add_message(request, messages.INFO, 'Invalid Request, please try again.')
+					return redirect(competition.get_absolute_url())
+			else:
+				messages.add_message(request, messages.INFO, 'Register for this compete first!')
+				return redirect(competition.get_absolute_url())
+		messages.add_message(request, messages.INFO, 'Competition is no longer in progress')
+		return redirect(competition.get_compete_url())
+
+	@staticmethod
+	def post(request, competition_slug, quiz_slug):
+		quiz = get_object_or_404(Quiz, slug=quiz_slug)
+		competition = get_object_or_404(Competition, slug=competition_slug)
+		qs = QuizSubmission.objects.create(
+				user=request.user, quiz=quiz, competition=competition,
+				start_time=timezone.now())
+		return redirect(quiz.get_attempt_url(qs))
 
 
 class StartQuiz(LoginRequiredMixin, View):
@@ -28,7 +63,6 @@ class StartQuiz(LoginRequiredMixin, View):
 	@staticmethod
 	def post(request, slug):
 		quiz = get_object_or_404(Quiz, slug=slug)
-		# TODO: Check if quiz is part of a competition and perform appropriate validation.
 		# give the user an extra minute to account for any delay in starting
 		qs = QuizSubmission.objects.create(
 				user=request.user, quiz=quiz,
@@ -42,6 +76,10 @@ class AttemptQuiz(LoginRequiredMixin, View):
 	def get(request, quiz_slug, quiz_submission_id):
 		quiz = get_object_or_404(Quiz, slug=quiz_slug)
 		qs = get_object_or_404(QuizSubmission, id=quiz_submission_id)
+		if qs.score is not None:
+			messages.add_message(request, messages.INFO,
+			                     'Please start over here')
+			return redirect(quiz.get_start_url())
 		if not has_access_to_quiz(request.user, quiz):
 			messages.add_message(request, messages.INFO,
 			                     'Please buy this quiz first, then try to attempt it!')

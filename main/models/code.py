@@ -25,7 +25,7 @@ class DiscountCode(models.Model):
 	expiry_date = models.DateTimeField()
 	content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE,
 	                                 limit_choices_to={
-		                                 "model__in": ("quiz", "workshop")})
+		                                 "model__in": ("quiz", "workshop", "competition")})
 	object_id = GfkLookupField('content_type')
 	content_object = GenericForeignKey('content_type', 'object_id')
 	created_on = models.DateTimeField(default=timezone.now)

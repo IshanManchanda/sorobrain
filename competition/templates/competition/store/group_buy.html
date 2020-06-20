@@ -1,0 +1,89 @@
+{% extends 'global/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block title %}
+	Register with Code | Sorobrain
+{% endblock%}
+{% block content %}
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 text-center py-5">
+				<div class="card shadow-lg p-2">
+					<div class="card-body">
+						<h5 class="card-title">Register a Group</h5>
+						<h6 class="card-subtitle mb-2 text-muted">Register for {{ competition.title }}</h6>
+						<p>Enter the number of people that you want to register, after the payment process you will get
+						one code for each person that you want to register. Distribute the codes to the people you want to
+							register. <b> Make sure that they create an account and register for this competition before {{ competition.start_date }}.</b>
+						</p>
+						<hr>
+						<b>You total cost will be: Rs.{{ competition.group_cost }} x number of people registered</b>
+						<br>
+						<label for="group_size"></label><input type="text" id="group_size" class="form-control mb-1" placeholder="Enter number of people you want to register">
+						<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+		<script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js"></script>
+	<script>
+		$('#buy').click(function () {
+
+		console.log('Works?');
+
+		{% if user.is_authenticated %}
+
+
+			$.ajax({
+				type: 'POST',
+				url: '{% url 'competition:group_buy' slug=competition.slug %}',
+				data: {
+					'group_size': $('#group_size').val(),
+					'csrfmiddlewaretoken': '{{ csrf_token }}'
+				},
+				success: function (data, status) {
+					let RequestData = {
+						key: data.merchant_key,
+						txnid: data.txn_id,
+						hash: data.hash,
+						amount: parseFloat(data.amount),
+						firstname: data.first_name,
+						email: data.email_id,
+						phone: data.phone_number,
+						productinfo: data.product_info,
+						surl: data.surl,
+						furl: data.furl,
+						udf1: data.udf1,
+						udf2: data.udf2,
+						mode: 'dropout',
+					};
+					/* console.log(RequestData);
+					console.log(typeof RequestData.amount); */
+
+					let Handler = {
+						responseHandler: function (BOLT) {
+							console.log(BOLT.response.txnStatus);
+						},
+						catchException: function (BOLT) {
+							alert(BOLT.message);
+						},
+					};
+
+					bolt.launch(RequestData, Handler);
+				},
+				dataType: 'json',
+			});
+
+		{% else %}
+
+			location.href = "{% url 'account_login' %}";
+
+		{% endif %}
+
+		});
+	</script>
+
+{% endblock%}

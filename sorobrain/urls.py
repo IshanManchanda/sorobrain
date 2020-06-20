@@ -38,6 +38,7 @@ urlpatterns = [
 	path('admin/', admin.site.urls),
 	re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 	path('accounts/', include('allauth.urls')),
+	path('competition/', include('competition.urls', namespace='competition')),
 	path('quiz/', include('quiz.urls', namespace='quiz')),
 	path('workshop/', include('workshops.urls', namespace='workshop')),
 	path('error/payment/', csrf_exempt(TemplateView.as_view(template_name='global/errors/payment.html')), name='payment_error'),

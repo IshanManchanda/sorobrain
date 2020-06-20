@@ -117,41 +117,39 @@
 					  <small class="d-block mb-3 text-muted"><a href="{% url 'admin:index' %}"> Administrators </a></small>
 					</div>
 					<div class="col-6 col-md">
-					  <h5>Features</h5>
+					  <h5>Site Links</h5>
 					  <ul class="list-unstyled text-small">
-						<li><a class="text-muted" href="#">Cool stuff</a></li>
-						<li><a class="text-muted" href="#">Random feature</a></li>
-						<li><a class="text-muted" href="#">Team feature</a></li>
-						<li><a class="text-muted" href="#">Stuff for developers</a></li>
-						<li><a class="text-muted" href="#">Another one</a></li>
-						<li><a class="text-muted" href="#">Last time</a></li>
+						<li><a href="{% url 'catalog' %}">Catalog</a></li>
+						<li><a href="{% url 'contact' %}">Contact Us</a></li>
+						<li><a href="{% url 'book' %}">Get the Handbook</a></li>
+						<li><a href="https://sorobrain-docs.readthedocs.io/en/latest/" target="_blank">Stuff for developers</a></li>
+						<li><a href="{% url 'django.contrib.sitemaps.views.sitemap' %}">Sitemap</a></li>
 					  </ul>
 					</div>
 					<div class="col-6 col-md">
-					  <h5>Resources</h5>
+					  <h5>Quizzes and Competitions</h5>
 					  <ul class="list-unstyled text-small">
-						<li><a class="text-muted" href="#">Resource</a></li>
-						<li><a class="text-muted" href="#">Resource name</a></li>
-						<li><a class="text-muted" href="#">Another resource</a></li>
-						<li><a class="text-muted" href="#">Final resource</a></li>
+						<li><a href="{% url 'quiz:index' %}">Quiz Index</a></li>
+						<li><a href="{% url 'catalog' %}#quizzes">Get a Quiz</a></li>
+						<li><a href="">Competition Index</a></li>
+						<li><a href="">How it works</a></li>
 					  </ul>
 					</div>
 					<div class="col-6 col-md">
-					  <h5>Resources</h5>
+					  <h5>Workshops</h5>
 					  <ul class="list-unstyled text-small">
-						<li><a class="text-muted" href="#">Business</a></li>
-						<li><a class="text-muted" href="#">Education</a></li>
-						<li><a class="text-muted" href="#">Government</a></li>
-						<li><a class="text-muted" href="#">Gaming</a></li>
+						<li><a href="{% url 'workshop:index' %}">Index</a></li>
+						<li><a href="{% url 'catalog' %}#workshops">Register Now</a></li>
+						<li><a href="{% url 'profile' %}#workshops">My Workshops</a></li>
 					  </ul>
 					</div>
 					<div class="col-6 col-md">
-					  <h5>About</h5>
+					  <h5>Info</h5>
 					  <ul class="list-unstyled text-small">
-						<li><a class="text-muted" href="#">Team</a></li>
-						<li><a class="text-muted" href="#">Locations</a></li>
-						<li><a class="text-muted" href="#">Privacy</a></li>
-						<li><a class="text-muted" href="#">Terms</a></li>
+						<li><a href="{% url 'contact' %}">Team</a></li>
+						<li><a href="#">Refunds</a></li>
+						<li><a href="#">Privacy</a></li>
+						<li><a href="#">Terms</a></li>
 					  </ul>
 					</div>
 				  </div>

@@ -66,7 +66,15 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="card-group">
+                                <div class="card-columns">
+                                   	{% for competition in competitions %}
+                                    <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail" src="{% static 'main/img/catalog/competitions-placeholder.png' %}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ competition.title }}</h5>
+                                            <p class="card-text">{{ competition.description|truncatechars_html:300|safe }}...</p>
+											<a href="{{ competition.get_absolute_url }}"><button class="btn btn-primary" type="button">Register Now</button></a></div>
+                                    </div>
+									{% empty %}
                                     <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail" src="{% static 'main/img/catalog/competitions-placeholder.png' %}">
                                         <div class="card-body">
                                             <h5 class="card-title">Coming Soon</h5>
@@ -82,6 +90,7 @@
                                             <h5 class="card-title">Coming Soon</h5>
                                             <p class="card-text">We're working hard to get competitions working as soon as possible!</p><button class="btn btn-secondary" type="button">View More</button></div>
                                     </div>
+									{% endfor %}
                                 </div>
 
                                 <nav>
@@ -108,12 +117,12 @@
                             class="lead" style="margin-bottom: 1px;"><strong><em>You've never learned French like this before, and we can't wait for you to get started.</em></strong><br><br></p>
                             <div class="row">
                                 <div class="col">
-                                    <div class="card-group">
+                                    <div class="card-columns">
 										{% for q in quizzes  %}
                                         <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ q.title }}</h5>
-                                                <p class="card-text">{{ q.description|safe }}</p><a href="{{ q.get_absolute_url }}"><button class="btn btn-primary" type="button">Attempt Quiz</button></a></div>
+                                                <p class="card-text">{{ q.description|truncatechars_html:300|safe }}...</p><a href="{{ q.get_absolute_url }}"><button class="btn btn-primary" type="button">Attempt Quiz</button></a></div>
                                         </div>
 										{% empty %}
 											<div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">

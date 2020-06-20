@@ -29,7 +29,7 @@ class PaidObjectMixin(models.Model):
 			return int(self.cost * (1 - self.discount / 100))
 		return self.cost
 
-	def pay(self, request, amount, success_url, failure_url, code=''):
+	def pay(self, request, amount, success_url, failure_url, code='', udf2=''):
 		"""
 		This function takes a payment object and returns the JSON response
 		required by the BOLT-PayU payment protocol.
@@ -39,6 +39,7 @@ class PaidObjectMixin(models.Model):
 		:param success_url: absolute url of view to redirect to on payment success
 		:param failure_url: absolute url of view to redirect to on payment success
 		:param code: discount code for this payment
+		:param udf2: anything you want to pass to the success view
 
 		:return: json response for BOLT
 		"""
@@ -67,12 +68,13 @@ class PaidObjectMixin(models.Model):
 			'email_id'    : request.user.email,
 			'phone_number': str(request.user.phone),
 			'udf1'        : code.code if code != '' else '',
+			'udf2'        : udf2,
 			'surl'        : success_url,
 			'furl'        : failure_url
 		}
 
-		# key|txnid|amount|productinfo|firstname|email|udf1||||||||||salt;
-		s = f"{data['merchant_key']}|{data['txn_id']}|{data['amount']}|{data['product_info']}|{data['first_name']}|{data['email_id']}|{data['udf1']}||||||||||{os.environ.get('PAYU_MERCHANT_SALT')}"
+		# key|txnid|amount|productinfo|firstname|email|udf1|udf2|||||||||salt;
+		s = f"{data['merchant_key']}|{data['txn_id']}|{data['amount']}|{data['product_info']}|{data['first_name']}|{data['email_id']}|{data['udf1']}|{data['udf2']}|||||||||{os.environ.get('PAYU_MERCHANT_SALT')}"
 
 		data['hash'] = str(hashlib.sha512(s.encode('utf-8')).hexdigest())
 		# REVIEW: add some kind of logging here.
@@ -89,8 +91,8 @@ class PaidObjectMixin(models.Model):
 		:return: Returns a redirect if invalid hash, and a true if valid
 		"""
 
-		# salt|status||||||||||udf1|email|firstname|productinfo|amount|txnid|key
-		s = f"{os.environ.get('PAYU_MERCHANT_SALT')}|{request.POST['status']}||||||||||{request.POST['udf1']}|{request.POST['email']}|{request.POST['firstname']}|{request.POST['productinfo']}|{request.POST['amount']}|{request.POST['txnid']}|{request.POST['key']}"
+		# salt|status|||||||||udf2|udf1|email|firstname|productinfo|amount|txnid|key
+		s = f"{os.environ.get('PAYU_MERCHANT_SALT')}|{request.POST['status']}|||||||||{request.POST['udf2']}|{request.POST['udf1']}|{request.POST['email']}|{request.POST['firstname']}|{request.POST['productinfo']}|{request.POST['amount']}|{request.POST['txnid']}|{request.POST['key']}"
 		hash_text = s
 
 		if request.POST['hash'] != str(

@@ -189,12 +189,14 @@ class QuizSubmission(models.Model):
 	class Meta:
 		verbose_name = 'Quiz Submission'
 		verbose_name_plural = 'Quiz Submissions'
+		unique_together = ('user', 'quiz', 'competition')
 
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	quiz = models.ForeignKey(Quiz, related_name='quiz_submission_quiz',
 	                         on_delete=models.CASCADE)
-	# TODO: Add competition ID here
-
+	competition = models.ForeignKey('competition.Competition',
+	                                on_delete=models.CASCADE,
+	                                null=True)
 	submission = JSONField(null=True, default=dict)
 	score = models.FloatField(null=True)
 	correct_answers = models.IntegerField(null=True)
@@ -268,14 +270,20 @@ class QuizSubmission(models.Model):
 		incorrect_answers_number = 0
 
 		for question_id, selected_answer, evaluation in result:
-			if evaluation:
+			if evaluation == True:
 				correct_answers_number += 1
+			elif evaluation == -1:
+				incorrect_answers_number += 1
 			else:
 				incorrect_answers_number += 1
 
 		self.correct_answers = correct_answers_number
 		self.incorrect_answers = incorrect_answers_number
-		self.score = correct_answers_number * ((self.quiz.total_time - self.attempt_time).seconds / 60)/10
+		if self.attempt_time > self.quiz.total_time:
+			remaining_time = 0
+		else:
+			remaining_time = self.quiz.total_time - self.attempt_time
+		self.score = correct_answers_number * ((remaining_time.seconds / 60) / 10)
 		self.save()
 
 		return result

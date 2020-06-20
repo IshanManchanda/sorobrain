@@ -1,0 +1,90 @@
+{% extends 'global/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block title %}
+	Group Codes | Sorobrain
+{% endblock%}
+{% block content %}
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 text-center py-5">
+				<div class="card shadow-lg p-2">
+					<div class="card-body">
+						<h5 class="card-title">Your Codes for your Competition Registration</h5>
+						<h6 class="card-subtitle mb-2 text-muted">Codes for {{ competition.title }}</h6>
+						<p> Distribute the codes to the people you want toregister. <b> Make sure that they create an account and register for this competition before {{ competition.start_date }}.</b>
+						</p>
+						<hr>
+						<b class="text-danger">Copy paste these codes somewhere safe. You will not be able to access them again!</b>
+						<br>
+						<ul style="list-style-type: none">
+							{% for code in codes %}
+								<li><b>{{ code }}</b></li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+		<script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js"></script>
+	<script>
+		$('#buy').click(function () {
+
+		console.log('Works?');
+
+		{% if user.is_authenticated %}
+
+
+			$.ajax({
+				type: 'POST',
+				url: '{% url 'competition:group_buy' slug=competition.slug %}',
+				data: {
+					'group_size': $('#group_size').val(),
+					'csrfmiddlewaretoken': '{{ csrf_token }}'
+				},
+				success: function (data, status) {
+					let RequestData = {
+						key: data.merchant_key,
+						txnid: data.txn_id,
+						hash: data.hash,
+						amount: parseFloat(data.amount),
+						firstname: data.first_name,
+						email: data.email_id,
+						phone: data.phone_number,
+						productinfo: data.product_info,
+						surl: data.surl,
+						furl: data.furl,
+						udf1: data.udf1,
+						udf2: data.udf2,
+						mode: 'dropout',
+					};
+					/* console.log(RequestData);
+					console.log(typeof RequestData.amount); */
+
+					let Handler = {
+						responseHandler: function (BOLT) {
+							console.log(BOLT.response.txnStatus);
+						},
+						catchException: function (BOLT) {
+							alert(BOLT.message);
+						},
+					};
+
+					bolt.launch(RequestData, Handler);
+				},
+				dataType: 'json',
+			});
+
+		{% else %}
+
+			location.href = "{% url 'account_login' %}";
+
+		{% endif %}
+
+		});
+	</script>
+
+{% endblock%}

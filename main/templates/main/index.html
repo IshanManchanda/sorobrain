@@ -43,12 +43,13 @@
 					<form>
 						<div class="form-row">
 							<div class="col-12 col-md-3 col-lg-8 offset-lg-2">
-								<a href="{% url 'account_signup' %}">
+								<a href="{% url 'account_signup' %}" class="stretched-link">
 									<button class="btn btn-primary btn-block btn-lg text-center"
 											data-aos="zoom-in">
 										{% if user.is_authenticated %} Hi,
 											{{ user.name }} {% else %} Sign
-											up! {% endif %}</button>
+											up! {% endif %}
+									</button>
 								</a></div>
 						</div>
 					</form>

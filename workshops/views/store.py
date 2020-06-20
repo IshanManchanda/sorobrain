@@ -40,7 +40,7 @@ class WorkshopStore(View):
 				return redirect(w.get_absolute_url())
 		else:
 			discount_code = ''
-		return w.pay(request, amount=get_workshop_amount(w),
+		return w.pay(request, amount=w.sub_total,
 		             success_url=request.build_absolute_uri(
 			             reverse('workshop:payment_success',
 			                     args=[slug])),
