@@ -8,7 +8,7 @@ from workshops.models import Workshop
 
 def catalog(request):
 	return render(request, 'main/catalog.html', {
-		'competitions': Competition.objects.filter(active=True, end_date__lt=timezone.now()),
+		'competitions': Competition.objects.filter(active=True),
 		'workshops': Workshop.objects.filter(active=True),
 		'quizzes': Quiz.objects.filter(active=True),
 	})
