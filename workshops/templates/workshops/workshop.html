@@ -1,5 +1,5 @@
 {% extends 'global/base.html' %}
-{% load static %}
+{% load static tz l10n  %}
 
 {% block css %}
 	<link rel="stylesheet" href="{% static 'common/css/store/product_page/bootstrap.min.css' %}">
@@ -27,12 +27,12 @@
                     <p style="color: #282821;font-size: 22px;"><em>Best-in-class French Learning workshops! Handbook included!&nbsp;</em><br></p>
                     <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
 					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if workshop.discount %}Discount: {{ workshop.discount }}% <br> Rs.{{ workshop.sub_total }}; <i class="text-muted small">Original Cost: <strike>Rs. {{ workshop.cost }}</strike></i>{% else %}Price: Rs. {{ workshop.cost }}{% endif %}<br><small class="small text-muted">Inclusive of taxes</small><br><br></strong>
-					<strong style="font-size: 18px;margin-bottom: 3px;">Date: {{ workshop.date }}<br><br></strong>
+					<strong style="font-size: 18px;margin-bottom: 3px;">Date: {{ workshop.date }} <small class="small text-muted">(Indian Standard Time)</small><br><br></strong>
 					<div class="alert alert-success" role="alert">
 						<span><strong>Sessions: </strong>&nbsp;<br></span>
 						<ul style="list-style-type: none">
 							{% for session in workshop.sessions.all %}
-								<li>Session {{ forloop.counter }}: {{ session.title }} is on {{ session.date }}</li>
+								<li>Session {{ forloop.counter }}: {{ session.title }} is on {{ session.date }} <small class="small text-muted">(Indian Standard Time)</small></li>
 							{% endfor %}
 						</ul>
 					</div>
@@ -59,10 +59,17 @@
                     <h3 class="name">Interactive Sessions</h3>
                     <p class="description">This workshop contains multiple sessions on various topics. Each session will be conducted online and will be an interactive experience that will enrich your learning experience. You will be given assignments, lectures, and other content. </p>
                 </div>
+				{% if workshop.include_book %}
                 <div class="col-sm-6 col-lg-4 offset-lg-0 item"><i class="fas fa-trademark icon"></i>
                     <h3 class="name">Included Book</h3>
                     <p class="description">Le Bleu ou La Rose is an effort to make the most daunting task of learning genders of nouns in French a bit easier for the learners. It’s very important to know if a word is masculine or feminine because this affects the form of other words used with it such as an adjective, an article or a pronoun. It will not only be fun reading this book but one would also gain an easy way out to remember the genders of a noun through various keywords, mnemonics, limericks & anecdotes.<br><br></p>
                 </div>
+				{% else %}
+				<div class="col-sm-6 col-lg-4 offset-lg-0 item"><i class="fas fa-trademark icon"></i>
+                    <h3 class="name">Learning Experience</h3>
+                    <p class="description">Learn French in a collaborative, interactive environment. Sorobrain's online sessions include various teaching methods, from lectures to activities, and periodic quizzes. After registering you will be able to attend all the included sessions mentioned above.<br><br></p>
+                </div>
+				{% endif %}
                 <div class="col-sm-6 col-lg-5 offset-lg-0 item" style="width: 442px;"><i class="fas fa-laptop icon"></i><img class="img-fluid float-left rounded" src="{% static 'workshops/img/workshop-what-do-i-get.gif' %}" style="width: 398px;padding-top: 2px;"></div>
             </div>
         </div>
