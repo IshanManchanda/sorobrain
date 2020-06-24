@@ -24,7 +24,7 @@
 				</div>
                 <div class="col-md-5 col-lg-5 shadow-sm">
                     <h3 style="font-family: Adamina, serif;margin-top: 13px;">{{ workshop.title }}&nbsp;</h3>
-                    <p style="color: #282821;font-size: 22px;"><em>Best-in-class French Learning workshops! Handbook included!&nbsp;</em><br></p>
+                    <p style="color: #282821;font-size: 22px;"><em>Best-in-class French Learning workshops!&nbsp;</em><br></p>
                     <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
 					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if workshop.discount %}Discount: {{ workshop.discount }}% <br> Rs.{{ workshop.sub_total }}; <i class="text-muted small">Original Cost: <strike>Rs. {{ workshop.cost }}</strike></i>{% else %}Price: Rs. {{ workshop.cost }}{% endif %}<br><small class="small text-muted">Inclusive of taxes</small><br><br></strong>
 					<strong style="font-size: 18px;margin-bottom: 3px;">Date: {{ workshop.date }} <small class="small text-muted">(Indian Standard Time)</small><br><br></strong>
