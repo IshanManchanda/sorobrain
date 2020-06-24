@@ -35,6 +35,7 @@
 					<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register</button>
 					<a href="{% url 'competition:code' slug=competition.slug %}"><button class="btn btn-outline-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i class="fas fa-barcode"></i>&nbsp;Register With Code</button></a>
 					<a href="{% url 'competition:group_buy' slug=competition.slug %}"><button class="btn btn-outline-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i class="fas fa-users"></i>&nbsp;Register for Schools/Groups</button></a>
+					<p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to register!</p>
 					{% elif competition.is_over %}
 					<p>This competition has ended, view the result below: </p>
 					<a href="{% url 'competition:result' slug=competition.slug %}"><button class="btn btn-primary">View Results</button></a>
