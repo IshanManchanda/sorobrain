@@ -19,5 +19,4 @@ class PictureWidget(ClearableFileInput):
 class OptionsInputWidget(Input):
 	def render(self, name, value, attrs=None, renderer=None):
 		super_html = super().render(name, value, attrs, renderer)
-		print(name, value)
 		return mark_safe(f'{super_html}{super_html}{super_html}{super_html}')

@@ -20,7 +20,6 @@ class Compete(LoginRequiredMixin, View):
 				return redirect(reverse('competition:result', args=[competition.slug]))
 		if not competition.has_user_finished(request.user) and competition.is_started:
 			progress = competition.user_progress(request.user)
-			print(progress)
 			active_quiz = list(competition.quizzes.all())[progress.index(0)]
 		else:
 			active_quiz = -1

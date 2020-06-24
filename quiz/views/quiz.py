@@ -118,10 +118,6 @@ class CheckQuiz(View):
 
 	@staticmethod
 	def post(request, quiz_slug, quiz_submission_id):
-		# TODO: update quiz submission object with submit time
-		# TODO: check the quiz submission and return the score and analysis
-		print(request.POST)
-
 		quiz = get_object_or_404(Quiz, slug=quiz_slug)
 		qs = get_object_or_404(QuizSubmission, id=quiz_submission_id)
 
