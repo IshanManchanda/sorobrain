@@ -56,21 +56,11 @@
                 <h2 class="text-center" style="padding-top: 1px;margin-bottom: 8px;">What do I get?</h2>
             </div>
             <div class="row features">
-                <div class="col-sm-6 col-lg-3 item"><i class="fa fa-map-marker icon"></i>
-                    <h3 class="name">Interactive Sessions</h3>
-                    <p class="description">This workshop contains multiple sessions on various topics. Each session will be conducted online and will be an interactive experience that will enrich your learning experience. You will be given assignments, lectures, and other content. </p>
+                <div class="col-sm-12 col-lg-7 item"><i class="fa fa-map-marker icon"></i>
+                    <h3 class="name">Overview</h3>
+                    <p class="description">The workshops will provide students with an opportunity to strengthen their skills beyond textbooks and school curriculum. The specialized, information-intensive session(s) will aim not only to acquaint students with new knowledge but also with tips and tricks to retain it. The workshops will include quizzes, puzzles, and other activities to engage the students and enhance their learning process. </p>
                 </div>
-				{% if workshop.include_book %}
-                <div class="col-sm-6 col-lg-4 offset-lg-0 item"><i class="fas fa-trademark icon"></i>
-                    <h3 class="name">Included Book</h3>
-                    <p class="description">Le Bleu ou La Rose is an effort to make the most daunting task of learning genders of nouns in French a bit easier for the learners. It’s very important to know if a word is masculine or feminine because this affects the form of other words used with it such as an adjective, an article or a pronoun. It will not only be fun reading this book but one would also gain an easy way out to remember the genders of a noun through various keywords, mnemonics, limericks & anecdotes.<br><br></p>
-                </div>
-				{% else %}
-				<div class="col-sm-6 col-lg-4 offset-lg-0 item"><i class="fas fa-trademark icon"></i>
-                    <h3 class="name">Learning Experience</h3>
-                    <p class="description">Learn French in a collaborative, interactive environment. Sorobrain's online sessions include various teaching methods, from lectures to activities, and periodic quizzes. After registering you will be able to attend all the included sessions mentioned above.<br><br></p>
-                </div>
-				{% endif %}
+
                 <div class="col-sm-6 col-lg-5 offset-lg-0 item" style="width: 442px;"><i class="fas fa-laptop icon"></i><img class="img-fluid float-left rounded" src="{% static 'workshops/img/workshop-what-do-i-get.gif' %}" style="width: 398px;padding-top: 2px;"></div>
             </div>
         </div>
