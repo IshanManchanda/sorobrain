@@ -236,7 +236,7 @@ class QuizSubmission(models.Model):
 		return self.is_submission_valid and not self.took_too_long
 
 	def get_result(self):
-		submission = [(Question.objects.get(id=q_id), sa) for q_id, sa in
+		submission = [(Question.objects.get(id=int(q_id)), sa) for q_id, sa in
 		              json.loads(self.submission).items()]
 		result = []
 		for question, selected_answer in submission:

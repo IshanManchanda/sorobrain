@@ -13,8 +13,10 @@
 		// construct quiz state if it is already empty
 		if (isEmpty(quiz_state)) {
             let question_ids = JSON.parse($('#question_id_list').html());
-			for (let i=1; i<=question_ids.length; i++) {quiz_state[i] = ""}
+			for (let i=1; i<question_ids.length; i++) {quiz_state[question_ids[i]] = ""}
         }
+
+		console.log(quiz_state);
 
 		// define progress function
 		function progress(progress_id, class_add) {

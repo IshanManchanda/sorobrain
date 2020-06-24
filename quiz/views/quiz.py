@@ -76,6 +76,8 @@ class AttemptQuiz(LoginRequiredMixin, View):
 	def get(request, quiz_slug, quiz_submission_id):
 		quiz = get_object_or_404(Quiz, slug=quiz_slug)
 		qs = get_object_or_404(QuizSubmission, id=quiz_submission_id)
+
+		# validation
 		if qs.score is not None:
 			messages.add_message(request, messages.INFO,
 			                     'Please start over here')
@@ -87,6 +89,7 @@ class AttemptQuiz(LoginRequiredMixin, View):
 		if qs.submit_time:
 			messages.add_message(request, messages.WARNING, 'This quiz has already been submitted, please start it again!')
 			return redirect(quiz.get_absolute_url())
+
 		return render(request, 'quiz/attempt/attempt.html', {
 			'quiz'           : quiz,
 			'quiz_submission': qs
