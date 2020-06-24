@@ -30,9 +30,14 @@
 					<hr>
 					<p> This Quiz was added on {{ quiz.created_on }}
 					<br> and it is aimed at learners of the <i>{{ quiz.level }}</i> level.</p>
-					<label for="code"></label><input type="text" id="code" class="form-control mb-1" placeholder="Enter discount code, if you have one...">
-					<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register</button>
-					<p class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br><i class="fab fa-facebook"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>&nbsp;&nbsp;<i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<i class="fas fa-envelope"></i></p>
+					{% if quiz.cost > 0 %}
+						<label for="code"></label><input type="text" id="code" class="form-control mb-1" placeholder="Enter discount code, if you have one...">
+						<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register Individually</button>
+						<a href="{% url 'quiz:code' slug=quiz.slug %}"><button class="btn btn-outline-primary w-100" type="button"><i class="fas fa-barcode"></i> Register With Code</button></a>
+					{% else %}
+						<button class="btn btn-primary w-100" type="button">Start Quiz</button>
+					{% endif %}
+ 					<p class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br><i class="fab fa-facebook"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>&nbsp;&nbsp;<i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<i class="fas fa-envelope"></i></p>
                 </div>
             </div>
         </div>

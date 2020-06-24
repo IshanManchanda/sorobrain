@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.postgres.fields import JSONField
 
 from quiz.forms.question import QuestionForm
-from quiz.models import Quiz, QuizAccess
+from quiz.models import Quiz, QuizAccess, QuizCode
 from quiz.models.quiz import Question, QuizSubmission
 from sorobrain.utils.widgets import OptionsInputWidget
 
@@ -96,3 +96,11 @@ admin.site.register(QuizAccess, QuizAccessAdmin)
 
 
 admin.site.register(QuizSubmission)
+
+
+class QuizCodeAdmin(admin.ModelAdmin):
+	list_display = ('code', 'uses', 'quiz', 'created_on')
+	readonly_fields = ('code', 'created_on')
+
+
+admin.site.register(QuizCode, QuizCodeAdmin)

@@ -92,6 +92,7 @@ class RegisterWithCode(LoginRequiredMixin, View):
 			if code.is_valid(w):
 				grant_access_to_workshop(request.user, w)
 				code.uses += -1
+				code.save()
 			else:
 				messages.add_message(request, messages.WARNING, "Error 12: That code is invalid")
 				return redirect(reverse('workshops:register_with_code', args=[slug]))

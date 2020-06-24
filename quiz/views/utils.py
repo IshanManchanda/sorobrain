@@ -15,8 +15,11 @@ def grant_access_to_quiz(user: User, quiz: Quiz) -> bool:
 def has_access_to_quiz(user: User, quiz: Quiz) -> bool:
 	if not user.is_authenticated:
 		return False
-	try:
-		QuizAccess.objects.get(user=user, quiz=quiz)
+	if quiz.cost > 0:
+		try:
+			QuizAccess.objects.get(user=user, quiz=quiz)
+			return True
+		except QuizAccess.DoesNotExist:
+			return False
+	else:
 		return True
-	except QuizAccess.DoesNotExist:
-		return False

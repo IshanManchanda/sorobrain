@@ -6,8 +6,9 @@ from django.views import View
 from django.views.generic import TemplateView
 
 from main.models.code import DiscountCode
-from quiz.models import Quiz
+from quiz.models import Quiz, QuizCode
 from quiz.views.utils import has_access_to_quiz, grant_access_to_quiz
+from workshops.froms import RegisterWithCodeForm
 
 
 class Index(View):
@@ -57,3 +58,36 @@ class QuizPaymentSuccess(LoginRequiredMixin, View):
 		if quiz.is_payment_valid(request):
 			grant_access_to_quiz(request.user, quiz)
 		return redirect(quiz.get_absolute_url())
+
+
+class RegisterWithCode(LoginRequiredMixin, View):
+	@staticmethod
+	def get(request, slug):
+		quiz = get_object_or_404(Quiz, slug=slug)
+		form = RegisterWithCodeForm()
+		return render(request, 'quiz/store/register_with_code.html', {
+			'quiz': quiz,
+			'form': form
+		})
+
+	@staticmethod
+	def post(request, slug):
+		quiz = get_object_or_404(Quiz, slug=slug)
+		form = RegisterWithCodeForm(request.POST)
+		if form.is_valid():
+			data = form.cleaned_data
+			code = get_object_or_404(QuizCode, code=data['code'])
+			if code.is_valid(quiz):
+				grant_access_to_quiz(request.user, quiz)
+				code.uses += -1
+				code.save()
+			else:
+				messages.add_message(request, messages.WARNING,
+				                     "Error 12: That code is invalid")
+				return redirect(
+					reverse('competition:code', args=[slug]))
+			messages.add_message(request, messages.SUCCESS,
+			                     "Registered Successfully")
+			return redirect(quiz.get_absolute_url())
+		messages.add_message(request, messages.INFO, "That code is invalid")
+		return redirect(reverse('competition:code', args=[slug]))

@@ -102,7 +102,6 @@ class Competition(PaidObjectMixin, models.Model):
 		self.save()
 
 	def get_absolute_url(self):
-		print("#####################:", self.slug)
 		return reverse('competition:buy', args=[self.slug])
 
 	def get_compete_url(self):
