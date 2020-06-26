@@ -4,7 +4,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 from . import views
 
-# TODO: Test Google OAuth2
 
 urlpatterns = [
 

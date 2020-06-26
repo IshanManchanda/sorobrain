@@ -77,8 +77,6 @@ class PaidObjectMixin(models.Model):
 		s = f"{data['merchant_key']}|{data['txn_id']}|{data['amount']}|{data['product_info']}|{data['first_name']}|{data['email_id']}|{data['udf1']}|{data['udf2']}|||||||||{os.environ.get('PAYU_MERCHANT_SALT')}"
 
 		data['hash'] = str(hashlib.sha512(s.encode('utf-8')).hexdigest())
-		# REVIEW: add some kind of logging here.
-		# TODO: Add send customer and admin mail here
 
 		return JsonResponse(data)
 

@@ -41,8 +41,6 @@ class Competition(PaidObjectMixin, models.Model):
 	level = models.CharField(max_length=128, verbose_name='French Level',
 	                         choices=LEVEL_CHOICES)
 	thumbnail = models.ImageField(upload_to='compete/thumbnails/',
-	                              # TODO: Add default thumbnail for quiz
-	                              # default='compete/thumbnails/no-thumbnail.png',
 	                              null=True, blank=True)
 	tags = TaggableManager()
 	quizzes = models.ManyToManyField(Quiz, through='CompetitionQuiz')

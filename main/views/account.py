@@ -101,11 +101,6 @@ class Delete(LoginRequiredMixin, View):
 	@staticmethod
 	def post(request):
 		user = request.user
-		# REVIEW:
-		#  Currently instead of deleting a user, we are making it
-		#  inactive as recommended in the docs s.t. f_keys don't break,
-		#  but this means that we always maintain user data.
-		#  Is this what we want?
 		user.is_active = False
 		user.save()
 		logout(request)

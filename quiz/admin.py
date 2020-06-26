@@ -65,7 +65,6 @@ class QuestionAdmin(admin.ModelAdmin):
 	list_filter = ('type',)
 	search_fields = ('question', 'explanation', 'answer')
 	ordering = ('-created_on',)
-	# REVIEW: Check the fields that need to be made readonly
 	readonly_fields = ('id',)
 
 	formfield_overrides = {

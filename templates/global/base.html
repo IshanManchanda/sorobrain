@@ -48,7 +48,6 @@
 		<div class="flex-grow-1">
 			{% block navbar %}
 				<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-				<!-- TODO: [frontend] add logo to navbar brand-->
 				  <a class="navbar-brand" href="{% url 'index' %}"><img class="img-responsive" alt="logo" src="{% static 'common/img/logo_90.png' %}" style="width:80px"></a>
 
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,9 +68,7 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						  <a class="dropdown-item" href="#">Schedule a Class</a>
-						  <a class="dropdown-item" href="#">Syllabus</a>
 						  <div class="dropdown-divider"></div>
-						  <!-- TODO: [frontend] Add phone number to navbar call us button -->
 						  <a class="dropdown-item" href="#"><button class="btn btn-primary"><i class="fa fa-phone" aria-hidden="true"></i>   Call Us</button> </a>
 						</div>
 					  </li>
@@ -112,7 +109,6 @@
 					<div class="col-12 col-md">
 					  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
 					  <small class="d-block mb-3 text-muted">© Sorobrain 2020</small>
-					  <!-- TODO: [frontend] add kaboo web devs landing page link to footer -->
 					  <small class="d-block mb-3 text-muted">Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a target="_blank" href="https://kaboodevs.github.io/">Kaboo Web Developers</a></small>
 					  <small class="d-block mb-3 text-muted"><a href="{% url 'admin:index' %}"> Administrators </a></small>
 					</div>
