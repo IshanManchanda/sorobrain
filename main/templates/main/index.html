@@ -123,8 +123,7 @@
 						<p class="description">We're international. French
 							speakers across the globe use our services to boost
 							their fluency. </p>
-						<!-- TODO: [frontend] link international feature card to a 'outcomes' page -->
-						<a class="learn-more" href="#">Learn more »</a></div>
+						<a class="learn-more" href="#global">Learn more »</a></div>
 				</div>
 				<div class="col-sm-6 col-md-5 col-lg-4 item">
 					<div data-bs-hover-animate="bounce" class="box"><i
@@ -651,9 +650,11 @@
 			</div>
 		</div>
 	</div>
+	{% if not user.is_authenticated %}
 	<section class="call-to-action text-white text-center"
 			 style="background: rgb(63,118,183); background: linear-gradient(219deg, rgba(63,118,183,1) 0%, rgba(131,198,235,1) 100%);">
 		<div class="overlay"></div>
+
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
@@ -677,6 +678,7 @@
 			</div>
 		</div>
 	</section>
+	{% endif %}
 
 {% endblock content %}
 
