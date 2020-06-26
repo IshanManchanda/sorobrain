@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
@@ -103,6 +104,9 @@ class GroupBuyCompetition(View):
 	def post(request, slug):
 		competition = get_object_or_404(Competition, slug=slug)
 		if request.POST['group_size'] != '':
+			if int(request.POST['group_size']) < 10:
+				messages.add_message(request, messages.WARNING, 'Group size must at least 10 people.')
+				return HttpResponseRedirect("")
 			try:
 				total_amount = competition.group_cost * abs(int(request.POST['group_size']))
 			except TypeError:

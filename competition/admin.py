@@ -13,6 +13,25 @@ class CompetitionQuizInline(admin.TabularInline):
 class CompetitionAdmin(admin.ModelAdmin):
 	list_display = ('title', 'start_date', 'end_date')
 	readonly_fields = ('slug', 'created_on', 'result')
+	save_on_top = True
+	radio_fields = {'level': admin.VERTICAL}
+	save_as = True
+
+	fieldsets = (
+		(None, {
+			'fields': (('title', 'active'),
+			           ('description', 'level'),
+			           ('thumbnail', 'tags',))
+		}),
+		('Date', {
+			'fields': (('start_date', 'end_date'),
+			           'created_on')
+		}),
+		('Pricing', {
+			'fields': (('cost', 'discount', 'group_cost'),)
+		})
+	)
+
 	inlines = (CompetitionQuizInline,)
 
 

@@ -98,7 +98,8 @@ class Competition(PaidObjectMixin, models.Model):
 		users = [ca.user for ca in CompetitionAccess.objects.filter(competition=self)]
 		for user in users:
 			r[user.username] = self.calculate_total_score_for_user(user)
-		self.result = json.dumps(r)
+		self.result = json.dumps(dict(sorted(r.items(), key=lambda x: x[1],
+		                                     reverse=True)))
 		self.save()
 
 	def get_absolute_url(self):
@@ -127,4 +128,4 @@ class CompetitionQuiz(models.Model):
 	class Meta:
 		verbose_name = 'Competition Quiz'
 		verbose_name_plural = 'Competition Quizzes'
-		ordering = ('created_on',)
+		ordering = ('-created_on',)

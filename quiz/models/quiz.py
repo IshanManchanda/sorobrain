@@ -203,7 +203,7 @@ class QuizSubmission(models.Model):
 	incorrect_answers = models.IntegerField(null=True)
 	start_time = models.DateTimeField()
 	submit_time = models.DateTimeField(null=True)
-	creation_time = models.DateTimeField(default=timezone.now)
+	created_on = models.DateTimeField(default=timezone.now)
 
 	@property
 	def expiry_time(self):

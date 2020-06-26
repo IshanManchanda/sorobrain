@@ -64,6 +64,11 @@
 							</ul>
 						</div>
 					  </div>
+					  {% if qs.competition %}
+					  <div class="card-footer">
+						  <a href="{{ qs.competition.get_compete_url }}"><button class="btn btn-primary">Back to Competition</button></a>
+					  </div>
+					  {% endif %}
 					</div>
 				</div>
 			</div>

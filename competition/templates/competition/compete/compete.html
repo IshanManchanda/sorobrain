@@ -20,24 +20,25 @@
 					<div class="col-md-6">
 						<h4>Quizzes to be Completed: </h4>
 						{% if competition.is_started %}
-						<ul style="list-style-type: none">
+						<p>The quiz that you have to attempt will be blue, if you have completed a quiz, you will not be able to attempt it again!</p>
+						<ul style="list-style-type: none" class="list-group rounded">
 						{% for quiz in competition.quizzes.all %}
 							{% if quiz == active_quiz %}
-								<li><a href="{% url 'quiz:competition_start' competition_slug=competition.slug quiz_slug=quiz.slug %}" class="btn btn-primary">{{ quiz.title }}<i class="fas fa-external-link"></i></a></li>
+								<li class="list-group-item"><a href="{% url 'quiz:competition_start' competition_slug=competition.slug quiz_slug=quiz.slug %}" class="btn btn-primary">{{ quiz.title }}<i class="fas fa-external-link"></i></a></li>
 							{% else %}
-								<li><button class="btn btn-outline-secondary">{{ quiz.title }}</button></li>
+								<li class="list-group-item"><button class="btn btn-outline-secondary">{{ quiz.title }}</button></li>
 							{% endif %}
 						{% endfor %}
 						</ul>
 						{% else %}
 							<h6>This competition starts on {{ competition.start_date }}</h6>
 							<p>Check back then to be able to attempt the quizzes below. </p>
-							<ul style="list-style-type: none">
+							<ul style="list-style-type: none" class="list-group rounded">
 							{% for quiz in competition.quizzes.all %}
 								{% if quiz == active_quiz %}
-									<li><a href="{% url 'quiz:competition_start' competition_slug=competition.slug quiz_slug=quiz.slug %}" class="btn btn-primary">{{ quiz.title }}<i class="fas fa-external-link"></i></a></li>
+									<li class="list-group-item"><a href="{% url 'quiz:competition_start' competition_slug=competition.slug quiz_slug=quiz.slug %}" class="btn btn-primary">{{ quiz.title }}<i class="fas fa-external-link"></i></a></li>
 								{% else %}
-									<li><button class="btn btn-outline-secondary">{{ quiz.title }}</button></li>
+									<li class="list-group-item"><button class="btn btn-outline-secondary">{{ quiz.title }}</button></li>
 								{% endif %}
 							{% endfor %}
 							</ul>
