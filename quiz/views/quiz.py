@@ -44,12 +44,17 @@ class StartCompetitionQuiz(LoginRequiredMixin, View):
 		quiz = get_object_or_404(Quiz, slug=quiz_slug)
 		competition = get_object_or_404(Competition, slug=competition_slug)
 		try:
+			qs = QuizSubmission.objects.get(user=request.user, quiz=quiz, competition=competition)
+			qs.start_time = timezone.now()
+			qs.save()
+		except QuizSubmission.DoesNotExist:
 			qs = QuizSubmission.objects.create(
 					user=request.user, quiz=quiz, competition=competition,
 					start_time=timezone.now())
-		except IntegrityError:
-			messages.add_message(request, messages.INFO, 'You have already submitted this quiz.')
+		if qs.score is not None:
+			messages.add_message(request, messages.WARNING, 'You have already submitted this quiz!')
 			return redirect(competition.get_compete_url())
+
 		return redirect(quiz.get_attempt_url(qs))
 
 
