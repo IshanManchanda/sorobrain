@@ -108,7 +108,8 @@ class Competition(PaidObjectMixin, models.Model):
 		return reverse('competition:compete', args=[self.slug])
 
 	def save(self, *args, **kwargs):
-		self.slug = slugify(self.title)
+		if self.slug is None:
+			self.slug = slugify(self.title)
 		super(Competition, self).save(*args, **kwargs)
 
 	def __str__(self):
