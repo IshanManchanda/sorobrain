@@ -107,6 +107,10 @@ class Code(models.Model):
 	def is_valid(self, workshop: Workshop) -> bool:
 		return not self.is_used and not self.is_expired and self.workshop == workshop
 
+	def use(self, *args, **kwargs):
+		self.uses += -1
+		super(Code, self).save(*args, **kwargs)
+
 	def save(self, *args, **kwargs):
 		self.code = ''.join(
 				(random.choice(string.ascii_letters + string.digits) for i in

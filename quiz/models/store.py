@@ -49,6 +49,10 @@ class QuizCode(models.Model):
 	def is_valid(self, quiz) -> bool:
 		return not self.is_used and not self.is_expired and self.quiz == quiz
 
+	def use(self, *args, **kwargs):
+		self.uses += -1
+		super(QuizCode, self).save(*args, **kwargs)
+
 	def save(self, *args, **kwargs):
 		self.code = ''.join(
 				(choice(string.ascii_letters + string.digits) for i in

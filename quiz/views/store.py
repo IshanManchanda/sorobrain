@@ -79,8 +79,7 @@ class RegisterWithCode(LoginRequiredMixin, View):
 			code = get_object_or_404(QuizCode, code=data['code'])
 			if code.is_valid(quiz):
 				grant_access_to_quiz(request.user, quiz)
-				code.uses += -1
-				code.save()
+				code.use()
 			else:
 				messages.add_message(request, messages.WARNING,
 				                     "Error 12: That code is invalid")

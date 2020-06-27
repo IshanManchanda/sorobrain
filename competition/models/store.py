@@ -47,6 +47,10 @@ class CompetitionCode(models.Model):
 	def is_valid(self, competition) -> bool:
 		return not self.is_used and not self.is_expired and self.competition == competition
 
+	def use(self, *args, **kwargs):
+		self.uses += -1
+		super(CompetitionCode, self).save(*args, **kwargs)
+
 	def save(self, *args, **kwargs):
 		self.code = ''.join(
 				(choice(string.ascii_letters + string.digits) for i in

@@ -78,8 +78,7 @@ class RegisterWithCode(LoginRequiredMixin, View):
 			code = get_object_or_404(CompetitionCode, code=data['code'])
 			if code.is_valid(competition):
 				grant_access_to_competition(request.user, competition)
-				code.uses += -1
-				code.save()
+				code.use()
 			else:
 				messages.add_message(request, messages.WARNING,
 				                     "Error 12: That code is invalid")
