@@ -98,7 +98,7 @@ admin.site.register(QuizAccess, QuizAccessAdmin)
 class QuizSubmissionAdmin(admin.ModelAdmin):
 	list_display = ('user', 'score', 'correct_answers', 'incorrect_answers', 'quiz', 'competition', 'created_on')
 	list_filter = ('quiz', 'competition')
-	search_fields = ('user', 'quiz')
+	search_fields = ('user__username', 'user__name', 'quiz__title')
 	readonly_fields = ('user', 'quiz', 'submission', 'score', 'correct_answers',
 	                   'incorrect_answers', 'start_time', 'competition',
 	                   'submit_time', 'created_on')
