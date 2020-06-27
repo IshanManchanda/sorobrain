@@ -34,6 +34,8 @@ class Result(View):
 	def get(request, slug):
 		competition = get_object_or_404(Competition, slug=slug)
 		result = json.loads(competition.result)
+		if result == {}:
+			competition.populate_result()
 		return render(request, 'competition/compete/result.html', {
 			'competition': competition,
 			'result': result
