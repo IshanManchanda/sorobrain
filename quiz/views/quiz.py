@@ -3,6 +3,7 @@ from datetime import timedelta
 
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import IntegrityError
 from django.http import HttpResponseForbidden, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
@@ -42,9 +43,13 @@ class StartCompetitionQuiz(LoginRequiredMixin, View):
 	def post(request, competition_slug, quiz_slug):
 		quiz = get_object_or_404(Quiz, slug=quiz_slug)
 		competition = get_object_or_404(Competition, slug=competition_slug)
-		qs = QuizSubmission.objects.create(
-				user=request.user, quiz=quiz, competition=competition,
-				start_time=timezone.now())
+		try:
+			qs = QuizSubmission.objects.create(
+					user=request.user, quiz=quiz, competition=competition,
+					start_time=timezone.now())
+		except IntegrityError:
+			messages.add_message(request, messages.INFO, 'You have already submitted this quiz.')
+			return redirect(competition.get_compete_url())
 		return redirect(quiz.get_attempt_url(qs))
 
 
