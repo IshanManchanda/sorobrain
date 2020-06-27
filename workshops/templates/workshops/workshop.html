@@ -101,7 +101,19 @@
 			<hr>
             <h1 class="text-center">Related workshops</h1>
             <div class="card-group">
+			{% for w in related %}
                 <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ w.title }}</h4>
+                        <p class="card-text">{{ w.description|truncatechars_html:200|safe }}</p><a  href="{{ w.get_absolute_url }}" class="btn btn-primary" type="button">Details</a></div>
+				</div>
+			 {% empty %}
+				<div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                    <div class="card-body">
+                        <h4 class="card-title">Coming Soon</h4>
+                        <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
+				</div>
+				<div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
                     <div class="card-body">
                         <h4 class="card-title">Coming Soon</h4>
                         <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
@@ -111,11 +123,7 @@
                         <h4 class="card-title">Coming Soon</h4>
                         <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
 				</div>
-                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
-                    <div class="card-body">
-                        <h4 class="card-title">Coming Soon</h4>
-                        <p class="card-text">We're working hard to get other workshops up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
-				</div>
+			 {% endfor %}
             </div>
         </div>
         <div class="container" style="margin-bottom: 0px;padding-bottom: 49px;">

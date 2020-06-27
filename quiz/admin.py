@@ -15,13 +15,14 @@ class QuestionInline(admin.StackedInline):
 			'fields': ('type',
 			           ('question', 'explanation'),
 			           'answer',
-			           ('option1', 'option2','option3', 'option4'),
+			           ('option1', 'option2', 'option3', 'option4'),
 			           ),
 		}),
 	)
 	# formfield_overrides = {
 	# 	JSONField: {'widget': OptionsInputWidget},
 	# }
+	save_as = True
 	extra = 1
 	can_delete = True
 
@@ -76,7 +77,7 @@ class QuestionAdmin(admin.ModelAdmin):
 			'fields': ('type',
 			           ('question', 'explanation'),
 			           'answer',
-			           'options')
+			           ('option1', 'option2', 'option3', 'option4'))
 		}),
 	)
 

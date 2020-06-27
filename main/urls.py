@@ -18,6 +18,8 @@ urlpatterns = [
 	path('book/', views.Book.as_view(), name='book'),
 	path('book/success/', csrf_exempt(views.BookSuccess.as_view()), name='book_success'),
 
+	path('privacy/', TemplateView.as_view(template_name='main/privacy.html'), name='privacy'),
+	path('refund/', TemplateView.as_view(template_name='main/refund.html'), name='refund'),
 	path('catalog/', views.catalog, name='catalog'),
 	path('contact/', TemplateView.as_view(template_name='main/contact.html'), name='contact'),
 	path('', views.index, name='index'),

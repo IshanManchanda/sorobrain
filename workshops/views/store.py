@@ -22,7 +22,8 @@ class WorkshopStore(View):
 			return redirect(reverse('workshops:workshop_access', args=[slug]))
 
 		return render(request, 'workshops/workshop.html', {
-			'workshop': w
+			'workshop': w,
+			'related': w.tags.similar_objects()
 		})
 
 	@staticmethod

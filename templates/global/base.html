@@ -67,9 +67,9 @@
 						  Classes
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						  <a class="dropdown-item" href="#">Schedule a Class</a>
+						  <a class="dropdown-item" href="{% url 'catalog' %}#classes">Schedule a Class</a>
 						  <div class="dropdown-divider"></div>
-						  <a class="dropdown-item" href="#"><button class="btn btn-primary"><i class="fa fa-phone" aria-hidden="true"></i>   Call Us</button> </a>
+						  <a class="dropdown-item" href="tel: +919810522445"><button class="btn btn-primary"><i class="fa fa-phone" aria-hidden="true"></i>   Call Us</button> </a>
 						</div>
 					  </li>
 					  <li class="nav-item active">
@@ -127,8 +127,8 @@
 					  <ul class="list-unstyled text-small">
 						<li><a href="{% url 'quiz:index' %}">Quiz Index</a></li>
 						<li><a href="{% url 'catalog' %}#quizzes">Get a Quiz</a></li>
-						<li><a href="">Competition Index</a></li>
-						<li><a href="">How it works</a></li>
+						<li><a href="{% url 'competition:index' %}">Competition Index</a></li>
+						<li><a href="{% url 'catalog' %}#competitions">How it works</a></li>
 					  </ul>
 					</div>
 					<div class="col-6 col-md">
@@ -143,9 +143,9 @@
 					  <h5>Info</h5>
 					  <ul class="list-unstyled text-small">
 						<li><a href="{% url 'contact' %}">Team</a></li>
-						<li><a href="#">Refunds</a></li>
-						<li><a href="#">Privacy</a></li>
-						<li><a href="#">Terms</a></li>
+						<li><a href="{% url 'refund' %}">Refunds</a></li>
+						<li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+{#						<li><a href="#">Terms</a></li>#}
 					  </ul>
 					</div>
 				  </div>
