@@ -1,13 +1,17 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import mail_managers
 from django.shortcuts import get_object_or_404, redirect, render
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views import View
+from django.utils import timezone
 from django.views.generic import TemplateView
 
 from main.models.code import DiscountCode
 from quiz.models import Quiz, QuizCode
 from quiz.views.utils import has_access_to_quiz, grant_access_to_quiz
+from sorobrain.utils.utils import send_product_bought_mail
 from workshops.froms import RegisterWithCodeForm
 
 
@@ -57,6 +61,21 @@ class QuizPaymentSuccess(LoginRequiredMixin, View):
 		quiz = get_object_or_404(Quiz, slug=slug)
 		if quiz.is_payment_valid(request):
 			grant_access_to_quiz(request.user, quiz)
+		mail_managers(
+				'[eSorobrain.com] New Quiz Registered',
+				f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought quiz: {quiz.title} at {timezone.now()}.',
+				fail_silently=True
+		)
+
+		msg = render_to_string('mails/txt/product_bought.txt',
+		                       {'user'        : request.user,
+		                        'content_type': 'quiz', 'product': quiz})
+		msg_html = render_to_string('mails/html/product_bought.html',
+		                            {'user'        : request.user,
+		                             'content_type': 'quiz',
+		                             'product'     : quiz})
+		send_product_bought_mail('[Sorobrain] New Quiz Registered',
+		                         msg, msg_html, to=[request.user.email])
 		return redirect(quiz.get_absolute_url())
 
 

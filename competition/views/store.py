@@ -1,7 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import mail_managers
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
+from django.template.loader import render_to_string
+from django.utils import timezone
 from django.urls import reverse
 from django.views import View
 
@@ -10,6 +13,7 @@ from competition.models.store import CompetitionCode
 from competition.views.utils import has_access_to_competition, \
 	grant_access_to_competition, generate_competition_codes
 from main.models.code import DiscountCode
+from sorobrain.utils.utils import send_product_bought_mail
 from workshops.froms import RegisterWithCodeForm
 
 
@@ -56,6 +60,15 @@ class CompetitionPaymentSuccess(LoginRequiredMixin, View):
 		competition = get_object_or_404(Competition, slug=slug)
 		if competition.is_payment_valid(request):
 			grant_access_to_competition(request.user, competition)
+		mail_managers(
+				'[eSorobrain.com] New Competition Registered',
+				f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought quiz: {competition.title} at {timezone.now()}.',
+				fail_silently=True
+		)
+
+		msg = render_to_string('mails/txt/product_bought.txt', {'user': request.user, 'content_type': 'competition', 'product': competition})
+		msg_html = render_to_string('mails/html/product_bought.html', {'user': request.user, 'content_type': 'competition', 'product': competition})
+		send_product_bought_mail('[Sorobrain] New Competition Registered', msg, msg_html, to=[request.user.email])
 		return redirect(competition.get_absolute_url())
 
 

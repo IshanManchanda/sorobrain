@@ -1,12 +1,16 @@
 from datetime import datetime
 
 from django.contrib import messages
+from django.template.loader import render_to_string
+from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail, mail_managers
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
 
 from main.models.code import DiscountCode
+from sorobrain.utils.utils import send_product_bought_mail
 from workshops.models import Workshop, Code
 from .utils import has_access_to_workshop, get_workshop_amount, \
 	grant_access_to_workshop
@@ -41,6 +45,7 @@ class WorkshopStore(View):
 				return redirect(w.get_absolute_url())
 		else:
 			discount_code = ''
+
 		return w.pay(request, amount=w.sub_total,
 		             success_url=request.build_absolute_uri(
 			             reverse('workshop:payment_success',
@@ -55,6 +60,16 @@ class WorkshopSuccess(LoginRequiredMixin, View):
 		w = get_object_or_404(Workshop, slug=slug)
 		if w.is_payment_valid(request):
 			grant_access_to_workshop(request.user, w)
+		mail_managers(
+				'[eSorobrain.com] New Workshop Registered',
+				f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought workshop: {w.title} at {timezone.now()}.',
+				fail_silently=True
+		)
+
+		msg = render_to_string('mails/txt/product_bought.txt', {'user': request.user, 'content_type': 'workshop', 'product': w})
+		msg_html = render_to_string('mails/html/product_bought.html', {'user': request.user, 'content_type': 'workshop', 'product': w})
+		send_product_bought_mail('[Sorobrain] New Workshop Registered', msg, msg_html, to=[request.user.email])
+
 		return redirect(reverse('workshops:workshop_store', args=[slug]))
 
 

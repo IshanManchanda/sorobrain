@@ -23,6 +23,10 @@ ADMINS = [
 	('Sorobrain Developers', 'sorobrain.devs@gmail.com')
 ]
 
+MANAGERS = [
+	('Seema Jain', 'seema@sorobrain.com')
+]
+
 AUTH_USER_MODEL = 'main.User'
 
 # Security Settings
