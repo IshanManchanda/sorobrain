@@ -263,6 +263,46 @@
                     performance.<br>
                     Please ensure your access to a strong internet connection to maximize productivity.</p>
                 </div>
+                <div class="row">
+                  <div class="card-columns">
+                    {% for class in classes %}
+                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
+                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ class.title }}</h5>
+                          <p class="card-text">{{ class.description|truncatechars_html:300|safe }}...</p>
+                          <a href="{{ class.get_absolute_url }}">
+                            <button class="btn btn-primary" type="button">Register Now</button>
+                          </a></div>
+                      </div>
+                    {% empty %}
+                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
+                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">
+                        <div class="card-body">
+                          <h5 class="card-title">Coming Soon</h5>
+                          <p class="card-text">We're working hard to get competitions working as soon as possible!</p>
+                          <button class="btn btn-secondary" type="button">View More</button>
+                        </div>
+                      </div>
+                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
+                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">
+                        <div class="card-body">
+                          <h5 class="card-title">Coming Soon</h5>
+                          <p class="card-text">We're working hard to get competitions working as soon as possible!</p>
+                          <button class="btn btn-secondary" type="button">View More</button>
+                        </div>
+                      </div>
+                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
+                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">
+                        <div class="card-body">
+                          <h5 class="card-title">Coming Soon</h5>
+                          <p class="card-text">We're working hard to get competitions working as soon as possible!</p>
+                          <button class="btn btn-secondary" type="button">View More</button>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

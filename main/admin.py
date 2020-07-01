@@ -5,7 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 
 from quiz.models import Quiz
 from .forms import AddUserForm, UpdateUserForm
-from .models import User, BookAccess
+from .models import User, BookAccess, OneOnOneClass
 from .models.code import DiscountCode
 
 
@@ -58,3 +58,14 @@ class DiscountCodeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DiscountCode, DiscountCodeAdmin)
+
+
+class OneOnOneClassAdmin(admin.ModelAdmin):
+	list_display = ('title', 'cost', 'duo_cost', 'level', 'created_on')
+	list_filter = ('level', 'active')
+	search_fields = ('title',)
+	list_editable = ('cost', 'duo_cost')
+	readonly_fields = ('created_on', 'slug')
+
+
+admin.site.register(OneOnOneClass, OneOnOneClassAdmin)

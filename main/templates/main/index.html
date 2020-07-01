@@ -655,6 +655,15 @@
 			</div>
 		</div>
 	</div>
+  <div class="container my-3 text-center">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <h4>Interested to know more?</h4>
+        <strong>Check out our F.A.Q. here</strong><hr>
+        <a href="{% url 'faq' %}"><button class="btn btn-outline-info w-100">FAQ</button></a>
+      </div>
+    </div>
+  </div>
 	{% if not user.is_authenticated %}
 	<section class="call-to-action text-white text-center"
 			 style="background: rgb(63,118,183); background: linear-gradient(219deg, rgba(63,118,183,1) 0%, rgba(131,198,235,1) 100%);">

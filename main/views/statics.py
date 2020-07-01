@@ -5,10 +5,11 @@ from uuid import uuid4
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views import View
 
+from main.models import OneOnOneClass
 from main.views.utils import grant_book_access, has_book_access
 from sorobrain.utils import get_presigned_url
 from workshops.models import Workshop
@@ -86,3 +87,10 @@ class BookSuccess(LoginRequiredMixin, View):
 
 		grant_book_access(request.user)
 		return redirect(reverse('book'))
+
+
+class ClassStore(View):
+	@staticmethod
+	def get(request, slug):
+		c = get_object_or_404(OneOnOneClass, slug=slug)
+		return render(request, 'main/class.html', {'class': c})

@@ -15,6 +15,8 @@ urlpatterns = [
 	path('accounts/save_notification', views.SaveNotificationLevel.as_view(), name='save_notifications'),
 	path('register/', views.register, name='register'),
 
+	path('class/<str:slug>/', views.ClassStore.as_view(), name='class'),
+
 	path('book/', views.Book.as_view(), name='book'),
 	path('book/success/', csrf_exempt(views.BookSuccess.as_view()), name='book_success'),
 
@@ -23,5 +25,6 @@ urlpatterns = [
 	path('catalog/', views.catalog, name='catalog'),
 	path('contact/', TemplateView.as_view(template_name='main/contact.html'), name='contact'),
 	path('global/', TemplateView.as_view(template_name='main/global.html'), name='global'),
+	path('faq/', TemplateView.as_view(template_name='main/faq.html'), name='faq'),
 	path('', views.index, name='index'),
 ]
