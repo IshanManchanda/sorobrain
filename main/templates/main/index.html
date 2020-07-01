@@ -3,20 +3,22 @@
 
 {% block title %}Home | Sorobrain{% endblock title %}
 {% block css %}
-	<link rel="stylesheet"
-		  href="{% static 'main/css/index/bootstrap.min.css' %}">
-	<link rel="stylesheet"
-		  href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
-	<link rel="stylesheet"
-		  href="{% static 'main/css/index/features-boxed.css' %}">
-	<link rel="stylesheet"
-		  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-	<link rel="stylesheet"
-		  href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-	<link rel="stylesheet"
-		  href="{% static 'main/css/index/pricing-table.css' %}">
-	<link rel="stylesheet"
-		  href="{% static 'main/css/index/Highlight-Phone.css' %}">
+  <link rel="stylesheet"
+        href="{% static 'main/css/index/bootstrap.min.css' %}">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+  <link rel="stylesheet"
+        href="{% static 'main/css/index/features-boxed.css' %}">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+  <link rel="stylesheet"
+        href="{% static 'main/css/index/pricing-table.css' %}">
+  <link rel="stylesheet"
+        href="{% static 'main/css/index/Highlight-Phone.css' %}">
+  <link rel="stylesheet"
+        href="{% static 'main/css/index/brands.css' %}">
 
 {% endblock css %}
 
@@ -24,679 +26,701 @@
 {% endblock %}
 
 {% block content %}
-	<header class="masthead text-white text-center"
-			style="background: url('https://www.northeastern.edu/geo/wp-content/uploads/2015/05/Science-Po.jpg')no-repeat center center;background-size: cover;height: 483px;">
-		<div class="overlay" style="height: 482px;"></div>
-		<div class="container">
-			<div class="row" style="height: 147px;">
-				<div class="col-xl-9 mx-auto"
-					 style="height: 131px;width: 931px;">
-					<h1 class="display-1 mb-5" data-aos="fade"
-						data-aos-duration="1100"
-						style="height: 23px;margin: -44px;margin-right: 0;margin-top: 0;margin-left: 0;margin-bottom: 32px;">
-						Welcome to Sorobrain!</h1>
-					<h1 data-aos="zoom-in" class="mb-5"
-						style="margin: 15px;margin-bottom: 10px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 30px;">
-						Une Académie Française&nbsp;</h1>
-				</div>
-				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-					<form>
-						<div class="form-row">
-							<div class="col-12 col-md-3 col-lg-8 offset-lg-2">
-								<a href="{% url 'account_signup' %}" class="stretched-link">
-									<button class="btn btn-primary btn-block btn-lg text-center"
-											data-aos="zoom-in">
-										{% if user.is_authenticated %} Hi,
-											{{ user.name }} {% else %} Sign
-											up! {% endif %}
-									</button>
-								</a></div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</header>
-	<div class="features-boxed">
-		<div class="container">
-			<div class="intro">
-				<h2 class="text-center" style="margin-bottom: 8px;">Our
-					Services</h2>
-				<p class="text-center">We offer a variation of services. Here
-					is a glimpse of everything you can avail to enrich your
-					learning experience: &nbsp;</p>
-			</div>
-			<div class="row justify-content-center features"
-				 style="padding-top: 11px;">
-				<div class="col-sm-6 col-md-5 col-lg-4 item">
-					<div data-bs-hover-animate="bounce" class="box"><i
-							class="fa fa-map-marker icon"></i>
-						<h3 class="name">Online Competitions</h3>
-						<p class="description">&nbsp Through our rich and
-							interactive online competition experiences, you can
-							compete with your peers from across the globe to
-							win exciting prizes, and widely recognized
-							certificates. </p>
-						<a class="learn-more"
-						   href="{% url 'catalog' %}#competitions">Learn more
-							»</a></div>
-				</div>
-				<div class="col-sm-6 col-md-5 col-lg-4 item">
-					<div data-bs-hover-animate="bounce" class="box"><i
-							class="fa fa-clock-o icon"></i>
-						<h3 class="name">Always available</h3>
-						<p class="description">Our support is unmatched. Day or
-							night, we will solve your problem so that you don't
-							hit any bumps on your "French journey".</p>
-						<a class="learn-more" href="{% url 'contact' %}">Learn more »</a></div>
-				</div>
-				<div class="col-sm-6 col-md-5 col-lg-4 item">
-					<div data-bs-hover-animate="bounce" class="box"><i
-							class="fa fa-list-alt icon"></i>
-						<h3 class="name">Practice Quizzes </h3>
-						<p class="description">Practice your vocabulary,
-							genders, and other French skills with hundreds of
-							our carefully crafted practice quizzes for all
-							levels.</p>
-						<a class="learn-more"
-						   href="{% url 'catalog' %}#practice">Learn more »</a>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-5 col-lg-4 item">
-					<div data-bs-hover-animate="bounce" class="box"><i
-							class="fa fa-leaf icon"></i>
-						<h3 class="name">Workshops </h3>
-						<p class="description">Interact with expert faculty,
-							peers, and other Sorobrainers in our day long,
-							online workshops. Our painstakingly designed online
-							conferences will solve all our doubts and sharpen
-							your skills. Receive a participation certificate on
-							the successful completion of each workshop.</p>
-						<a class="learn-more"
-						   href="#{% url 'catalog' %}#workshops">Learn more
-							»</a></div>
-				</div>
-				<div class="col-sm-6 col-md-5 col-lg-4 item">
-					<div data-bs-hover-animate="bounce" class="box"><i
-							class="fa fa-plane icon"></i>
-						<h3 class="name">Global </h3>
-						<p class="description">We're international. French
-							speakers across the globe use our services to boost
-							their fluency. </p>
-						<a class="learn-more" href="{% url 'global' %}">Learn more »</a></div>
-				</div>
-				<div class="col-sm-6 col-md-5 col-lg-4 item">
-					<div data-bs-hover-animate="bounce" class="box"><i
-							class="fa fa-phone icon"></i>
-						<h3 class="name">One-on-One Classes</h3>
-						<p class="description">For the student looking to
-							rapidly increase their French ability, we offer
-							personalized one-on-one lessons with our expert
-							faculty.</p>
-						<a class="learn-more"
-						   href="{% url 'catalog' %}#classes">Learn more »</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="highlight-phone" style="background-color: #eef4f7;">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="intro">
-						<h3><i class="fas fa-book-open"></i> Our Handbook: Le
-							bleu ou la rose</h3>
-						<p>Sorobrain's book, Le bleu ou la rose, is a fantastic
-							resource that consolidates all the tips, tricks,
-							and noun categorizations to master French. The book
-							is available for purchase online, but you'll also
-							get access to it after you register for a
-							competition or a relevant workshop!</p>
-						<p class="alert alert-success">Our nationally acclaimed
-							book is available, both as an e-book and as a
-							physical publication!</p>
-						<a class="btn btn-primary" role="button"
-						   href="{% url 'book' %}"><i class="fas fa-book"></i>
-							Get the eBook</a>
-					</div>
-				</div>
-				<div class="col-sm-4" data-aos="fade-left"
-					 data-aos-duration="1000">
-					<div class="d-none d-md-block iphone-mockup"><img
-							alt="iphone-outline" class="device"
-							src="{% static 'main/img/index/iphone.svg' %}"/>
-						<div class="screen"><img alt="book-thumbnail"
-												 style="width:230px"
-												 src="{% static 'common/img/book.jpeg' %}">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<section class="testimonials text-center"
-			 style="padding-bottom: 39px;padding-top: 10px; background-color: #eef4f7;">
-		<div class="container">
-			<h2 class="mb-2">What people are saying</h2>
-            <a href="{% url 'global' %}">
+  <header class="masthead text-white text-center"
+          style="background: url('https://www.northeastern.edu/geo/wp-content/uploads/2015/05/Science-Po.jpg')no-repeat center center;background-size: cover;height: 483px;">
+    <div class="overlay" style="height: 482px;"></div>
+    <div class="container">
+      <div class="row" style="height: 147px;">
+        <div class="col-xl-9 mx-auto"
+             style="height: 131px;width: 931px;">
+          <h1 class="display-1 mb-5" data-aos="fade"
+              data-aos-duration="1100"
+              style="height: 23px;margin: -44px;margin-right: 0;margin-top: 0;margin-left: 0;margin-bottom: 32px;">
+            Welcome to Sorobrain!</h1>
+          <h1 data-aos="zoom-in" class="mb-5"
+              style="margin: 15px;margin-bottom: 10px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 30px;">
+            Une Académie Française&nbsp;</h1>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form>
+            <div class="form-row">
+              <div class="col-12 col-md-3 col-lg-8 offset-lg-2">
+                <a href="{% url 'account_signup' %}" class="stretched-link">
+                  <button class="btn btn-primary btn-block btn-lg text-center"
+                          data-aos="zoom-in">
+                    {% if user.is_authenticated %} Hi,
+                      {{ user.name }} {% else %} Sign
+                      up! {% endif %}
+                  </button>
+                </a></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="features-boxed">
+    <div class="container">
+      <div class="intro">
+        <h2 class="text-center" style="margin-bottom: 8px;">Our
+          Services</h2>
+        <p class="text-center">We offer a variation of services. Here
+          is a glimpse of everything you can avail to enrich your
+          learning experience: &nbsp;</p>
+      </div>
+    </div>
+    <div class="row justify-content-center features"
+         style="padding-top: 11px;">
+      <div class="col-sm-6 col-md-5 col-lg-4 item">
+        <div data-bs-hover-animate="bounce" class="box"><i
+            class="fa fa-map-marker icon"></i>
+          <h3 class="name">Online Competitions</h3>
+          <p class="description">&nbsp Through our rich and
+            interactive online competition experiences, you can
+            compete with your peers from across the globe to
+            win exciting prizes, and widely recognized
+            certificates. </p>
+          <a class="learn-more"
+             href="{% url 'catalog' %}#competitions">Learn more
+            »</a></div>
+      </div>
+      <div class="col-sm-6 col-md-5 col-lg-4 item">
+        <div data-bs-hover-animate="bounce" class="box"><i
+            class="fa fa-clock-o icon"></i>
+          <h3 class="name">Always available</h3>
+          <p class="description">Our support is unmatched. Day or
+            night, we will solve your problem so that you don't
+            hit any bumps on your "French journey".</p>
+          <a class="learn-more" href="{% url 'contact' %}">Learn more »</a></div>
+      </div>
+      <div class="col-sm-6 col-md-5 col-lg-4 item">
+        <div data-bs-hover-animate="bounce" class="box"><i
+            class="fa fa-list-alt icon"></i>
+          <h3 class="name">Practice Quizzes </h3>
+          <p class="description">Practice your vocabulary,
+            genders, and other French skills with hundreds of
+            our carefully crafted practice quizzes for all
+            levels.</p>
+          <a class="learn-more"
+             href="{% url 'catalog' %}#practice">Learn more »</a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-5 col-lg-4 item">
+        <div data-bs-hover-animate="bounce" class="box"><i
+            class="fa fa-leaf icon"></i>
+          <h3 class="name">Workshops </h3>
+          <p class="description">Interact with expert faculty,
+            peers, and other Sorobrainers in our day long,
+            online workshops. Our painstakingly designed online
+            conferences will solve all our doubts and sharpen
+            your skills. Receive a participation certificate on
+            the successful completion of each workshop.</p>
+          <a class="learn-more"
+             href="#{% url 'catalog' %}#workshops">Learn more
+            »</a></div>
+      </div>
+      <div class="col-sm-6 col-md-5 col-lg-4 item">
+        <div data-bs-hover-animate="bounce" class="box"><i
+            class="fa fa-plane icon"></i>
+          <h3 class="name">Global </h3>
+          <p class="description">We're international. French
+            speakers across the globe use our services to boost
+            their fluency. </p>
+          <a class="learn-more" href="{% url 'global' %}">Learn more »</a></div>
+      </div>
+      <div class="col-sm-6 col-md-5 col-lg-4 item">
+        <div data-bs-hover-animate="bounce" class="box"><i
+            class="fa fa-phone icon"></i>
+          <h3 class="name">One-on-One Classes</h3>
+          <p class="description">For the student looking to
+            rapidly increase their French ability, we offer
+            personalized one-on-one lessons with our expert
+            faculty.</p>
+          <a class="learn-more"
+             href="{% url 'catalog' %}#classes">Learn more »</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="highlight-phone" style="background-color: #eef4f7;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="intro">
+            <h3><i class="fas fa-book-open"></i> Our Handbook: Le
+              bleu ou la rose</h3>
+            <p>Sorobrain's book, Le bleu ou la rose, is a fantastic
+              resource that consolidates all the tips, tricks,
+              and noun categorizations to master French. The book
+              is available for purchase online, but you'll also
+              get access to it after you register for a
+              competition or a relevant workshop!</p>
+            <p class="alert alert-success">Our nationally acclaimed
+              book is available, both as an e-book and as a
+              physical publication!</p>
+            <a class="btn btn-primary" role="button"
+               href="{% url 'book' %}"><i class="fas fa-book"></i>
+              Get the eBook</a>
+          </div>
+        </div>
+        <div class="col-sm-4" data-aos="fade-left"
+             data-aos-duration="1000">
+          <div class="d-none d-md-block iphone-mockup"><img
+              alt="iphone-outline" class="device"
+              src="{% static 'main/img/index/iphone.svg' %}"/>
+            <div class="screen"><img alt="book-thumbnail"
+                                     style="width:230px"
+                                     src="{% static 'common/img/book.jpeg' %}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="testimonials text-center"
+           style="padding-bottom: 39px;padding-top: 10px; background-color: #eef4f7;">
+    <div class="container">
+      <h2 class="mb-2">What people are saying</h2>
+      <a href="{% url 'global' %}">
         <button class="btn btn-outline-info mt-2 mb-5" style="width: 100%">
           Global Testimonials
         </button>
       </a>
-			<div class="row" data-aos="fade-right" data-aos-duration="1000"
-				 style="margin-bottom: 50px">
-				<div class="col-lg-4">
-					<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-							class="rounded-circle img-fluid mb-3"
-							src="{% static 'main/img/index/test1.jpeg' %}"
-							alt="">
-						<h5>Supriya Mohan</h5>
-						<p class="font-weight-light mb-0">"Seema has been
-							guiding my son Shiv with French and he has
-							performed consistently well in the subject since he
-							became her student. More
-							importantly, he enjoys his French classes and
-							really looks forward to them. Seema provides a
-							consistent bank of practice sheets to help him stay
-							abreast of the class work and also to prepare for
-							exams. I recommend her highly. "</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-							class="rounded-circle img-fluid mb-3"
-							src="{% static 'main/img/index/test2.jpeg' %}"
-							alt="">
-						<h5>Vidushi Yaksh</h5>
-						<p class="font-weight-light mb-1">"A lot of people
-							might think that online classes are not as great as
-							when one goes to the centre to study. This is not
-							true. During online classes with Seema ma’am I was
-							actually able to receive more attention and so I am
-							more focussed and concentrated towards what is
-							being taught...</p>
-						<button class="btn btn-outline-primary" type="button"
-								data-toggle="collapse"
-								data-target="#collapse_test2"
-								aria-expanded="false"
-								aria-controls="collapse_test2">
-							Expand
-						</button>
-						<div class="collapse" id="collapse_test2">
-							<div class="card card-body font-weight-light">
-								It is really comfortable for one can
-								just sit anywhere with his/her laptop and
-								attend
-								the classes with a click of a button.
-								Assignments
-								and exercises are also sent and discussed
-								regularly
-								and these Skype classes don’t seem to have
-								acted as
-								a hinderance to my marks. These classes are
-								helpful, quick and really knowledgeable. I
-								extremely recommend them to every student.
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-							class="rounded-circle img-fluid mb-3"
-							src="{% static 'main/img/index/test4.jpeg' %}"
-							alt="">
-						<h5>Anchal Datta</h5>
-						<p class="font-weight-light mb-0">"My daughter Mallika
-							was fortunate to find an excellent teacher in Seema
-							to learn French. She keeps the class engaging and
-							her pace is perfect. Her command over the language,
-							and the ability to instill confidence in a student
-							while correcting a mistake, are qualities of a good
-							educator...</p>
-						<button class="btn btn-outline-primary" type="button"
-								data-toggle="collapse"
-								data-target="#collapse_test3"
-								aria-expanded="false"
-								aria-controls="collapse_test3">
-							Expand
-						</button>
-						<div class="collapse" id="collapse_test3">
-							<div class="card card-body font-weight-light">
-								Learning with her has been a very
-								pleasant and fulfilling experience for Mallika.
-								I highly recommend Seema for a valuable and fun
-								learning experience."
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<button class="btn btn-outline-primary mb-3" type="button"
-			data-toggle="collapse"
-			data-target="#collapse_test_all"
-			aria-expanded="false"
-			aria-controls="collapse_test_all"
-			style="width: 100%">
-				More Testimonials...
-			</button>
+      <div class="row" data-aos="fade-right" data-aos-duration="1000"
+           style="margin-bottom: 50px">
+        <div class="col-lg-4">
+          <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+              class="rounded-circle img-fluid mb-3"
+              src="{% static 'main/img/index/test1.jpeg' %}"
+              alt="">
+            <h5>Supriya Mohan</h5>
+            <p class="font-weight-light mb-0">"Seema has been
+              guiding my son Shiv with French and he has
+              performed consistently well in the subject since he
+              became her student. More
+              importantly, he enjoys his French classes and
+              really looks forward to them. Seema provides a
+              consistent bank of practice sheets to help him stay
+              abreast of the class work and also to prepare for
+              exams. I recommend her highly. "</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+              class="rounded-circle img-fluid mb-3"
+              src="{% static 'main/img/index/test2.jpeg' %}"
+              alt="">
+            <h5>Vidushi Yaksh</h5>
+            <p class="font-weight-light mb-1">"A lot of people
+              might think that online classes are not as great as
+              when one goes to the centre to study. This is not
+              true. During online classes with Seema ma’am I was
+              actually able to receive more attention and so I am
+              more focussed and concentrated towards what is
+              being taught...</p>
+            <button class="btn btn-outline-primary" type="button"
+                    data-toggle="collapse"
+                    data-target="#collapse_test2"
+                    aria-expanded="false"
+                    aria-controls="collapse_test2">
+              Expand
+            </button>
+            <div class="collapse" id="collapse_test2">
+              <div class="card card-body font-weight-light">
+                It is really comfortable for one can
+                just sit anywhere with his/her laptop and
+                attend
+                the classes with a click of a button.
+                Assignments
+                and exercises are also sent and discussed
+                regularly
+                and these Skype classes don’t seem to have
+                acted as
+                a hinderance to my marks. These classes are
+                helpful, quick and really knowledgeable. I
+                extremely recommend them to every student.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+              class="rounded-circle img-fluid mb-3"
+              src="{% static 'main/img/index/test4.jpeg' %}"
+              alt="">
+            <h5>Anchal Datta</h5>
+            <p class="font-weight-light mb-0">"My daughter Mallika
+              was fortunate to find an excellent teacher in Seema
+              to learn French. She keeps the class engaging and
+              her pace is perfect. Her command over the language,
+              and the ability to instill confidence in a student
+              while correcting a mistake, are qualities of a good
+              educator...</p>
+            <button class="btn btn-outline-primary" type="button"
+                    data-toggle="collapse"
+                    data-target="#collapse_test3"
+                    aria-expanded="false"
+                    aria-controls="collapse_test3">
+              Expand
+            </button>
+            <div class="collapse" id="collapse_test3">
+              <div class="card card-body font-weight-light">
+                Learning with her has been a very
+                pleasant and fulfilling experience for Mallika.
+                I highly recommend Seema for a valuable and fun
+                learning experience."
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-outline-primary mb-3" type="button"
+              data-toggle="collapse"
+              data-target="#collapse_test_all"
+              aria-expanded="false"
+              aria-controls="collapse_test_all"
+              style="width: 100%">
+        More Testimonials...
+      </button>
 
-			<div class="collapse" id="collapse_test_all">
-				<div class="row" data-aos="fade-left" data-aos-duration="1000">
-					<div class="col-lg-4">
-						<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-								class="rounded-circle img-fluid mb-3"
-								src="{% static 'main/img/index/test3.jpeg' %}"
-								alt="">
-							<h5>Richa Mehta</h5>
-							<p class="font-weight-light mb-0">"French was a
-								completely new language for my son and we were
-								doubtful initially as to how he would cope with it.
-								It was important for him to learn and enjoy the
-								subject. Going strictly by the book could have made
-								it very mundane. This is where Sorobrain’s online
-								teaching methodology added unique value...</p>
-							<button class="btn btn-outline-primary" type="button"
-									data-toggle="collapse"
-									data-target="#collapse_test4"
-									aria-expanded="false"
-									aria-controls="collapse_test4">
-								Expand
-							</button>
-							<div class="collapse" id="collapse_test4">
-								<div class="card card-body font-weight-light">
-									Their
-									learning plans are creative and enriching.
-									Instead
-									of going by the book always, they encourage
-									students to learn via creative writing,
-									composing
-									fun songs on alphabets, words, and numbers. In
-									doing so, they helped him harness his logic and
-									imagination to construct sentences, apply rules
-									of
-									grammar ultimately making it a very fulfilling
-									experience. They are brilliant at what they do
-									and
-									make learning French fun and engaging. "
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-								class="rounded-circle img-fluid mb-3"
-								src="{% static 'main/img/index/test5.jpeg' %}">
-							<h5>Pranav Maheshwari</h5>
-							<p class="font-weight-light mb-0">"A teacher is a
-								compass that activates the magnets of curiosity,
-								knowledge, and wisdom in pupils." Thanks to
-								e_Sorobrain for getting the best out of me &
-								helping me build confidence in myself. Scoring 100%
-								on a continuous basis with clear fundamentals
-								wouldn't have been possible without Seema ma’am’s
-								able guidance.</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-								class="rounded-circle img-fluid mb-3"
-								src="{% static 'main/img/index/test6.jpeg' %}">
-							<h5>Swasti and Pooja Chaudhary</h5>
-							<p class="font-weight-light mb-0">"I have been learning
-								French through Seema ma'am for about four years now,
-								and when I first received the news about online
-								classes I was a little hesitant, however they work
-								even better than regular classes as they allow the
-								exchange of worksheets and practice exercises more
-								efficiently and are more convenient as well and
-								they can be done from the comfort of your own home.
-								eSorobrain’s classes are a new and enjoyable
-								experience and make learning French even more fun
-								and easy!" - Swasti</p>
-							<button class="btn btn-outline-primary" type="button"
-									data-toggle="collapse"
-									data-target="#collapse_test6"
-									aria-expanded="false"
-									aria-controls="collapse_test6">
-								Expand
-							</button>
-							<div class="collapse" id="collapse_test6">
-								<div class="card card-body font-weight-light">
-									"Seema is an exception when it comes to
-									teaching
-									French she comes across not only as a person
-									who masters the language and has enough
-									qualification to be a teacher but much more is
-									how she teaches creates interest in Swasti ( my
-									daughter) to keep pursuing the language. Swasti
-									loves the language only because she’s learning
-									from Seema as she has formed such a bond with
-									her that motivates her. Seema ensures that the
-									child is not just learning from book but has
-									enough practical learning. Her online classes
-									are not less than a personal class .. she is as
-									dedicated and involved as a teacher in the
-									online class as someone in the face to face
-									class will be. I recommend her strongly and
-									thank her for ensuring that Swasti excels in
-									the subject." – Pooja (Mother)
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="row" data-aos="fade-left" data-aos-duration="1000">
-					<div class="col-lg-4">
-						<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-								class="rounded-circle img-fluid mb-3"
-								src="{% static 'main/img/index/test7.jpeg' %}"
-								alt="">
-							<h5>Manasi Saha</h5>
-							<p class="font-weight-light mb-0">"Both my sons
-								extremely benefited after joining Sorobrain®. The
-								most important part being that they started
-								enjoying learning French as a language and both of
-								their marks jumped significantly. Raunak improved
-								from a C to an A in IGCSE and has been doing well
-								in IB as well. Rohan showed a marked improvement by
-								almost 20% in 3 months. </p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-								class="rounded-circle img-fluid mb-3"
-								src="{% static 'main/img/index/test8.jpeg' %}">
-							<h5>Gayatri Appaya</h5>
-							<p class="font-weight-light mb-0">"My daughter,
-								studying in Grade 9 of the IGCSE board started
-								French classes with Sorobrain® about 6-7 months
-								back. Besides the fact that her grades have gone up
-								since she began individual sessions with Seema...
-							</p>
-							<button class="btn btn-outline-primary" type="button"
-									data-toggle="collapse"
-									data-target="#collapse_test8"
-									aria-expanded="false"
-									aria-controls="collapse_test8">
-								Expand
-							</button>
-							<div class="collapse" id="collapse_test8">
-								<div class="card card-body font-weight-light">
-									what sets this class apart is the fact that my
-									daughter really looks forward to them! The
-									classes
-									are interactive, peppered with fun activities,
-									with
-									grammar exercises and unique techniques to
-									remember
-									language rules. I would highly recommend
-									sessions
-									with Seema for French language strengthening"
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-								class="rounded-circle img-fluid mb-3"
-								src="{% static 'main/img/index/test9.jpeg' %}">
-							<h5>Sanjmi K. Khurana</h5>
-							<p class="font-weight-light mb-0">Learning with Seema
-								Ma'am is always fun. I learn new things (Yes!
-								Plural) every class. With online lessons, this has
-								just become closer, faster and easier. I am able to
-								take the best French classes in the world with the
-								best teacher in the world without going anywhere.
-								Currently, I am preparing for DELF B2 level and I
-								feel quite comfortable in all the 4 required skills
-								of a language (Speaking, Listening, Reading,
-								Writing). C’est incroyable ! </p>
-						</div>
-					</div>
-				</div>
-				<div class="row" data-aos="fade-right" data-aos-duration="1000">
-					<div class="col-lg-4">
-						<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-								class="rounded-circle img-fluid mb-3"
-								src="{% static 'main/img/index/test10.jpeg' %}"
-								alt="">
-							<h5>Monisha and Aaliya </h5>
-							<p class="font-weight-light mb-0">"My daughter Aaliya
-								has been learning French online via e_Sorobrain®for
-								the past 3 years. It has been a beautiful
-								experience and she has now cleared DELF A2 too.
-								Thanks to Sorobrain®that my daughter wants to
-								master the language and make a career out of
-								it." - Monisha (mother) </p>
-							<button class="btn btn-outline-primary" type="button"
-									data-toggle="collapse"
-									data-target="#collapse_test10"
-									aria-expanded="false"
-									aria-controls="collapse_test10">
-								Expand
-							</button>
-							<div class="collapse" id="collapse_test10">
-								<div class="card card-body font-weight-light">
-									French is my favourite subject. Learning online
-									with e_ Sorobrain®has not only improved my
-									language but also the ability to be in sync
-									with the technology and digital world. I enjoy
-									my lessons and get instant clarification on my
-									doubts." - Aaliya
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-								class="rounded-circle img-fluid mb-3"
-								src="{% static 'main/img/index/test11.jpeg' %}">
-							<h5>Anita Kapoor</h5>
-							<p class="font-weight-light mb-0">
-								If anyone is seeking to learn French, I would
-								highly recommend online lessons at e_Sorobrain®. At
-								the beginning, I was a little apprehensive about
-								learning online. However, have found that it is as
-								good, interactive and focused as face to face home
-								tutoring. In a way it is better as it saves
-								commuting time. Seema ma’am makes learning French,
-								fun and interesting and my daughter Gaurika finds
-								herself looking forward to the next lesson."
-							</p>
-							<button class="btn btn-outline-primary" type="button"
-									data-toggle="collapse"
-									data-target="#collapse_test11"
-									aria-expanded="false"
-									aria-controls="collapse_test11">
-								Expand
-							</button>
-							<div class="collapse" id="collapse_test11">
-								<div class="card card-body font-weight-light">
-									what sets this class apart is the fact that my
-									daughter really looks forward to them! The
-									classes
-									are interactive, peppered with fun activities,
-									with
-									grammar exercises and unique techniques to
-									remember
-									language rules. I would highly recommend
-									sessions
-									with Seema for French language strengthening"
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
-								class="rounded-circle img-fluid mb-3"
-								src="{% static 'main/img/index/test12.jpeg' %}">
-							<h5>Rohini Roy</h5>
-							<p class="font-weight-light mb-0">"I feel I can put my
-								heart out to a page when I think of Seema. She is
-								so much more than just a teacher or guide...for my
-								children...she has redefined "mentoring". I have
-								started the journey initially being her student
-								myself ...even then ...her classes were cherished
-								not just for its excellent content but for the
-								instant boost of energy, positivism and passion
-								that it engulfed one in! </p>
-							<button class="btn btn-outline-primary" type="button"
-									data-toggle="collapse"
-									data-target="#collapse_test12"
-									aria-expanded="false"
-									aria-controls="collapse_test12">
-								Expand
-							</button>
-							<div class="collapse" id="collapse_test12">
-								<div class="card card-body font-weight-light">
-									That aspect did not change
-									with her online classes and now both my
-									children
-									are mentored by her. I cant say that I was not
-									apprehensive initially when I heard about the
-									online classes. I too worried about its
-									effectiveness, whether or not the child could
-									be
-									monitored and whether or not this would lead to
-									effective scoring, understanding and follow up.
-									To
-									my greatest satisfaction and surprise, my child
-									went from being at the bottom of her class to
-									the
-									top 3 of her class in French. She went from
-									losing
-									hope in her ability to perform at all in the
-									subject to an all new high of confidence. I
-									have
-									watched her succeed not just in scores but as a
-									person...as a result of Seema's online
-									interactions. Most of all, I have witnessed my
-									daughter's intense love and passion for the
-									subject...something which I am indebted to
-									Seema
-									for, as a parent."
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="pricing py-5" style="background-color: #eef4f7;">
-		<div class="container">
-			<div class="row">
-				<div class="col" style="margin-bottom: 28px;">
-					<h1 class="text-center text-white">New Addition: Online
-						Workshops</h1>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<div class="card-group">
-						{% for w in workshops %}
-							<div class="card"><img
-									style="max-width: 300px"
-									class="card-img-top w-100 d-block"
-									alt="workshops thumbnail"
-									src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
-								<div class="card-body">
-									<h5>{{ w.title }}</h5>
-									<p class="card-text">{{ w.description|truncatechars:200 }}</p>
-									<a href="{{ w.get_absolute_url }}">
-										<button class="btn btn-primary"
-												type="button">Register Now!
-										</button>
-									</a></div>
-							</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<div class="highlight-phone">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="intro">
-						<h2>About Sorobrain</h2>
-						<p class="text-justify">Since 2009, Sorobrain® has
-							specialized in providing a fun and active learning
-							environment for its French language courses through
-							activities like theatrical performances, karaoke,
-							quizzes &amp; competitions, games, puzzles, etc.
-							where the knowledge is put into action. Our motive
-							is to make students absorb the language. As digital
-							technology continues to evolve, e_Sorobrain® is the
-							digital transformation of Sorobrain® that aims at
-							providing the same at
-							the comfort of one’s place while extending its
-							services to the entire world. <br/><br/>“Learning
-							the fun way, is the culture established &amp;
-							promoted at Sorobrain .&quot;<br/><em>-Seema Jain
-								[Founder]</em><br/></p>
-						<a class="btn btn-primary" role="button"
-						   href="{% url 'contact' %}">Get
-							in Touch!</a>
-					</div>
-				</div>
-				<div class="col-sm-4 mt-5" data-aos="fade-left"
-					 data-aos-duration="1000">
-					<div class="d-none d-md-block iphone-mockup"><img
-							alt="founder image" style="border: 3px solid"
-							class="device"
-							src="{% static 'main/img/index/seema.jpeg' %}"/>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-  <div class="container my-3 text-center">
+      <div class="collapse" id="collapse_test_all">
+        <div class="row" data-aos="fade-left" data-aos-duration="1000">
+          <div class="col-lg-4">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+                class="rounded-circle img-fluid mb-3"
+                src="{% static 'main/img/index/test3.jpeg' %}"
+                alt="">
+              <h5>Richa Mehta</h5>
+              <p class="font-weight-light mb-0">"French was a
+                completely new language for my son and we were
+                doubtful initially as to how he would cope with it.
+                It was important for him to learn and enjoy the
+                subject. Going strictly by the book could have made
+                it very mundane. This is where Sorobrain’s online
+                teaching methodology added unique value...</p>
+              <button class="btn btn-outline-primary" type="button"
+                      data-toggle="collapse"
+                      data-target="#collapse_test4"
+                      aria-expanded="false"
+                      aria-controls="collapse_test4">
+                Expand
+              </button>
+              <div class="collapse" id="collapse_test4">
+                <div class="card card-body font-weight-light">
+                  Their
+                  learning plans are creative and enriching.
+                  Instead
+                  of going by the book always, they encourage
+                  students to learn via creative writing,
+                  composing
+                  fun songs on alphabets, words, and numbers. In
+                  doing so, they helped him harness his logic and
+                  imagination to construct sentences, apply rules
+                  of
+                  grammar ultimately making it a very fulfilling
+                  experience. They are brilliant at what they do
+                  and
+                  make learning French fun and engaging. "
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+                class="rounded-circle img-fluid mb-3"
+                src="{% static 'main/img/index/test5.jpeg' %}">
+              <h5>Pranav Maheshwari</h5>
+              <p class="font-weight-light mb-0">"A teacher is a
+                compass that activates the magnets of curiosity,
+                knowledge, and wisdom in pupils." Thanks to
+                e_Sorobrain for getting the best out of me &
+                helping me build confidence in myself. Scoring 100%
+                on a continuous basis with clear fundamentals
+                wouldn't have been possible without Seema ma’am’s
+                able guidance.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+                class="rounded-circle img-fluid mb-3"
+                src="{% static 'main/img/index/test6.jpeg' %}">
+              <h5>Swasti and Pooja Chaudhary</h5>
+              <p class="font-weight-light mb-0">"I have been learning
+                French through Seema ma'am for about four years now,
+                and when I first received the news about online
+                classes I was a little hesitant, however they work
+                even better than regular classes as they allow the
+                exchange of worksheets and practice exercises more
+                efficiently and are more convenient as well and
+                they can be done from the comfort of your own home.
+                eSorobrain’s classes are a new and enjoyable
+                experience and make learning French even more fun
+                and easy!" - Swasti</p>
+              <button class="btn btn-outline-primary" type="button"
+                      data-toggle="collapse"
+                      data-target="#collapse_test6"
+                      aria-expanded="false"
+                      aria-controls="collapse_test6">
+                Expand
+              </button>
+              <div class="collapse" id="collapse_test6">
+                <div class="card card-body font-weight-light">
+                  "Seema is an exception when it comes to
+                  teaching
+                  French she comes across not only as a person
+                  who masters the language and has enough
+                  qualification to be a teacher but much more is
+                  how she teaches creates interest in Swasti ( my
+                  daughter) to keep pursuing the language. Swasti
+                  loves the language only because she’s learning
+                  from Seema as she has formed such a bond with
+                  her that motivates her. Seema ensures that the
+                  child is not just learning from book but has
+                  enough practical learning. Her online classes
+                  are not less than a personal class .. she is as
+                  dedicated and involved as a teacher in the
+                  online class as someone in the face to face
+                  class will be. I recommend her strongly and
+                  thank her for ensuring that Swasti excels in
+                  the subject." – Pooja (Mother)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row" data-aos="fade-left" data-aos-duration="1000">
+          <div class="col-lg-4">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+                class="rounded-circle img-fluid mb-3"
+                src="{% static 'main/img/index/test7.jpeg' %}"
+                alt="">
+              <h5>Manasi Saha</h5>
+              <p class="font-weight-light mb-0">"Both my sons
+                extremely benefited after joining Sorobrain®. The
+                most important part being that they started
+                enjoying learning French as a language and both of
+                their marks jumped significantly. Raunak improved
+                from a C to an A in IGCSE and has been doing well
+                in IB as well. Rohan showed a marked improvement by
+                almost 20% in 3 months. </p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+                class="rounded-circle img-fluid mb-3"
+                src="{% static 'main/img/index/test8.jpeg' %}">
+              <h5>Gayatri Appaya</h5>
+              <p class="font-weight-light mb-0">"My daughter,
+                studying in Grade 9 of the IGCSE board started
+                French classes with Sorobrain® about 6-7 months
+                back. Besides the fact that her grades have gone up
+                since she began individual sessions with Seema...
+              </p>
+              <button class="btn btn-outline-primary" type="button"
+                      data-toggle="collapse"
+                      data-target="#collapse_test8"
+                      aria-expanded="false"
+                      aria-controls="collapse_test8">
+                Expand
+              </button>
+              <div class="collapse" id="collapse_test8">
+                <div class="card card-body font-weight-light">
+                  what sets this class apart is the fact that my
+                  daughter really looks forward to them! The
+                  classes
+                  are interactive, peppered with fun activities,
+                  with
+                  grammar exercises and unique techniques to
+                  remember
+                  language rules. I would highly recommend
+                  sessions
+                  with Seema for French language strengthening"
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+                class="rounded-circle img-fluid mb-3"
+                src="{% static 'main/img/index/test9.jpeg' %}">
+              <h5>Sanjmi K. Khurana</h5>
+              <p class="font-weight-light mb-0">Learning with Seema
+                Ma'am is always fun. I learn new things (Yes!
+                Plural) every class. With online lessons, this has
+                just become closer, faster and easier. I am able to
+                take the best French classes in the world with the
+                best teacher in the world without going anywhere.
+                Currently, I am preparing for DELF B2 level and I
+                feel quite comfortable in all the 4 required skills
+                of a language (Speaking, Listening, Reading,
+                Writing). C’est incroyable ! </p>
+            </div>
+          </div>
+        </div>
+        <div class="row" data-aos="fade-right" data-aos-duration="1000">
+          <div class="col-lg-4">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+                class="rounded-circle img-fluid mb-3"
+                src="{% static 'main/img/index/test10.jpeg' %}"
+                alt="">
+              <h5>Monisha and Aaliya </h5>
+              <p class="font-weight-light mb-0">"My daughter Aaliya
+                has been learning French online via e_Sorobrain®for
+                the past 3 years. It has been a beautiful
+                experience and she has now cleared DELF A2 too.
+                Thanks to Sorobrain®that my daughter wants to
+                master the language and make a career out of
+                it." - Monisha (mother) </p>
+              <button class="btn btn-outline-primary" type="button"
+                      data-toggle="collapse"
+                      data-target="#collapse_test10"
+                      aria-expanded="false"
+                      aria-controls="collapse_test10">
+                Expand
+              </button>
+              <div class="collapse" id="collapse_test10">
+                <div class="card card-body font-weight-light">
+                  French is my favourite subject. Learning online
+                  with e_ Sorobrain®has not only improved my
+                  language but also the ability to be in sync
+                  with the technology and digital world. I enjoy
+                  my lessons and get instant clarification on my
+                  doubts." - Aaliya
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+                class="rounded-circle img-fluid mb-3"
+                src="{% static 'main/img/index/test11.jpeg' %}">
+              <h5>Anita Kapoor</h5>
+              <p class="font-weight-light mb-0">
+                If anyone is seeking to learn French, I would
+                highly recommend online lessons at e_Sorobrain®. At
+                the beginning, I was a little apprehensive about
+                learning online. However, have found that it is as
+                good, interactive and focused as face to face home
+                tutoring. In a way it is better as it saves
+                commuting time. Seema ma’am makes learning French,
+                fun and interesting and my daughter Gaurika finds
+                herself looking forward to the next lesson."
+              </p>
+              <button class="btn btn-outline-primary" type="button"
+                      data-toggle="collapse"
+                      data-target="#collapse_test11"
+                      aria-expanded="false"
+                      aria-controls="collapse_test11">
+                Expand
+              </button>
+              <div class="collapse" id="collapse_test11">
+                <div class="card card-body font-weight-light">
+                  what sets this class apart is the fact that my
+                  daughter really looks forward to them! The
+                  classes
+                  are interactive, peppered with fun activities,
+                  with
+                  grammar exercises and unique techniques to
+                  remember
+                  language rules. I would highly recommend
+                  sessions
+                  with Seema for French language strengthening"
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img
+                class="rounded-circle img-fluid mb-3"
+                src="{% static 'main/img/index/test12.jpeg' %}">
+              <h5>Rohini Roy</h5>
+              <p class="font-weight-light mb-0">"I feel I can put my
+                heart out to a page when I think of Seema. She is
+                so much more than just a teacher or guide...for my
+                children...she has redefined "mentoring". I have
+                started the journey initially being her student
+                myself ...even then ...her classes were cherished
+                not just for its excellent content but for the
+                instant boost of energy, positivism and passion
+                that it engulfed one in! </p>
+              <button class="btn btn-outline-primary" type="button"
+                      data-toggle="collapse"
+                      data-target="#collapse_test12"
+                      aria-expanded="false"
+                      aria-controls="collapse_test12">
+                Expand
+              </button>
+              <div class="collapse" id="collapse_test12">
+                <div class="card card-body font-weight-light">
+                  That aspect did not change
+                  with her online classes and now both my
+                  children
+                  are mentored by her. I cant say that I was not
+                  apprehensive initially when I heard about the
+                  online classes. I too worried about its
+                  effectiveness, whether or not the child could
+                  be
+                  monitored and whether or not this would lead to
+                  effective scoring, understanding and follow up.
+                  To
+                  my greatest satisfaction and surprise, my child
+                  went from being at the bottom of her class to
+                  the
+                  top 3 of her class in French. She went from
+                  losing
+                  hope in her ability to perform at all in the
+                  subject to an all new high of confidence. I
+                  have
+                  watched her succeed not just in scores but as a
+                  person...as a result of Seema's online
+                  interactions. Most of all, I have witnessed my
+                  daughter's intense love and passion for the
+                  subject...something which I am indebted to
+                  Seema
+                  for, as a parent."
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <div class="container my-3 text-center">
     <div class="row">
       <div class="col-md-8 mx-auto">
         <h4>Interested to know more?</h4>
-        <strong>Check out our F.A.Q. here</strong><hr>
-        <a href="{% url 'faq' %}"><button class="btn btn-outline-info w-100">FAQ</button></a>
+        <strong>Check out our F.A.Q. here</strong>
+        <hr>
+        <a href="{% url 'faq' %}">
+          <button class="btn btn-outline-info w-100">FAQ</button>
+        </a>
       </div>
     </div>
   </div>
-	{% if not user.is_authenticated %}
-	<section class="call-to-action text-white text-center"
-			 style="background: rgb(63,118,183); background: linear-gradient(219deg, rgba(63,118,183,1) 0%, rgba(131,198,235,1) 100%);">
-		<div class="overlay"></div>
+  <section class="pricing py-5" style="background-color: #eef4f7;">
+    <div class="container">
+      <div class="row">
+        <div class="col" style="margin-bottom: 28px;">
+          <h1 class="text-center text-white">New Addition: Online
+            Workshops</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card-group">
+            {% for w in workshops|slice:':4' %}
+              <div class="card"><img
+                  style="max-width: 300px"
+                  class="card-img-top w-100 d-block"
+                  alt="workshops thumbnail"
+                  src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                <div class="card-body">
+                  <h5>{{ w.title }}</h5>
+                  <p class="card-text">{{ w.description|truncatechars:200 }}</p>
+                  <a href="{{ w.get_absolute_url }}">
+                    <button class="btn btn-primary"
+                            type="button">Register Now!
+                    </button>
+                  </a></div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-9 mx-auto">
-					<h2 class="mb-4">Ready to get started? Sign up now!</h2>
-				</div>
-				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-					<form>
-						<div class="form-row">
-							<div class="col">
-								<p class="text-center"
-								   style="font-size: 18px;">Making a free
-									Sorobrain® account gets you access to
-									premium content!</p>
-								<button class="btn btn-primary" type="button">
-									Sign Up!
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
-	{% endif %}
+  <div class="highlight-phone">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="intro">
+            <h2>About Sorobrain</h2>
+            <p class="text-justify">Since 2009, Sorobrain® has
+              specialized in providing a fun and active learning
+              environment for its French language courses through
+              activities like theatrical performances, karaoke,
+              quizzes &amp; competitions, games, puzzles, etc.
+              where the knowledge is put into action. Our motive
+              is to make students absorb the language. As digital
+              technology continues to evolve, e_Sorobrain® is the
+              digital transformation of Sorobrain® that aims at
+              providing the same at
+              the comfort of one’s place while extending its
+              services to the entire world. <br/><br/>“Learning
+              the fun way, is the culture established &amp;
+              promoted at Sorobrain .&quot;<br/><em>-Seema Jain
+                [Founder]</em><br/></p>
+            <a class="btn btn-primary" role="button"
+               href="{% url 'contact' %}">Get
+              in Touch!</a>
+          </div>
+        </div>
+        <div class="col-sm-4 mt-5" data-aos="fade-left"
+             data-aos-duration="1000">
+          <div class="d-none d-md-block iphone-mockup"><img
+              alt="founder image" style="border: 3px solid"
+              class="device"
+              src="{% static 'main/img/index/seema.jpeg' %}"/>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-7 mx-auto">
+          <h4>Associations & Partnerships</h4>
+          <hr>
+          <img class="img-responsive" style="max-width: 120px" alt="le frehindi" src="{% static 'main/img/index/logos/frehindi.png' %}"><br>
+          <h5 class="text-primary">Le Frehindi - Paris</h5>
+          <h6 class="text-muted">Under the patronage of</h6>
+          <div class="d-inline-flex">
+            <div class="float-left"><img class="img-responsive" style="max-width: 200px" alt="uga" src="{% static 'main/img/index/logos/uga.jpg' %}"></div>
+            <div class="float-right"><img class="img-responsive" style="max-width: 300px" alt="atout" src="{% static 'main/img/index/logos/atout.png' %}"></div>
+          </div>
+          <br>
+          <h6 class="text-muted">And member of:</h6>
+          <div class="p-1"><img class="img-responsive" style="max-width: 120px" alt="le frehindi" src="{% static 'main/img/index/logos/itaf.png' %}"></div>
+          <h5>Indian Association of Teachers of French (ITAF)</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if not user.is_authenticated %}
+    <section class="call-to-action text-white text-center"
+             style="background: rgb(63,118,183); background: linear-gradient(219deg, rgba(63,118,183,1) 0%, rgba(131,198,235,1) 100%);">
+      <div class="overlay"></div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form>
+              <div class="form-row">
+                <div class="col">
+                  <p class="text-center"
+                     style="font-size: 18px;">Making a free
+                    Sorobrain® account gets you access to
+                    premium content!</p>
+                  <button class="btn btn-primary" type="button">
+                    Sign Up!
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
 
 {% endblock content %}
 
 {% block js %}
-	<script src="{% static 'main/js/index/bs-init.js' %}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+  <script src="{% static 'main/js/index/bs-init.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
 {% endblock js %}
