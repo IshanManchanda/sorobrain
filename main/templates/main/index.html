@@ -123,7 +123,7 @@
 						<p class="description">We're international. French
 							speakers across the globe use our services to boost
 							their fluency. </p>
-						<a class="learn-more" href="#global">Learn more »</a></div>
+						<a class="learn-more" href="{% url 'global' %}">Learn more »</a></div>
 				</div>
 				<div class="col-sm-6 col-md-5 col-lg-4 item">
 					<div data-bs-hover-animate="bounce" class="box"><i
@@ -178,7 +178,12 @@
 	<section class="testimonials text-center"
 			 style="padding-bottom: 39px;padding-top: 10px; background-color: #eef4f7;">
 		<div class="container">
-			<h2 class="mb-5">What people are saying</h2>
+			<h2 class="mb-2">What people are saying</h2>
+            <a href="{% url 'global' %}">
+        <button class="btn btn-outline-info mt-2 mb-5" style="width: 100%">
+          Global Testimonials
+        </button>
+      </a>
 			<div class="row" data-aos="fade-right" data-aos-duration="1000"
 				 style="margin-bottom: 50px">
 				<div class="col-lg-4">
@@ -275,6 +280,7 @@
 			style="width: 100%">
 				More Testimonials...
 			</button>
+
 			<div class="collapse" id="collapse_test_all">
 				<div class="row" data-aos="fade-left" data-aos-duration="1000">
 					<div class="col-lg-4">
@@ -611,26 +617,7 @@
 			</div>
 		</div>
 	</section>
-{#	<section class="my-3">#}
-{#		<div class="container">#}
-{#			<div class="row">#}
-{#				<div class="col-md-8 mx-auto text-center">#}
-{#					<h3>We're Global</h3>#}
-{#					<hr>#}
-{#				</div>#}
-{#			</div>#}
-{#			<div class="row">#}
-{#				<div class="card">#}
-{#					<img class="card-img-top" src="https://via.placeholder.com/150" alt="person">#}
-{#					<div class="card-header"><span class="card-title">Paraguay</span></div>#}
-{#					<div class="card-body">#}
-{#						<p>We came to India in July 2011 from Paraguay and we only knew Spanish. My father Oscar Ubaldo Benitez is a Diplomat in Paraguay Embassy and we had to stay in India for at least another 5 years. It was almost impossible to get admission in any Indian school without the knowledge of English.  I and my sister Violeta Jeruti Benitez underwent an English course at Sorobrain® under Seema and we learnt to speak the language in only 7 months. We got a very friendly environment at the institute. The faculty is very helpful and the staff especially Bhawna & Durga are very cooperative. Today, we both are in a good school in Delhi. Now my father is also learning English in the Institute as we are very happy and satisfied that we are able to speak the language at this early age. We are grateful to Seema Jain and Sorobrain</p>#}
-{##}
-{#					</div>#}
-{#				</div>#}
-{#			</div>#}
-{#		</div>#}
-{#	</section>#}
+
 	<div class="highlight-phone">
 		<div class="container">
 			<div class="row">

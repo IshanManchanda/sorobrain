@@ -22,5 +22,6 @@ urlpatterns = [
 	path('refund/', TemplateView.as_view(template_name='main/refund.html'), name='refund'),
 	path('catalog/', views.catalog, name='catalog'),
 	path('contact/', TemplateView.as_view(template_name='main/contact.html'), name='contact'),
+	path('global/', TemplateView.as_view(template_name='main/global.html'), name='global'),
 	path('', views.index, name='index'),
 ]
