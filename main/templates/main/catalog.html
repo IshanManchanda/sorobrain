@@ -251,58 +251,53 @@
                 <p class="lead px-2" style="margin-bottom: 1px;">Please <a href="tel: +919810522445">call us</a> to
                   schedule classes. </p>
                 <div class="row">
-                  <p>Learn and practise French online from any convenient location.<br>
-                    One-on-One online classes can be fixed based on the requirement of individuals. You can select from
-                    the following options and register for the same.<br>
-                    After the successful completion of the transaction, day and time slot are fixed between facilitator
-                    and
-                    student via email. In the unlikely event when eSorobrain has to cancel the chosen slot, you will be
-                    notified and another slot would be fixed. However, if student is unable to attend for any personal
-                    reason, a refund cannot be granted.<br>
-                    For DELF preparation, the number of total hours required by the student depends on his/her pace and
-                    performance.<br>
-                    Please ensure your access to a strong internet connection to maximize productivity.</p>
+                  <p>Learn and practise French online from any convenient location.
+                    One-on-One online classes can be scheduled based on the requirement of individuals. We cater to all
+                    kinds of national and international boards like CBSE, IGCSE, IBDP, AP, etc. We also prepare students
+                    for DELF certifications and certifications from University Grenoble Alpes based on our course and
+                    curriculum through their online tests.</p>
                 </div>
-                <div class="row">
-                  <div class="card-columns">
-                    {% for class in classes %}
-                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
-                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">
-                        <div class="card-body">
-                          <h5 class="card-title">{{ class.title }}</h5>
-                          <p class="card-text">{{ class.description|truncatechars_html:300|safe }}...</p>
-                          <a href="{{ class.get_absolute_url }}">
-                            <button class="btn btn-primary" type="button">Register Now</button>
-                          </a></div>
-                      </div>
-                    {% empty %}
-                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
-                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">
-                        <div class="card-body">
-                          <h5 class="card-title">Coming Soon</h5>
-                          <p class="card-text">We're working hard to get competitions working as soon as possible!</p>
-                          <button class="btn btn-secondary" type="button">View More</button>
-                        </div>
-                      </div>
-                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
-                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">
-                        <div class="card-body">
-                          <h5 class="card-title">Coming Soon</h5>
-                          <p class="card-text">We're working hard to get competitions working as soon as possible!</p>
-                          <button class="btn btn-secondary" type="button">View More</button>
-                        </div>
-                      </div>
-                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
-                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">
-                        <div class="card-body">
-                          <h5 class="card-title">Coming Soon</h5>
-                          <p class="card-text">We're working hard to get competitions working as soon as possible!</p>
-                          <button class="btn btn-secondary" type="button">View More</button>
-                        </div>
-                      </div>
-                    {% endfor %}
-                  </div>
-                </div>
+                <!--TODO: add clip art and button-->
+{#                <div class="row">#}
+{#                  <div class="card-columns">#}
+{#                    {% for class in classes %}#}
+{#                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"#}
+{#                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">#}
+{#                        <div class="card-body">#}
+{#                          <h5 class="card-title">{{ class.title }}</h5>#}
+{#                          <p class="card-text">{{ class.description|truncatechars_html:300|safe }}...</p>#}
+{#                          <a href="{{ class.get_absolute_url }}">#}
+{#                            <button class="btn btn-primary" type="button">Register Now</button>#}
+{#                          </a></div>#}
+{#                      </div>#}
+{#                    {% empty %}#}
+{#                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"#}
+{#                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">#}
+{#                        <div class="card-body">#}
+{#                          <h5 class="card-title">Coming Soon</h5>#}
+{#                          <p class="card-text">We're working hard to get competitions working as soon as possible!</p>#}
+{#                          <button class="btn btn-secondary" type="button">View More</button>#}
+{#                        </div>#}
+{#                      </div>#}
+{#                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"#}
+{#                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">#}
+{#                        <div class="card-body">#}
+{#                          <h5 class="card-title">Coming Soon</h5>#}
+{#                          <p class="card-text">We're working hard to get competitions working as soon as possible!</p>#}
+{#                          <button class="btn btn-secondary" type="button">View More</button>#}
+{#                        </div>#}
+{#                      </div>#}
+{#                      <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"#}
+{#                                             src="{% static 'main/img/catalog/classes-placeholder.jpg' %}">#}
+{#                        <div class="card-body">#}
+{#                          <h5 class="card-title">Coming Soon</h5>#}
+{#                          <p class="card-text">We're working hard to get competitions working as soon as possible!</p>#}
+{#                          <button class="btn btn-secondary" type="button">View More</button>#}
+{#                        </div>#}
+{#                      </div>#}
+{#                    {% endfor %}#}
+{#                  </div>#}
+{#                </div>#}
               </div>
             </div>
           </div>

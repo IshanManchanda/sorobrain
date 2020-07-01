@@ -55,6 +55,10 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 		"""Returns true if the current time is after the workshop starts"""
 		return timezone.now() > self.date
 
+	@property
+	def end_date(self):
+		return self.sessions.order_by('date')[-1].date
+
 	def get_absolute_url(self):
 		return reverse('workshops:workshop_store', args=[self.slug])
 

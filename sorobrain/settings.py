@@ -24,7 +24,7 @@ ADMINS = [
 ]
 
 MANAGERS = [
-	('Seema Jain', 'seema@sorobrain.com')
+	('Sorobrain Administrator', 'admin@sorobrain.com')
 ]
 
 AUTH_USER_MODEL = 'main.User'
