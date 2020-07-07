@@ -38,10 +38,11 @@
               style="height: 23px;margin: -44px;margin-right: 0;margin-top: 0;margin-left: 0;margin-bottom: 32px;">
             Welcome to Sorobrain!</h1>
           <h1 data-aos="zoom-in" class="mb-5"
-              style="margin: 15px;margin-bottom: 10px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 30px;">
-            Une Académie Française&nbsp;</h1>
+              style="margin: 15px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 30px;">
+            ...where talents are transformed in to geniuses.&nbsp;<br>
+            <i style="font-size: 25px">Une Académie Française&nbsp;</i></h1>
         </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto mt-3">
           <form>
             <div class="form-row">
               <div class="col-12 col-md-3 col-lg-8 offset-lg-2">
@@ -80,7 +81,7 @@
             compete with your peers from across the globe to
             win exciting prizes, and widely recognized
             certificates. </p>
-          <a class="learn-more"
+          <a class="learn-more stretched-link"
              href="{% url 'catalog' %}#competitions">Learn more
             »</a></div>
       </div>
@@ -91,7 +92,7 @@
           <p class="description">Our support is unmatched. Day or
             night, we will solve your problem so that you don't
             hit any bumps on your "French journey".</p>
-          <a class="learn-more" href="{% url 'contact' %}">Learn more »</a></div>
+          <a class="learn-more stretched-link" href="{% url 'contact' %}">Learn more »</a></div>
       </div>
       <div class="col-sm-6 col-md-5 col-lg-4 item">
         <div data-bs-hover-animate="bounce" class="box"><i
@@ -101,7 +102,7 @@
             genders, and other French skills with hundreds of
             our carefully crafted practice quizzes for all
             levels.</p>
-          <a class="learn-more"
+          <a class="learn-more stretched-link"
              href="{% url 'catalog' %}#practice">Learn more »</a>
         </div>
       </div>
@@ -115,7 +116,7 @@
             conferences will solve all our doubts and sharpen
             your skills. Receive a participation certificate on
             the successful completion of each workshop.</p>
-          <a class="learn-more"
+          <a class="learn-more stretched-link"
              href="{% url 'catalog' %}#workshops">Learn more
             »</a></div>
       </div>
@@ -126,7 +127,7 @@
           <p class="description">We're international. French
             speakers across the globe use our services to boost
             their fluency. </p>
-          <a class="learn-more" href="{% url 'global' %}">Learn more »</a></div>
+          <a class="learn-more stretched-link" href="{% url 'global' %}">Learn more »</a></div>
       </div>
       <div class="col-sm-6 col-md-5 col-lg-4 item">
         <div data-bs-hover-animate="bounce" class="box"><i
@@ -136,7 +137,7 @@
             rapidly increase their French ability, we offer
             personalized one-on-one lessons with our expert
             faculty.</p>
-          <a class="learn-more"
+          <a class="learn-more stretched-link"
              href="{% url 'catalog' %}#classes">Learn more »</a>
         </div>
       </div>
@@ -162,6 +163,11 @@
             <a class="btn btn-primary" role="button"
                href="{% url 'book' %}"><i class="fas fa-book"></i>
               Get the eBook</a>
+              <div class="d-sm-block d-md-none">
+              <img class="img-responsive"
+              alt="founder image" style="border: 3px solid; margin-top: 10px; width: 100%"
+              src="{% static 'common/img/book.jpeg' %}"/>
+          </div>
           </div>
         </div>
         <div class="col-sm-4" data-aos="fade-left"
@@ -658,6 +664,11 @@
                href="{% url 'contact' %}">Get
               in Touch!</a>
           </div>
+          <div class="d-sm-block d-md-none">
+              <img
+              alt="founder image" style="border: 3px solid; margin-top: 10px"
+              src="{% static 'main/img/index/seema.jpeg' %}"/>
+          </div>
         </div>
         <div class="col-sm-4 mt-5" data-aos="fade-left"
              data-aos-duration="1000">
@@ -679,12 +690,16 @@
         <img class="img-responsive" style="max-width: 120px" alt="le frehindi"
              src="{% static 'main/img/index/logos/frehindi.png' %}"><br>
         <h5 class="text-primary">Le Frehindi - Paris</h5><br>
-        <h6 class="text-muted">Under the patronage of</h6>
-        <div class="d-inline-flex">
-          <div class="float-left"><img class="img-responsive" style="max-width: 250px" alt="uga"
-                                       src="{% static 'main/img/index/logos/uga.jpg' %}"></div>
-          <div class="float-right"><img class="img-responsive" style="max-width: 300px" alt="atout"
-                                        src="{% static 'main/img/index/logos/atout.png' %}"></div>
+        <h5 class="text-muted">Under the patronage of</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="float-left"><img class="img-responsive" style="max-width: 250px" alt="uga"
+                                         src="{% static 'main/img/index/logos/uga.jpg' %}"></div>
+          </div>
+          <div class="col-md-6">
+            <div class="float-right"><img class="img-responsive" style="max-width: 300px" alt="atout"
+                                          src="{% static 'main/img/index/logos/atout.png' %}"></div>
+          </div>
         </div>
         <br>
         <h4>Membership: </h4>

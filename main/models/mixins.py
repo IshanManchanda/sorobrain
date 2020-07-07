@@ -25,6 +25,20 @@ class UserData(models.Model):
 	# 0 is disabled to 4 is all notifications
 	notification_level = models.IntegerField('Notification Level', default='4')
 
+	def profile_setup_progress(self):
+		empty_fields = 0
+		if self.gender is None:
+			empty_fields += 1
+		if self.phone is None:
+			empty_fields += 1
+		# ignoring user.avatar as it is not essential for profile setup
+		if self.education is None:
+			empty_fields += 1
+		if self.level is None:
+			empty_fields += 1
+
+		return empty_fields
+
 
 class AttemptData(models.Model):
 	class Meta:

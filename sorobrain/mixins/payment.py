@@ -50,6 +50,11 @@ class PaidObjectMixin(models.Model):
 			                     "You need to login before you can buy something!")
 			return redirect(login_url)
 
+		if request.user.profile_setup_progress() > 0:
+			messages.add_message(request, messages.WARNING,
+			                     "You need to complete your profile first!")
+			return redirect(reverse('settings'))
+
 		if code != '':
 			if not code.is_used and not code.is_expired:
 				if ContentType.objects.get_for_model(
