@@ -4,7 +4,7 @@
 		<p class="card-text">{{ question.question|safe }}</p>
 		<hr>
 
-    {% if question.option1 == None %}
+    {% if question.option1 != None %}
 
     <div class="form-check border mb-2 rounded" id="{{ question.id }}_option1_list_item" style="padding: 0px">
 			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option1_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
@@ -14,7 +14,7 @@
 		</div>
 
     {% endif %}
-    {% if question.option2 == None %}
+    {% if question.option2 != None %}
 
 		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option2_list_item" style="padding: 0px">
 			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option2_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
@@ -24,7 +24,7 @@
 		</div>
 
    {% endif %}
-   {% if question.option3 == None %}
+   {% if question.option3 != None %}
 
 		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option3_list_item" style="padding: 0px">
 			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option3_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
@@ -34,7 +34,7 @@
 		</div>
 
     {% endif %}
-    {% if question.option4 == None %}
+    {% if question.option4 != None %}
 
 		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option4_list_item" style="padding: 0px">
 			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option4_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
