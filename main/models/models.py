@@ -78,5 +78,19 @@ class User(AbstractBaseUser, PermissionsMixin, UserData):
 	def get_full_name(self):
 		return self.name
 
+	@property
+	def first_name(self):
+		try:
+			return self.name.split()[0]
+		except IndexError:
+			return ''
+
+	@property
+	def last_name(self):
+		try:
+			return self.name.split()[-1]
+		except IndexError:
+			return ''
+
 	def __str__(self):
 		return f'{self.username} <{self.email}>'

@@ -32,6 +32,7 @@
 						<h5 class="card-title"><i class="fas fa-user-edit"></i>  Edit Profile</h5>
 					</div>
 					<div class="card-body">
+            <small class="text-muted small">Please make sure your name is correct, as it will be on certificates issued to you!</small>
 						<form method="POST" action="{% url 'save_profile' %}" enctype="multipart/form-data">
 							{% csrf_token %}
 							{{ form | crispy }}

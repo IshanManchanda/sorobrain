@@ -18,7 +18,7 @@ class UserAdmin(BaseUserAdmin):
 	fieldsets = (
 		(None, {'fields': ('email', 'password')}),
 		('Personal info', {'fields': ('name', 'phone', 'gender', 'level', 'education')}),
-		('Permissions', {'fields': ('is_active', 'is_staff', 'notification_level')}),
+		('Permissions', {'fields': ('is_active', 'is_staff', 'notification_level', 'groups', 'user_permissions')}),
 	)
 	add_fieldsets = (
 		(
@@ -26,14 +26,14 @@ class UserAdmin(BaseUserAdmin):
 			{
 				'classes': ('wide',),
 				'fields': (
-					'email', 'name', 'password1', 'password2'
+					'email', 'name', 'phone', 'gender', 'level', 'education', 'notification_level'
 				)
 			}
 		),
 	)
 	search_fields = ('username', 'email', 'name', 'phone')
 	ordering = ('username',)
-	filter_horizontal = ()
+	filter_horizontal = ('user_permissions', 'groups')
 	readonly_fields = ('name', 'gender', 'email', 'phone', 'level', 'education', 'notification_level')
 
 
