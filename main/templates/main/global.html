@@ -1,113 +1,90 @@
 {% extends "global/base.html" %}
 {% load static %}
 
+{% block css %}
+  <link rel="stylesheet" href="{% static 'main/css/global/dh-header-non-rectangular.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/global/Testimonials.css' %}">
+
+{% endblock%}
+
 {% block title %} Global Testimonials {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <section class="my-3">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 mx-auto text-center">
-                <h3>We're Global</h3>
-                <hr>
-              </div>
+<div style="background-color: #eef4f7;">
+    <header class="dh-header-non-rectangular">
+        <div class="header__bg"></div>
+        <h1>Lorem ipsum</h1>
+        <div class="container">
+            <div class="col-md-6 mx-auto dh-header-non-rectangular-container text-black shadow-lg rounded" style="background: rgba(0, 0, 0, 0.2)">
+                <h1 style="color: black">Global Testimonials</h1>
+                <p style="color: black">Hear what our clients from across the world have to say...</p>
             </div>
-            <div class="row">
-              <div class="card-deck">
-                <div class="card">
-                  <img class="card-img-top" src="{% static 'main/img/global/oscar.jpg' %}" alt="person">
-                  <div class="card-header border-primary"><span class="card-title">Paraguay</span></div>
-                  <div class="card-body">
-                    <p>We came to India in July 2011 from Paraguay and we only knew Spanish. My father Oscar Ubaldo
-                      Benitez is a Diplomat in Paraguay Embassy and we had to stay in India for at least another 5
-                      years.
-                      It was almost impossible to get admission in any Indian school without the knowledge of English. I
-                      and my sister Violeta Jeruti Benitez underwent an English course at Sorobrain® under Seema and we
-                      learnt to speak the language in only 7 months. We got a very friendly environment at the
-                      institute.
-                      The faculty is very helpful and the staff especially Bhawna & Durga are very cooperative. Today,
-                      we
-                      both are in a good school in Delhi. Now my father is also learning English in the Institute as we
-                      are very happy and satisfied that we are able to speak the language at this early age. We are
-                      grateful to Seema Jain and Sorobrain
-                    </p>
-                  </div>
-                  <div class="card-footer"><strong>-Oscar Nicolas Benitez</strong></div>
+        </div>
+    </header>
+    <div class="testimonials-clean">
+        <div class="container">
+            <div class="intro"></div>
+            <div class="row people">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <p class="description">We came to India in July 2011 from Paraguay and we only knew Spanish. My father Oscar Ubaldo Benitez is a Diplomat in Paraguay Embassy and we had to stay in India for at least another 5 years. It was almost impossible to get admission
+                            in any Indian school without the knowledge of English. I and my sister Violeta Jeruti Benitez underwent an English course at Sorobrain® under Seema and we learnt to speak the language in only 7 months. We got a very friendly
+                            environment at the institute. The faculty is very helpful and the staff especially Bhawna &amp; Durga are very cooperative. Today, we both are in a good school in Delhi. Now my father is also learning English in the Institute
+                            as we are very happy and satisfied that we are able to speak the language at this early age. We are grateful to Seema Jain and Sorobrain<br><br></p>
+                    </div>
+                    <div class="author"><img class="rounded-circle" src="{% static 'main/img/global/oscar.jpg' %}">
+                        <h5 class="name"><strong>Oscar Nicolas Benitez</strong><br></h5>
+                        <p class="title">Paraguay</p>
+                    </div>
+                    <div class="box" style="height: 237px;margin-top: 116px;">
+                        <p class="description">I am a European student and when I was on a vacation in India my relatives recommended Sorobrain to improve my French. It’s totally different learning system from the Europe and it made me improve my level by 200% thanks to its
+                            fast and effective system.<br></p>
+                    </div>
+                    <div class="author"><img class="rounded-circle" src="{% static 'main/img/global/angel.jpg' %}">
+                        <h5 class="name"><strong>Angel Lopez</strong><br></h5>
+                        <p class="title">Spain</p>
+                    </div>
                 </div>
-                <div class="card">
-                  <img class="card-img-top img-responsive" src="{% static 'main/img/global/pieter.jpg' %}" alt="person">
-                  <div class="card-header border-primary"><span class="card-title">Belgium</span></div>
-                  <div class="card-body">
-                    <p>Seema is very approachable and friendly. I never felt reluctant asking questions, and she always
-                      answered patiently, with a lot of interesting details. Time really flies in class because she
-                      makes the whole process engaging, interactive, and fun! Not only is Seema well-versed in French,
-                      but is also a great teacher and communicator
-                    </p>
-                  </div>
-                  <div class="card-footer"><strong> - Pieter Dockx </strong></div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box" style="margin-top: -46px;">
+                        <p class="description">Seema is very approachable and friendly. I never felt reluctant asking questions, and she always answered patiently, with a lot of interesting details. Time really flies in class because she makes the whole process engaging, interactive,
+                            and fun! Not only is Seema well-versed in French, but is also a great teacher and communicator<br></p>
+                    </div>
+                    <div class="author"><img class="rounded-circle" src="{% static 'main/img/global/pieter.jpg' %}">
+                        <h5 class="name"><strong>Pieter Dockx</strong><br></h5>
+                        <p class="title">Belgium</p>
+                    </div>
+                    <div class="box" style="margin-top: 169px;">
+                        <p class="description">I had the privilege of studying French under Seema Jain for 5 years. Not only was I able to exponentially improve my performance in tests during school, the curriculum taught to me by Mrs. Seema stayed with me after my time with
+                            Sorobrain. When I went to pursue my career in Dubai, I was able to hold conversations with French Nationals and form meaningful relationships with them due to my grasp of the french language and culture. This was only made
+                            possible due to Mrs. Seema's focus on mastering french in real-life scenarios!<br></p>
+                    </div>
+                    <div class="author"><img class="rounded-circle" src="{% static 'main/img/global/jayant.jpg' %}">
+                        <h5 class="name"><strong>Jayant</strong><br></h5>
+                        <p class="title">India</p>
+                    </div>
                 </div>
-                <div class="card">
-                  <img class="card-img-top" src="{% static 'main/img/global/maigrot.jpg' %}" alt="person">
-                  <div class="card-header border-primary"><span class="card-title">France</span></div>
-                  <div class="card-body">
-                    <p>In 2015, we had the chance to attend Seema's presentation at the "Alliance Française de Delhi”.
-                      We were impressed by the quality of the performance in French. À year later we invited Seema to
-                      stay with us for two weeks in France. She had the opportunity of attending French lessons as well
-                      as teaching classes in a secondary school successfully. It was a great experience for her and for
-                      us.
-                    </p>
-                  </div>
-                  <div class="card-footer"><strong> - Danielle Maigrot & François Maigrot </strong></div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box" style="margin-top: -85px;">
+                        <p class="description">In 2015, we had the chance to attend Seema's presentation at the "Alliance Française de Delhi”. We were impressed by the quality of the performance in French. À year later we invited Seema to stay with us for two weeks in France.
+                            She had the opportunity of attending French lessons as well as teaching classes in a secondary school successfully. It was a great experience for her and for us.<br></p>
+                    </div>
+                    <div class="author"><img class="rounded-circle" src="{% static 'main/img/global/maigrot.jpg' %}">
+                        <h5 class="name"><strong>Danielle Maigrot &amp; François Maigrot</strong><br></h5>
+                        <p class="title">France</p>
+                    </div>
+                    <div class="box" style="margin-top: 70px;">
+                        <p class="description">Seema has an excellent grasp of the French Language. The best part is that she is well acquainted with syllabi of different boards, including international curriculums. A student of grade 7, my son was able to strengthen his foundations
+                            of French language and grammar. Seema was able to engage him through songs and stories and helped him build his verbal skills as well.<br></p>
+                    </div>
+                    <div class="author"><img class="rounded-circle" src="{% static 'main/img/global/deepshika.jpeg' %}">
+                        <h5 class="name"><strong>Deepshikha Mehta</strong><br></h5>
+                        <p class="title">Singapore</p>
+                    </div>
                 </div>
-              </div>
-              <div class="card-deck my-3">
-                <div class="card">
-                  <img class="card-img-top" src="{% static 'main/img/global/deepshika.jpeg' %}" alt="person">
-                  <div class="card-header border-primary"><span class="card-title">Singapore</span></div>
-                  <div class="card-body">
-                    <p>Seema has an excellent grasp of the French Language. The best part is that she is well acquainted
-                      with syllabi of different boards, including international curriculums. A student of grade 7, my
-                      son
-                      was able to strengthen his foundations of French language and grammar. Seema was able to engage
-                      him
-                      through songs and stories and helped him build his verbal skills as well.
-                    </p>
-                  </div>
-                  <div class="card-footer"><strong> - Deepshikha Mehta</strong></div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="{% static 'main/img/global/angel.jpg' %}" alt="person">
-                  <div class="card-header border-primary"><span class="card-title">Spain</span></div>
-                  <div class="card-body">
-                    <p>I am a European student and when I was on a vacation in India my relatives recommended Sorobrain
-                      to improve my French. It’s totally different learning system from the Europe and it made me
-                      improve my level by 200% thanks to its fast and effective system.
-                    </p>
-                  </div>
-                  <div class="card-footer"><strong> - Angel Lopez </strong></div>
-                </div>
-                <div class="card">
-                  <img class="card-img-top" src="{% static 'main/img/global/jayant.jpg' %}" alt="person">
-                  <div class="card-header border-primary"><span class="card-title">India</span></div>
-                  <div class="card-body">
-                    <p>I had the privilege of studying French under Seema Jain for 5 years. Not only was I able to
-                      exponentially improve my performance in tests during school, the curriculum taught to me by Mrs.
-                      Seema stayed with me after my time with Sorobrain. When I went to pursue my career in Dubai, I was
-                      able to hold conversations with French Nationals and form meaningful relationships with them due
-                      to my grasp of the french language and culture. This was only made possible due to Mrs. Seema's
-                      focus on mastering french in real-life scenarios!
-                    </p>
-                  </div>
-                  <div class="card-footer"><strong> - Jayant </strong></div>
-                </div>
-              </div>
             </div>
-          </div>
-        </section>
-      </div>
+        </div>
     </div>
-  </div>
+</div>
+
 {% endblock %}

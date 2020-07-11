@@ -1,6 +1,7 @@
 .testimonials-clean {
   color: #313437;
   background-color: #eef4f7;
+  height: max-content;
 }
 
 .testimonials-clean p {
@@ -42,7 +43,6 @@
 
 @media (min-width:768px) {
   .testimonials-clean .item {
-    height: 220px;
   }
 }
 
@@ -58,7 +58,6 @@
   left: 30px;
   bottom: -24px;
   width: 0;
-  height: 0;
   border: 15px solid transparent;
   border-width: 12px 15px;
   border-top-color: #fff;
@@ -76,18 +75,17 @@
 }
 
 .testimonials-clean .item .title {
-  font-size: 13px;
+  font-size: 20px;
   color: #9da9ae;
 }
 
 .testimonials-clean .item .description {
   font-size: 15px;
   margin-bottom: 0;
-  font-family: Georgia, Times, "Times New Roman", serif !important;
 }
 
 .testimonials-clean .item img {
-  max-width: 40px;
+  max-width: 150px;
   float: left;
   margin-right: 12px;
   margin-top: -5px;
