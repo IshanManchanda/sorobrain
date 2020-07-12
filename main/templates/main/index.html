@@ -26,42 +26,35 @@
 {% endblock %}
 
 {% block content %}
-  <header class="masthead text-white text-center"
-          style="background: url('https://www.northeastern.edu/geo/wp-content/uploads/2015/05/Science-Po.jpg')no-repeat center center;background-size: cover;height: 483px;">
-    <div class="overlay" style="height: 482px;"></div>
+<header class="masthead text-white text-center text-dark" style="background: url('https://www.northeastern.edu/geo/wp-content/uploads/2015/05/Science-Po.jpg')no-repeat center center;background-size: cover;height: 462px;padding-top: 98px;">
     <div class="container">
-      <div class="row mb-2" style="height: 147px;">
-        <div class="col-xl-9 mx-auto"
-             style="height: 131px;width: 931px;">
-          <h1 class="display-1 mb-4" data-aos="fade"
-              data-aos-duration="1100"
-              style="height: 23px;margin: 15px;margin-right: 0;margin-top: 0;margin-left: 0;margin-bottom: 15px;">
-            Welcome to Sorobrain!</h1>
-          <h1 data-aos="zoom-in" class="mb-5 font-weight-light"
-              style="margin: 15px;margin-top: 3px;margin-right: 0;margin-left: 0;font-size: 22px;">
-            ...where talents are transformed in to geniuses.&nbsp;<br>
-            <i style="font-size: 25px">Une Académie Française&nbsp;</i></h1>
+        <div class="row">
+            <div class="col">
+                <h2><strong>Bienvenue à</strong></h2><img src="{% static 'common/img/logo_90.png' %}" style="width: 201px;" /></div>
         </div>
-      </div>
-      <div class="row mt-2">
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto mt-3">
-          <form>
-            <div class="form-row">
-              <div class="col-12 col-md-3 col-lg-8 offset-lg-2">
+        <div class="row" style="height: 147px;">
+            <div class="col-xl-6 mx-auto rounded mt-1" style="height: 131px;width: 931px;background: rgba(0,0,0,0.3)">
+                <h1 class="display-1 mb-5 text-light" style="height: 23px;margin: -44px;margin-right: 0;margin-top: 0;margin-left: 0;margin-bottom: 32px;">A French Academy</h1>
+                <h1 class="mb-5 text-light" style="margin: 15px;margin-bottom: 10px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 22px;">...where talents are transformed into genius</h1>
+            </div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                <form>
+                    <div class="form-row">
+              <div class="col-12 col-md-3 col-lg-8 offset-lg-2 mt-2">
                 <a href="{% url 'account_signup' %}" class="stretched-link">
                   <button class="btn btn-primary btn-block btn-lg text-center"
                           data-aos="zoom-in">
-                    {% if user.is_authenticated %} Hi,
+                    {% if user.is_authenticated %} Bonjour
                       {{ user.name }} {% else %} Sign
                       up! {% endif %}
                   </button>
                 </a></div>
+                    </div>
+                </form>
             </div>
-          </form>
         </div>
-      </div>
     </div>
-  </header>
+</header>
   <div class="features-boxed px-4">
     <div class="container">
       <div class="intro">
@@ -190,11 +183,7 @@
            style="padding-bottom: 39px;padding-top: 10px; background-color: #eef4f7;">
     <div class="container">
       <h2 class="mb-2">What people are saying</h2>
-      <a href="{% url 'global' %}">
-        <button class="btn btn-outline-info mt-2 mb-5" style="width: 100%">
-          Global Testimonials
-        </button>
-      </a>
+
       <div class="row" data-aos="fade-right" data-aos-duration="1000"
            style="margin-bottom: 50px">
         <div class="col-lg-4">
@@ -283,6 +272,11 @@
           </div>
         </div>
       </div>
+      <a href="{% url 'global' %}">
+        <button class="btn btn-outline-info mt-2 mb-5 w-100 " style="width: 100%">
+          Global Testimonials
+        </button>
+      </a>
       <button class="btn btn-outline-primary mb-3" type="button"
               data-toggle="collapse"
               data-target="#collapse_test_all"
@@ -592,6 +586,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -647,24 +642,13 @@
         <div class="col-md-8">
           <div class="intro">
             <h2>About Sorobrain</h2>
-            <p class="text-justify">Since 2009, Sorobrain® has
-              specialized in providing a fun and active learning
-              environment for its French language courses through
-              activities like theatrical performances, karaoke,
-              quizzes &amp; competitions, games, puzzles, etc.
-              where the knowledge is put into action. Our motive
-              is to make students absorb the language. As digital
-              technology continues to evolve, e_Sorobrain® is the
-              digital transformation of Sorobrain® that aims at
-              providing the same at
-              the comfort of one’s place while extending its
-              services to the entire world. <br/><br/>“Learning
-              the fun way, is the culture established &amp;
-              promoted at Sorobrain .&quot;<br/><em>-Seema Jain
-                [Founder]</em><br/></p>
-            <a class="btn btn-primary" role="button"
-               href="{% url 'contact' %}">Get
-              in Touch!</a>
+            <p class="text-justify">Since 2009, Sorobrain® has specialized in providing a fun and active learning
+              environment for its French language courses through activities like theatrical performances, karaoke,
+              quizzes and competitions, games, puzzles, etc. where the knowledge is put into action. Our motive is to
+              make students absorb the language. As digital technology continues to evolve, eSorobrain is the digital
+              transformation of Sorobrain® that aims at providing the same at the comfort of one’s place while extending
+              its services to the entire world.</p>
+
           </div>
           <div class="d-sm-block d-md-none">
             <img
@@ -681,6 +665,32 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-8">
+          <h2>About the Founder</h2>
+          <p class="text-justify">
+            Seema Jain is an educationalist with an experience of over 20 years and an expertise in the French language.
+            She has been training individuals of diverse backgrounds including school/college students, professionals,
+            entrepreneurs and retired and corporate personage. Her teaching experience includes training of CBSE, ICSE,
+            IGCSE, AP, IB and DELF curriculums. She also conducts workshops at schools, colleges and in the corporate
+            world with the purpose of training the participants in such a way that would make tough parts of French like
+            verbs, genders, adjectives, etc. easier for learners to apprehend and register in their minds. Through her
+            unique ways of teaching, she has gained the reputation of a cogent communicator of knowledge.
+            Her qualifications include Honours in System Management, Educational Planning and Management, Diploma in
+            Cyber Laws, TEFL, besides having international accreditations to teach French.
+            She has also provided training to corporates and individuals in the fields of Soft Sills, Cyber Laws,
+            Information Technology, Neuro Linguistic Programming (NLP), Advanced Abacus Brain Development Programme,
+            Vedic Maths, Radio-jockeying [voice modulation] and Spoken English.
+            “Learning the fun way” is the culture established and promoted at Sorobrain®.<br/><em>-Seema Jain
+            [Founder]</em><br/></p>
+          <a class="btn btn-primary" role="button"
+             href="{% url 'contact' %}">Get
+            in Touch!</a>
+        </div>
+        <div class="col-md-4 mt-5">
+          <img class="img-responsive" style="width: 100%" src="{% static 'common/img/logo_50.png' %}" alt="logo">
+        </div>
+      </div>
     </div>
   </div>
   <div class="container">
@@ -689,13 +699,13 @@
         <br>
         <h4>Associations & Partnerships</h4>
         <hr>
-        <img class="img-responsive" style="max-width: 120px" alt="le frehindi"
-             src="{% static 'main/img/index/logos/frehindi.png' %}"><br>
-        <h5 class="text-primary">Le Frehindi - Paris</h5><br>
-        <h5 class="text-muted"><i>Under the patronage of</i></h5>
+        <img class="img-responsive" style="max-width: 50px" alt="le frehindi"
+             src="{% static 'main/img/index/logos/frehindi.png' %}">
+        <span class="text-primary">Le Frehindi - Paris</span><br><br>
+        <h5 class="text-muted"><i>under the patronage of</i></h5>
         <div class="row">
           <div class="col-md-4 mt-4">
-            <div class="float-center"><img class="img-responsive" style="max-width: 100%" alt="atout"
+            <div class="float-center"><img class="img-responsive" style="max-width: 110%" alt="atout"
                                            src="{% static 'main/img/index/logos/atout.png' %}"></div>
           </div>
           <div class="col-md-4">
@@ -703,15 +713,15 @@
                                            src="{% static 'main/img/index/logos/uga.jpg' %}"></div>
           </div>
           <div class="col-md-4 mt-4">
-            <div class="float-center ">
-              <h4 class="">Indian Embassy <br> In Paris </p>
+            <div class="float-center pt-2" style="border: 0px solid; border-radius: 5px">
+              <h4 class=""><span style="color: #FF9933">Indian</span><span style="color: #000080"> Embassy</span> <br> <span style="color: #138808">In Paris</span></h4>
             </div>
           </div>
         </div>
         <br>
         <h4>Membership: </h4>
         <hr>
-        <div class="p-1"><img class="img-responsive" style="max-width: 180px" alt="le frehindi"
+        <div class="p-1"><img class="img-responsive" style="max-width: 130px" alt="le frehindi"
                               src="{% static 'main/img/index/logos/itaf.png' %}"></div>
         <h6>Indian Association of Teachers of French (IATF)</h6>
         <br><br>
