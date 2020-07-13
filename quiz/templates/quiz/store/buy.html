@@ -25,7 +25,7 @@
                     <h3 style="font-family: Adamina, serif;margin-top: 13px;">{{ quiz.title }}&nbsp;</h3>
                     <p style="color: #282821;font-size: 22px;"><em>Interactive online quizzes with instant analysis!</em><br></p>
                     <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if quiz.discount %}Discount: {{ quiz.discount }}% <br> Rs.{{ quiz.sub_total }}; <i class="text-muted small">Original Cost: <strike>Rs. {{ quiz.cost }}</strike></i>{% else %}Price: Rs. {{ quiz.cost }}{% endif %}<br><small class="small text-muted">Inclusive of taxes</small><br><br></strong>
+					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if quiz.discount %}Discount: {{ quiz.discount }}% <br> Rs.{{ quiz.sub_total }}; <i class="text-muted small">Original Cost: <strike>Rs. {{ quiz.cost }}</strike></i>{% else %}Price: Rs. {{ quiz.cost }}{% endif %}<br><small class="small text-muted">Inclusive of taxes &  2% towards <a href="https://maitribodh.org/"> MBPC Trust </a> for upliftment of human consciousness</small><br><br></strong>
 					<p class="text-muted">Quizzes are provided on the web platform itself. After buying you will be able to attempt the quiz through your account page with our interactive interface. </p>
 					<hr>
 					<p> This Quiz was added on {{ quiz.created_on }}

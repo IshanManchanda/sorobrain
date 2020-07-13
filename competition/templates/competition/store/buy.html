@@ -25,7 +25,7 @@
                     <h3 style="font-family: Adamina, serif;margin-top: 13px;">{{ competition.title }}&nbsp;</h3>
                     <p style="color: #282821;font-size: 22px;"><em>Interactive online competitions with instant analysis!</em><br></p>
                     <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if competition.discount %}Discount: {{ competition.discount }}% <br> Rs.{{ competition.sub_total }}; <i class="text-muted small">Original Cost: <strike>Rs. {{ competition.cost }}</strike></i>{% else %}Price: Rs. {{ competition.cost }}{% endif %}<br><small class="small text-muted">Inclusive of taxes</small><br><br></strong>
+					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if competition.discount %}Discount: {{ competition.discount }}% <br> Rs.{{ competition.sub_total }}; <i class="text-muted small">Original Cost: <strike>Rs. {{ competition.cost }}</strike></i>{% else %}Price: Rs. {{ competition.cost }}{% endif %}<br><small class="small text-muted">Inclusive of taxes &  2% towards <a href="https://maitribodh.org/"> MBPC Trust </a> for upliftment of human consciousness</small><br><br></strong>
 					<p class="text-muted">Competitions are provided on the web platform itself. After buying you will be able to attempt the competition through your account page with our interactive interface. </p>
 					<hr>
 					<p> This Competition was added on {{ competition.created_on }}
