@@ -20,6 +20,7 @@ class CompetitionAdmin(admin.ModelAdmin):
 	fieldsets = (
 		(None, {
 			'fields': (('title', 'active'),
+			           ('slug',),
 			           ('description', 'level'),
 			           ('thumbnail', 'tags',))
 		}),
