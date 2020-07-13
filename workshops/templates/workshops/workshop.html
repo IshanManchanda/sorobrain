@@ -101,7 +101,7 @@
 			<hr>
             <h1 class="text-center">Related workshops</h1>
             <div class="card-group">
-			{% for w in related %}
+			{% for w in related|slice:':4' %}
                 <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
                     <div class="card-body">
                         <h4 class="card-title">{{ w.title }}</h4>
