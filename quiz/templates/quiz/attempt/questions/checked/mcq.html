@@ -5,25 +5,46 @@
 	<div class="card-body">
 		<p class="card-text">{{ question.question|safe }}</p>
 		<hr>
-		<div class="form-check border mb-2 rounded pl-2" id="{{ question.id }}_option1_list_item" style="padding: 0px">
+    {% if question.option1 != None %}
+
+    <div class="form-check border mb-2 rounded" id="{{ question.id }}_option1_list_item" style="padding: 0px">
+			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option1_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
 			<label class="form-check-label mb-2 mt-2">
 				{{ question.option1 }}
 			</label>
 		</div>
-		<div class="form-check border mb-2 rounded pl-2" id="{{ question.id }}_option2_list_item" style="padding: 0px">
+
+    {% endif %}
+    {% if question.option2 != None %}
+
+		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option2_list_item" style="padding: 0px">
+			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option2_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
 			<label class="form-check-label mb-2 mt-2">
 				{{ question.option2 }}
 			</label>
 		</div>
-		<div class="form-check border mb-2 rounded pl-2" id="{{ question.id }}_option3_list_item" style="padding: 0px">
+
+   {% endif %}
+   {% if question.option3 != None %}
+
+		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option3_list_item" style="padding: 0px">
+			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option3_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
 			<label class="form-check-label mb-2 mt-2">
 				{{ question.option3 }}
 			</label>
 		</div>
-		<div class="form-check border mb-2 rounded pl-2" id="{{ question.id }}_option4_list_item" style="padding: 0px">
+
+    {% endif %}
+    {% if question.option4 != None %}
+
+		<div class="form-check border mb-2 rounded" id="{{ question.id }}_option4_list_item" style="padding: 0px">
+			<button class="btn btn-outline-primary m-1" id="{{ question.id }}_option4_select"><i class="fa fa-check-square" aria-hidden="true"></i></button>
 			<label class="form-check-label mb-2 mt-2">
 				{{ question.option4 }}
 			</label>
+		</div>
+
+    {% endif %}
 		</div>
 		<hr>
 		<h5>You answered: {% if selected_answer == "" or selected_answer == "-1" %} Left Blank {% else %} Option Number {{ selected_answer }} {% endif %}</h5>
@@ -32,4 +53,4 @@
 		<h5>Explanation: </h5>
 		<p>{{ question.explanation|safe }}</p>
 	</div>
-</div>
+
