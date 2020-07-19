@@ -26,20 +26,26 @@
 {% endblock %}
 
 {% block content %}
-<header class="masthead text-white text-center text-dark" style="background: url('https://www.northeastern.edu/geo/wp-content/uploads/2015/05/Science-Po.jpg')no-repeat center center;background-size: cover;height: 462px;padding-top: 98px;">
+  <header class="masthead text-white text-center text-dark"
+          style="background: url('https://www.northeastern.edu/geo/wp-content/uploads/2015/05/Science-Po.jpg')no-repeat center center;background-size: cover;height: 462px;padding-top: 98px;">
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2><strong>Bienvenue à</strong></h2><img src="{% static 'common/img/logo_90.png' %}" style="width: 201px;" /></div>
+      <div class="row">
+        <div class="col">
+          <h2><strong>Bienvenue à</strong></h2><img src="{% static 'common/img/logo_90.png' %}" style="width: 201px;"/>
         </div>
-        <div class="row" style="height: 147px;">
-            <div class="col-xl-6 mx-auto rounded mt-1" style="height: 131px;width: 931px;background: rgba(0,0,0,0.3)">
-                <h1 class="display-1 mb-5 text-light" style="height: 23px;margin: -44px;margin-right: 0;margin-top: 0;margin-left: 0;margin-bottom: 32px;">A French Academy</h1>
-                <h1 class="mb-5 text-light" style="margin: 15px;margin-bottom: 10px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 22px;">...where talents are transformed into geniuses</h1>
-            </div>
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <form>
-                    <div class="form-row">
+      </div>
+      <div class="row" style="height: 147px;">
+        <div class="col-xl-6 mx-auto rounded mt-1" style="height: 131px;width: 931px;background: rgba(0,0,0,0.3)">
+          <h1 class="display-1 mb-5 text-light"
+              style="height: 23px;margin: -44px;margin-right: 0;margin-top: 0;margin-left: 0;margin-bottom: 32px;">A
+            French Academy</h1>
+          <h1 class="mb-5 text-light"
+              style="margin: 15px;margin-bottom: 10px;margin-top: 0;margin-right: 0;margin-left: 0;font-size: 22px;">
+            ...where talents are transformed into geniuses</h1>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form>
+            <div class="form-row">
               <div class="col-12 col-md-3 col-lg-8 offset-lg-2 mt-2">
                 <a href="{% url 'account_signup' %}" class="stretched-link">
                   <button class="btn btn-primary btn-block btn-lg text-center"
@@ -49,12 +55,12 @@
                       up! {% endif %}
                   </button>
                 </a></div>
-                    </div>
-                </form>
             </div>
+          </form>
         </div>
+      </div>
     </div>
-</header>
+  </header>
   <div class="features-boxed px-4">
     <div class="container">
       <div class="intro">
@@ -669,19 +675,19 @@
         <div class="col-md-8">
           <h2>About the Founder</h2>
           <p class="text-justify">
-            Seema Jain is an educationalist with an experience of over 20 years and an expertise in the French language.
+            Seema Jain is an educationalist with an experience and an expertise of over 20 years in the French language.
             She has been training individuals of diverse backgrounds including school/college students, professionals,
             entrepreneurs and retired and corporate personage. Her teaching experience includes training of CBSE, ICSE,
             IGCSE, AP, IB and DELF curriculums. She also conducts workshops at schools, colleges and in the corporate
             world with the purpose of training the participants in such a way that would make tough parts of French like
             verbs, genders, adjectives, etc. easier for learners to apprehend and register in their minds. Through her
-            unique ways of teaching, she has gained the reputation of a cogent communicator of knowledge.
+            unique ways of teaching, she has gained the reputation of a cogent communicator of knowledge. <br>
             Her qualifications include Honours in System Management, Educational Planning and Management, Diploma in
-            Cyber Laws, TEFL, besides having international accreditations to teach French.
+            Cyber Laws, TEFL, besides having international accreditations to teach French. <br>
             She has also provided training to corporates and individuals in the fields of Soft Sills, Cyber Laws,
             Information Technology, Neuro Linguistic Programming (NLP), Advanced Abacus Brain Development Programme,
-            Vedic Maths, Radio-jockeying [voice modulation] and Spoken English.
-            “Learning the fun way” is the culture established and promoted at Sorobrain®.<br/><em>-Seema Jain
+            Vedic Maths, Radio-jockeying [voice modulation] and Spoken English.<br>
+            <i>“Learning the fun way”</i> is the culture established and promoted at Sorobrain®.<br/><em>-Seema Jain
             [Founder]</em><br/></p>
           <a class="btn btn-primary" role="button"
              href="{% url 'contact' %}">Get
@@ -714,7 +720,8 @@
           </div>
           <div class="col-md-4 mt-4">
             <div class="float-center pt-2" style="border: 0px solid; border-radius: 5px">
-              <h4 class=""><span style="color: #FF9933">Indian</span><span style="color: #000080"> Embassy</span> <br> <span style="color: #138808">In Paris</span></h4>
+              <h4 class=""><span style="color: #FF9933">Indian</span><span style="color: #000080"> Embassy</span> <br>
+                <span style="color: #138808">In Paris</span></h4>
             </div>
           </div>
         </div>
