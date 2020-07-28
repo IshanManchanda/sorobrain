@@ -1,4 +1,10 @@
+from datetime import datetime
+
+from django.contrib import messages
 from django.db import DatabaseError
+from django.shortcuts import redirect
+from django.urls import reverse
+from django.utils import timezone
 
 from main.models import User, BookAccess
 
@@ -20,8 +26,29 @@ def user_profile_setup_progress(user: User) -> int:
 		empty_fields += 1
 	if user.level is None:
 		empty_fields += 1
+	if user.school is None:
+		empty_fields += 1
+	if user.city is None:
+		empty_fields += 1
+	if user.country is None:
+		empty_fields += 1
+	if user.date_of_birth is None:
+		empty_fields += 1
 
 	return empty_fields
+
+
+def is_profile_complete(user: User) -> bool:
+	if user_profile_setup_progress(user) <= 0:
+		return True
+	else:
+		return False
+
+
+def block_if_profile_incomplete(request):
+	if not is_profile_complete(request.user):
+		messages.add_message(request, messages.WARNING, 'Please complete your profile to access this page')
+		return redirect(reverse('settings'))
 
 
 def grant_book_access(user: User) -> bool:
@@ -50,3 +77,15 @@ def has_book_access(user: User) -> bool:
 		return True
 	except BookAccess.DoesNotExist:
 		return False
+
+
+def get_level_from_date_of_birth(dob):
+	if dob is None or dob == '':
+		return 'beginner'
+	age = timezone.now().year - dob.year
+	if age <= 12:
+		return 'beginner'
+	if 13 <= age <= 15:
+		return 'intermediate'
+	if age >= 16:
+		return 'advanced'

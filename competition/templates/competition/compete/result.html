@@ -29,11 +29,11 @@
 							</tr>
 							</thead>
 							<tbody>
-							{% for user, score in result.items|slice:':15' %}
+							{% for user, score in result.items %}
 								<tr>
 									<th scope="row">{{ forloop.counter }}</th>
 									<td>{{ user }}</td>
-									<td>{{ score|floatformat }}</td>
+									<td>{{ score|floatformat:4 }}</td>
 								</tr>
 							{% endfor %}
 							</tbody>

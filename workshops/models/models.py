@@ -1,6 +1,7 @@
 import string
 import random
 
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -8,6 +9,7 @@ from django.utils.text import slugify
 
 from taggit.managers import TaggableManager
 
+from sorobrain.media_storages import PrivateMediaStorage
 from sorobrain.mixins.common import CustomIdMixin
 from sorobrain.mixins.payment import PaidObjectMixin
 from main.models import User
@@ -48,6 +50,9 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 	tags = TaggableManager(blank=True)
 	include_book = models.BooleanField(default=False)
 	active = models.BooleanField(default=False)
+	related_file = models.FileField(upload_to='workshops/files/', storage=PrivateMediaStorage(),
+	                                validators=[FileExtensionValidator(allowed_extensions=['pdf'])],
+	                                null=True, blank=True)
 	created_on = models.DateTimeField(default=timezone.now)
 
 	@property
@@ -117,6 +122,6 @@ class Code(models.Model):
 
 	def save(self, *args, **kwargs):
 		self.code = ''.join(
-				(random.choice(string.ascii_letters + string.digits) for i in
-				 range(16)))
+				(random.choice(string.ascii_uppercase + string.digits) for i in
+				 range(6)))
 		super(Code, self).save(*args, **kwargs)

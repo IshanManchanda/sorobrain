@@ -10,12 +10,13 @@ from django.urls import reverse
 from django.views import View
 
 from main.models import OneOnOneClass
-from main.views.utils import grant_book_access, has_book_access
+from main.views.utils import grant_book_access, has_book_access, block_if_profile_incomplete
 from sorobrain.utils import get_presigned_url
 from workshops.models import Workshop
 
 
 def index(request):
+	block_if_profile_incomplete(request)
 	return render(request, 'main/index.html', {
 		'workshops': Workshop.objects.filter(active=True)
 	})
@@ -24,6 +25,7 @@ def index(request):
 class Book(View):
 	@staticmethod
 	def get(request):
+		block_if_profile_incomplete(request)
 		if request.user.is_authenticated and has_book_access(request.user):
 			return redirect(get_presigned_url('book/lblr_manuscript.pdf'))
 		return render(request, 'main/book.html', {})

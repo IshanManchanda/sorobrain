@@ -9,7 +9,7 @@ from django.urls import reverse
 
 from competition.models import CompetitionAccess
 from main.forms.edit_profile import EditProfileForm, UpdateNotification
-from main.views.utils import user_profile_setup_progress, has_book_access
+from main.views.utils import user_profile_setup_progress, has_book_access, get_level_from_date_of_birth
 from quiz.models import QuizAccess, QuizSubmission
 from workshops.models import WorkshopAccess
 
@@ -43,6 +43,10 @@ class Settings(LoginRequiredMixin, View):
 			'avatar': user.avatar,
 			'education': user.education,
 			'level': user.level,
+			'date_of_birth': user.date_of_birth,
+			'school': user.school,
+			'city': user.city,
+			'country': user.country,
 		})
 
 		empty_fields = user_profile_setup_progress(user)
@@ -65,12 +69,17 @@ class SaveProfileData(LoginRequiredMixin, View):
 		form = EditProfileForm(request.POST, request.FILES)
 		if form.is_valid():
 			data = form.cleaned_data
+			print(data)
 			user.name = data['name']
 			user.gender = data['gender']
 			user.phone = data['phone']
 			user.avatar = data['avatar']
 			user.education = data['education']
-			user.level = data['level']
+			user.date_of_birth = data['date_of_birth']
+			user.school = data['school']
+			user.city = data['city']
+			user.country = data['country']
+			user.level = get_level_from_date_of_birth(data['date_of_birth'])
 			user.save()
 
 		messages.add_message(request, messages.SUCCESS, '<i class="fas fa-check"></i> Profile Successfully Updated!')

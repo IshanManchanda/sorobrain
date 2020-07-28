@@ -1,6 +1,6 @@
 from django import forms
 from django.core.files.images import get_image_dimensions
-from django.forms import RadioSelect
+from django.forms import RadioSelect, DateInput, SelectDateWidget
 
 from ..models import User
 
@@ -10,12 +10,10 @@ from phonenumber_field.widgets import PhoneNumberPrefixWidget
 from sorobrain.utils.widgets import PictureWidget
 
 GENDER_CHOICES = [
-	(None, ''),          # show blank by default
+	(None, ''),  # show blank by default
 	('M', 'Male'),
 	('F', 'Female'),
-	('T', 'Transgender'),
-	('O', 'Other'),
-	('N', 'Prefer not say')
+	('N', 'Non Binary')
 ]
 
 EDUCATION_CHOICES = [
@@ -35,7 +33,6 @@ EDUCATION_CHOICES = [
 
 LEVEL_CHOICES = [
 	(None, ''),
-	('fluent', 'Fluent/Native Speaker'),
 	('advanced', 'Advanced'),
 	('intermediate', 'Intermediate'),
 	('beginner', 'Beginner')
@@ -54,16 +51,17 @@ class EditProfileForm(forms.Form):
 	name = forms.CharField(label='Full name', required=True)
 	gender = forms.ChoiceField(label='Gender', choices=GENDER_CHOICES,
 	                           required=False)
+	date_of_birth = forms.DateField(label='Date of Birth', widget=forms.TextInput(attrs={'type': 'date'}))
 	phone = PhoneNumberField(label='Mobile Number', required=False,
 	                         widget=PhoneNumberPrefixWidget)
-	avatar = forms.ImageField(label='Profile Picture',  widget=PictureWidget,
+	avatar = forms.ImageField(label='Profile Picture', widget=PictureWidget,
 	                          required=False)
 	education = forms.ChoiceField(label='Education level',
 	                              choices=EDUCATION_CHOICES,
 	                              required=False)
-	level = forms.ChoiceField(label='French Fluency Level',
-	                          choices=LEVEL_CHOICES,
-	                          required=False)
+	school = forms.CharField(label='School or Academy')
+	city = forms.CharField(label='City')
+	country = forms.CharField(label='Country')
 
 
 class UpdateNotification(forms.Form):

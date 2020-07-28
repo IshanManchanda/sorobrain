@@ -36,6 +36,7 @@ class Result(View):
 		result = json.loads(competition.result)
 		if result == {}:
 			competition.populate_result()
+		result = result[:25]
 		return render(request, 'competition/compete/result.html', {
 			'competition': competition,
 			'result': result

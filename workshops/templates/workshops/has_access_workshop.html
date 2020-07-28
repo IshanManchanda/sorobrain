@@ -30,6 +30,11 @@
 				</ul>
 			</div>
 			<div class="col-md-4 shadow ml-4 p-3 my-2 rounded" style="height: min-content">
+        {% if workshop.related_file %}
+          <h4>Related Material:</h4>
+          <a href="{{ workshop.related_file.url }}" target="_blank" class="btn btn-primary m-1"><i class="fas fa-external-link"></i>Get Material</a>
+          <hr>
+        {% endif %}
 				{% if workshop.include_book %}
 					<h4>Included Book:</h4>
 					<p>Please don't copy, or share this book with others. It's only for you. Refer to it as we go along the workshop so that you can stay with the class!

@@ -53,6 +53,6 @@ class CompetitionCode(models.Model):
 
 	def save(self, *args, **kwargs):
 		self.code = ''.join(
-				(choice(string.ascii_letters + string.digits) for i in
-				 range(16)))
+				(choice(string.ascii_uppercase + string.digits) for i in
+				 range(6)))
 		super(CompetitionCode, self).save(*args, **kwargs)

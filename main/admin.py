@@ -17,7 +17,7 @@ class UserAdmin(BaseUserAdmin):
 	list_filter = ('is_staff', 'is_active')
 	fieldsets = (
 		(None, {'fields': ('email', 'password')}),
-		('Personal info', {'fields': ('name', 'phone', 'gender', 'level', 'education')}),
+		('Personal info', {'fields': ('name', 'date_of_birth', 'phone', 'gender', 'level', 'education', 'school', 'city', 'country')}),
 		('Permissions', {'fields': ('is_active', 'is_staff', 'notification_level', 'groups', 'user_permissions')}),
 	)
 	add_fieldsets = (
@@ -34,7 +34,7 @@ class UserAdmin(BaseUserAdmin):
 	search_fields = ('username', 'email', 'name', 'phone')
 	ordering = ('username',)
 	filter_horizontal = ('user_permissions', 'groups')
-	readonly_fields = ('name', 'gender', 'email', 'phone', 'level', 'education', 'notification_level')
+	readonly_fields = ('name', 'gender', 'email', 'phone', 'education', 'notification_level', 'date_of_birth')
 
 
 admin.site.register(User, UserAdmin)
