@@ -37,6 +37,7 @@ class Result(View):
 		if result == {}:
 			competition.populate_result()
 		result = result[:25]
+		# TODO: remove this
 		return render(request, 'competition/compete/result.html', {
 			'competition': competition,
 			'result': result
