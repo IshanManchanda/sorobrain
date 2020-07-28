@@ -5,7 +5,7 @@
 {% block content %}
   <div class="container">
     <div class="row">
-      <div class="col-md-8 mx-auto">
+      <div class="col-md-10 mx-auto">
         <h2>Frequently Asked Questions</h2>
         <hr>
         <br>
@@ -15,14 +15,24 @@
               <h2 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                         aria-expanded="true" aria-controls="collapseOne">
-                  How do I register for a Quiz?
+                  How to register as a group (school/college) for a competition?
                 </button>
               </h2>
             </div>
 
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
-                It is easy to register for a quiz, all you have to do is.
+                Registering for your students:
+                <ul style="list-style-type: none;">
+                  <li>1. Select the competition you want to register your students.</li>
+                  <li>2. Select "school register" and fill out the details.</li>
+                  <li>3. Once you complete the payment you will get a list of activation codes.</li>
+                  <li>4. Give one code to each student and ask them to go to the competition page and select the
+                    'register with code' option.
+                  </li>
+                  <li>5. With the codes you will also get a directions guide.</li>
+                  <li>6. To register as a school or college, a minimum of 10 participants are required.</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -31,18 +41,13 @@
               <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
                         aria-expanded="false" aria-controls="collapseTwo">
-                  Collapsible Group Item #2
+                  What is the benefit of registering as a group?
                 </button>
               </h2>
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                Registration fee per participant is lower if registered as a group.
               </div>
             </div>
           </div>
@@ -51,18 +56,258 @@
               <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
                         aria-expanded="false" aria-controls="collapseThree">
-                  Collapsible Group Item #3
+                  How to register as an individual?
                 </button>
               </h2>
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                Registering individually allows you to pass through the payment gateway and gives you an access to the
+                competition through your My Account page once you complete the transaction.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour"
+                        aria-expanded="false" aria-controls="collapseFour">
+                  How are quizzes scored?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                Quizzes are scored based on two factors: accuracy and speed. Accuracy is given more weightage than
+                speed, so make sure you get answers right instead of answering fast. The formula looks like:
+                <br> <code>
+                ((number_of_correct_answers / total_number of_questions) * 100) * ((total_time - attempt_time) / 10)
+              </code>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFive">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive"
+                        aria-expanded="false" aria-controls="headingFive">
+                  What is the purchase process?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                When you buy anything on the website (quizzes, competitions, workshops, book) you will get instant
+                electronic delivery of your product. As soon as you complete the checkout process it will reflect the
+                changes in your 'my account' page.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingSix">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix"
+                        aria-expanded="false" aria-controls="headingSix">
+                  Who should I contact for support?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                If you have a query please find the relevant contact information here:
+                info@sorobrain.com or check the <a href="{% url 'contact' %}">contact us page</a>.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingSeven">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven"
+                        aria-expanded="false" aria-controls="headingSeven">
+                  How are workshops conducted?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseSeven" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                Once you register for a particular workshop, you will get the access to the workshop and link(s) of its
+                zoom session(s) on your My Account page. You need to ensure a high-speed internet connectivity at your
+                end and can connect to the link at its designated time.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingEight">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight"
+                        aria-expanded="false" aria-controls="headingEight">
+                  How do I register with a code?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseEight" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                Once you get a code for that product, please find the product page, click on 'register with code' then
+                copy-paste your code into the text box. After clicking submit you will get access to your product.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTen">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTen"
+                        aria-expanded="false" aria-controls="headingTen">
+                  How do I register with a discount code?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTen" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                You can enter discount code where it says ‘Enter discount code, if you have one…’ and click on ‘Register
+                Individually’. It will give you an appropriate discount on the amount as per the percentage that was
+                offered to you while giving that discount code. Please note that the discounted amount will only be
+                shown
+                after you click on the 'Register Individually' button.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingEleven">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEleven"
+                        aria-expanded="false" aria-controls="headingEleven">
+                  How do we classify students according to the three different levels.
+                </button>
+              </h2>
+            </div>
+            <div id="collapseEleven" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                The competition is open to all French learners of age 8 years and above with various levels of
+                difficulties who are learning French from any institute or a school/college as a 2nd or 3rd language.
+                Since it is a competition based on genders of nouns, it is the vocabulary of an individual that matters
+                more than any other grammatical aspect. So, the nouns in the quizzes have been chosen for different
+                levels as per their simplicity or frequency of use.
+                <br>
+                The following categories need to be selected by the students as per the age group mentioned hereunder.
+                <br>
+                Débutant – 8 to 12 years<br>
+                Intermédiaire – 13 to 15 years<br>
+                Avancé – 16 yrs and above
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwelve">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                          data-target="#collapseTwelve"
+                          aria-expanded="false" aria-controls="headingTwelve">
+                    How is a competition structured?
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwelve" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  The competition is a series of 11 quizzes based on 11 chapters of the book ‘Le bleu ou La rose’ with
+                  11 questions in each quiz of 11 minutes. The competition will be open for 24 hours on a predetermined
+                  date and time. One can start at any time in that duration and needs to submit all the 11 quizzes
+                  before the 24 hours are over. (can give break between quizzes) As soon as the time is up, the Leader
+                  board will appear on the page in place of the quizzes and you will get to see the Top 25 winners in
+                  each category.
+
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThirteen">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                          data-target="#collapseThirteen"
+                          aria-expanded="false" aria-controls="headingThirteen">
+                    How are e-certificates awarded?
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseThirteen" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  E-certificates will be sent to the Top 25 with their ranks and the rest will get e-certificates of
+                  participation. The final result is calculated as the total of all the quizzes. The certificates will
+                  be sent directly to the email address with which the participant has signed up only after validating
+                  the information of the participants. If required, proof will be asked for verification.
+                  <br>
+                  So, kindly register with correct spellings of your First name and Last name as the same would appear
+                  on your e-certificate and make sure that your details are authentic.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingFourteen">
+                <h2 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                          data-target="#collapseFourteen"
+                          aria-expanded="false" aria-controls="headingFourteen">
+                    Can I get my quiz results emailed to me?
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseFourteen" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                  When you submit your quizzes, you get to see your result and explanation with each response. No
+                  requests to send the result individually will be entertained.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFifteen">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseFifteen"
+                        aria-expanded="false" aria-controls="collapseFifteen">
+                  Can I take a break between a competition?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFifteen" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                Yes you can take a break between attempting the quizzes in the competition, however you can't take a
+                break
+                when the quiz timer starts. The timer is maintained on the server, so closing the window will not pause
+                the timer.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingSixteen">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseSixteen"
+                        aria-expanded="false" aria-controls="headingSixteen">
+                  How will the book be introduced?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseSixteen" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                A free 2 hrs. workshop will be organized online to introduce the concept of the book ‘Le Bleu ou La
+                Rose’ in 4 different schedules. One needs to register in advance to attend the same.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingSeventeen">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseSeventeen"
+                        aria-expanded="false" aria-controls="headingSixteen">
+                  Will any resources be provided to prepare for the competition?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseSeventeen" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                A free pdf of the book “Le Bleu ou La Rose” will be provided to each participant which can be accessed
+                through the My Account page upon registration. All quiz questions will be based on concepts of this
+                book.syn
               </div>
             </div>
           </div>
