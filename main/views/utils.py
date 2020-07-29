@@ -39,10 +39,13 @@ def user_profile_setup_progress(user: User) -> int:
 
 
 def is_profile_complete(user: User) -> bool:
-	if user_profile_setup_progress(user) <= 0:
-		return True
+	if user.is_authenticated:
+		if user_profile_setup_progress(user) <= 0:
+			return True
+		else:
+			return False
 	else:
-		return False
+		return True
 
 
 def block_if_profile_incomplete(request):
