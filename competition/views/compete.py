@@ -36,7 +36,7 @@ class Result(View):
 		result = json.loads(competition.result)
 		if result == {}:
 			competition.populate_result()
-		result = result[:25]
+		result = dict(list(result.items())[:25])
 		# TODO: remove this
 		return render(request, 'competition/compete/result.html', {
 			'competition': competition,
