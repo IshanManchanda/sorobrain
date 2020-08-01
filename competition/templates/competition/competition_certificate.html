@@ -1,0 +1,47 @@
+{% load static %}
+<style type="text/css">
+<!--
+span.cls_002{font-family:Arial,serif;font-size:20.5px;color:rgb(13,37,75);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_002{font-family:Arial,serif;font-size:20.5px;color:rgb(13,37,75);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_003{font-family:Arial,serif;font-size:15.6px;color:rgb(13,37,75);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_003{font-family:Arial,serif;font-size:15.6px;color:rgb(13,37,75);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_004{font-family:Arial,serif;font-size:38.9px;color:rgb(142,9,13);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_004{font-family:Arial,serif;font-size:38.9px;color:rgb(142,9,13);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_005{font-family:Arial,serif;font-size:14.0px;color:rgb(13,37,75);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_005{font-family:Arial,serif;font-size:14.0px;color:rgb(13,37,75);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_006{font-family:Arial,serif;font-size:18.0px;color:rgb(13,37,75);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_006{font-family:Arial,serif;font-size:18.0px;color:rgb(13,37,75);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_007{font-family:Arial,serif;font-size:18.0px;color:rgb(13,37,75);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_007{font-family:Arial,serif;font-size:18.0px;color:rgb(13,37,75);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_008{font-family:Arial,serif;font-size:12.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_008{font-family:Arial,serif;font-size:12.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_009{font-family:Arial,serif;font-size:11.7px;color:rgb(13,37,75);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_009{font-family:Arial,serif;font-size:11.7px;color:rgb(13,37,75);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_010{font-family:Arial,serif;font-size:8.7px;color:rgb(14,31,102);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_010{font-family:Arial,serif;font-size:8.7px;color:rgb(14,31,102);font-weight:normal;font-style:normal;text-decoration: none}
+-->
+@page {
+            width:841px;
+            height: 595px;
+        }
+</style>
+<div>
+<div style="position:relative;width:841px;height: max-content;">
+<img src="{% static 'competition/img/background1.jpg' %}" width=841 height=595>
+<div style="position:absolute;left:291.23px;top:138.02px" class="cls_002"><span class="cls_002">CERTIFICAT DE MÉRITE</span></div>
+<div style="position:absolute;left:379.67px;top:183.41px" class="cls_003"><span class="cls_003">déscerné à</span></div>
+<div style="position: absolute;left:0px;top:220.41px;width:100%;text-align:center">
+    <span class="cls_004">{{ user.name }}</span><br>
+    <span class="cls_005">en reconnaissance de sa participation au concours</span><br><br>
+    <span class="cls_006">« {{ competition.title }} »</span><br><br>
+    {% if rank != 0 or rank != -1 %}
+    <span class="cls_007">Résultat : {{ rank }}er rang</span><br><br>
+    {% endif %}
+  <span class="cls_007">Date: {{ competition.end_date }}</span><br><br>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://esorobrain.com{% url 'competition:certificate' slug=competition.slug username=user.username %}&amp;size=70x70" alt="" title="Sorobrain Verification" />
+
+</div>
+
+<div style="position:absolute;left:576.02px;top:475.99px" class="cls_008"><span class="cls_008">SEEMA JAIN</span></div>
+<div style="position:absolute;left:556.79px;top:497.78px" class="cls_009"><span class="cls_009">Présidente Fondatrice</span></div>
+</div>

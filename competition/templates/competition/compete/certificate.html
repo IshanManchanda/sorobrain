@@ -1,0 +1,36 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block title %} Compete: {{ competition.title }} | Sorobrain {% endblock %}
+
+{% block content %}
+	<div class="container p-3 my-5 shadow-lg rounded">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1>Certificate for </h1>
+				<h2>{{ competition.title }}</h2>
+
+				<hr>
+				<div class="row">
+					<div class="col-md-12 text-center">
+            <h4 class="text-success"><i class="fas fa-check"></i>  Verified Certificate: </h4>
+            <ul style="list-style-type: none">
+              <li>This certificate was given to: <b>{{ user.name }}</b></li>
+              <li>For the competition: <b>{{ competition.title }}</b></li>
+              <li>On <b>{{ competition.end_date }}</b></li>
+            </ul>
+            <p>Please check that the details given above match with the student's certificate. </p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<img class="img-responsive img-thumbnail"
+							 src="{% static 'competition/img/compete-graphic.png' %}"
+							 alt="graphic">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

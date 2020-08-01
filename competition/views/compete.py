@@ -6,13 +6,14 @@ from django.urls import reverse
 from django.views import View
 
 from competition.models.competition import Competition
+from main.models import User
 
 
 class Compete(LoginRequiredMixin, View):
 	@staticmethod
 	def get(request, slug):
 		competition = get_object_or_404(Competition, slug=slug)
-		if competition.is_over:
+		if competition.is_over: 
 			if competition.result is not None:
 				return redirect(reverse('competition:result', args=[competition.slug]))
 			else:
@@ -42,3 +43,18 @@ class Result(View):
 			'competition': competition,
 			'result': result
 		})
+
+
+class Certificate(View):
+	"""
+	The url for this view is 'certificate/<certificate_id>/<user_name>/'
+	"""
+	@staticmethod
+	def get(request, slug, username):
+		c = get_object_or_404(Competition, slug=slug)
+		user = get_object_or_404(User, username=username)
+		return render(request, 'competition/compete/certificate.html', {
+			'competition': c,
+			'user': user
+		})
+
