@@ -1,10 +1,15 @@
 import json
+import tempfile
 
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import DatabaseError
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+from django.core.files import File
 
-from competition.models.competition import Competition
+from weasyprint import HTML
+
+from competition.models.competition import Competition, CompetitionCertificate
 from competition.models.store import CompetitionAccess, CompetitionCode
 from main.models import User
 
@@ -42,7 +47,22 @@ def send_certificate(competition: Competition, user: User):
 	                        {'competition': competition,
 	                         'user'       : user,
 	                         'rank'       : rank})
-	send_mail('Competition Certificate', 'Certificate',
-	          from_email='sorobrain.devs@gmail.com',
-	          recipient_list=[user.email], fail_silently=False,
-	          html_message=html)
+	print(html)
+	png = HTML(string=html).write_png(presentational_hints=True)
+	with tempfile.NamedTemporaryFile('w+b') as tmpfile:
+		tmpfile.write(png)
+		tmpfile.name = tmpfile.name + '.png'
+		tmpfile.seek(0)
+		cc = CompetitionCertificate(competition=competition,
+		                            user=user,
+		                            certificate=SimpleUploadedFile(name=tmpfile.name,
+		                                                           content=tmpfile.read()))
+		cc.save()
+
+		html_message = render_to_string('competition/certificate_email.html',
+		                                {'cc': cc})
+		print(html_message)
+		send_mail('Competition Certificate', 'Certificate',
+		          from_email='sorobrain.devs@gmail.com',
+		          recipient_list=[user.email], fail_silently=False,
+		          html_message=html_message)

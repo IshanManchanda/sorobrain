@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from competition.models import CompetitionAccess, CompetitionCode
-from competition.models.competition import CompetitionQuiz, Competition
+from competition.models.competition import CompetitionQuiz, Competition, CompetitionCertificate
 
 
 class CompetitionQuizInline(admin.TabularInline):
@@ -54,3 +54,11 @@ class CompetitionCodeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(CompetitionCode, CompetitionCodeAdmin)
+
+
+class CompetitionCertificateAdmin(admin.ModelAdmin):
+	list_display = ('user', 'competition')
+	search_fields = ('user', 'competition')
+
+
+admin.site.register(CompetitionCertificate, CompetitionCertificateAdmin)

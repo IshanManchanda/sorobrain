@@ -88,6 +88,7 @@ django = "*"
 django-grappelli = "*"
 6-2-0 = {git = "https://github.com/sendinblue/APIv3-python-library"}
 sib-api-v3-sdk = "*"
+weasyprint = "*"
 
 [requires]
 python_version = "3.8"

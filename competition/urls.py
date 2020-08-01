@@ -18,5 +18,6 @@ urlpatterns = [
 	# compete
 	path('compete/<str:slug>/', views.Compete.as_view(), name='compete'),
 	path('result/<str:slug>/', views.Result.as_view(), name='result'),
-	path('certificate/<str:slug>/<str:username>/', views.Certificate.as_view(), name='certificate')
+	path('certificate/<str:slug>/<str:username>/', views.Certificate.as_view(), name='certificate'),
+	path('send/<str:competition_slug>/', views.SendCertificates.as_view(), name='send_certificate')
 ]

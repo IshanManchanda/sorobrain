@@ -1,11 +1,13 @@
 import json
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import View
 
 from competition.models.competition import Competition
+from competition.views.utils import send_certificate
 from main.models import User
 
 
@@ -58,3 +60,12 @@ class Certificate(View):
 			'user': user
 		})
 
+
+class SendCertificates(View):
+	@staticmethod
+	def get(request, competition_slug):
+		c = get_object_or_404(Competition, slug=competition_slug)
+		users = [User.objects.get(username=u) for u in list(json.loads(c.result).keys())]
+		for u in users:
+			send_certificate(c, u)
+		return HttpResponse(200)

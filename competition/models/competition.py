@@ -9,6 +9,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.text import slugify
 from taggit.managers import TaggableManager
 
+from main.models import User
 from .store import CompetitionAccess
 from quiz.models import Quiz, QuizSubmission
 from sorobrain.mixins.payment import PaidObjectMixin
@@ -129,3 +130,12 @@ class CompetitionQuiz(models.Model):
 		verbose_name = 'Competition Quiz'
 		verbose_name_plural = 'Competition Quizzes'
 		ordering = ('-created_on',)
+
+
+class CompetitionCertificate(models.Model):
+	competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	certificate = models.ImageField(upload_to='competition/certificates/')
+
+	class Meta:
+		unique_together = ('user', 'competition')
