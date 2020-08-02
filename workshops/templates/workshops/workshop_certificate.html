@@ -1,0 +1,46 @@
+<html>
+<head><meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+span.cls_003{font-family:Arial,serif;font-size:20.1px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_003{font-family:Arial,serif;font-size:8.1px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_002{font-family:Arial,serif;font-size:32.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_002{font-family:Arial,serif;font-size:32.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_004{font-family:Arial,serif;font-size:28.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_004{font-family:Arial,serif;font-size:28.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_005{font-family:Arial,serif;font-size:28.0px;color:rgb(0,0,0);font-weight:bold;font-style:italic;text-decoration: none}
+div.cls_005{font-family:Arial,serif;font-size:28.0px;color:rgb(0,0,0);font-weight:bold;font-style:italic;text-decoration: none}
+span.cls_006{font-family:Arial,serif;font-size:12.0px;color:rgb(128,129,131);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_006{font-family:Arial,serif;font-size:12.0px;color:rgb(128,129,131);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_008{font-family:Arial,serif;font-size:22.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_008{font-family:Arial,serif;font-size:22.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_007{font-family:Arial,serif;font-size:11.7px;color:rgb(14,31,102);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_007{font-family:Arial,serif;font-size:11.7px;color:rgb(14,31,102);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_009{font-family:Arial,serif;font-size:8.7px;color:rgb(14,31,102);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_009{font-family:Arial,serif;font-size:8.7px;color:rgb(14,31,102);font-weight:normal;font-style:normal;text-decoration: none}
+-->
+@page {
+            width:841px;
+            height: 595px;
+        }
+</style>
+</head>
+<body>
+<div style="position:relative;width:841px;height: max-content;">
+
+<img src="https://sorobrain-assets.s3.ap-south-1.amazonaws.com/media/public/workshops/certificates/background1.jpg" width=841 height=595>
+<div style="position:absolute;left:355.87px;top:223.93px" class="cls_003"><span class="cls_003">ATTESTATION</span></div>
+<div style="position:absolute;left:0px;top:286.65px; width:100%;text-align: center;">
+    <span class="cls_002">{{ user.name }}</span> <br><br>
+    <span class="cls_004">a suivi l'atelier français en ligne</span> <br><br>
+    <span class="cls_005">« {{ workshop.title }} »</span> <br>
+</div>
+<div style="position:absolute;left:653.61px;top:536.93px" class="cls_006"><span class="cls_006">SEEMA JAIN</span></div>
+<div style="position: absolute;left:60.46px; top: 460px"><img src="https://api.qrserver.com/v1/create-qr-code/?data=https://sorobrain.com/{% url 'workshops:certificate' slug=workshop.slug username=user.username  %}&amp;size=70x70" alt="" title="Sorobrain Verification" /></div>
+<div style="position:absolute;left:60.46px;top:535.02px" class="cls_008"><span class="cls_008">Date: {{ workshop.date }} </span></div>
+<div style="position:absolute;left:60.46px;top:560.02px" class="cls_008"><span class="cls_009">This certificate is computer generated <br> and is automatically verified.</span></div>
+<div style="position:absolute;left:631.87px;top:552.43px" class="cls_007"><span class="cls_007">Fondatrice et Facilitatrice</span></div>
+</div>
+
+</body>
+</html>

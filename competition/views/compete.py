@@ -1,5 +1,6 @@
 import json
 
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
@@ -61,11 +62,15 @@ class Certificate(View):
 		})
 
 
-class SendCertificates(View):
+class SendCertificates(View, LoginRequiredMixin):
 	@staticmethod
 	def get(request, competition_slug):
+		if not request.user.is_staff:
+			messages.add_message(request, messages.WARNING, 'Access not allowed')
+			return redirect(reverse('index'))
+
 		c = get_object_or_404(Competition, slug=competition_slug)
 		users = [User.objects.get(username=u) for u in list(json.loads(c.result).keys())]
 		for u in users:
 			send_certificate(c, u)
-		return HttpResponse(200)
+		return render(request, 'global/send_certificate.html', {'users': users})

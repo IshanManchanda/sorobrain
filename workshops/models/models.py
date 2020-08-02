@@ -125,3 +125,9 @@ class Code(models.Model):
 				(random.choice(string.ascii_uppercase + string.digits) for i in
 				 range(6)))
 		super(Code, self).save(*args, **kwargs)
+
+
+class WorkshopCertificate(models.Model):
+	workshop = models.ForeignKey(Workshop, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	certificate = models.ImageField(upload_to='workshops/certificates/')

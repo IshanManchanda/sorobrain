@@ -47,7 +47,6 @@ def send_certificate(competition: Competition, user: User):
 	                        {'competition': competition,
 	                         'user'       : user,
 	                         'rank'       : rank})
-	print(html)
 	png = HTML(string=html).write_png(presentational_hints=True)
 	with tempfile.NamedTemporaryFile('w+b') as tmpfile:
 		tmpfile.write(png)

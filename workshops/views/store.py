@@ -9,11 +9,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
 
+from main.models import User
 from main.models.code import DiscountCode
 from sorobrain.utils.utils import send_product_bought_mail
-from workshops.models import Workshop, Code
+from workshops.models import Workshop, Code, WorkshopAccess
 from .utils import has_access_to_workshop, get_workshop_amount, \
-	grant_access_to_workshop
+	grant_access_to_workshop, send_certificate
 from ..froms import RegisterWithCodeForm
 
 
@@ -115,3 +116,17 @@ class RegisterWithCode(LoginRequiredMixin, View):
 			return redirect(reverse('workshops:workshop_store', args=[slug]))
 		messages.add_message(request, messages.INFO, "That code is invalid")
 		return redirect(reverse('workshops:register_with_code', args=[slug]))
+
+
+class SendCertificates(View, LoginRequiredMixin):
+	@staticmethod
+	def get(request, slug):
+		if not request.user.is_staff:
+			messages.add_message(request, messages.WARNING, 'Access not allowed')
+			return redirect(reverse('index'))
+
+		w = get_object_or_404(Workshop, slug=slug)
+		users = [wa.user for wa in WorkshopAccess.objects.filter(workshop=w)]
+		for u in users:
+			send_certificate(w, u)
+		return render(request, 'global/send_certificate.html', {'users': users})
