@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 from competition.models import CompetitionAccess, CompetitionCode
 from competition.models.competition import CompetitionQuiz, Competition, CompetitionCertificate
@@ -12,10 +14,15 @@ class CompetitionQuizInline(admin.TabularInline):
 
 class CompetitionAdmin(admin.ModelAdmin):
 	list_display = ('title', 'start_date', 'end_date')
-	readonly_fields = ('slug', 'created_on', 'result')
+	readonly_fields = ('slug', 'created_on', 'result', 'link')
 	save_on_top = True
 	radio_fields = {'level': admin.VERTICAL}
 	save_as = True
+
+	def link(self, obj):
+		url = reverse('competition:send_certificate', args=[obj.slug])
+		return mark_safe(f"<a href='{url}'>Send Certificates</a>")
+	link.allow_tags = True
 
 	fieldsets = (
 		(None, {
@@ -30,6 +37,9 @@ class CompetitionAdmin(admin.ModelAdmin):
 		}),
 		('Pricing', {
 			'fields': (('cost', 'discount', 'group_cost'),)
+		}),
+		('Certificates', {
+			'fields': ('link', )
 		})
 	)
 

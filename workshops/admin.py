@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 from workshops.models import Workshop, WorkshopAccess, Session, Code
 
@@ -9,10 +11,15 @@ class SessionInline(admin.StackedInline):
 
 
 class WorkshopAdmin(admin.ModelAdmin):
+	def link(self, obj):
+		url = reverse('workshop:send_certificate', args=[obj.slug])
+		return mark_safe(f"<a href='{url}'>Send Certificates</a>")
+	link.allow_tags = True
+
 	list_display = ('title', 'date', 'cost', 'discount', 'created_on')
 	list_filter = ('active', 'include_book',)
 	search_fields = ('title', 'description', 'zoom_link')
-	readonly_fields = ('slug',)
+	readonly_fields = ('slug', 'link')
 	exclude = ('sessions',)
 	inlines = (SessionInline,)
 
