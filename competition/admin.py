@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import reverse
+from django.urls import reverse, NoReverseMatch
 from django.utils.safestring import mark_safe
 
 from competition.models import CompetitionAccess, CompetitionCode
@@ -20,7 +20,10 @@ class CompetitionAdmin(admin.ModelAdmin):
 	save_as = True
 
 	def link(self, obj):
-		url = reverse('competition:send_certificate', args=[obj.slug])
+		try:
+			url = reverse('competition:send_certificate', args=[obj.slug])
+		except NoReverseMatch:
+			url = '/'
 		return mark_safe(f"<a href='{url}'>Send Certificates</a>")
 	link.allow_tags = True
 

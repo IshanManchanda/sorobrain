@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import reverse
+from django.urls import reverse, NoReverseMatch
 from django.utils.safestring import mark_safe
 
 from workshops.models import Workshop, WorkshopAccess, Session, Code
@@ -12,7 +12,10 @@ class SessionInline(admin.StackedInline):
 
 class WorkshopAdmin(admin.ModelAdmin):
 	def link(self, obj):
-		url = reverse('workshop:send_certificate', args=[obj.slug])
+		try:
+			url = reverse('workshops:send_certificate', args=[obj.slug])
+		except NoReverseMatch:
+			url = '/'
 		return mark_safe(f"<a href='{url}'>Send Certificates</a>")
 	link.allow_tags = True
 
