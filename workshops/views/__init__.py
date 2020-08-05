@@ -1,1 +1,1 @@
-from .store import WorkshopStore, HasAccessWorkshop, WorkshopSuccess, RegisterWithCode, SendCertificates
+from .store import WorkshopStore, HasAccessWorkshop, WorkshopSuccess, RegisterWithCode, SendCertificates, Certificate

@@ -130,3 +130,17 @@ class SendCertificates(View, LoginRequiredMixin):
 		for u in users:
 			send_certificate(w, u)
 		return render(request, 'global/send_certificate.html', {'users': users})
+
+
+class Certificate(View):
+	"""
+	The url for this view is 'certificate/<certificate_id>/<user_name>/'
+	"""
+	@staticmethod
+	def get(request, slug, username):
+		w = get_object_or_404(Workshop, slug=slug)
+		user = get_object_or_404(User, username=username)
+		return render(request, 'competition/compete/certificate.html', {
+			'competition': w,
+			'user': user
+		})
