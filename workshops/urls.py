@@ -14,5 +14,5 @@ urlpatterns = [
 	path('info/<str:slug>/', views.WorkshopStore.as_view(), name='workshop_store'),
 	path('access/<str:slug>/', views.HasAccessWorkshop.as_view(), name='workshop_access'),
 	path('send/<str:slug>/', views.SendCertificates.as_view(), name='send_certificate'),
-	path('certificates/<str:slug>/<str:username>/', views.Certificates.as_view(), name='certificate')
+	path('certificates/<str:slug>/<str:username>/', views.Certificate.as_view(), name='certificate')
 ]
