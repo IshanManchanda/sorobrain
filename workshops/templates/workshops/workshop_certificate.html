@@ -37,7 +37,7 @@ div.cls_009{font-family:Arial,serif;font-size:8.7px;color:rgb(14,31,102);font-we
 </div>
 <div style="position:absolute;left:653.61px;top:536.93px" class="cls_006"><span class="cls_006">SEEMA JAIN</span></div>
 <div style="position: absolute;left:60.46px; top: 460px"><img src="https://api.qrserver.com/v1/create-qr-code/?data=https://sorobrain.com{% url 'workshops:certificate' slug=workshop.slug username=user.username  %}&amp;size=70x70" alt="" title="Sorobrain Verification" /></div>
-<div style="position:absolute;left:60.46px;top:535.02px" class="cls_008"><span class="cls_008">Date: {{ workshop.date }} </span></div>
+<div style="position:absolute;left:60.46px;top:535.02px" class="cls_008"><span class="cls_008">Date: {{ workshop.date|date:"d M, y" }} </span></div>
 <div style="position:absolute;left:60.46px;top:560.02px" class="cls_008"><span class="cls_009">This certificate is computer generated <br> and is automatically verified.</span></div>
 <div style="position:absolute;left:631.87px;top:552.43px" class="cls_007"><span class="cls_007">Fondatrice et Facilitatrice</span></div>
 </div>
