@@ -70,7 +70,7 @@ def send_certificate(workshop: Workshop, user: User):
 
 		html_message = render_to_string('workshops/certificate_email.html',
 		                                {'wc': wc})
-		send_mail('Workshop Certificate', 'Certificate',
+		send_mail(f'eCertificat du concours « {{ workshop.title }}»' 'Certificate',
 		          from_email='sorobrain.devs@gmail.com',
 		          recipient_list=[user.email], fail_silently=False,
 		          html_message=html_message)

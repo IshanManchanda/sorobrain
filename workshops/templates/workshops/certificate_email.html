@@ -5,6 +5,12 @@
     </head>
     <body>
         <h1>{{ subject }}</h1>
+        <p>Chère/Chère {{ wc.user.name }},</p>
+        <p>Veuillez trouver ci-joint votre e-certificat de suivre de l'atelier « wc.workshop.title » qui a eu lieu en ligne {{ wc.workshop.date }}. Nous vous félicitons d'avoir assisté à cet atelier.</p>
+        <p>Nous souhaitons vous revoir lors de nos prochains ateliers.Vous pouvez également continuer à améliorer votre français grâce à nos quiz  disponibles en ligne sur notre site www.esorobrain.com. De nouveaux quiz sont téléchargés périodiquement.</p>
+        <p>Votre seule ligne d'accusé de réception de ce certificat sera appréciable.</p>
+        <p>À très bientôt !</p>
         <img src='{{ wc.certificate.url }}' alt="certificate"/>
+        <b>TEAM SOROBRAIN</b>
     </body>
 </html>
