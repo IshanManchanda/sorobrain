@@ -8,7 +8,7 @@ verify_ssl = true
 [packages]
 alabaster = "==0.7.12"
 apipkg = "==1.5"
-asgiref = "==3.2.7"
+asgiref = "*"
 attrs = "==19.3.0"
 boto = "==2.49.0"
 boto3 = "==1.13.15"
@@ -89,6 +89,9 @@ django-grappelli = "*"
 6-2-0 = {git = "https://github.com/sendinblue/APIv3-python-library"}
 sib-api-v3-sdk = "*"
 weasyprint = "*"
+redis = "*"
+celery = "*"
+django-jazzmin = "*"
 
 [requires]
 python_version = "3.8"

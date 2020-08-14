@@ -161,6 +161,8 @@ SOCIALACCOUNT_PROVIDERS = {
 INSTALLED_APPS = [
 	'whitenoise.runserver_nostatic',  # Needs to be first
 
+	'jazzmin',
+
 	# admin tools
 	'admin_tools',
 	'admin_tools.theming',
