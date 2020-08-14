@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import View
 
+from competition.forms import SendCertificatesForm
 from competition.models.competition import Competition
 from competition.views.utils import send_certificate
 from main.models import User
@@ -68,9 +69,27 @@ class SendCertificates(View, LoginRequiredMixin):
 		if not request.user.is_staff:
 			messages.add_message(request, messages.WARNING, 'Access not allowed')
 			return redirect(reverse('index'))
+		c = get_object_or_404(Competition, slug=competition_slug)
+		form = SendCertificatesForm(competition=c)
+		return render(request, 'competition/send_certificate.html', {
+			'form': form,
+			'c': c
+		})
+
+	@staticmethod
+	def post(request, competition_slug):
+		if not request.user.is_staff:
+			messages.add_message(request, messages.WARNING, 'Access not allowed')
+			return redirect(reverse('index'))
 
 		c = get_object_or_404(Competition, slug=competition_slug)
-		users = [User.objects.get(username=u) for u in list(json.loads(c.result).keys())]
-		for u in users:
-			send_certificate(c, u)
-		return render(request, 'global/send_certificate.html', {'users': users})
+		form = SendCertificatesForm(request.POST, competition=c)
+		if form.is_valid():
+			data = form.cleaned_data
+			users = data['users']
+			for u in users:
+				send_certificate(c, u)
+			messages.add_message(request, messages.SUCCESS, 'Certificates Sent!')
+		else:
+			messages.add_message(request, messages.WARNING, 'Invalid form data!')
+		return redirect(reverse('competition:send_certificate', args=[c.slug]))
