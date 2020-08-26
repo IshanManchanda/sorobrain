@@ -29,17 +29,22 @@ class CompetitionAdmin(admin.ModelAdmin):
 
 	fieldsets = (
 		(None, {
-			'fields': (('title', 'active'),
-			           ('slug',),
-			           ('description', 'level'),
-			           ('thumbnail', 'tags',))
+			'fields': ('title',
+			           'slug',
+			           'description',
+			           'level',
+			           'thumbnail',
+			           'tags',)
 		}),
 		('Date', {
-			'fields': (('start_date', 'end_date'),
+			'fields': ('start_date',
+			           'end_date',
 			           'created_on')
 		}),
 		('Pricing', {
-			'fields': (('cost', 'discount', 'group_cost'),)
+			'fields': ('cost',
+			           'discount',
+			           'group_cost',)
 		}),
 		('Certificates', {
 			'fields': ('link', )

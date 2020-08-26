@@ -13,9 +13,13 @@ class QuestionInline(admin.StackedInline):
 	fieldsets = (
 		(None, {
 			'fields': ('type',
-			           ('question', 'explanation'),
+			           'question',
+			           'explanation',
 			           'answer',
-			           ('option1', 'option2', 'option3', 'option4'),
+			           'option1',
+			           'option2',
+			           'option3',
+			           'option4',
 			           ),
 		}),
 	)
@@ -43,11 +47,14 @@ class QuizAdmin(admin.ModelAdmin):
 	fieldsets = (
 		(None, {
 			'fields': ('title',
-			           ('description', 'level'),
-			           'thumbnail', 'total_time')
+			           'description',
+			           'level',
+			           'thumbnail',
+			           'total_time')
 		}),
 		('Store', {
-			'fields': (('cost', 'discount'),)
+			'fields': ('cost',
+			           'discount')
 		}),
 		('Categorization', {
 			'fields': ('tags', 'active')
@@ -75,9 +82,12 @@ class QuestionAdmin(admin.ModelAdmin):
 	fieldsets = (
 		(None, {
 			'fields': ('type',
-			           ('question', 'explanation'),
+			           'question', 'explanation',
 			           'answer',
-			           ('option1', 'option2', 'option3', 'option4'))
+			           'option1',
+			           'option2',
+			           'option3',
+			           'option4')
 		}),
 	)
 
