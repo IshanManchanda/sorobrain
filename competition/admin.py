@@ -34,6 +34,7 @@ class CompetitionAdmin(admin.ModelAdmin):
 			           'description',
 			           'level',
 			           'thumbnail',
+			           'include_book',
 			           'tags',)
 		}),
 		('Date', {
