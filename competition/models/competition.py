@@ -50,6 +50,7 @@ class Competition(PaidObjectMixin, models.Model):
 	end_date = models.DateTimeField()
 	result = JSONField(null=True, blank=True)
 	active = models.BooleanField(verbose_name='Active', default=True)
+	include_book = models.BooleanField(verbose_name='Include Book', default=False)
 	created_on = models.DateTimeField(default=timezone.now,
 	                                  verbose_name='Created On')
 

@@ -12,11 +12,14 @@ from weasyprint import HTML
 from competition.models.competition import Competition, CompetitionCertificate
 from competition.models.store import CompetitionAccess, CompetitionCode
 from main.models import User
+from main.views.utils import grant_book_access
 
 
 def grant_access_to_competition(user: User, competition: Competition) -> bool:
 	try:
 		CompetitionAccess.objects.create(user=user, competition=competition)
+		if competition.include_book:
+			grant_book_access(user)
 		return True
 	except DatabaseError:
 		return False
