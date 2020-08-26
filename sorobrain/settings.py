@@ -304,3 +304,23 @@ CKEDITOR_CONFIGS = {
 		'toolbarCanCollapse': True,
 	},
 }
+
+JAZZMIN_SETTINGS = {
+	'site_title': 'Sorobrain Administration',
+	'site_header': 'Sorobrain',
+	'site_logo': 'common/img/logo-small-round.png',
+	'welcome_sign': 'Welcome to Sorobrain Management',
+	'copyright': 'Sorobrain Ltd.',
+	'search_model': 'main.User',
+
+	'topmenu_links': [{'name': 'Site Home', 'url': 'index'}],
+
+	'icons': {
+		'main.User': 'fas fa-users-cog',
+	},
+
+	'usermenu_links': [
+		{'name': 'Call 9871587593 for Support', 'url': 'tel:9871587593', 'icon': 'fa fa-phone'}
+	],
+	"show_ui_builder": True,
+}
