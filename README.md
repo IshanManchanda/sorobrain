@@ -1,5 +1,4 @@
 # Sorobrain 
-[![Build Status](https://travis-ci.com/IshanManchanda/django-template.svg?token=C8Fq6WsyUeRYJqosVPtt&branch=master)](https://travis-ci.com/IshanManchanda/django-template)
 
 https://esorobrain.com
 
