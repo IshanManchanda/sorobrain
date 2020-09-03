@@ -1,18 +1,18 @@
 {
-	"name": "Thought Processors",
-	"description": "A Python app that serves as a backend for the Thought Processors website.",
-	"logo": "https://processors.ml/static/common/images/logo-small-round.png",
-	"website": "https://processors.ml",
+	"name": "Sorobrain",
+	"description": "Online French learning platfrom.",
+	"logo": "https://esorobrain.com/static/common/images/logo-small-round.png",
+	"website": "https://esorobrain.com",
 	"image": "heroku/python",
-	"repository": "https://git.heroku.com/thoughtprocessors.git",
+	"repository": "https://paramkpr.github.com/sorobrain.git",
 	"keywords": [
 		"python",
 		"django",
-		"cryptic",
-		"cryptic-hunt",
-		"thoughtprocessors",
-		"perplexor",
-		"perspectus",
-		"baffl"
+		"french",
+		"e-learning",
+		"competition",
+		"quiz",
+		"workshop",
+		"textbook"
 	]
 }
