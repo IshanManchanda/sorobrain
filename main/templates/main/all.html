@@ -1,0 +1,86 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Contact Us at Sorobrain{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'main/css/contact/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+   <link rel="stylesheet" href="{% static 'main/fonts/ionicons.min.css' %}">
+{% endblock css %}
+
+{% block extrahead %}
+  <style>
+  .card {
+    margin: 8px 8px 8px 8px;
+  }
+
+  .list-group-item:hover {
+    background-color: #c3c3c3; color: #007bff;cursor: pointer;
+}
+  </style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-5">
+  <div class="row mt-3 pl-4">
+    <div class="col-md-12">
+      <h1 class="display-4">All {{ object_type }}</h1>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row my-3">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header bg-secondary text-white">
+          <h3>Filter</h3>
+        </div>
+        <div class="card-body">
+          <ul style="list-style-type: none" class="list-group">
+            <li class="list-group-item list-group-hover" id="alphabetically">
+              <form action="{% if object_type == 'Competitions' %}{% url 'all_competitions' %}{% elif object_type == 'Quizzes' %}{% url 'all_quizzes' %}{% else %}{% url 'all_workshops' %}{% endif %}" method="get">
+                <input type="hidden" value="true" name="alphabetically">
+                <input type="submit" value="Alphabetically" class="btn btn-primary btn-lg w-100">
+              </form>
+            </li>
+            <li class="list-group-item list-group-hover">
+              <form action="{% if object_type == 'Competitions' %}{% url 'all_competitions' %}{% elif object_type == 'Quizzes' %}{% url 'all_quizzes' %}{% else %}{% url 'all_workshops' %}{% endif %}" method="get">
+                <input type="hidden" value="true" name="most_recent">
+                <input type="submit" value="Most Recent" class="btn btn-primary btn-lg w-100">
+              </form>
+            </li>
+            <li class="list-group-item list-group-hover">
+              <form action="{% if object_type == 'Competitions' %}{% url 'all_competitions' %}{% elif object_type == 'Quizzes' %}{% url 'all_quizzes' %}{% else %}{% url 'all_workshops' %}{% endif %}" method="get">
+                <input type="hidden" value="true" name="oldest">
+                <input type="submit" value="Oldest" class="btn btn-primary btn-lg w-100">
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 mx-auto">
+      <div class="card-columns">
+        {% for obj in objects %}
+          <div class="card">
+            <img class="card-img-top" src="{{ obj.thumbnail.url }}" alt="card image top">
+            <div class="card-body">
+              <h5 class="card-title">{{ obj.title }}</h5>
+              <p class="card-text">{{ obj.description|truncatechars_html:500|safe }}</p>
+            </div>
+            <div class="card-footer">
+              <a href="{{ obj.get_absolute_url }}">
+                <button class="btn btn-outline-primary">Open Now >></button>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'main/js/index/bs-init.js' %}"></script>
+{% endblock js %}

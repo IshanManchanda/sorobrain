@@ -47,7 +47,8 @@ class Quiz(PaidObjectMixin):
 	level = models.CharField(max_length=128, verbose_name='French Level',
 	                         choices=LEVEL_CHOICES)
 	thumbnail = models.ImageField(upload_to='quiz/thumbnails/',
-	                              null=True, blank=True)
+	                              null=True, blank=True,
+	                              default='quiz/thumbnails/quiz-placeholder.jpg')
 	total_time = models.DurationField(verbose_name='Total Time',
 	                                  default=timedelta(minutes=15))
 	tags = TaggableManager()

@@ -20,9 +20,13 @@ urlpatterns = [
 	path('book/', views.Book.as_view(), name='book'),
 	path('book/success/', csrf_exempt(views.BookSuccess.as_view()), name='book_success'),
 
+	path('catalog/', views.catalog, name='catalog'),
+	path('all_competitions/', views.ViewAllCompetitions.as_view(), name='all_competitions'),
+	path('all_quizzes/', views.ViewAllQuizzes.as_view(), name='all_quizzes'),
+	path('all_workshops/', views.ViewAllWorkshops.as_view(), name='all_workshops'),
+
 	path('privacy/', TemplateView.as_view(template_name='main/privacy.html'), name='privacy'),
 	path('refund/', TemplateView.as_view(template_name='main/refund.html'), name='refund'),
-	path('catalog/', views.catalog, name='catalog'),
 	path('contact/', TemplateView.as_view(template_name='main/contact.html'), name='contact'),
 	path('global/', TemplateView.as_view(template_name='main/global.html'), name='global'),
 	path('reviews/', TemplateView.as_view(template_name='main/reviews.html'), name='reviews'),
