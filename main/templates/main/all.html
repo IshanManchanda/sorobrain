@@ -1,7 +1,7 @@
 {% extends "global/base.html" %}
 {% load static %}
 
-{% block title %}Contact Us at Sorobrain{% endblock title %}
+{% block title %}All {{ object_type }}{% endblock title %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'main/css/contact/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
@@ -15,7 +15,9 @@
   }
 
   .list-group-item:hover {
-    background-color: #c3c3c3; color: #007bff;cursor: pointer;
+    background-color: #c3c3c3;
+    color: #007bff;
+    cursor: pointer;
 }
   </style>
 {% endblock %}
@@ -66,7 +68,7 @@
             <img class="card-img-top" src="{{ obj.thumbnail.url }}" alt="card image top">
             <div class="card-body">
               <h5 class="card-title">{{ obj.title }}</h5>
-              <p class="card-text">{{ obj.description|truncatechars_html:500|safe }}</p>
+              <p class="card-text">{{ obj.description|truncatechars_html:100|safe }}</p>
             </div>
             <div class="card-footer">
               <a href="{{ obj.get_absolute_url }}">
