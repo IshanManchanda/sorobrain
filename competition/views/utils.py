@@ -19,6 +19,7 @@ def grant_access_to_competition(user: User, competition: Competition) -> bool:
 	try:
 		CompetitionAccess.objects.create(user=user, competition=competition)
 		if competition.include_book:
+			print("Here!")
 			grant_book_access(user)
 		return True
 	except DatabaseError:

@@ -16,6 +16,7 @@ from workshops.models import Workshop, Code, WorkshopAccess
 from .utils import has_access_to_workshop, get_workshop_amount, \
 	grant_access_to_workshop, send_certificate
 from ..froms import RegisterWithCodeForm
+from ..froms.certificates import SendCertificatesFormWorkshop
 
 
 class WorkshopStore(View):
@@ -124,12 +125,30 @@ class SendCertificates(View, LoginRequiredMixin):
 		if not request.user.is_staff:
 			messages.add_message(request, messages.WARNING, 'Access not allowed')
 			return redirect(reverse('index'))
+		w = get_object_or_404(Workshop, slug=slug)
+		form = SendCertificatesFormWorkshop(workshop=w)
+		return render(request, 'workshops/send_certificate.html', {
+			'form': form,
+			'w': w
+		})
+
+	@staticmethod
+	def post(request, slug):
+		if not request.user.is_staff:
+			messages.add_message(request, messages.WARNING, 'Access not allowed')
+			return redirect(reverse('index'))
 
 		w = get_object_or_404(Workshop, slug=slug)
-		users = [wa.user for wa in WorkshopAccess.objects.filter(workshop=w)]
-		for u in users:
-			send_certificate(w, u)
-		return render(request, 'global/send_certificate.html', {'users': users})
+		form = SendCertificatesFormWorkshop(request.POST, workshop=w)
+		if form.is_valid():
+			data = form.cleaned_data
+			users = data['users']
+			for u in users:
+				send_certificate(w, u)
+			messages.add_message(request, messages.SUCCESS, 'Certificates Sent!')
+		else:
+			messages.add_message(request, messages.WARNING, 'Invalid form data!')
+		return redirect(reverse('workshops:send_certificate', args=[w.slug]))
 
 
 class Certificate(View):
