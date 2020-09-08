@@ -59,7 +59,7 @@ class EditProfileForm(forms.Form):
 	education = forms.ChoiceField(label='Education level',
 	                              choices=EDUCATION_CHOICES,
 	                              required=False)
-	school = forms.CharField(label='School or Academy')
+	school = forms.CharField(label='School/College/Institute',)
 	city = forms.CharField(label='City')
 	country = forms.CharField(label='Country')
 
