@@ -22,8 +22,7 @@ def catalog(request):
 class ViewAllCompetitions(View):
 	@staticmethod
 	def get(request):
-		print('hhh')
-		queryset = Competition.objects.all()
+		queryset = Competition.objects.filter(active=True)
 		if request.GET.get('alphabetically') == 'true':
 			queryset = queryset.order_by('-title')
 		if request.GET.get('most_recent') == 'true':
@@ -40,7 +39,7 @@ class ViewAllQuizzes(View):
 	@staticmethod
 	def get(request):
 		print('hhh')
-		queryset = Quiz.objects.all()
+		queryset = Quiz.objects.filter(active=True)
 		if request.GET.get('alphabetically') == 'true':
 			queryset = queryset.order_by('-title')
 		if request.GET.get('most_recent') == 'true':
@@ -56,8 +55,7 @@ class ViewAllQuizzes(View):
 class ViewAllWorkshops(View):
 	@staticmethod
 	def get(request):
-		print('hhh')
-		queryset = Workshop.objects.all()
+		queryset = Workshop.objects.filter(active=True)
 		if request.GET.get('alphabetically') == 'true':
 			queryset = queryset.order_by('-title')
 		if request.GET.get('most_recent') == 'true':
