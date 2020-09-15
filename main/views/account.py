@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from django.shortcuts import render
@@ -115,3 +116,11 @@ class Delete(LoginRequiredMixin, View):
 		logout(request)
 		messages.add_message(request, messages.INFO, 'Your account has been deleted successfully.')
 		return redirect(reverse('index'))
+
+
+def selected_emails(request, emails):
+	if not request.user.is_staff:
+		return HttpResponse(403)
+	return render(request, 'main/show_selected_emails.html', {
+		'emails': emails.split(', ')
+	})

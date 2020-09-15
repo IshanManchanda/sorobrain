@@ -2,11 +2,19 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.contenttypes.admin import GenericInlineModelAdmin
 from django.contrib.contenttypes.models import ContentType
+from django.shortcuts import redirect
+from django.urls import reverse
 
 from quiz.models import Quiz
 from .forms import AddUserForm, UpdateUserForm
 from .models import User, BookAccess, OneOnOneClass
 from .models.code import DiscountCode
+
+
+def get_user_emails(modeladmin, request, queryset):
+	emails = [user.email for user in queryset]
+	string_emails = "".join([e + ", " for e in emails])
+	return redirect(reverse('selected_emails', args=[string_emails]))
 
 
 class UserAdmin(BaseUserAdmin):
@@ -34,6 +42,7 @@ class UserAdmin(BaseUserAdmin):
 	search_fields = ('username', 'email', 'name', 'phone')
 	ordering = ('username',)
 	filter_horizontal = ('user_permissions', 'groups')
+	actions = [get_user_emails]
 
 
 admin.site.register(User, UserAdmin)

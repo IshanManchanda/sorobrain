@@ -6,6 +6,8 @@ from . import views
 
 
 urlpatterns = [
+	# admin extend
+	path('selected_emails/<str:emails>/', views.selected_emails, name="selected_emails"),
 
 	# account
 	path('accounts/profile/', views.Profile.as_view(), name='profile'),
