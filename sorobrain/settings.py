@@ -322,5 +322,5 @@ JAZZMIN_SETTINGS = {
 	'usermenu_links': [
 		{'name': 'Call 9871587593 for Support', 'url': 'tel:9871587593', 'icon': 'fa fa-phone'}
 	],
-	"show_ui_builder": True,
+	"show_ui_builder": False,
 }

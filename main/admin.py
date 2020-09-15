@@ -22,7 +22,7 @@ class UserAdmin(BaseUserAdmin):
 	add_form = AddUserForm
 
 	list_display = ('username', 'email', 'name', 'date_joined', 'is_staff')
-	list_filter = ('is_staff', 'is_active')
+	list_filter = ('is_staff', 'is_active', 'level', 'education', 'gender', 'notification_level', 'school', 'country')
 	fieldsets = (
 		(None, {'fields': ('email', 'password')}),
 		('Personal info', {'fields': ('name', 'date_of_birth', 'phone', 'gender', 'level', 'education', 'school', 'city', 'country')}),
