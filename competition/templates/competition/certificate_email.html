@@ -1,10 +1,25 @@
 <html lang=en>
-    <head>
-        <meta charset=utf-8>
-        <title>Competition Certificate</title>
-    </head>
-    <body>
-        <h1>{{ subject }}</h1>
-        <img src='{{ cc.certificate.url }}' alt="certificate"/>
-    </body>
+<head>
+  <meta charset=utf-8>
+  <title>Competition Certificate</title>
+</head>
+<body>
+<h1>{{ subject }}</h1>
+<p>Cher/Chère {{ cc.user.name }},</p>
+
+<p>Veuillez trouver ci-joint votre e-certificat de participation au concours « {{ cc.competition.title }} » qui a eu
+  lieu
+  en ligne {{ cc.workshop.date|date:'d M, y' }}. Nous vous félicitons d'avoir participé à ce concours international.</p>
+
+<p>Nous souhaitons vous revoir lors de nos prochaines célébrations. Jusque-là, vous pouvez continuer à pratiquer les
+  genres des noms en français grâce à nos différents quiz disponibles en ligne sur notre site www.esorobrain.com.
+  N’oubliez pas d’avoir une expérience de notre atelier en ligne unique en son genre que nous continuons de tenir en
+  différentes occasions.</p>
+
+<p>Votre seule ligne d'accusé de réception de ce certificat sera appréciable.</p>
+<p>À très bientôt !</p>
+<img src='{{ cc.certificate.url }}' alt="certificate"/>
+<hr>
+<b>TEAM SOROBRAIN</b>
+</body>
 </html>

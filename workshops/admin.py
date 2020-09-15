@@ -3,6 +3,7 @@ from django.urls import reverse, NoReverseMatch
 from django.utils.safestring import mark_safe
 
 from workshops.models import Workshop, WorkshopAccess, Session, Code
+from workshops.models.models import WorkshopCertificate
 
 
 class SessionInline(admin.StackedInline):
@@ -47,7 +48,14 @@ class CodeAdmin(admin.ModelAdmin):
 	readonly_fields = ('created_on', 'code')
 
 
+class WorkshopCertificateAdmin(admin.ModelAdmin):
+	list_display = ('user', 'workshop')
+	list_filter = ('workshop',)
+	search_fields = ('user', 'workshop')
+
+
 admin.site.register(Code, CodeAdmin)
 admin.site.register(Session, SessionAdmin)
 admin.site.register(Workshop, WorkshopAdmin)
 admin.site.register(WorkshopAccess, WorkshopAccessAdmin)
+admin.site.register(WorkshopCertificate, WorkshopCertificateAdmin)

@@ -2,7 +2,6 @@ import json
 from datetime import timedelta
 
 from ckeditor_uploader.fields import RichTextUploadingField
-from django.contrib.postgres.fields import JSONField
 from django.core.exceptions import FieldError, ValidationError
 from django.db import models
 from django.urls import reverse
@@ -124,8 +123,10 @@ class Question(models.Model):
 	option2 = models.CharField(max_length=512, null=True, blank=True)
 	option3 = models.CharField(max_length=512, null=True, blank=True)
 	option4 = models.CharField(max_length=512, null=True, blank=True)
-	answer = models.CharField(max_length=32,
-	                          verbose_name="Answer: any of the following: T, F, 1, 2, 3, 4 or some text")
+	answer = models.CharField(max_length=1024,
+	                          verbose_name="Answer",
+	                          help_text="any of the following: T, F, 1, 2, 3, 4 or some text. "
+	                                    "For text answers separate multiple correct choices with '|' (pipe) character.")
 	created_on = models.DateTimeField(default=timezone.now)
 
 	@property
@@ -196,7 +197,7 @@ class QuizSubmission(models.Model):
 	competition = models.ForeignKey('competition.Competition',
 	                                on_delete=models.CASCADE,
 	                                null=True)
-	submission = JSONField(null=True, default=dict)
+	submission = models.JSONField(null=True, default=dict)
 	score = models.FloatField(null=True)
 	correct_answers = models.IntegerField(null=True)
 	incorrect_answers = models.IntegerField(null=True)
@@ -282,7 +283,8 @@ class QuizSubmission(models.Model):
 			remaining_time = 0
 		else:
 			remaining_time = self.quiz.total_time - self.attempt_time
-		self.score = (correct_answers_number/(correct_answers_number + incorrect_answers_number) * 100) * (((remaining_time.seconds / self.quiz.total_time.seconds) * 100) / 10)
+		self.score = ((correct_answers_number / (correct_answers_number + incorrect_answers_number) * 100) * (
+					((remaining_time.seconds / self.quiz.total_time.seconds) * 100) / 10))
 		self.save()
 
 		return result

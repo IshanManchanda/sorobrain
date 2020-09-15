@@ -27,11 +27,15 @@ def evaluate_bool(question, selected_answer):
 
 
 def evaluate_text(question, selected_answer):
-	cleaned_answer = selected_answer.strip().lower()
-	cleaned_correct_answer = question.answer.strip().lower()
-	if cleaned_answer == cleaned_correct_answer:
-		return True
-	elif selected_answer == "":
-		return -1
-	else:
-		return False
+	"""
+	Checks if the answer from the user is any of the possible
+	acceptable answers.
+	"""
+	cleaned_answer= selected_answer.strip().lower()
+	cleaned_correct_answer_s = question.answer.strip().lower()
+
+	correct_answers = [ans.strip() for ans in cleaned_correct_answer_s.split("|")]
+	for correct_answer in correct_answers:
+		if correct_answer == cleaned_answer:
+			return True
+	return False

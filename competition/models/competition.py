@@ -1,6 +1,5 @@
 import json
 
-from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -48,7 +47,7 @@ class Competition(PaidObjectMixin, models.Model):
 	quizzes = models.ManyToManyField(Quiz, through='CompetitionQuiz')
 	start_date = models.DateTimeField()
 	end_date = models.DateTimeField()
-	result = JSONField(null=True, blank=True)
+	result = models.JSONField(null=True, blank=True)
 	active = models.BooleanField(verbose_name='Active', default=True)
 	include_book = models.BooleanField(verbose_name='Include Book', default=False)
 	created_on = models.DateTimeField(default=timezone.now,

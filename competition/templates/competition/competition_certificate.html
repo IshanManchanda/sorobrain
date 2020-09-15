@@ -37,7 +37,7 @@ div.cls_010{font-family:Arial,serif;font-size:8.7px;color:rgb(14,31,102);font-we
     {% if rank != 0 or rank != -1 %}
     <span class="cls_007">Résultat : {{ rank }}er rang</span><br><br>
     {% endif %}
-  <span class="cls_007">Date: {{ competition.end_date }}</span><br><br>
+  <span class="cls_007">Date: {{ competition.end_date|date:"d F, Y" }}</span><br><br>
   <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://esorobrain.com{% url 'competition:certificate' slug=competition.slug username=user.username %}&amp;size=70x70" alt="" title="Sorobrain Verification" />
 
 </div>
