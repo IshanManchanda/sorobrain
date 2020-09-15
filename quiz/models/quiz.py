@@ -2,6 +2,7 @@ import json
 from datetime import timedelta
 
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.contrib.postgres.fields import JSONField
 from django.core.exceptions import FieldError, ValidationError
 from django.db import models
 from django.urls import reverse
@@ -197,7 +198,7 @@ class QuizSubmission(models.Model):
 	competition = models.ForeignKey('competition.Competition',
 	                                on_delete=models.CASCADE,
 	                                null=True)
-	submission = models.JSONField(null=True, default=dict)
+	submission = JSONField(null=True, default=dict)
 	score = models.FloatField(null=True)
 	correct_answers = models.IntegerField(null=True)
 	incorrect_answers = models.IntegerField(null=True)
