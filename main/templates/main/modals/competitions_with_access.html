@@ -1,3 +1,5 @@
+{% load main %}
+
 <div class="modal fade" id="bought_competitions" tabindex="-1" role="dialog"
 	 aria-labelledby="bought_competitions_title" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -17,7 +19,8 @@
 							<th scope="col">#</th>
 							<th scope="col">Competition</th>
 							<th scope="col">Level</th>
-{#							<th scope="col">Time</th>#}
+							<th scope="col">Rank</th>
+              <th scope="col">Score</th>
 							<th scope="col">Start Date</th>
 							<th scope="col">End Date</th>
 						</tr>
@@ -28,7 +31,10 @@
 							<th scope="row"><a href="{{ competitions.get_absolute_url }}"><button class="btn btn-outline-primary btn-sm"><i class="fas fa-external-link-alt"></i></button></a></th>
 							<td>{{ competitions.title }}</td>
 							<td>{{ competitions.level }}</td>
-{#							<td>{{ qs.attempt_time_human }} mins</td>#}
+              {% with request.user.username|addstr:","|addstr:competitions.id as args %}
+							<td>{% get_user_competition_rank args %}</td>
+              <td>{% get_user_competition_score args %}</td>
+              {% endwith %}
 							<td>{{ competitions.start_date|date:"d M, y" }}</td>
 							<td>{{ competitions.end_date|date:"d M, y" }}</td>
 						</tr>

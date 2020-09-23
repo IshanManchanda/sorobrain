@@ -83,6 +83,7 @@ AWS_LOCATION = 'static'
 AWS_DEFAULT_ACL = None
 AWS_MEDIA_LOCATION = 'media'
 AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
+
 # Static files
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'static')]

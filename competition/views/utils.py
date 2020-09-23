@@ -5,7 +5,6 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import DatabaseError
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-from django.core.files import File
 
 from weasyprint import HTML
 

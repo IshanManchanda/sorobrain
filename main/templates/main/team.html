@@ -1,0 +1,390 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block title %}Meet the Team{% endblock title %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'main/css/contact/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+  <link rel="stylesheet" href="{% static 'main/fonts/ionicons.min.css' %}">
+
+
+  <link rel="stylesheet" href="{% static 'main/css/team/style.css' %}">
+{% endblock css %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <!-- Team -->
+    <section id="team" class="pb-5">
+      <div class="container">
+        <h5 class="section-title h1">OUR TEAM</h5>
+        <hr>
+        <div class="row">
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="image-flip">
+              <div class="mainflip flip-0">
+                <div class="frontside">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <p>
+                      <div class="portrait mx-auto"><img class="img-responsive"
+                                                         src="{% static 'main/img/index/seema.jpeg' %}"
+                                                         alt="card image"></div>
+                      </p>
+                      <h4 class="card-title">Seema Jain</h4>
+                      <p class="card-text">Founder, Sorobrain</p>
+                      <a href="" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <h4 class="card-title">Seema Jain</h4>
+                      <p class="card-text"></p>
+                      <ul class="list-inline">
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-facebook"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-skype"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-google"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ./Team member -->
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <p>
+                      <div class="portrait mx-auto"><img class="img-thumbnail"
+                                                         src="{% static 'main/img/team/gaurika.jpeg' %}"
+                                                         alt="card image">
+                      </div>
+                      </p>
+                      <h4 class="card-title">Gaurika Kapoor</h4>
+                      <p class="card-text">Digital Marketing and Communications Manager</p>
+                      <a href="" class="btn btn-primary btn-sm"><i
+                          class="fa fa-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <h4 class="card-title">Gaurika Kapoor</h4>
+                      <small class="card-text">Gaurika is our Digital Marketing and Communications Manager. She is
+                        detail-
+                        oriented and manages our interactions with learners.<br>
+                        Gaurika has a myriad of interests, she is an avid reader and enjoys baking and writing. She is
+                        also learning French and has achieved the A2 level in the DELF examination.</small>
+                      <ul class="list-inline">
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-facebook"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-skype"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-google"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ./Team member -->
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <p>
+                      <div class="portrait mx-auto">
+                        <img class=" img-fluid"
+                             src="https://d33wubrfki0l68.cloudfront.net/fa9b803f330f172dcd842714f797e820dcedf550/a0884/build/static/team/param.jpeg"
+                             alt="card image">
+                      </div>
+                      </p>
+                      <h4 class="card-title">Param Kapur</h4>
+                      <p class="card-text">Full Stack Developer</p>
+                      <a href="" class="btn btn-primary btn-sm"><i
+                          class="fa fa-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <h4 class="card-title">Param Kapur</h4>
+                      <p class="card-text">Param is a full stack web developer with more than 4 years of experience.
+                        Currently he is a Freshman at Reed College in Portland, OR. He built Sorobrain using Django on the backend, with a
+                      PostgreSQL database, and Amazon S3 for media. Check out his Github for more details! </p>
+                      <ul class="list-inline">
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-facebook"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-skype"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="social-icon text-xs-center" target="_blank"
+                             href="https://www.fiverr.com/share/qb8D02">
+                            <i class="fa fa-google"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ./Team member -->
+          <!-- Team member -->
+{#          <div class="col-xs-12 col-sm-6 col-md-4">#}
+{#            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">#}
+{#              <div class="mainflip">#}
+{#                <div class="frontside">#}
+{#                  <div class="card shadow">#}
+{#                    <div class="card-body text-center">#}
+{#                      <p>#}
+{#                      <div class="portrait mx-auto">#}
+{#                        <img class=" img-fluid"#}
+{#                             src="https://d33wubrfki0l68.cloudfront.net/bfc7247fe9fc553b3bd02c89e0c2aece73b9409e/34234/build/static/team/parth.jpeg"#}
+{#                             alt="card image"></div>#}
+{#                      </p>#}
+{#                      <h4 class="card-title">Parth Sharma</h4>#}
+{#                      <p class="card-text">Tech .</p>#}
+{#                      <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i#}
+{#                          class="fa fa-plus"></i></a>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="backside">#}
+{#                  <div class="card">#}
+{#                    <div class="card-body text-center mt-4">#}
+{#                      <h4 class="card-title">Parth Sharma</h4>#}
+{#                      <p class="card-text">This is basic card with image on top, title, description and button.This is#}
+{#                        basic card with image on top, title, description and button.This is basic card with image on#}
+{#                        top, title, description and button.</p>#}
+{#                      <ul class="list-inline">#}
+{#                        <li class="list-inline-item">#}
+{#                          <a class="social-icon text-xs-center" target="_blank"#}
+{#                             href="https://www.fiverr.com/share/qb8D02">#}
+{#                            <i class="fa fa-facebook"></i>#}
+{#                          </a>#}
+{#                        </li>#}
+{#                        <li class="list-inline-item">#}
+{#                          <a class="social-icon text-xs-center" target="_blank"#}
+{#                             href="https://www.fiverr.com/share/qb8D02">#}
+{#                            <i class="fa fa-twitter"></i>#}
+{#                          </a>#}
+{#                        </li>#}
+{#                        <li class="list-inline-item">#}
+{#                          <a class="social-icon text-xs-center" target="_blank"#}
+{#                             href="https://www.fiverr.com/share/qb8D02">#}
+{#                            <i class="fa fa-skype"></i>#}
+{#                          </a>#}
+{#                        </li>#}
+{#                        <li class="list-inline-item">#}
+{#                          <a class="social-icon text-xs-center" target="_blank"#}
+{#                             href="https://www.fiverr.com/share/qb8D02">#}
+{#                            <i class="fa fa-google"></i>#}
+{#                          </a>#}
+{#                        </li>#}
+{#                      </ul>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+          <!-- ./Team member -->
+          <!-- Team member -->
+{#          <div class="col-xs-12 col-sm-6 col-md-4">#}
+{#            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">#}
+{#              <div class="mainflip">#}
+{#                <div class="frontside">#}
+{#                  <div class="card shadow">#}
+{#                    <div class="card-body text-center">#}
+{#                      <p>#}
+{#                      <div class="portrait mx-auto">#}
+{#                      <img class=" img-fluid"#}
+{#                           src="https://d33wubrfki0l68.cloudfront.net/86b8277faef2921c99e39483f876b73cfab6930f/922e2/build/static/team/vanaj.jpg"#}
+{#                           alt="card image"></div>#}
+{#                    </p>#}
+{#                    <h4 class="card-title">Vanaj Moorthy</h4>#}
+{#                    <p class="card-text">This is basic card with image on top, title, description and button.</p>#}
+{#                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i#}
+{#                        class="fa fa-plus"></i></a>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{#              <div class="backside">#}
+{#                <div class="card">#}
+{#                  <div class="card-body text-center mt-4">#}
+{#                    <h4 class="card-title">Vanaj Moorthy</h4>#}
+{#                    <p class="card-text">This is basic card with image on top, title, description and button.This is#}
+{#                      basic card with image on top, title, description and button.This is basic card with image on#}
+{#                      top, title, description and button.</p>#}
+{#                    <ul class="list-inline">#}
+{#                      <li class="list-inline-item">#}
+{#                        <a class="social-icon text-xs-center" target="_blank"#}
+{#                           href="https://www.fiverr.com/share/qb8D02">#}
+{#                          <i class="fa fa-facebook"></i>#}
+{#                        </a>#}
+{#                      </li>#}
+{#                      <li class="list-inline-item">#}
+{#                        <a class="social-icon text-xs-center" target="_blank"#}
+{#                           href="https://www.fiverr.com/share/qb8D02">#}
+{#                          <i class="fa fa-twitter"></i>#}
+{#                        </a>#}
+{#                      </li>#}
+{#                      <li class="list-inline-item">#}
+{#                        <a class="social-icon text-xs-center" target="_blank"#}
+{#                           href="https://www.fiverr.com/share/qb8D02">#}
+{#                          <i class="fa fa-skype"></i>#}
+{#                        </a>#}
+{#                      </li>#}
+{#                      <li class="list-inline-item">#}
+{#                        <a class="social-icon text-xs-center" target="_blank"#}
+{#                           href="https://www.fiverr.com/share/qb8D02">#}
+{#                          <i class="fa fa-google"></i>#}
+{#                        </a>#}
+{#                      </li>#}
+{#                    </ul>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+        <!-- ./Team member -->
+        {#          <!-- Team member -->#}
+        {#          <div class="col-xs-12 col-sm-6 col-md-4">#}
+        {#            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">#}
+        {#              <div class="mainflip">#}
+        {#                <div class="frontside">#}
+        {#                  <div class="card">#}
+        {#                    <div class="card-body text-center">#}
+        {#                      <p><img class=" img-fluid"#}
+        {#                              src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_06.jpg"#}
+        {#                              alt="card image"></p>#}
+        {#                      <h4 class="card-title">Sunlimetech</h4>#}
+        {#                      <p class="card-text">This is basic card with image on top, title, description and button.</p>#}
+        {#                      <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i#}
+        {#                          class="fa fa-plus"></i></a>#}
+        {#                    </div>#}
+        {#                  </div>#}
+        {#                </div>#}
+        {#                <div class="backside">#}
+        {#                  <div class="card">#}
+        {#                    <div class="card-body text-center mt-4">#}
+        {#                      <h4 class="card-title">Sunlimetech</h4>#}
+        {#                      <p class="card-text">This is basic card with image on top, title, description and button.This is#}
+        {#                        basic card with image on top, title, description and button.This is basic card with image on#}
+        {#                        top, title, description and button.</p>#}
+        {#                      <ul class="list-inline">#}
+        {#                        <li class="list-inline-item">#}
+        {#                          <a class="social-icon text-xs-center" target="_blank"#}
+        {#                             href="https://www.fiverr.com/share/qb8D02">#}
+        {#                            <i class="fa fa-facebook"></i>#}
+        {#                          </a>#}
+        {#                        </li>#}
+        {#                        <li class="list-inline-item">#}
+        {#                          <a class="social-icon text-xs-center" target="_blank"#}
+        {#                             href="https://www.fiverr.com/share/qb8D02">#}
+        {#                            <i class="fa fa-twitter"></i>#}
+        {#                          </a>#}
+        {#                        </li>#}
+        {#                        <li class="list-inline-item">#}
+        {#                          <a class="social-icon text-xs-center" target="_blank"#}
+        {#                             href="https://www.fiverr.com/share/qb8D02">#}
+        {#                            <i class="fa fa-skype"></i>#}
+        {#                          </a>#}
+        {#                        </li>#}
+        {#                        <li class="list-inline-item">#}
+        {#                          <a class="social-icon text-xs-center" target="_blank"#}
+        {#                             href="https://www.fiverr.com/share/qb8D02">#}
+        {#                            <i class="fa fa-google"></i>#}
+        {#                          </a>#}
+        {#                        </li>#}
+        {#                      </ul>#}
+        {#                    </div>#}
+        {#                  </div>#}
+        {#                </div>#}
+        {#              </div>#}
+        {#            </div>#}
+        {#          </div>#}
+        {#          <!-- ./Team member -->#}
+      </div>
+  </div>
+  </section>
+  <!-- Team -->
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'main/js/index/bs-init.js' %}"></script>
+{% endblock js %}

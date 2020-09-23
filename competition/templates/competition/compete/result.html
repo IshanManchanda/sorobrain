@@ -1,5 +1,5 @@
 {% extends 'global/base.html' %}
-{% load static %}
+{% load static util %}
 
 {% block title %} Compete: {{ competition.title }} | Sorobrain {% endblock %}
 
@@ -25,6 +25,7 @@
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Username</th>
+                <th scope="col">School/Institute</th>
 								<th scope="col">Score</th>
 							</tr>
 							</thead>
@@ -33,6 +34,7 @@
 								<tr>
 									<th scope="row">{{ forloop.counter }}</th>
 									<td>{{ user }}</td>
+                  <td>{% get_user_school user %}</td>
 									<td>{{ score|floatformat:4 }}</td>
 								</tr>
 							{% endfor %}
