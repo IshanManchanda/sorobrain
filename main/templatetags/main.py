@@ -21,7 +21,11 @@ def get_user_competition_rank(args):
 	if not c.is_over:
 		return "Not ended yet!"
 	result = json.loads(c.result)
-	return list(result.keys()).index(username) + 1  # rank is 1 indexed
+	try:
+		rank = list(result.keys()).index(username) + 1  # rank is 1 indexed
+	except ValueError:
+		rank = '-'
+	return rank
 
 
 @register.simple_tag
@@ -31,4 +35,8 @@ def get_user_competition_score(args):
 	if not c.is_over:
 		return "Not ended yet!"
 	result = json.loads(c.result)
-	return round(result[username], 4)
+	try:
+		score = round(result[username], 4)
+	except ValueError:
+		score = '-'
+	return score
