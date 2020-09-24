@@ -65,7 +65,9 @@
             <div id="competitions" class="row p-3 mb-5 shadow rounded"
                  style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
               <div class="col">
-                <h3>Competitions <a href="{% url 'all_competitions' %}"><button class="btn btn-outline-info">View All >></button></a></h3>
+                <h3>Competitions <a href="{% url 'all_competitions' %}">
+                  <button class="btn btn-outline-info">View All >></button>
+                </a></h3>
                 <p style="margin-bottom: 4px;">Participate in online competitions with your friends and win exciting
                   prizes!</p>
                 <div class="alert alert-success shadow" role="alert" style="margin-bottom: 9px;">
@@ -86,6 +88,9 @@
                 </div>
                 <div class="row">
                   <div class="col">
+                    <hr>
+                    <h6 class="text-danger">KINDLY ABIDE BY THE AGE ELIGIBILITY CRITERIA MENTIONED IN THE DETAILS OF EACH LEVEL ON THE
+                      WEBSITE BEFORE REGISTERING AND IGNORE THE ONE MENTIONED IN THE DOCUMENT LINK</h6>
                     <div class="card-group">
                       {% for competition in competitions|slice:':3' %}
                         <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
@@ -125,7 +130,9 @@
                       {% endfor %}
                     </div>
 
-                    <a href="{% url 'all_competitions' %}"><button class="btn btn-outline-info my-3">View All >></button></a>
+                    <a href="{% url 'all_competitions' %}">
+                      <button class="btn btn-outline-info my-3">View All >></button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -133,7 +140,9 @@
             <div id="practice" class="row p-3 mb-5 shadow rounded"
                  style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
               <div class="col" style="margin-top: 52px;">
-                <h3>Practice Quizzes <a href="{% url 'all_quizzes' %}"><button class="btn btn-outline-info">View All >></button></a></h3>
+                <h3>Practice Quizzes <a href="{% url 'all_quizzes' %}">
+                  <button class="btn btn-outline-info">View All >></button>
+                </a></h3>
                 <div class="alert alert-success" role="alert"><span><strong>These are a great way to keep on top of your French skills.</strong><br>1. Practice quizzes allow you to get ahead of the competition and maximize retentivity.<br>2. You can give them as many times as you want.<br>3. Get data-driven analysis on your responses to maximize performance.&nbsp;&nbsp;<strong>&nbsp;</strong></span>
                 </div>
                 <p
@@ -175,7 +184,9 @@
 
                     </div>
 
-                    <a href="{% url 'all_quizzes' %}"><button class="btn btn-outline-info my-3">View All >></button></a>
+                    <a href="{% url 'all_quizzes' %}">
+                      <button class="btn btn-outline-info my-3">View All >></button>
+                    </a>
 
                   </div>
                 </div>
@@ -184,7 +195,9 @@
             <div id="workshops" class="row p-3 mb-5 shadow rounded"
                  style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
               <div class="col">
-                <h3 style="margin-top: 8px;">Online Workshops <a href="{% url 'all_workshops' %}"><button class="btn btn-outline-info">View All >></button></a></h3>
+                <h3 style="margin-top: 8px;">Online Workshops <a href="{% url 'all_workshops' %}">
+                  <button class="btn btn-outline-info">View All >></button>
+                </a></h3>
                 <p class="lead" style="margin-bottom: 10px;"><strong><em>Attend online workshops with expert faculty to
                   boost concepts and get an edge.&nbsp;</em></strong><br></p>
                 <hr>
@@ -215,7 +228,9 @@
                         </div>
                       {% endfor %}
                     </div>
-                  <a href="{% url 'all_workshops' %}"><button class="btn btn-outline-info my-3">View All >></button></a>
+                    <a href="{% url 'all_workshops' %}">
+                      <button class="btn btn-outline-info my-3">View All >></button>
+                    </a>
                   </div>
                 </div>
               </div>
