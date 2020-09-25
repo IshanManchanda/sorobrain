@@ -23,7 +23,7 @@ def get_user_competition_rank(args):
 	result = json.loads(c.result)
 	try:
 		rank = list(result.keys()).index(username) + 1  # rank is 1 indexed
-	except ValueError:
+	except:
 		rank = '-'
 	return rank
 
@@ -37,6 +37,6 @@ def get_user_competition_score(args):
 	result = json.loads(c.result)
 	try:
 		score = round(result[username], 4)
-	except ValueError:
+	except:
 		score = '-'
 	return score
