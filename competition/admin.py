@@ -36,6 +36,7 @@ class CompetitionAdmin(admin.ModelAdmin):
 			           'thumbnail',
 			           'include_book',
 			           'active',
+			           'hide_leaderboard',
 			           'tags',)
 		}),
 		('Date', {

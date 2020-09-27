@@ -6,6 +6,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
   <link rel="stylesheet" href="{% static 'common/css/store/product_page/Features-Clean.css' %}">
   <link rel="stylesheet" href="{% static 'common/css/store/product_page/Testimonials.css' %}">
+  <style>
+    .blink_me {
+      animation: blinker 3s linear infinite;
+    }
+
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
 {% endblock %}
 
 {% block title %}
@@ -21,14 +32,15 @@
                src="{{ competition.thumbnail.url }}">
           <div class="alert alert-success" role="alert"><span><strong>Description:</strong>&nbsp;<br></span>
             <p>{{ competition.description|safe }}&nbsp;</p></div>
-          <h6 class="text-danger">KINDLY ABIDE BY THE AGE ELIGIBILITY CRITERIA MENTIONED IN THE DETAILS OF EACH LEVEL ON
-            THE
-            WEBSITE BEFORE REGISTERING AND IGNORE THE ONE MENTIONED IN THE DOCUMENT LINK</h6>
         </div>
         <div class="col-md-5 col-lg-5 shadow-sm">
           <h3 style="font-family: Adamina, serif;margin-top: 13px;">{{ competition.title }}&nbsp;</h3>
           <p style="color: #282821;font-size: 22px;"><em>Interactive online competitions with instant analysis!</em><br>
           </p>
+          <h6 class="text-danger blink_me">KINDLY ABIDE BY THE AGE ELIGIBILITY
+            CRITERIA MENTIONED IN THE DETAILS OF EACH LEVEL ON
+            THE
+            WEBSITE BEFORE REGISTERING AND IGNORE THE ONE MENTIONED IN THE DOCUMENT LINK</h6>
           <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
               class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
           <strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if competition.discount %}Discount:
