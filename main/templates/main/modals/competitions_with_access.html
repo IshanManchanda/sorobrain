@@ -31,10 +31,8 @@
 							<th scope="row"><a href="{{ competitions.get_absolute_url }}"><button class="btn btn-outline-primary btn-sm"><i class="fas fa-external-link-alt"></i></button></a></th>
 							<td>{{ competitions.title }}</td>
 							<td>{{ competitions.level }}</td>
-              {% with request.user.username|addstr:","|addstr:competitions.id as args %}
-							<td>{% get_user_competition_rank args %}</td>
-              <td>{% get_user_competition_score args %}</td>
-              {% endwith %}
+							<td>-</td>
+              <td>-</td>
 							<td>{{ competitions.start_date|date:"d M, y" }}</td>
 							<td>{{ competitions.end_date|date:"d M, y" }}</td>
 						</tr>
