@@ -20,7 +20,10 @@ def get_user_competition_rank(args):
 	c = get_object_or_404(Competition, id=competition_id)
 	if not c.is_over:
 		return "Not ended yet!"
-	result = json.loads(c.result)
+	try:
+		result = json.loads(c.result)
+	except:
+		return '-'
 	try:
 		rank = list(result.keys()).index(username) + 1  # rank is 1 indexed
 	except:
@@ -34,7 +37,10 @@ def get_user_competition_score(args):
 	c = get_object_or_404(Competition, id=competition_id)
 	if not c.is_over:
 		return "Not ended yet!"
-	result = json.loads(c.result)
+	try:
+		result = json.loads(c.result)
+	except:
+		return '-'
 	try:
 		score = round(result[username], 4)
 	except:
