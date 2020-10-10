@@ -27,7 +27,7 @@ class UserData(models.Model):
 	school = models.CharField('School', max_length=512, blank=True, null=True)
 	city = models.CharField('City', max_length=512, blank=True, null=True)
 	country = models.CharField('Country', max_length=512, blank=True, null=True)
-	date_of_birth = models.DateTimeField('Date of Birth', blank=True, null=True)
+	date_of_birth = models.DateField('Date of Birth', blank=True, null=True)
 	gender = models.CharField('Gender', max_length=32, null=True, blank=True)
 	level = models.CharField('French Level', max_length=128, null=True,
 	                         blank=True, choices=LEVEL_CHOICES)

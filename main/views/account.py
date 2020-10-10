@@ -70,7 +70,6 @@ class SaveProfileData(LoginRequiredMixin, View):
 		form = EditProfileForm(request.POST, request.FILES)
 		if form.is_valid():
 			data = form.cleaned_data
-			print(data)
 			user.name = data['name']
 			user.gender = data['gender']
 			user.phone = data['phone']
