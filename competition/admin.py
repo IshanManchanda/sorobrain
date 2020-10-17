@@ -14,7 +14,7 @@ class CompetitionQuizInline(admin.TabularInline):
 
 class CompetitionAdmin(admin.ModelAdmin):
 	list_display = ('title', 'start_date', 'end_date')
-	readonly_fields = ('created_on', 'result', 'link')
+	readonly_fields = ('slug', 'created_on', 'result', 'link')
 	save_on_top = True
 	radio_fields = {'level': admin.VERTICAL}
 	save_as = True
