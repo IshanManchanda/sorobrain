@@ -51,6 +51,9 @@ class CompetitionAdmin(admin.ModelAdmin):
 		}),
 		('Certificates', {
 			'fields': ('link', )
+		}),
+		('Result', {
+			'fields': ('result',)
 		})
 	)
 
