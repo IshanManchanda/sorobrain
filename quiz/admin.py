@@ -112,6 +112,7 @@ class QuizSubmissionAdmin(admin.ModelAdmin):
 	# readonly_fields = ('user', 'quiz', 'submission', 'score', 'correct_answers',
 	#                    'incorrect_answers', 'start_time', 'competition',
 	#                    'submit_time', 'created_on')
+	list_editable = ('correct_answers', 'incorrect_answers', 'score')
 
 
 admin.site.register(QuizSubmission, QuizSubmissionAdmin)
