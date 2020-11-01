@@ -31,10 +31,10 @@ def evaluate_text(question, selected_answer):
 	Checks if the answer from the user is any of the possible
 	acceptable answers.
 	"""
-	cleaned_answer= selected_answer.strip().lower()
+	cleaned_answer = selected_answer.strip().lower()
 	cleaned_correct_answer_s = question.answer.strip().lower()
 
-	correct_answers = [ans.strip() for ans in cleaned_correct_answer_s.split("|")]
+	correct_answers = [ans.strip().lower() for ans in cleaned_correct_answer_s.split("|")]
 	for correct_answer in correct_answers:
 		if correct_answer == cleaned_answer:
 			return True

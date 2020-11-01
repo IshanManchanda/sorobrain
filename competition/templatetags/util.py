@@ -9,3 +9,8 @@ register = Library()
 @register.simple_tag
 def get_user_school(username):
 	return get_object_or_404(User, username=username).school
+
+
+@register.simple_tag
+def get_user_name(username):
+	return get_object_or_404(User, username=username).name

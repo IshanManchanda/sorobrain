@@ -29,6 +29,7 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Username</th>
+                  <th scope="col">Name</th>
                   <th scope="col">School/Institute</th>
                   <th scope="col">Score</th>
                 </tr>
@@ -38,6 +39,7 @@
                   <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ user }}</td>
+                    <td>{% get_user_name user %}</td>
                     <td>{% get_user_school user %}</td>
                     <td>{{ score|floatformat:4 }}</td>
                   </tr>
