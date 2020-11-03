@@ -40,7 +40,7 @@
 						<label for="code"></label><input type="text" id="code" class="form-control mb-1" placeholder="Enter discount code, if you have one...">
 						<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register Individually</button>
 						<a href="{% url 'workshops:register_with_code' slug=workshop.slug %}"><button class="btn btn-outline-primary text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i class="fas fa-barcode"></i>&nbsp;Register with Code</button></a>
-            <form method="post" action="{% url 'workshops:register_with_points' slug=workshop.slug %}">{% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100" value="Register with Points"></form>
+            <form method="post" action="{% url 'workshops:register_with_points' slug=workshop.slug %}">{% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100" value="Use My SoroMoney"></form>
 						<p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to register!</p>
 					{% else %}
 						<p>This workshop has expired. Checkout upcoming ones <a href="{% url 'catalog' %}#workshops">here</a></p>
