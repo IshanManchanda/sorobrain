@@ -119,6 +119,25 @@ class RegisterWithCode(LoginRequiredMixin, View):
 		return redirect(reverse('workshops:register_with_code', args=[slug]))
 
 
+class RegisterWithPoints(LoginRequiredMixin, View):
+	@staticmethod
+	def get(request, slug):
+		return redirect(reverse('workshops:workshop_store', args=[slug]))
+	
+	@staticmethod
+	def post(request, slug):
+		w = get_object_or_404(Workshop, slug=slug)
+		if request.user.points > w.sub_total:
+			request.user.points -= w.sub_total
+			request.user.save()
+			grant_access_to_workshop(request.user, w)
+		else:
+			messages.add_message(request, messages.WARNING, "You don't have enough points to register for this workshop!")
+			return redirect(reverse('workshops:workshop_store', args=[slug]))
+		messages.add_message(request, messages.SUCCESS, "Success! You now have access to the workshop!")
+		return redirect(reverse('workshops:workshop_access', args=[slug]))
+
+
 class SendCertificates(View, LoginRequiredMixin):
 	@staticmethod
 	def get(request, slug):

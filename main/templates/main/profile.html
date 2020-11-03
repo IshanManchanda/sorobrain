@@ -73,6 +73,13 @@
 		<button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#quiz_attempts">Quiz Attempts</button>
 	</div>
   </div>
+  <div class="card">
+    <div class="card-header"><h5><i class="fas fa-wallet"></i> Soro-Money</h5></div>
+    <div class="card-body">
+      <p>Soro-Money are reward points that are credited to your account for participating in workshops and winning competitions! You can redeem your points by buying Sorobrain workshops and practice quizzes!</p>
+      <h3>Your Points: <span class="text-success">Re. {{ request.user.points }}</span></h3>
+    </div>
+  </div>
 	<div class="card mb-3" style="max-width: 540px;">
 	  <div class="row no-gutters">
 		<div class="col-md-4">

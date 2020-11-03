@@ -34,6 +34,7 @@ class UserData(models.Model):
 	# setting 5 levels of notifications <0 - 4>
 	# 0 is disabled to 4 is all notifications
 	notification_level = models.IntegerField('Notification Level', default='4')
+	points = models.IntegerField("Soro-Money", default=0)
 
 	def profile_setup_progress(self):
 		empty_fields = 0
