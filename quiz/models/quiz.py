@@ -268,7 +268,7 @@ class QuizSubmission(models.Model):
 		incorrect_answers_number = 0
 
 		for question_id, selected_answer, evaluation in result:
-			if evaluation == True:
+			if evaluation is True:
 				correct_answers_number += 1
 			elif evaluation == -1:
 				incorrect_answers_number += 1
