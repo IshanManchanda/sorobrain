@@ -12,6 +12,7 @@ urlpatterns = [
 	path('buy/<str:slug>/', views.BuyQuiz.as_view(), name='buy'),
 	path('success/<str:slug>/', csrf_exempt(views.QuizPaymentSuccess.as_view()), name='success'),
 	path('code/<str:slug>/', views.RegisterWithCode.as_view(), name='code'),
+	path('points/<str:slug>/', views.RegisterWithPoints.as_view(), name='register_with_points'),
 
 	# attempts
 	path('compete/start/<str:competition_slug>/<str:quiz_slug>/', views.StartCompetitionQuiz.as_view(), name='competition_start'),

@@ -109,3 +109,23 @@ class RegisterWithCode(LoginRequiredMixin, View):
 			return redirect(quiz.get_absolute_url())
 		messages.add_message(request, messages.INFO, "That code is invalid")
 		return redirect(reverse('competition:code', args=[slug]))
+
+
+class RegisterWithPoints(LoginRequiredMixin, View):
+	@staticmethod
+	def get(request, slug):
+		return redirect(reverse('quiz:buy', args=[slug]))
+
+	@staticmethod
+	def post(request, slug):
+		q = get_object_or_404(Quiz, slug=slug)
+		if request.user.points > q.sub_total:
+			request.user.points -= q.sub_total
+			request.user.save()
+			grant_access_to_quiz(request.user, q)
+		else:
+			messages.add_message(request, messages.WARNING,
+			                     "You don't have enough points to register for this quiz!")
+			return redirect(reverse('quiz:buy', args=[slug]))
+		messages.add_message(request, messages.SUCCESS, "Success! You now have access to the quiz!")
+		return redirect(reverse('quiz:start', args=[slug]))

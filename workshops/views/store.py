@@ -123,7 +123,7 @@ class RegisterWithPoints(LoginRequiredMixin, View):
 	@staticmethod
 	def get(request, slug):
 		return redirect(reverse('workshops:workshop_store', args=[slug]))
-	
+
 	@staticmethod
 	def post(request, slug):
 		w = get_object_or_404(Workshop, slug=slug)
