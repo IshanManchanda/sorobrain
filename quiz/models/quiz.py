@@ -285,7 +285,7 @@ class QuizSubmission(models.Model):
 		else:
 			remaining_time = self.quiz.total_time - self.attempt_time
 		self.score = ((correct_answers_number / (correct_answers_number + incorrect_answers_number) * 100) * (
-					((remaining_time.seconds / self.quiz.total_time.seconds) * 100) / 10))
+				((abs(remaining_time.total_seconds()) / abs(self.quiz.total_time.total_seconds())) * 100) / 10))
 		self.save()
 
 		return result
