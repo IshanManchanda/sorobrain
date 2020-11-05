@@ -144,3 +144,11 @@ env
 .idea/
 .idea/kaboodevs.github.io.iml
 .idea/workspace.xml
+main/static/main/img/seller_dashboard/
+main/static/main/img/user_dashboard/
+main/templates/main/mails/
+main/templates/main/modals/
+main/templates/main/seller_dashboard/mails/
+main/templates/main/seller_dashboard/modals/
+store/static/
+store/tests/
