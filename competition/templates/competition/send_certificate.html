@@ -1,23 +1,18 @@
-{% extends 'global/base.html'%}
+{% extends 'admin/base_site.html'%}
 {% load crispy_forms_filters static %}
 
 {% block title %}Send Certificates {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}" />
 {% endblock%}
 
 {% block js %}
-    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
 
-    <script type="text/javascript" src="{% static 'admin/js/SelectBox.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/SelectFilter2.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+      <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}" />
+
   <div class="container">
     <div class="row">
       <div class="col-md-8 py-4 mx-auto">
@@ -33,4 +28,11 @@
       </div>
     </div>
   </div>
+      <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'admin/js/SelectBox.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/SelectFilter2.js' %}"></script>
 {% endblock %}

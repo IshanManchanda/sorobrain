@@ -14,7 +14,8 @@ from .models.code import DiscountCode
 def get_user_emails(modeladmin, request, queryset):
 	emails = [user.email for user in queryset]
 	string_emails = "".join([e + ", " for e in emails])
-	return redirect(reverse('selected_emails', args=[string_emails]))
+	request.session['_user_emails'] = string_emails
+	return redirect(reverse('selected_emails'))
 
 
 class UserAdmin(BaseUserAdmin):

@@ -1,17 +1,23 @@
-{% extends 'global/base.html' %}
+{% extends 'admin/base_site.html' %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 mx-auto py-4">
-      <a href="{% url 'admin:index' %}" class="btn btn-outline-info mb-2"> < Back to Admin</a>
-      <h1>Selected Emails</h1>
-      <ul style="list-style-type: none">
-        {% for email in emails %}
-          <li>{{email}}</li>
-        {% endfor %}
-      </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto py-4">
+        <a href="/admin/main/user" class="btn btn-outline-info mb-2 btn-sm"> < Back to Admin</a>
+        <h2>Selected Emails:</h2>
+        <p>You can copy paste these emails into any E-Mail service provider now!</p>
+        <div class="alert alert-warning">
+          <b>If you are sending a mass email, make sure you BCC all these emails. <br>We don't want to share all our
+            users emails!</b>
+        </div>
+        <hr>
+        <ul style="list-style-type: none">
+          {% for email in emails %}
+            <li>{{ email }}</li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 {% endblock content %}

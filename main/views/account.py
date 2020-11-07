@@ -117,9 +117,10 @@ class Delete(LoginRequiredMixin, View):
 		return redirect(reverse('index'))
 
 
-def selected_emails(request, emails):
+def selected_emails(request):
 	if not request.user.is_staff:
 		return HttpResponse(403)
+	emails = request.session.get('_user_emails')
 	return render(request, 'main/show_selected_emails.html', {
 		'emails': emails.split(', ')
 	})
