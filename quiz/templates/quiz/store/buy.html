@@ -34,7 +34,9 @@
 						<label for="code"></label><input type="text" id="code" class="form-control mb-1" placeholder="Enter discount code, if you have one...">
 						<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register Individually</button>
 						<a href="{% url 'quiz:code' slug=quiz.slug %}"><button class="btn btn-outline-primary w-100" type="button"><i class="fas fa-barcode"></i> Register With Code</button></a>
-            <form method="post" action="{% url 'quiz:register_with_points' slug=quiz.slug %}">{% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100 mt-1" value="Use My SoroMoney"></form>
+            <form method="post" action="{% url 'quiz:register_with_points' slug=quiz.slug %}" onsubmit="return confirm('Are you sure you want to use your SoroMoney to buy this product?');">
+              {% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100 mt-1" value="Use My SoroMoney">
+            </form>
             <p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to register!</p>
 					{% else %}
 						<button class="btn btn-primary w-100" type="button">Start Quiz</button>
