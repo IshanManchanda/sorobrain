@@ -26,7 +26,7 @@ class UserAdmin(BaseUserAdmin):
 	list_filter = ('is_staff', 'is_active', 'level', 'education', 'gender', 'notification_level', 'school', 'country')
 	fieldsets = (
 		(None, {'fields': ('email', 'password')}),
-		('Personal info', {'fields': ('name', 'points', 'date_of_birth', 'phone', 'gender', 'level', 'education', 'school', 'city', 'country')}),
+		('Personal info', {'fields': ('name', 'avatar', 'points', 'date_of_birth', 'phone', 'gender', 'level', 'education', 'school', 'city', 'country')}),
 		('Permissions', {'fields': ('is_active', 'is_staff', 'notification_level', 'groups', 'user_permissions')}),
 	)
 	add_fieldsets = (
