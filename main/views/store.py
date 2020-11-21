@@ -1,16 +1,23 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.utils import timezone
 from django.views import View, generic
 
 from competition.models import Competition
 from main.models import OneOnOneClass
-from main.views.utils import block_if_profile_incomplete
+from main.views.utils import block_if_profile_incomplete, user_profile_setup_progress
 from quiz.models import Quiz
 from workshops.models import Workshop
 
 
 def catalog(request):
-	block_if_profile_incomplete(request)
+	empty_fields = user_profile_setup_progress(request.user)
+	if empty_fields > 0:
+		messages.add_message(request, messages.INFO,
+		                     f"Finish setting up your profile <a href={reverse('settings')}> here</a>. You have {empty_fields} fields to fill.")
+		return redirect(reverse('settings'))
+
 	return render(request, 'main/catalog.html', {
 		'competitions': Competition.objects.filter(active=True).order_by('-created_on'),
 		'workshops'   : Workshop.objects.filter(active=True).order_by('-created_on'),

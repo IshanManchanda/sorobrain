@@ -19,8 +19,12 @@ class Profile(LoginRequiredMixin, View):
 	@staticmethod
 	def get(request):
 		empty_fields = user_profile_setup_progress(request.user)
+		print("dfgjklfdajfsdjfkl;dsaj")
+		print(empty_fields)
 		if empty_fields > 0:
-			messages.add_message(request, messages.INFO, f"Finish setting up your profile <a href={reverse('settings')}> here</a>. You have {empty_fields} fields to fill.")
+			messages.add_message(request, messages.INFO,
+			                     f"Finish setting up your profile <a href={reverse('settings')}> here</a>. You have {empty_fields} fields to fill.")
+			return redirect(reverse('settings'))
 		return render(request, 'main/profile.html', {
 			'bought_competitions': [ca.competition for ca in CompetitionAccess.objects.filter(user=request.user)],
 			'bought_quizzes': [qa.quiz for qa in QuizAccess.objects.filter(user=request.user)],
