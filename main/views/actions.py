@@ -1,30 +1,15 @@
 from django.contrib import messages
-from django.db import DatabaseError
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
 
-from competition.models import Competition, CompetitionAccess
-from main.models import User, BookAccess
+from competition.models import Competition
+from competition.views.utils import grant_access_to_competition
+from main.models import User
 from main.views.utils import give_soromoney_to_user
 from quiz.models import Quiz
 from quiz.views.utils import grant_access_to_quiz
 from workshops.models import Workshop
 from workshops.views.utils import grant_access_to_workshop
-
-
-def grant_access_to_competition(user: User, competition: Competition) -> bool:
-	try:
-		CompetitionAccess.objects.create(user=user, competition=competition)
-		if competition.include_book:
-			try:
-				BookAccess.objects.create(user=user)
-				return True
-			except DatabaseError:
-				return False
-		return True
-	except DatabaseError:
-		return False
 
 
 def grant_competition_access(request):
