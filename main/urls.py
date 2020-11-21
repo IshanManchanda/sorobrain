@@ -3,15 +3,19 @@ from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
 
 from . import views
+from .views.actions.competition import grant_competition_access
+from .views.actions.money import give_soromoney_view
+from .views.actions.quiz import grant_quiz_access
+from .views.actions.workshop import grant_workshop_access
 
 
 urlpatterns = [
 	# admin extend
 	path('selected_emails/', views.selected_emails, name="selected_emails"),
-	path('grant_competition_access/', views.grant_competition_access, name="grant_competition_access"),
-	path('grant_quiz_access/', views.grant_quiz_access, name="grant_quiz_access"),
-	path('grant_workshop_access/', views.grant_workshop_access, name="grant_workshop_access"),
-	path('give_soromoney/', views.give_soromoney, name="give_soromoney"),
+	path('grant_competition_access/', grant_competition_access, name="grant_competition_access"),
+	path('grant_quiz_access/', grant_quiz_access, name="grant_quiz_access"),
+	path('grant_workshop_access/', grant_workshop_access, name="grant_workshop_access"),
+	path('give_soromoney/', give_soromoney_view, name="give_soromoney"),
 
 
 	# account
