@@ -5,8 +5,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from competition.models import Competition, CompetitionAccess
-from main.models import User
-from main.views.utils import give_soromoney_to_user, grant_book_access
+from main.models import User, BookAccess
+from main.views.utils import give_soromoney_to_user
 from quiz.models import Quiz
 from quiz.views.utils import grant_access_to_quiz
 from workshops.models import Workshop
@@ -17,7 +17,11 @@ def grant_access_to_competition(user: User, competition: Competition) -> bool:
 	try:
 		CompetitionAccess.objects.create(user=user, competition=competition)
 		if competition.include_book:
-			grant_book_access(user)
+			try:
+				BookAccess.objects.create(user=user)
+				return True
+			except DatabaseError:
+				return False
 		return True
 	except DatabaseError:
 		return False
