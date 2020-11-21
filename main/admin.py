@@ -32,6 +32,20 @@ def give_users_quiz_access(modeladmin, request, queryset):
 	return redirect(reverse('grant_quiz_access'))
 
 
+def give_users_workshop_access(modeladmin, request, queryset):
+	usernames = [user.username for user in queryset]
+	string_usernames = "".join([u + ", " for u in usernames])
+	request.session['_usernames'] = string_usernames
+	return redirect(reverse('grant_workshop_access'))
+
+
+def give_soromoney(modeladmin, request, queryset):
+	usernames = [user.username for user in queryset]
+	string_usernames = "".join([u + ", " for u in usernames])
+	request.session['_usernames'] = string_usernames
+	return redirect(reverse('give_soromoney'))
+
+
 class UserAdmin(BaseUserAdmin):
 	form = UpdateUserForm
 	add_form = AddUserForm
@@ -57,7 +71,7 @@ class UserAdmin(BaseUserAdmin):
 	search_fields = ('username', 'email', 'name', 'phone')
 	ordering = ('username',)
 	filter_horizontal = ('user_permissions', 'groups')
-	actions = [get_user_emails, give_users_competition_access, give_users_quiz_access]
+	actions = [get_user_emails, give_users_competition_access, give_users_quiz_access, give_users_workshop_access, give_soromoney]
 
 
 admin.site.register(User, UserAdmin)

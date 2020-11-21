@@ -92,3 +92,8 @@ def get_level_from_date_of_birth(dob):
 		return 'intermediate'
 	if age >= 16:
 		return 'advanced'
+
+
+def give_soromoney_to_user(user: User, amount: int):
+	user.points += amount
+	user.save()
