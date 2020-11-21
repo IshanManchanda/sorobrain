@@ -1,198 +1,259 @@
- {% extends 'global/base.html' %}
+{% extends 'global/base.html' %}
 {% load static %}
 
 {% block css %}
-	<link rel="stylesheet" href="{% static 'common/css/store/product_page/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
-	<link rel="stylesheet" href="{% static 'common/css/store/product_page/Features-Clean.css' %}">
-	<link rel="stylesheet" href="{% static 'common/css/store/product_page/Testimonials.css' %}">
+  <link rel="stylesheet" href="{% static 'common/css/store/product_page/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
+  <link rel="stylesheet" href="{% static 'common/css/store/product_page/Features-Clean.css' %}">
+  <link rel="stylesheet" href="{% static 'common/css/store/product_page/Testimonials.css' %}">
 {% endblock %}
 
 {% block title %}
-	SB Quiz: {{ quiz.title }}
+  SB Quiz: {{ quiz.title }}
 {% endblock %}
 
 {% block content %}
-	    <div style="margin-top: 24px;margin-bottom: 28px;">
-        <div class="container-fluid text-left">
-            <div class="row text-center">
-                <div class="col-md-7 col-lg-5 offset-md-0 offset-lg-1 text-center text-sm-right">
-					<img class="img-thumbnail img-fluid d-inline-block align-items-lg-center" src="{% static 'quiz/img/quiz_buy.jpg' %}">
-					<div class="alert alert-success" role="alert"><span><strong>Description:</strong>&nbsp;<br></span><p>{{ quiz.description|safe }}&nbsp;</p></div>
+  <div style="margin-top: 24px;margin-bottom: 28px;">
+    <div class="container-fluid text-left">
+      <div class="row text-center">
+        <div class="col-md-7 col-lg-5 offset-md-0 offset-lg-1 text-center text-sm-right">
+          <img class="img-thumbnail img-fluid d-inline-block align-items-lg-center"
+               src="{% static 'quiz/img/quiz_buy.jpg' %}">
+          <div class="alert alert-success" role="alert"><span><strong>Description:</strong>&nbsp;<br></span>
+            <p>{{ quiz.description|safe }}&nbsp;</p></div>
 
-				</div>
-                <div class="col-md-5 col-lg-5 shadow-sm">
-                    <h3 style="font-family: Adamina, serif;margin-top: 13px;">{{ quiz.title }}&nbsp;</h3>
-                    <p style="color: #282821;font-size: 22px;"><em>Interactive online quizzes with instant analysis!</em><br></p>
-                    <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
-					<strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if quiz.discount %}Discount: {{ quiz.discount }}% <br> Rs.{{ quiz.sub_total }}; <i class="text-muted small">Original Cost: <strike>Rs. {{ quiz.cost }}</strike></i>{% else %}Price: Rs. {{ quiz.cost }}{% endif %}<br><small class="small text-muted">Inclusive of taxes &  2% towards <a href="https://maitribodh.org/"> MBPC Trust </a> for upliftment of human consciousness</small><br><br></strong>
-					<p class="text-muted">Quizzes are provided on the web platform itself. After buying you will be able to attempt the quiz through your account page with our interactive interface. </p>
-					<hr>
-					<p> This Quiz was added on {{ quiz.created_on }}
-					<br> and it is aimed at learners of the <i>{{ quiz.level }}</i> level.</p>
-					{% if quiz.cost > 0 %}
-						<label for="code"></label><input type="text" id="code" class="form-control mb-1" placeholder="Enter discount code, if you have one...">
-						<button class="btn btn-success text-center" type="button" style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i class="fas fa-user-plus"></i>&nbsp;Register Individually</button>
-						<a href="{% url 'quiz:code' slug=quiz.slug %}"><button class="btn btn-outline-primary w-100" type="button"><i class="fas fa-barcode"></i> Register With Code</button></a>
-            <form method="post" action="{% url 'quiz:register_with_points' slug=quiz.slug %}" onsubmit="return confirm('Are you sure you want to use your SoroMoney to buy this product?');">
+        </div>
+        <div class="col-md-5 col-lg-5 shadow-sm">
+          <h3 style="font-family: Adamina, serif;margin-top: 13px;">{{ quiz.title }}&nbsp;</h3>
+          <p style="color: #282821;font-size: 22px;"><em>Interactive online quizzes with instant analysis!</em><br></p>
+          <p style="color: rgb(12,119,226);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+              class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></p>
+          <strong style="font-size: 21px;margin-bottom: 3px;padding: 24px;">{% if quiz.discount %}Discount:
+            {{ quiz.discount }}% <br> Rs.{{ quiz.sub_total }};
+            <i class="text-muted small">Original Cost: <strike>Rs. {{ quiz.cost }}</strike></i>{% else %}Price: Rs.
+            {{ quiz.cost }}{% endif %}<br><small class="small text-muted">Inclusive of taxes & 2% towards <a
+              href="https://maitribodh.org/"> MBPC Trust </a> for upliftment of human
+            consciousness</small><br><br></strong>
+          <p class="text-muted">Quizzes are provided on the web platform itself. After buying you will be able to
+            attempt the quiz through your account page with our interactive interface. </p>
+          <hr>
+          <p> This Quiz was added on {{ quiz.created_on }}
+            <br> and it is aimed at learners of the <i>{{ quiz.level }}</i> level.</p>
+          {% if quiz.cost > 0 %}
+            <label for="code"></label><input type="text" id="code" class="form-control mb-1"
+                                             placeholder="Enter discount code, if you have one...">
+            <button class="btn btn-success text-center" type="button"
+                    style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i
+                class="fas fa-user-plus"></i>&nbsp;Register Individually
+            </button>
+            <a href="{% url 'quiz:code' slug=quiz.slug %}">
+              <button class="btn btn-outline-primary w-100" type="button"><i class="fas fa-barcode"></i> Register With
+                Code
+              </button>
+            </a>
+            <form method="post" action="{% url 'quiz:register_with_points' slug=quiz.slug %}"
+                  onsubmit="return confirm('Are you sure you want to use your SoroMoney to buy this product?');">
               {% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100 mt-1" value="Use My SoroMoney">
             </form>
-            <p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to register!</p>
-					{% else %}
-						<button class="btn btn-primary w-100" type="button">Start Quiz</button>
-					{% endif %}
- 					<p class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br><i class="fab fa-facebook"></i>&nbsp;&nbsp;<i class="fab fa-twitter"></i>&nbsp;&nbsp;<i class="fab fa-instagram"></i>&nbsp;&nbsp;<i class="fab fa-whatsapp"></i>&nbsp;&nbsp;<i class="fas fa-envelope"></i></p>
-                </div>
-            </div>
+            <p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to register!
+            </p>
+          {% else %}
+            <button class="btn btn-primary w-100" type="button">Start Quiz</button>
+          {% endif %}
+          <p class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br>
+            <a href="https://www.facebook.com/Sorobrain/">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://twitter.com/sorobrain/">
+              &nbsp;&nbsp;<i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/sorobrain/">
+              &nbsp;&nbsp;<i class="fab fa-instagram"></i>
+            </a>
+            <a href="tel: +919810522445">
+              &nbsp;<i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:info@sorobrain.com" target="_blank">
+              &nbsp;&nbsp;<i class="fas fa-envelope"></i>
+            </a>
+          </p>
         </div>
+      </div>
     </div>
-	<hr>
-	<div class="features-clean">
-        <div class="container">
-            <div class="intro">
-                <h2 class="text-center" style="padding-top: 1px;margin-bottom: 8px;">What do I get?</h2>
-            </div>
-            <div class="row features">
-                <div class="col-sm-12 col-lg-7 item"><i class="fa fa-map-marker icon"></i>
-                    <h3 class="name">Overview</h3>
-                    <p class="description">La pratique rend parfait ! A convenient and effective way to quantify your progress and have a record of it. With unlimited trials per quiz, you can refresh your memory whenever needed or test yourself after participating in associated workshops. </p>
-                </div>
-                <div class="col-sm-6 col-lg-5 offset-lg-0 item" style="width: 442px;"><i class="fas fa-laptop icon"></i><img class="img-fluid float-left rounded" src="{% static 'workshops/img/workshop-what-do-i-get.gif' %}" style="width: 398px;padding-top: 2px;"></div>
-            </div>
+  </div>
+  <hr>
+  <div class="features-clean">
+    <div class="container">
+      <div class="intro">
+        <h2 class="text-center" style="padding-top: 1px;margin-bottom: 8px;">What do I get?</h2>
+      </div>
+      <div class="row features">
+        <div class="col-sm-12 col-lg-7 item"><i class="fa fa-map-marker icon"></i>
+          <h3 class="name">Overview</h3>
+          <p class="description">La pratique rend parfait ! A convenient and effective way to quantify your progress and
+            have a record of it. With unlimited trials per quiz, you can refresh your memory whenever needed or test
+            yourself after participating in associated workshops. </p>
         </div>
+        <div class="col-sm-6 col-lg-5 offset-lg-0 item" style="width: 442px;"><i class="fas fa-laptop icon"></i><img
+            class="img-fluid float-left rounded" src="{% static 'workshops/img/workshop-what-do-i-get.gif' %}"
+            style="width: 398px;padding-top: 2px;"></div>
+      </div>
     </div>
-    <div class="" style="background-color: #f3f3f3;">
-        <div class="container">
-            <div class="intro">
-                <h2 class="text-center" style="margin-bottom: 14px;">Reviews</h2>
-            </div>
-			<div class="row people" style="padding-top: 2px;">
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box">
-						<p class="description"><b>Sorobrain's quiz on gender of nouns is simply fantastic.</b><br> I thoroughly enjoy myself and the quiz is highly interactive. It is a great way to improve your vocabulary while having fun through crosswords, word searches and the super fun quizzes. Seema Ma'am needless to say is a fantastic teacher and I love being her student and a part of this fabulous quiz.</p>
-                    </div>
-                    <div class="author">
-                        <h5 class="name">Kabir Menon</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box">
-                        <p class="description"><b>The quiz has been a fun, interactive way to learn about the genders of nouns- </b><br>something that is usually a cumbersome task has been made easy! Through games and activities all students are kept engaged. Moreover, Seema ma’am always makes sessions pleasant and uplifting. </p>
-                    </div>
-                    <div class="author">
-                        <h5 class="name">Gaurika Kapoor</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 item">
-                    <div class="box">
-                        <p class="description"><b>L'Atelier Français is the series of quizzes that absolutely no beginner should miss!</b><br>The most daunting part of french are the exceptions in rules, grammar, and sentence structure but instead of mugging them up, we remember them all by playing games, forming mnemonics and studying origins. While it is the easiest and fastest way to learn french, the best part is how the pronunciation is embedded in our memory because of Seema ma'am's teaching style. For me, her guidance in differentiating between spoken and written french has helped me understand a lot about the language, as well as the french culture. This is an immersive course and one of the best in field! Merci pour vos conseils en français madame!</p>
-                    </div>
-                    <div class="author">
-                        <h5 class="name">Tanvi Rattan</h5>
-                    </div>
-                </div>
-            </div>
+  </div>
+  <div class="" style="background-color: #f3f3f3;">
+    <div class="container">
+      <div class="intro">
+        <h2 class="text-center" style="margin-bottom: 14px;">Reviews</h2>
+      </div>
+      <div class="row people" style="padding-top: 2px;">
+        <div class="col-md-6 col-lg-4 item">
+          <div class="box">
+            <p class="description"><b>Sorobrain's quiz on gender of nouns is simply fantastic.</b><br> I thoroughly
+              enjoy myself and the quiz is highly interactive. It is a great way to improve your vocabulary while having
+              fun through crosswords, word searches and the super fun quizzes. Seema Ma'am needless to say is a
+              fantastic teacher and I love being her student and a part of this fabulous quiz.</p>
+          </div>
+          <div class="author">
+            <h5 class="name">Kabir Menon</h5>
+          </div>
         </div>
-		<hr>
-        <div class="container" style="margin-bottom: 0px;padding-bottom: 49px;">
-            <h1 class="text-center">Related quizzes</h1>
-            <div class="card-group">
-                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
-                    <div class="card-body">
-                        <h4 class="card-title">Coming Soon</h4>
-                        <p class="card-text">We're working hard to get other quizzes up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
-				</div>
-                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
-                    <div class="card-body">
-                        <h4 class="card-title">Coming Soon</h4>
-                        <p class="card-text">We're working hard to get other quizzes up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
-				</div>
-                <div class="card"><img class="card-img-top w-100 d-block" src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
-                    <div class="card-body">
-                        <h4 class="card-title">Coming Soon</h4>
-                        <p class="card-text">We're working hard to get other quizzes up and running!</p><button class="btn btn-secondary" type="button">Details</button></div>
-				</div>
-            </div>
+        <div class="col-md-6 col-lg-4 item">
+          <div class="box">
+            <p class="description"><b>The quiz has been a fun, interactive way to learn about the genders of nouns- </b><br>something
+              that is usually a cumbersome task has been made easy! Through games and activities all students are kept
+              engaged. Moreover, Seema ma’am always makes sessions pleasant and uplifting. </p>
+          </div>
+          <div class="author">
+            <h5 class="name">Gaurika Kapoor</h5>
+          </div>
         </div>
-        <div class="container" style="margin-bottom: 0px;padding-bottom: 49px;">
-			<div id="disqus_thread"></div>
-			<script>
-
-			/**
-			*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-			*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-
-			var disqus_config = function () {
-			this.page.url = "{{ request.scheme }}://{{ request.get_host }}{{ quiz.get_absolute_url }}";  // Replace PAGE_URL with your page's canonical URL variable
-			this.page.identifier = '{{ quiz.slug }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-			};
-
-			(function() { // DON'T EDIT BELOW THIS LINE
-			var d = document, s = d.createElement('script');
-			s.src = 'https://esorobrain-1.disqus.com/embed.js';
-			s.setAttribute('data-timestamp', +new Date());
-			(d.head || d.body).appendChild(s);
-			})();
-			</script>
-			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <div class="col-md-6 col-lg-4 item">
+          <div class="box">
+            <p class="description"><b>L'Atelier Français is the series of quizzes that absolutely no beginner should
+              miss!</b><br>The most daunting part of french are the exceptions in rules, grammar, and sentence structure
+              but instead of mugging them up, we remember them all by playing games, forming mnemonics and studying
+              origins. While it is the easiest and fastest way to learn french, the best part is how the pronunciation
+              is embedded in our memory because of Seema ma'am's teaching style. For me, her guidance in differentiating
+              between spoken and written french has helped me understand a lot about the language, as well as the french
+              culture. This is an immersive course and one of the best in field! Merci pour vos conseils en français
+              madame!</p>
+          </div>
+          <div class="author">
+            <h5 class="name">Tanvi Rattan</h5>
+          </div>
         </div>
+      </div>
     </div>
+    <hr>
+    <div class="container" style="margin-bottom: 0px;padding-bottom: 49px;">
+      <h1 class="text-center">Related quizzes</h1>
+      <div class="card-group">
+        <div class="card"><img class="card-img-top w-100 d-block"
+                               src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
+          <div class="card-body">
+            <h4 class="card-title">Coming Soon</h4>
+            <p class="card-text">We're working hard to get other quizzes up and running!</p>
+            <button class="btn btn-secondary" type="button">Details</button>
+          </div>
+        </div>
+        <div class="card"><img class="card-img-top w-100 d-block"
+                               src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
+          <div class="card-body">
+            <h4 class="card-title">Coming Soon</h4>
+            <p class="card-text">We're working hard to get other quizzes up and running!</p>
+            <button class="btn btn-secondary" type="button">Details</button>
+          </div>
+        </div>
+        <div class="card"><img class="card-img-top w-100 d-block"
+                               src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
+          <div class="card-body">
+            <h4 class="card-title">Coming Soon</h4>
+            <p class="card-text">We're working hard to get other quizzes up and running!</p>
+            <button class="btn btn-secondary" type="button">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-bottom: 0px;padding-bottom: 49px;">
+      <div id="disqus_thread"></div>
+      <script>
 
-	<script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js"></script>
-	<script>
-		$('#buy').click(function () {
+          /**
+           *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+           *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
-		console.log('Works?');
+          var disqus_config = function () {
+              this.page.url = "{{ request.scheme }}://{{ request.get_host }}{{ quiz.get_absolute_url }}";  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = '{{ quiz.slug }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+          };
 
-		{% if user.is_authenticated %}
+          (function () { // DON'T EDIT BELOW THIS LINE
+              var d = document, s = d.createElement('script');
+              s.src = 'https://esorobrain-1.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+    </div>
+  </div>
 
-			$.ajax({
-				type: 'POST',
-				url: '{{ quiz.get_absolute_url }}',
-				data: {
-					'code': $('#code').val(),
-					'csrfmiddlewaretoken': '{{ csrf_token }}'
-				},
-				success: function (data, status) {
-					let RequestData = {
-						key: data.merchant_key,
-						txnid: data.txn_id,
-						hash: data.hash,
-						amount: parseFloat(data.amount),
-						firstname: data.first_name,
-						email: data.email_id,
-						phone: data.phone_number,
-						productinfo: data.product_info,
-						surl: data.surl,
-						furl: data.furl,
-						udf1: data.udf1,
-						udf2: data.udf2,
-						mode: 'dropout',
-					};
-					/* console.log(RequestData);
-					console.log(typeof RequestData.amount); */
+  <script id="bolt" src="https://checkout-static.citruspay.com/bolt/run/bolt.min.js"></script>
+  <script>
+      $('#buy').click(function () {
 
-					let Handler = {
-						responseHandler: function (BOLT) {
-							console.log(BOLT.response.txnStatus);
-						},
-						catchException: function (BOLT) {
-							alert(BOLT.message);
-						},
-					};
+          console.log('Works?');
 
-					bolt.launch(RequestData, Handler);
-				},
-				dataType: 'json',
-			});
+          {% if user.is_authenticated %}
 
-		{% else %}
+              $.ajax({
+                  type: 'POST',
+                  url: '{{ quiz.get_absolute_url }}',
+                  data: {
+                      'code': $('#code').val(),
+                      'csrfmiddlewaretoken': '{{ csrf_token }}'
+                  },
+                  success: function (data, status) {
+                      let RequestData = {
+                          key: data.merchant_key,
+                          txnid: data.txn_id,
+                          hash: data.hash,
+                          amount: parseFloat(data.amount),
+                          firstname: data.first_name,
+                          email: data.email_id,
+                          phone: data.phone_number,
+                          productinfo: data.product_info,
+                          surl: data.surl,
+                          furl: data.furl,
+                          udf1: data.udf1,
+                          udf2: data.udf2,
+                          mode: 'dropout',
+                      };
+                      /* console.log(RequestData);
+                      console.log(typeof RequestData.amount); */
 
-			location.href = "{% url 'account_login' %}";
+                      let Handler = {
+                          responseHandler: function (BOLT) {
+                              console.log(BOLT.response.txnStatus);
+                          },
+                          catchException: function (BOLT) {
+                              alert(BOLT.message);
+                          },
+                      };
 
-		{% endif %}
+                      bolt.launch(RequestData, Handler);
+                  },
+                  dataType: 'json',
+              });
 
-		});
-	</script>
+          {% else %}
+
+              location.href = "{% url 'account_login' %}";
+
+          {% endif %}
+
+      });
+  </script>
 
 {% endblock %}
