@@ -9,7 +9,7 @@ urlpatterns = [
 	# admin extend
 	path('selected_emails/', views.selected_emails, name="selected_emails"),
 	path('grant_competition_access/', views.grant_competition_access, name="grant_competition_access"),
-	# path('grant_quiz_access/', views.grant_quiz_access, name="grant_quiz_access"),
+	path('grant_quiz_access/', views.grant_quiz_access, name="grant_quiz_access"),
 	# path('grant_workshop_access/', views.grant_workshop_access, name="grant_workshop_access"),
 	# path('give_soromoney/', views.give_soromoney, name="give_soromoney"),
 

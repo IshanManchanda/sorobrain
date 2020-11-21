@@ -25,6 +25,13 @@ def give_users_competition_access(modeladmin, request, queryset):
 	return redirect(reverse('grant_competition_access'))
 
 
+def give_users_quiz_access(modeladmin, request, queryset):
+	usernames = [user.username for user in queryset]
+	string_usernames = "".join([u + ", " for u in usernames])
+	request.session['_usernames'] = string_usernames
+	return redirect(reverse('grant_quiz_access'))
+
+
 class UserAdmin(BaseUserAdmin):
 	form = UpdateUserForm
 	add_form = AddUserForm
@@ -50,7 +57,7 @@ class UserAdmin(BaseUserAdmin):
 	search_fields = ('username', 'email', 'name', 'phone')
 	ordering = ('username',)
 	filter_horizontal = ('user_permissions', 'groups')
-	actions = [get_user_emails, give_users_competition_access]
+	actions = [get_user_emails, give_users_competition_access, give_users_quiz_access]
 
 
 admin.site.register(User, UserAdmin)
