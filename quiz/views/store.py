@@ -123,6 +123,11 @@ class RegisterWithPoints(LoginRequiredMixin, View):
 			request.user.points -= q.sub_total
 			request.user.save()
 			grant_access_to_quiz(request.user, q)
+			mail_managers(
+					'[eSorobrain.com] New Quiz Registered with Soromoney.',
+					f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought quiz: {q.title} at {timezone.now()} with Soromoney.',
+					fail_silently=True
+			)
 		else:
 			messages.add_message(request, messages.WARNING,
 			                     "You don't have enough points to register for this quiz!")

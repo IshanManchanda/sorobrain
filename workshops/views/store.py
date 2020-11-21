@@ -131,6 +131,11 @@ class RegisterWithPoints(LoginRequiredMixin, View):
 			request.user.points -= w.sub_total
 			request.user.save()
 			grant_access_to_workshop(request.user, w)
+			mail_managers(
+					'[eSorobrain.com] New Workshop Registered with Soromoney',
+					f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought workshop: {w.title} at {timezone.now()} with Soromoney.',
+					fail_silently=True
+			)
 		else:
 			messages.add_message(request, messages.WARNING, "You don't have enough points to register for this workshop!")
 			return redirect(reverse('workshops:workshop_store', args=[slug]))
