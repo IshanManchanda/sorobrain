@@ -6,6 +6,39 @@
 		<div class="row">
 			<div class="col-11"><label for="{{ question.id }}_text" class="text-muted small">Enter your answer below. Watch out for spelling mistakes!</label><input type="text" id="{{ question.id }}_text" class="form-control"></div>
 		</div>
+    <div class="row mt-1">
+      <div class="col-12">
+        <button class="btn btn-outline-primary m-1" id="{{ question.id }}_c">ç</button>
+
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_e_acute">é</button>
+
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_a_circonflex">â</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_e_circonflex">ê</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_i_circonflex">î</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_o_circonflex">ô</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_u_circonflex">û</button>
+        <!--
+          ç – the cedilla (la cédille)
+          é – the acute accent (l'accent aigu)
+          â/ê/î/ô/û – the circumflex (l'accent circonflexe)
+          à/è/ì/ò/ù – the grave accent (l'accent grave)
+          ë/ï/ü
+         -->
+      </div>
+    </div>
+      <div class="row mt-1">
+        <div class="col-12">
+        <button class="btn btn-outline-primary m-1" id="{{ question.id }}_a_grave">à</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_e_grave">è</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_i_grave">ì</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_o_grave">ò</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_u_grave">ù</button>
+
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_e_dots">ë</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_i_dots">ï</button>
+        <button class="btn btn-outline-primary mx-1" id="{{ question.id }}_u_dots">ü</button>
+        </div>
+      </div>
 	</div>
 </div>
 <script>
@@ -33,4 +66,72 @@
 	    $('#{{ question.id }}_text').val(quiz_state[{{ question.id }}]); // set text input to value from server
 		$('#{{ question.id }}_card_header').addClass('bg-success'); // change header color
 	}
+
+
+	// add character to text box
+  $('#{{ question.id }}_c').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'ç')
+  });
+
+  $('#{{ question.id }}_e_acute').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'é')
+  });
+
+  $('#{{ question.id }}_a_circonflex').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'â')
+  });
+
+  $('#{{ question.id }}_e_circonflex').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'ê')
+  });
+
+  $('#{{ question.id }}_i_circonflex').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'î')
+  });
+
+  $('#{{ question.id }}_o_circonflex').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'ô')
+  });
+
+  $('#{{ question.id }}_u_circonflex').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'û')
+  });
+
+  $('#{{ question.id }}_a_grave').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'à')
+  });
+
+  $('#{{ question.id }}_e_grave').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'è')
+  });
+
+  $('#{{ question.id }}_i_grave').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'ì')
+  });
+
+  $('#{{ question.id }}_o_grave').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'ò')
+  });
+
+  $('#{{ question.id }}_u_grave').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'ù')
+  });
+
+
+
+  $('#{{ question.id }}_e_dots').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'ë')
+  });
+
+  $('#{{ question.id }}_i_dots').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'ï')
+  });
+
+  $('#{{ question.id }}_u_dots').on('click', function() {
+      $('#{{ question.id }}_text').val($('#{{ question.id }}_text').val() + 'ü')
+  });
+
+
+
+
 </script>
