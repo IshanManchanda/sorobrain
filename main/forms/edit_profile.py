@@ -50,16 +50,18 @@ NOTIFICATION_LEVEL_CHOICES = [
 class EditProfileForm(forms.Form):
 	name = forms.CharField(label='Full name', required=True)
 	gender = forms.ChoiceField(label='Gender', choices=GENDER_CHOICES,
-	                           required=False)
+	                           required=True)
 	date_of_birth = forms.DateField(label='Date of Birth', widget=forms.DateInput(attrs={'type': 'date'}))
-	phone = PhoneNumberField(label='Mobile Number', required=False,
+	phone = PhoneNumberField(label='Mobile Number', required=True,
 	                         widget=PhoneNumberPrefixWidget)
 	avatar = forms.ImageField(label='Profile Picture', widget=PictureWidget,
 	                          required=False)
+	school_id = forms.ImageField(label='Picture of School ID Card', widget=PictureWidget,
+	                             required=False)
 	education = forms.ChoiceField(label='Education level',
 	                              choices=EDUCATION_CHOICES,
-	                              required=False)
-	school = forms.CharField(label='School/College/Institute',)
+	                              required=True)
+	school = forms.CharField(label='School/College/Institute')
 	city = forms.CharField(label='City')
 	country = forms.CharField(label='Country')
 

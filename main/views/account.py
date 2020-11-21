@@ -46,6 +46,7 @@ class Settings(LoginRequiredMixin, View):
 			'gender': user.gender,
 			'phone': user.phone,
 			'avatar': user.avatar,
+			'school_id': user.school_id,
 			'education': user.education,
 			'level': user.level,
 			'date_of_birth': user.date_of_birth,
@@ -78,6 +79,7 @@ class SaveProfileData(LoginRequiredMixin, View):
 			user.gender = data['gender']
 			user.phone = data['phone']
 			user.avatar = data['avatar']
+			user.school_id = data['school_id']
 			user.education = data['education']
 			user.date_of_birth = data['date_of_birth']
 			user.school = data['school']

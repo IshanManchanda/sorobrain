@@ -22,6 +22,9 @@ class UserData(models.Model):
 	avatar = models.ImageField(storage=PrivateMediaStorage(),
 	                           upload_to='user_data/avatars',
 	                           null=True, blank=True)
+	school_id = models.ImageField(storage=PrivateMediaStorage(),
+	                              upload_to='user_data/school_ids/',
+	                              null=True, blank=True)
 	education = models.CharField('Education Level', max_length=265, null=True,
 	                             blank=True)
 	school = models.CharField('School', max_length=512, blank=True, null=True)
@@ -61,7 +64,7 @@ class AttemptData(models.Model):
 	timestamp = models.DateTimeField('Timestamp', default=timezone.now)
 	successful = models.BooleanField('Successful', default=0)
 	ip_address = models.GenericIPAddressField(
-		'IP Address', null=True, blank=True
+			'IP Address', null=True, blank=True
 	)
 
 	def __str__(self):
