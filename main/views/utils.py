@@ -17,23 +17,24 @@ def user_profile_setup_progress(user: User) -> int:
 	:return: number of fields that are still empty
 	"""
 	empty_fields = 0
-	if user.gender in (None, ''):
-		empty_fields += 1
-	if user.phone in (None, ''):
-		empty_fields += 1
-	# ignoring user.avatar as it is not essential for profile setup
-	if user.education in (None, ''):
-		empty_fields += 1
-	if user.level in (None, ''):
-		empty_fields += 1
-	if user.school in (None, ''):
-		empty_fields += 1
-	if user.city in (None, ''):
-		empty_fields += 1
-	if user.country in (None, ''):
-		empty_fields += 1
-	if user.date_of_birth in (None, ''):
-		empty_fields += 1
+	if user.is_authenticated:
+		if user.gender in (None, ''):
+			empty_fields += 1
+		if user.phone in (None, ''):
+			empty_fields += 1
+		# ignoring user.avatar as it is not essential for profile setup
+		if user.education in (None, ''):
+			empty_fields += 1
+		if user.level in (None, ''):
+			empty_fields += 1
+		if user.school in (None, ''):
+			empty_fields += 1
+		if user.city in (None, ''):
+			empty_fields += 1
+		if user.country in (None, ''):
+			empty_fields += 1
+		if user.date_of_birth in (None, ''):
+			empty_fields += 1
 
 	return empty_fields
 
