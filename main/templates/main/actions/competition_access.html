@@ -1,0 +1,32 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto py-4">
+        <a href="/admin/main/user" class="btn btn-outline-info mb-2 btn-sm"> < Back to Admin</a>
+        <h2>Give Bulk Competition Access:</h2>
+        <hr>
+        <form action="{% url 'grant_competition_access' %}" method="post">
+          {% csrf_token %}
+          <label>
+            <select name="competition_id">
+              {% for competition in competitions %}
+              <option value="{{ competition.id }}">{{ competition.title }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+
+        <h4>Access to this competition will be granted to the following users: </h4>
+        <hr>
+        <ul style="list-style-type: none">
+          {% for user in users %}
+            <li>{{ user }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

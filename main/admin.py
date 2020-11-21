@@ -18,6 +18,13 @@ def get_user_emails(modeladmin, request, queryset):
 	return redirect(reverse('selected_emails'))
 
 
+def give_users_competition_access(modeladmin, request, queryset):
+	usernames = [user.username for user in queryset]
+	string_usernames = "".join([u + ", " for u in usernames])
+	request.session['_usernames'] = string_usernames
+	return redirect(reverse('grant_competition_access'))
+
+
 class UserAdmin(BaseUserAdmin):
 	form = UpdateUserForm
 	add_form = AddUserForm
@@ -43,7 +50,7 @@ class UserAdmin(BaseUserAdmin):
 	search_fields = ('username', 'email', 'name', 'phone')
 	ordering = ('username',)
 	filter_horizontal = ('user_permissions', 'groups')
-	actions = [get_user_emails]
+	actions = [get_user_emails, give_users_competition_access]
 
 
 admin.site.register(User, UserAdmin)
