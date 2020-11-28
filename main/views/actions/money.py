@@ -33,8 +33,8 @@ class RedeemReferralCode(LoginRequiredMixin, View):
 		if code.code == request.user.referral_code.code:
 			messages.add_message(request, messages.WARNING,
 			"You cannot use your own code!")
-			return redirect(reverse('profile'))s
-
+			return redirect(reverse('profile'))
+			
 		if request.user in list(code.used_by.all()):
 			messages.add_message(request, messages.WARNING,
 			"You cannot use the same code more than once!")

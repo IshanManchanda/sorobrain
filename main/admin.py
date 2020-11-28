@@ -121,5 +121,6 @@ class ReferralCodeAdmin(admin.ModelAdmin):
 	list_editable = ('referrer_incentive', 'referee_incentive')
 	filter_horizontal = ('used_by',)
 	actions = [update_incentive]
+	readonly_fields = ("used_by",)
 
 admin.site.register(ReferralCode, ReferralCodeAdmin)

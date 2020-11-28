@@ -20,11 +20,11 @@
           <input type="submit" value="Submit" class="btn btn-primary">
         </form>
 
-        <h4>Soromoney will be credited to the following users: </h4>
+        <h4>Incentives will be updated for the following users: </h4>
         <hr>
         <ul style="list-style-type: none">
-          {% for user in users %}
-            <li>{{ user }}</li>
+          {% for code in codes %}
+            <li>{{ code.referrer }}</li>
           {% endfor %}
         </ul>
       </div>
