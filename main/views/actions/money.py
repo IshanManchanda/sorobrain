@@ -29,10 +29,15 @@ def give_soromoney_view(request):
 class RedeemReferralCode(LoginRequiredMixin, View): 
 	@staticmethod
 	def post(request):
-		code = get_object_or_404(ReferralCode, code=request.POST.get('referral_code'))
+		code = get_object_or_404(ReferralCode, code=request.POST.get('referral_code').strip())
 		if code.code == request.user.referral_code.code:
 			messages.add_message(request, messages.WARNING,
 			"You cannot use your own code!")
+			return redirect(reverse('profile'))s
+
+		if request.user in list(code.used_by.all()):
+			messages.add_message(request, messages.WARNING,
+			"You cannot use the same code more than once!")
 			return redirect(reverse('profile'))
  
 		code.use(request.user)
