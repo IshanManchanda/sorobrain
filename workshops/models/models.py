@@ -44,6 +44,7 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 	                              blank=True)
 	slug = models.SlugField(blank=True)
 	description = models.TextField(max_length=1024)
+	video = models.CharField('Youtube Video ID', null=True, blank=True, max_length=64)
 	sessions = models.ManyToManyField(Session,
 	                                  related_name='workshop_sessions')
 	date = models.DateTimeField()
