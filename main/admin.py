@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from quiz.models import Quiz
 from .forms import AddUserForm, UpdateUserForm
-from .models import User, BookAccess, OneOnOneClass
+from .models import User, BookAccess, OneOnOneClass, ReferralCode
 from .models.code import DiscountCode
 
 
@@ -106,3 +106,20 @@ class OneOnOneClassAdmin(admin.ModelAdmin):
 
 
 admin.site.register(OneOnOneClass, OneOnOneClassAdmin)
+
+def update_incentive(modeladmin, request, queryset):
+	codes = [code.id for code in queryset]
+	string_codes = "".join([str(c) + ", " for c in codes])
+	request.session['_codes'] = string_codes
+	return redirect(reverse('update_incentive'))
+
+class ReferralCodeAdmin(admin.ModelAdmin):
+	list_display = ('referrer', 'code', 'uses', 'referrer_incentive', 'referee_incentive')
+	list_filter = ('referrer__is_staff', 'referrer__is_active', 'referrer__level',
+	 'referrer__education', 'referrer__school', 'referrer__country', 'referrer__city',
+	 'referrer_incentive', 'referee_incentive')
+	list_editable = ('referrer_incentive', 'referee_incentive')
+	filter_horizontal = ('used_by',)
+	actions = [update_incentive]
+
+admin.site.register(ReferralCode, ReferralCodeAdmin)

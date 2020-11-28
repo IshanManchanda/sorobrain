@@ -46,3 +46,7 @@ def get_user_competition_score(args):
 	except:
 		score = '-'
 	return score
+
+@register.simple_tag
+def get_user_referral_code(user):
+	return ReferralCode.objects.get(referrer=user).code

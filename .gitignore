@@ -152,3 +152,8 @@ main/templates/main/seller_dashboard/mails/
 main/templates/main/seller_dashboard/modals/
 store/static/
 store/tests/
+store/static/store/img/
+store/static/store/js/
+store/static/store/media/
+
+.vscode/

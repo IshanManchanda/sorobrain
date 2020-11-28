@@ -8,6 +8,7 @@ from django.views import View
 from django.shortcuts import render
 from django.urls import reverse
 
+from main.models import ReferralCode
 from competition.models import CompetitionAccess
 from main.forms.edit_profile import EditProfileForm, UpdateNotification
 from main.views.utils import user_profile_setup_progress, has_book_access, get_level_from_date_of_birth
@@ -19,8 +20,6 @@ class Profile(LoginRequiredMixin, View):
 	@staticmethod
 	def get(request):
 		empty_fields = user_profile_setup_progress(request.user)
-		print("dfgjklfdajfsdjfkl;dsaj")
-		print(empty_fields)
 		if empty_fields > 0:
 			messages.add_message(request, messages.INFO,
 			                     f"Finish setting up your profile <a href={reverse('settings')}> here</a>. You have {empty_fields} fields to fill.")
@@ -30,7 +29,7 @@ class Profile(LoginRequiredMixin, View):
 			'bought_quizzes': [qa.quiz for qa in QuizAccess.objects.filter(user=request.user)],
 			'quiz_submissions': QuizSubmission.objects.filter(user=request.user, score__isnull=False, competition__isnull=True),
 			'access_workshops': WorkshopAccess.objects.filter(user=request.user),
-			'has_book_access': has_book_access(user=request.user)
+			'has_book_access': has_book_access(user=request.user),
 		})
 
 

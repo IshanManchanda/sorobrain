@@ -1,0 +1,33 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto py-4">
+        <a href="/admin/main/referralcode/" class="btn btn-outline-info mb-2 btn-sm"> < Back to Admin</a>
+        <h2>Update Referral Code Incentives:</h2>
+        <hr>
+        <form action="{% url 'update_incentive' %}" method="post">
+          {% csrf_token %}
+          <label>
+            <select name="field" class="form-control">
+              <option value="referrer">Referrer Incentive</option>
+              <option value="referee">Referee Incentive</option>
+              <option value="both">Both</option>
+            </select>
+          </label>
+          <input type="number" name="amount" class="form-control">
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+
+        <h4>Soromoney will be credited to the following users: </h4>
+        <hr>
+        <ul style="list-style-type: none">
+          {% for user in users %}
+            <li>{{ user }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

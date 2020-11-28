@@ -4,6 +4,7 @@ from django.db import models
 from django.utils import timezone
 
 from .mixins import UserData
+from .referral import ReferralCode
 
 
 class UserManager(BaseUserManager):
@@ -69,7 +70,6 @@ class User(AbstractBaseUser, PermissionsMixin, UserData):
 	# is_superuser field provided by PermissionsMixin
 	# groups field provided by PermissionsMixin
 	# user_permissions field provided by PermissionsMixin
-
 	objects = UserManager()
 
 	USERNAME_FIELD = 'username'
@@ -91,6 +91,22 @@ class User(AbstractBaseUser, PermissionsMixin, UserData):
 			return self.name.split()[-1]
 		except IndexError:
 			return ''
+
+	@property
+	def referral_code(self):
+		try:
+			return ReferralCode.objects.get(referrer=self)
+		except ReferralCode.DoesNotExist:
+			return None
+	
+	def save(self, *args, **kwargs):
+		if not self.pk:
+			super(User, self).save(*args, **kwargs)
+			ReferralCode.objects.create(
+				code=ReferralCode.build_code(self),
+				referrer=self)
+		else:
+			super(User, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return f'{self.username} <{self.email}>'
