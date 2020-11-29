@@ -77,16 +77,20 @@
     <img class="card-img-top" src="{% static 'main/img/catalog/referral.png' %}" alt="points">
     <div class="card-header"><h5><i class="fas fa-users"></i> Redeem Referral Code</h5></div>
     <div class="card-body">
-	  <h6>If you have been referred by a friend enter your code here and get rewards in SoroMoney.</h6>
-	  <p>You too, can refer a friend, your code is: <h4 class="text-success">{{ request.user.referral_code.code }}.</h4>
+	  {% if not user.referral_code.redeemed %}	
+	  	<h6>If you have been referred by a friend enter your referral code here and get rewards in SoroMoney.</h6>
+	  {% endif %}
+	  <p>You too, can refer a friend, your code is: <h4 class="text-success">{{ request.user.referral_code.code }}</h4>
 		Once they use your code they will get <b> Re. {{ request.user.referral_code.referee_incentive }} </b> in their SoroMoney wallet.
 		And you will get <b> Re. {{ request.user.referral_code.referrer_incentive }} </b> in your SoroMoney.
 	  </p>
-	  <form action="{% url 'referral' %}" method="post">
-		  {% csrf_token %}
-		  <input type="text" placeholder="Enter referral code" name="referral_code" class="form-control"> 
-		  <input type="submit" class="btn btn-primary m-1" value="Redeem">
-	  </form>
+	  {% if not user.referral_code.redeemed %}
+		<form action="{% url 'referral' %}" method="post">
+			{% csrf_token %}
+			<input type="text" placeholder="Enter referral code" name="referral_code" class="form-control"> 
+			<input type="submit" class="btn btn-primary m-1" value="Redeem">
+		</form>
+	  {% endif %}
     </div>
   </div>
   <div class="card">

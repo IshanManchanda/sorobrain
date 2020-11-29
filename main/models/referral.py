@@ -14,6 +14,7 @@ class ReferralCode(models.Model):
     used_by = models.ManyToManyField(to='User', verbose_name='Used By', related_name='referee')
     referrer_incentive = models.IntegerField('Referrer Incentive', default=50)
     referee_incentive = models.IntegerField('Referee Incentive', default=50)
+    redeemed = models.BooleanField('Redeemed', default=False)
     created = models.DateTimeField("Created On", default=timezone.now)
 
     @property
@@ -33,6 +34,7 @@ class ReferralCode(models.Model):
         user_using_code.points += self.referee_incentive
         user_using_code.save()
 
-
-        
+        x = user_using_code.referral_code
+        x.redeemed = True
+        x.save() 
         

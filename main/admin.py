@@ -54,7 +54,8 @@ class UserAdmin(BaseUserAdmin):
 	list_filter = ('is_staff', 'is_active', 'level', 'education', 'gender', 'notification_level', 'school', 'country')
 	fieldsets = (
 		(None, {'fields': ('email', 'password')}),
-		('Personal info', {'fields': ('name', 'avatar', 'school_id', 'points', 'date_of_birth', 'phone', 'gender', 'level', 'education', 'school', 'city', 'country')}),
+		('Personal info', {'fields': ('name', 'avatar', 'school_id', 'points', 'date_of_birth',
+		 'phone', 'gender', 'level', 'education', 'school', 'city', 'country')}),
 		('Permissions', {'fields': ('is_active', 'is_staff', 'notification_level', 'groups', 'user_permissions')}),
 	)
 	add_fieldsets = (
@@ -71,7 +72,8 @@ class UserAdmin(BaseUserAdmin):
 	search_fields = ('username', 'email', 'name', 'phone')
 	ordering = ('username',)
 	filter_horizontal = ('user_permissions', 'groups')
-	actions = [get_user_emails, give_users_competition_access, give_users_quiz_access, give_users_workshop_access, give_soromoney]
+	actions = [get_user_emails, give_users_competition_access, give_users_quiz_access,
+	 give_users_workshop_access, give_soromoney]
 
 
 admin.site.register(User, UserAdmin)
@@ -121,6 +123,6 @@ class ReferralCodeAdmin(admin.ModelAdmin):
 	list_editable = ('referrer_incentive', 'referee_incentive')
 	filter_horizontal = ('used_by',)
 	actions = [update_incentive]
-	readonly_fields = ("used_by", "code", "referrer", "created")
+	# readonly_fields = ("used_by", "code", "referrer", "created")
 
 admin.site.register(ReferralCode, ReferralCodeAdmin)
