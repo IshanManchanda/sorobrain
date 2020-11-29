@@ -77,6 +77,7 @@
     <img class="card-img-top" src="{% static 'main/img/catalog/referral.png' %}" alt="points">
     <div class="card-header"><h5><i class="fas fa-users"></i> Redeem Referral Code</h5></div>
     <div class="card-body">
+		
 	  {% if not user.referral_code.redeemed %}	
 	  	<h6>If you have been referred by a friend enter your referral code here and get rewards in SoroMoney.</h6>
 	  {% endif %}
