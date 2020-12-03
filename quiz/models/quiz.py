@@ -32,7 +32,8 @@ class Quiz(PaidObjectMixin):
 		('fluent', 'Fluent/Native Speaker'),
 		('advanced', 'Advanced'),
 		('intermediate', 'Intermediate'),
-		('beginner', 'Beginner')
+		('beginner', 'Beginner'),
+		('any', 'French Learner of any Level')
 	]
 
 	class Meta:

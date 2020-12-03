@@ -109,11 +109,13 @@ class OneOnOneClassAdmin(admin.ModelAdmin):
 
 admin.site.register(OneOnOneClass, OneOnOneClassAdmin)
 
+
 def update_incentive(modeladmin, request, queryset):
 	codes = [code.id for code in queryset]
 	string_codes = "".join([str(c) + ", " for c in codes])
 	request.session['_codes'] = string_codes
 	return redirect(reverse('update_incentive'))
+
 
 class ReferralCodeAdmin(admin.ModelAdmin):
 	list_display = ('referrer', 'code', 'uses', 'referrer_incentive', 'referee_incentive')
@@ -124,5 +126,6 @@ class ReferralCodeAdmin(admin.ModelAdmin):
 	filter_horizontal = ('used_by',)
 	actions = [update_incentive]
 	# readonly_fields = ("used_by", "code", "referrer", "created")
+
 
 admin.site.register(ReferralCode, ReferralCodeAdmin)

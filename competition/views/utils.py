@@ -62,6 +62,7 @@ def send_certificate(competition: Competition, user: User):
 
 		html_message = render_to_string('competition/certificate_email.html',
 		                                {'cc': cc})
+
 		send_mail('Competition Certificate', 'Certificate',
 		          from_email='sorobrain.devs@gmail.com',
 		          recipient_list=[user.email], fail_silently=False,
