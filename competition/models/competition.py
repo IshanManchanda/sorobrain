@@ -31,7 +31,8 @@ class Competition(PaidObjectMixin, models.Model):
 		('fluent', 'Fluent/Native Speaker'),
 		('advanced', 'Advanced'),
 		('intermediate', 'Intermediate'),
-		('beginner', 'Beginner')
+		('beginner', 'Beginner'),
+		('any', 'French Learner of any level')
 	]
 
 	group_cost = models.IntegerField()
