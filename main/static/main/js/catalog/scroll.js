@@ -19,6 +19,11 @@ $(document).ready(function () {
                 scrollTop: $("#classes").offset().top
             }, 500);
     });
+    $("#nav-book").click(function(){
+        $('html, body').animate({
+                scrollTop: $("#book").offset().top
+            }, 500);
+    });
 });
 
 $(document).ready(function(){

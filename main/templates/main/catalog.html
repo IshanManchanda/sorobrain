@@ -58,6 +58,9 @@
                 <li class="list-group-item" data-bs-hover-animate="pulse"><span style="font-size: 21px"
                                                                                 id="nav-classes">&nbsp;Classes</span>
                 </li>
+                <li class="list-group-item" data-bs-hover-animate="pulse"><span style="font-size: 21px"
+                                                                                id="nav-book">&nbsp;Handbook</span>
+                </li>
               </ul>
             </div>
           </div>
@@ -313,6 +316,45 @@
                 {#                    {% endfor %}#}
                 {#                  </div>#}
                 {#                </div>#}
+              </div>
+            </div>
+
+            <div class="row p-3 mb-5 shadow rounded"
+                 style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
+              <div class="col">
+                <h3 style="margin-top: 12px;margin-left: 8px" id="book">&nbsp;Handbook</h3>
+                <p class="lead px-2" style="margin-bottom: 1px;">
+                  Our nationally acclaimed book is available, both as an e-book and as a physical publication! </p>
+                <div class="row">
+                  <div class="col px-4">
+                  As a third language for most students, French poses many complicated grammar rules to understand and
+                  learn. An added facet of difficulty is to memorize the gender of each and every noun which does not
+                  come instinctively for a foreign language. Seema Jain, the author of the book “Le Bleu ou La Rose” and
+                  the Founder of Sorobrain®, acknowledged this struggle for students and developed a solution for the
+                  same through this book that consolidates all the tips, tricks and categorizations of nouns to simplify
+                  the identification of the gender of the nouns.
+                  <br><br>
+                  The book was released on April 30, 2017 and has already made its place in the market as an ebook as
+                  well as paperback.
+                  <br><br>
+                  The book is available for purchase online, but you'll also get access to it after you register for a
+                  competition or a relevant workshop!
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <img class="img-responsive img-thumbnail" alt="thumbnail"
+                         src="{% static 'main/img/index/book.jpg' %}" style="max-width: 100%">
+                  </div>
+                  <div class="col-md-8">
+                    <div>
+                      <a href="{% url 'book' %}">
+                        <button class="btn btn-outline-primary w-100 mt-4"><i class="fa fa-shopping-cart"></i> Buy Online
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
