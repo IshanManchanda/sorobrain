@@ -119,7 +119,7 @@ class RegisterWithPoints(LoginRequiredMixin, View):
 	@staticmethod
 	def post(request, slug):
 		q = get_object_or_404(Quiz, slug=slug)
-		if request.user.points > q.sub_total:
+		if request.user.points >= q.sub_total:
 			request.user.points -= q.sub_total
 			request.user.save()
 			grant_access_to_quiz(request.user, q)

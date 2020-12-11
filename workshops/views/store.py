@@ -127,7 +127,7 @@ class RegisterWithPoints(LoginRequiredMixin, View):
 	@staticmethod
 	def post(request, slug):
 		w = get_object_or_404(Workshop, slug=slug)
-		if request.user.points > w.sub_total:
+		if request.user.points >= w.sub_total:
 			request.user.points -= w.sub_total
 			request.user.save()
 			grant_access_to_workshop(request.user, w)
