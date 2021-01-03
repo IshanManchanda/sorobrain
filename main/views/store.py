@@ -22,7 +22,10 @@ def catalog(request):
 		'competitions': Competition.objects.filter(active=True).order_by('-created_on'),
 		'workshops'   : Workshop.objects.filter(active=True).order_by('-created_on'),
 		'quizzes'     : Quiz.objects.filter(active=True).order_by('-created_on'),
-		'classes'     : OneOnOneClass.objects.filter(active=True).order_by('-created_on')
+		'classes'     : OneOnOneClass.objects.filter(active=True).order_by('-created_on'),
+		'new_competitions': Competition.get_recent(),
+		'new_quizzes': Quiz.get_recent(),
+		'new_workshops': Workshop.get_recent(),
 	})
 
 

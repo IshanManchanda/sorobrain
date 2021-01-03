@@ -1,4 +1,5 @@
 import json
+from datetime import timedelta
 
 from django.contrib.postgres.fields import JSONField
 from django.db import models
@@ -67,6 +68,10 @@ class Competition(PaidObjectMixin, models.Model):
 	@property
 	def is_in_progress(self):
 		return self.start_date < timezone.now() < self.end_date
+
+	@classmethod
+	def get_recent(cls):
+		return cls.objects.filter(created_on__gte=(timezone.now() - timedelta(days=7)))
 
 	def user_progress(self, user):
 		state = []

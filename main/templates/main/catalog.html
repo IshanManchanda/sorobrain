@@ -65,6 +65,82 @@
             </div>
           </div>
           <div class="col-md-8 col-lg-9 content" style="padding-top: 33px;">
+            <div class="row p-3 mb-5 shadow rounded"
+                 style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
+              <div class="col">
+                <h3>New and Recently Added</h3>
+                <hr>
+                <h4>New Competitions</h4>
+                <div class="card-columns">
+                  {% for competition in new_competitions %}
+                    <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
+                                           src="{% static 'main/img/catalog/competitions-placeholder.png' %}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ competition.title }}</h5>
+                        <p class="card-text">{{ competition.description|truncatechars_html:300|safe }}...</p>
+                        <a href="{{ competition.get_absolute_url }}">
+                          <button class="btn btn-primary" type="button">Register Now</button>
+                        </a></div>
+                    </div>s
+                  {% empty %}
+                    <div class="card">
+                      <div class="card-body">
+                        <p>No new competitions added in the last week! Checkout current offerings <a
+                            href="#competitions">here</a>!
+                        </p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                <hr>
+                <h4>New Quizzes</h4>
+                <div class="card-columns">
+                  {% for quiz in new_quizzes %}
+                    <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail"
+                                           src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ q.title }}</h5>
+                        <p class="card-text">{{ q.description|truncatechars_html:300|safe }}...</p><a
+                          href="{{ q.get_absolute_url }}">
+                        <button class="btn btn-primary" type="button">Attempt Quiz</button>
+                      </a></div>
+                    </div>
+                  {% empty %}
+                    <div class="card">
+                      <div class="card-body">
+                        <p>No new quizzes added in the last week! Checkout current offerings <a
+                            href="#practice">here</a>!
+                        </p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                <hr>
+                <h4>New Workshops</h4>
+                <div class="card-columns">
+                  {% for quiz in new_quizzes %}
+                    <div class="card"><img class="card-img-top w-100 d-block" alt="workshops thumbnail"
+                                           src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                      <div class="card-body">
+                        <h4 class="card-title">{{ w.title }}</h4>
+                        <p class="card-text">{{ w.description|truncatechars:200 }}</p><a
+                          href="{{ w.get_absolute_url }}">
+                        <button class="btn btn-primary" type="button">Register Now!</button>
+                      </a></div>
+                    </div>
+                  {% empty %}
+                    <div class="card">
+                      <div class="card-body">
+                        <p>No new workshops added in the last week! Checkout current offerings <a
+                            href="#workshops">here</a>!
+                        </p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+
+              </div>
+            </div>
             <div id="competitions" class="row p-3 mb-5 shadow rounded"
                  style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
               <div class="col">
@@ -327,18 +403,20 @@
                   Our nationally acclaimed book is available, both as an e-book and as a physical publication! </p>
                 <div class="row">
                   <div class="col px-4">
-                  As a third language for most students, French poses many complicated grammar rules to understand and
-                  learn. An added facet of difficulty is to memorize the gender of each and every noun which does not
-                  come instinctively for a foreign language. Seema Jain, the author of the book “Le Bleu ou La Rose” and
-                  the Founder of Sorobrain®, acknowledged this struggle for students and developed a solution for the
-                  same through this book that consolidates all the tips, tricks and categorizations of nouns to simplify
-                  the identification of the gender of the nouns.
-                  <br><br>
-                  The book was released on April 30, 2017 and has already made its place in the market as an ebook as
-                  well as paperback.
-                  <br><br>
-                  The book is available for purchase online, but you'll also get access to it after you register for a
-                  competition or a relevant workshop!
+                    As a third language for most students, French poses many complicated grammar rules to understand and
+                    learn. An added facet of difficulty is to memorize the gender of each and every noun which does not
+                    come instinctively for a foreign language. Seema Jain, the author of the book “Le Bleu ou La Rose”
+                    and
+                    the Founder of Sorobrain®, acknowledged this struggle for students and developed a solution for the
+                    same through this book that consolidates all the tips, tricks and categorizations of nouns to
+                    simplify
+                    the identification of the gender of the nouns.
+                    <br><br>
+                    The book was released on April 30, 2017 and has already made its place in the market as an ebook as
+                    well as paperback.
+                    <br><br>
+                    The book is available for purchase online, but you'll also get access to it after you register for a
+                    competition or a relevant workshop!
                   </div>
                 </div>
                 <div class="row">
@@ -349,7 +427,8 @@
                   <div class="col-md-8">
                     <div>
                       <a href="{% url 'book' %}">
-                        <button class="btn btn-outline-primary w-100 mt-4"><i class="fa fa-shopping-cart"></i> Buy Online
+                        <button class="btn btn-outline-primary w-100 mt-4"><i class="fa fa-shopping-cart"></i> Buy
+                          Online
                         </button>
                       </a>
                     </div>

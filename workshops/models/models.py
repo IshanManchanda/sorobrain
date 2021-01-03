@@ -1,5 +1,6 @@
 import string
 import random
+from datetime import timedelta
 
 from django.core.validators import FileExtensionValidator
 from django.db import models
@@ -55,6 +56,10 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 	                                validators=[FileExtensionValidator(allowed_extensions=['pdf'])],
 	                                null=True, blank=True)
 	created_on = models.DateTimeField(default=timezone.now)
+
+	@classmethod
+	def get_recent(cls):
+		return cls.objects.filter(created_on__gte=(timezone.now() - timedelta(days=7)))
 
 	@property
 	def is_expired(self):

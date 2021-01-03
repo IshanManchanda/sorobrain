@@ -65,6 +65,10 @@ class Quiz(PaidObjectMixin):
 	def question_id_list(self):
 		return [question.id for question in self.questions]
 
+	@classmethod
+	def get_recent(cls):
+		return cls.objects.filter(created_on__gte=(timezone.now() - timedelta(days=7)))
+
 	def get_start_url(self):
 		return reverse('quiz:start', args=[self.slug])
 
