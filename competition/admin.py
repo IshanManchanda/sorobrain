@@ -25,6 +25,7 @@ class CompetitionAdmin(admin.ModelAdmin):
 		except NoReverseMatch:
 			url = '/'
 		return mark_safe(f"<a href='{url}'>Send Certificates</a>")
+
 	link.allow_tags = True
 
 	fieldsets = (
@@ -46,12 +47,13 @@ class CompetitionAdmin(admin.ModelAdmin):
 			           'created_on')
 		}),
 		('Pricing', {
-			'fields': ('cost',
+			'fields': ('not_for_sale',
+			           'cost',
 			           'discount',
 			           'group_cost',)
 		}),
 		('Certificates', {
-			'fields': ('link', )
+			'fields': ('link',)
 		}),
 		('Result', {
 			'fields': ('result',)

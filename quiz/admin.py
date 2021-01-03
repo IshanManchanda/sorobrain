@@ -53,7 +53,8 @@ class QuizAdmin(admin.ModelAdmin):
 			           'total_time')
 		}),
 		('Store', {
-			'fields': ('cost',
+			'fields': ('not_for_sale',
+			           'cost',
 			           'discount')
 		}),
 		('Categorization', {

@@ -51,32 +51,39 @@
           <p> This Competition was added on {{ competition.created_on }}
             <br> and it is aimed at learners of the <i>{{ competition.level }}</i> level.</p>
           {% if not competition.is_started %}
-            {% if not competition.is_free %}
-              <label for="code"></label><input type="text" id="code" class="form-control mb-1"
-                                               placeholder="Enter discount code, if you have one...">
-              <button class="btn btn-success text-center" type="button"
-                      style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i
-                  class="fas fa-user-plus"></i>&nbsp;Register
-              </button>
-              <a href="{% url 'competition:code' slug=competition.slug %}">
-                <button class="btn btn-outline-primary text-center" type="button"
-                        style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
-                    class="fas fa-barcode"></i>&nbsp;Register With Code
+            {% if not competition.not_for_sale %}
+
+              {% if not competition.is_free %}
+                <label for="code"></label><input type="text" id="code" class="form-control mb-1"
+                                                 placeholder="Enter discount code, if you have one...">
+                <button class="btn btn-success text-center" type="button"
+                        style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i
+                    class="fas fa-user-plus"></i>&nbsp;Register
                 </button>
-              </a>
-              <a href="{% url 'competition:group_buy' slug=competition.slug %}">
-                <button class="btn btn-outline-success text-center" type="button"
-                        style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
-                    class="fas fa-users"></i>&nbsp;Register for Schools/Groups
-                </button>
-              </a>
+                <a href="{% url 'competition:code' slug=competition.slug %}">
+                  <button class="btn btn-outline-primary text-center" type="button"
+                          style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
+                      class="fas fa-barcode"></i>&nbsp;Register With Code
+                  </button>
+                </a>
+                <a href="{% url 'competition:group_buy' slug=competition.slug %}">
+                  <button class="btn btn-outline-success text-center" type="button"
+                          style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
+                      class="fas fa-users"></i>&nbsp;Register for Schools/Groups
+                  </button>
+                </a>
+              {% else %}
+                <form method="post" action="{% url 'competition:free' slug=competition.slug %}"
+                      onsubmit="return confirm('Are you sure you want to register for this product?');">
+                  {% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100 mt-1"
+                                         value="Register for free!">
+                </form>
+              {% endif %}
             {% else %}
-              <form method="post" action="{% url 'competition:free' slug=competition.slug %}"
-                    onsubmit="return confirm('Are you sure you want to register for this product?');">
-                {% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100 mt-1"
-                                       value="Register for free!">
-              </form>
+              <p>This competition is not for sale...yet. Checkout upcoming ones <a
+                  href="{% url 'catalog' %}#competition">here</a></p>
             {% endif %}
+
             <p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to register!
             </p>
           {% elif competition.is_over %}

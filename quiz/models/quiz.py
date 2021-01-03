@@ -54,6 +54,7 @@ class Quiz(PaidObjectMixin):
 	                                  default=timedelta(minutes=15))
 	tags = TaggableManager()
 	active = models.BooleanField(verbose_name='Active', default=True)
+	not_for_sale = models.BooleanField(verbose_name='Not For Sale', default=False)
 	created_on = models.DateTimeField(default=timezone.now,
 	                                  verbose_name='Quiz Created On')
 

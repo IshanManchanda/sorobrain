@@ -40,6 +40,7 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 
 	id = models.AutoField(primary_key=True, verbose_name="Workshop Id")
 	title = models.CharField(max_length=128)
+	not_for_sale = models.BooleanField(default=False, verbose_name="Not For Sale")
 	thumbnail = models.ImageField(upload_to='workshops/thumbnails/',
 	                              default='workshops/thumbnails/default_workshop.png',
 	                              blank=True)

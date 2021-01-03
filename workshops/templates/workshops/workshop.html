@@ -55,32 +55,39 @@
             </ul>
           </div>
           {% if not workshop.is_expired %}
-            {% if not workshop.is_free %}
-              <label for="code"></label><input type="text" id="code" class="form-control mb-1"
-                                               placeholder="Enter discount code, if you have one...">
-              <button class="btn btn-success text-center" type="button"
-                      style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i
-                  class="fas fa-user-plus"></i>&nbsp;Register Individually
-              </button>
-              <a href="{% url 'workshops:register_with_code' slug=workshop.slug %}">
-                <button class="btn btn-outline-primary text-center" type="button"
-                        style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
-                    class="fas fa-barcode"></i>&nbsp;Register with Code
+            {% if not workshop.not_for_sale %}
+
+              {% if not workshop.is_free %}
+                <label for="code"></label><input type="text" id="code" class="form-control mb-1"
+                                                 placeholder="Enter discount code, if you have one...">
+                <button class="btn btn-success text-center" type="button"
+                        style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i
+                    class="fas fa-user-plus"></i>&nbsp;Register Individually
                 </button>
-              </a>
-              <form method="post" action="{% url 'workshops:register_with_points' slug=workshop.slug %}"
-                    onsubmit="return confirm('Are you sure you want to use your SoroMoney to buy this product?');">
-                {% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100" value="Use My SoroMoney">
-              </form>
-            {% else %}
-              <form method="post" action="{% url 'workshop:free' slug=workshop.slug %}"
-                    onsubmit="return confirm('Are you sure you want to register for this product?');">
-                {% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100 mt-1"
-                                       value="Register for free!">
-              </form>
+                <a href="{% url 'workshops:register_with_code' slug=workshop.slug %}">
+                  <button class="btn btn-outline-primary text-center" type="button"
+                          style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
+                      class="fas fa-barcode"></i>&nbsp;Register with Code
+                  </button>
+                </a>
+                <form method="post" action="{% url 'workshops:register_with_points' slug=workshop.slug %}"
+                      onsubmit="return confirm('Are you sure you want to use your SoroMoney to buy this product?');">
+                  {% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100" value="Use My SoroMoney">
+                </form>
+              {% else %}
+                <form method="post" action="{% url 'workshop:free' slug=workshop.slug %}"
+                      onsubmit="return confirm('Are you sure you want to register for this product?');">
+                  {% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100 mt-1"
+                                         value="Register for free!">
+                </form>
+              {% endif %}
+              <p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to
+                register!
+              </p>
+              {% else %}
+              <p>This workshop is not for sale...yet. Checkout upcoming ones <a href="{% url 'catalog' %}#workshops">here</a>
+              </p>
             {% endif %}
-            <p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to register!
-            </p>
           {% else %}
             <p>This workshop has expired. Checkout upcoming ones <a href="{% url 'catalog' %}#workshops">here</a></p>
           {% endif %}

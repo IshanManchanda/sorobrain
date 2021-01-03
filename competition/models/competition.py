@@ -55,6 +55,7 @@ class Competition(PaidObjectMixin, models.Model):
 	active = models.BooleanField(verbose_name='Active', default=True)
 	hide_leaderboard = models.BooleanField(verbose_name='Hide Leader-board', default=False)
 	include_book = models.BooleanField(verbose_name='Include Book', default=False)
+	not_for_sale = models.BooleanField('Not For Sale', default=False)
 	created_on = models.DateTimeField(default=timezone.now,
 	                                  verbose_name='Created On')
 
