@@ -34,7 +34,7 @@ div.cls_010{font-family:Arial,serif;font-size:8.7px;color:rgb(14,31,102);font-we
     <span class="cls_004">{{ user.name }}</span><br>
     <span class="cls_005">en reconnaissance de sa participation au concours</span><br><br>
     <span class="cls_006">« {{ competition.title }} »</span><br><br>
-  {% if rank > 1 and rank < 25 %}
+    {% if rank > 1 and rank < competition.rank_limit %}
         <span class="cls_007">Résultat : {{ rank }}e rang</span><br><br>
     {% endif %}
     {% if rank == 1 %}

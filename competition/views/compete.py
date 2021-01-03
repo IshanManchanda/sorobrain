@@ -41,7 +41,7 @@ class Result(View):
 		result = json.loads(competition.result)
 		if result == {}:
 			competition.populate_result()
-		result = dict(list(result.items())[:5])
+		result = dict(list(result.items())[:competition.rank_limit])
 		# TODO: remove this
 		return render(request, 'competition/compete/result.html', {
 			'competition': competition,
