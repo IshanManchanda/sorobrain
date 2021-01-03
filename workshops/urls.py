@@ -12,6 +12,7 @@ urlpatterns = [
 	path('success/<str:slug>/', csrf_exempt(views.WorkshopSuccess.as_view()), name='payment_success'),
 	path('points/<str:slug>/', views.RegisterWithPoints.as_view(), name='register_with_points'),
 	path('code/<str:slug>/', views.RegisterWithCode.as_view(), name='register_with_code'),
+	path('free/<str:slug>/', views.RegisterForFree.as_view(), name='free'),
 	path('info/<str:slug>/', views.WorkshopStore.as_view(), name='workshop_store'),
 	path('access/<str:slug>/', views.HasAccessWorkshop.as_view(), name='workshop_access'),
 	path('send/<str:slug>/', views.SendCertificates.as_view(), name='send_certificate'),

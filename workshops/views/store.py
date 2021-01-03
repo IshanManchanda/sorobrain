@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.contrib import messages
+from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -88,6 +89,22 @@ class HasAccessWorkshop(LoginRequiredMixin, View):
 			'message_heading': 'No Permissions',
 			'message'        : 'You do not have the permissions required to perform this action.'
 		})
+
+
+class RegisterForFree(LoginRequiredMixin, View):
+	@staticmethod
+	def post(request, slug):
+		workshop = get_object_or_404(Workshop, slug=slug)
+		if not workshop.is_free:
+			return HttpResponse(403)
+		grant_access_to_workshop(request.user, workshop)
+		mail_managers(
+				'[eSorobrain.com] New Workshop Registered',
+				f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought workshop: {workshop.title} at {timezone.now()}.',
+				fail_silently=True
+		)
+		messages.add_message(request, messages.SUCCESS, "You have successfully registered for the workshop! Please find it in the my registered workshops section.")
+		return redirect(reverse('profile'))
 
 
 class RegisterWithCode(LoginRequiredMixin, View):

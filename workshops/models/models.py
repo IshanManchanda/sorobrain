@@ -62,6 +62,10 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 		return cls.objects.filter(created_on__gte=(timezone.now() - timedelta(days=7)))
 
 	@property
+	def is_free(self):
+		return self.sub_total < 1
+
+	@property
 	def is_expired(self):
 		"""Returns true if the current time is after the workshop starts"""
 		return timezone.now() > self.date
