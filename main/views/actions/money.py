@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from main.models import User, ReferralCode
 from main.views.utils import give_soromoney_to_user
-from sorobrain.utils.utils import add_ledger_credit
+from sorobrain.utils.utils import add_ledger_credit, add_ledger_debit
 
 
 def give_soromoney_view(request):
@@ -18,8 +18,12 @@ def give_soromoney_view(request):
 
 	if request.method == 'POST':
 		for user in users:
-			give_soromoney_to_user(user, int(request.POST['amount']))
-			add_ledger_credit(user, int(request.POST['amount']), "Admin Added Credit")
+			amt = int(request.POST['amount'])
+			give_soromoney_to_user(user, amt)
+			if amt < 0:
+				add_ledger_debit(user, amt, "Admin removed soromoney")
+			else:
+				add_ledger_credit(user, amt, "Admin Added Credit")
 		messages.add_message(request, messages.SUCCESS, "Soromoney successfully given to users!")
 		return redirect('/admin/main/user')
 
