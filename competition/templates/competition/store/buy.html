@@ -51,7 +51,6 @@
           <p> This Competition was added on {{ competition.created_on }}
             <br> and it is aimed at learners of the <i>{{ competition.level }}</i> level.</p>
           {% if not competition.is_started %}
-
             {% if not competition.is_free %}
               <label for="code"></label><input type="text" id="code" class="form-control mb-1"
                                                placeholder="Enter discount code, if you have one...">
@@ -78,7 +77,6 @@
                                        value="Register for free!">
               </form>
             {% endif %}
-
             <p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to register!
             </p>
           {% elif competition.is_over %}
