@@ -26,6 +26,7 @@ class WorkshopAdmin(admin.ModelAdmin):
 	readonly_fields = ('slug', 'link')
 	exclude = ('sessions',)
 	inlines = (SessionInline,)
+	save_as_new = True
 
 
 class WorkshopAccessAdmin(admin.ModelAdmin):

@@ -2,6 +2,7 @@ import string
 import random
 from datetime import timedelta
 
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.urls import reverse
@@ -45,7 +46,7 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 	                              default='workshops/thumbnails/default_workshop.png',
 	                              blank=True)
 	slug = models.SlugField(blank=True)
-	description = models.TextField(max_length=1024)
+	description = RichTextUploadingField(config_name='minimal')
 	video = models.CharField('Youtube Video ID', null=True, blank=True, max_length=64)
 	sessions = models.ManyToManyField(Session,
 	                                  related_name='workshop_sessions')

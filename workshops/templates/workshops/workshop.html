@@ -16,7 +16,7 @@
   <div style="margin-top: 24px;margin-bottom: 28px;">
     <div class="container-fluid text-left">
       <div class="row text-center">
-        <div class="col-md-7 col-lg-5 offset-md-0 offset-lg-1 text-center text-sm-right">
+        <div class="col-md-7 col-lg-5 offset-md-0 offset-lg-1 text-center text-sm-left">
           {% if workshop.video %}
             <iframe style="width: 100%; min-height: 400px;" src="https://www.youtube.com/embed/{{ workshop.video }}"
                     frameborder="0"
@@ -29,7 +29,7 @@
           {% endif %}
 
           <div class="alert alert-success" role="alert"><span><strong>Description:</strong>&nbsp;<br></span>
-            <p>{{ workshop.description }}&nbsp;</p>
+            <p>{{ workshop.description|safe }}&nbsp;</p>
           </div>
         </div>
         <div class="col-md-5 col-lg-5 shadow-sm">
