@@ -58,6 +58,10 @@ class Competition(PaidObjectMixin, models.Model):
 	                                  verbose_name='Created On')
 
 	@property
+	def is_free(self):
+		return self.sub_total < 1
+
+	@property
 	def is_over(self):
 		return timezone.now() > self.end_date
 

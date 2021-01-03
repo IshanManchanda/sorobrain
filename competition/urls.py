@@ -14,7 +14,7 @@ urlpatterns = [
 	path('group_buy/<str:slug>/', views.GroupBuyCompetition.as_view(), name='group_buy'),
 	path('group_success/<str:slug>/', csrf_exempt(views.GroupPaymentSuccess.as_view()), name='group_success'),
 	path('code/<str:slug>/', views.RegisterWithCode.as_view(), name='code'),
-
+	path('free/<str:slug>/', views.RegisterForFree.as_view(), name='free'),
 	# compete
 	path('compete/<str:slug>/', views.Compete.as_view(), name='compete'),
 	path('result/<str:slug>/', views.Result.as_view(), name='result'),

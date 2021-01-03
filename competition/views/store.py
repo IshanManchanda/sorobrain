@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import mail_managers
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.loader import render_to_string
 from django.utils import timezone
@@ -62,7 +62,7 @@ class CompetitionPaymentSuccess(LoginRequiredMixin, View):
 			grant_access_to_competition(request.user, competition)
 		mail_managers(
 				'[eSorobrain.com] New Competition Registered',
-				f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought quiz: {competition.title} at {timezone.now()}.',
+				f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought competition: {competition.title} at {timezone.now()}.',
 				fail_silently=True
 		)
 
@@ -70,6 +70,22 @@ class CompetitionPaymentSuccess(LoginRequiredMixin, View):
 		msg_html = render_to_string('mails/html/product_bought.html', {'user': request.user, 'content_type': 'competition', 'product': competition})
 		send_product_bought_mail('[Sorobrain] New Competition Registered', msg, msg_html, to=[request.user.email])
 		return redirect(competition.get_absolute_url())
+
+
+class RegisterForFree(LoginRequiredMixin, View):
+	@staticmethod
+	def post(request, slug):
+		competition = get_object_or_404(Competition, slug=slug)
+		if not competition.sub_total < 1:
+			return HttpResponse(403)
+		grant_access_to_competition(request.user, competition)
+		mail_managers(
+				'[eSorobrain.com] New Competition Registered',
+				f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought competition: {competition.title} at {timezone.now()}.',
+				fail_silently=True
+		)
+		messages.add_message(request, messages.SUCCESS, "You have successfully registered for the competition! Please find it in the my registered competitions section.")
+		return redirect(reverse('profile'))
 
 
 class RegisterWithCode(LoginRequiredMixin, View):

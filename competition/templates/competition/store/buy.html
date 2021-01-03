@@ -51,24 +51,34 @@
           <p> This Competition was added on {{ competition.created_on }}
             <br> and it is aimed at learners of the <i>{{ competition.level }}</i> level.</p>
           {% if not competition.is_started %}
-            <label for="code"></label><input type="text" id="code" class="form-control mb-1"
-                                             placeholder="Enter discount code, if you have one...">
-            <button class="btn btn-success text-center" type="button"
-                    style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i
-                class="fas fa-user-plus"></i>&nbsp;Register
-            </button>
-            <a href="{% url 'competition:code' slug=competition.slug %}">
-              <button class="btn btn-outline-primary text-center" type="button"
-                      style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
-                  class="fas fa-barcode"></i>&nbsp;Register With Code
+
+            {% if not competition.is_free %}
+              <label for="code"></label><input type="text" id="code" class="form-control mb-1"
+                                               placeholder="Enter discount code, if you have one...">
+              <button class="btn btn-success text-center" type="button"
+                      style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;" id="buy"><i
+                  class="fas fa-user-plus"></i>&nbsp;Register
               </button>
-            </a>
-            <a href="{% url 'competition:group_buy' slug=competition.slug %}">
-              <button class="btn btn-outline-success text-center" type="button"
-                      style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
-                  class="fas fa-users"></i>&nbsp;Register for Schools/Groups
-              </button>
-            </a>
+              <a href="{% url 'competition:code' slug=competition.slug %}">
+                <button class="btn btn-outline-primary text-center" type="button"
+                        style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
+                    class="fas fa-barcode"></i>&nbsp;Register With Code
+                </button>
+              </a>
+              <a href="{% url 'competition:group_buy' slug=competition.slug %}">
+                <button class="btn btn-outline-success text-center" type="button"
+                        style="width: 100%;padding: 8px;margin: 0px;margin-top: 0px;margin-bottom: 7px;"><i
+                    class="fas fa-users"></i>&nbsp;Register for Schools/Groups
+                </button>
+              </a>
+            {% else %}
+              <form method="post" action="{% url 'competition:free' slug=competition.slug %}"
+                    onsubmit="return confirm('Are you sure you want to register for this product?');">
+                {% csrf_token %}<input type="submit" class="btn btn-outline-primary w-100 mt-1"
+                                       value="Register for free!">
+              </form>
+            {% endif %}
+
             <p>If you're not in India, please contact our <a href="{% url 'contact' %}">Content Support</a> to register!
             </p>
           {% elif competition.is_over %}
@@ -81,19 +91,19 @@
           {% endif %}
           <p class="text-center" style="color: rgb(0,0,0);margin-top: 15px;font-size: 19px;">Sharing is caring.<br>
             <a href="https://www.facebook.com/Sorobrain/">
-            <i class="fab fa-facebook"></i>
+              <i class="fab fa-facebook"></i>
             </a>
             <a href="https://twitter.com/sorobrain/">
-            &nbsp;&nbsp;<i class="fab fa-twitter"></i>
+              &nbsp;&nbsp;<i class="fab fa-twitter"></i>
             </a>
             <a href="https://www.instagram.com/sorobrain/">
-            &nbsp;&nbsp;<i class="fab fa-instagram"></i>
+              &nbsp;&nbsp;<i class="fab fa-instagram"></i>
             </a>
             <a href="tel: +919810522445">
-            &nbsp;<i class="fab fa-whatsapp"></i>
+              &nbsp;<i class="fab fa-whatsapp"></i>
             </a>
             <a href="mailto:info@sorobrain.com" target="_blank">
-            &nbsp;&nbsp;<i class="fas fa-envelope"></i>
+              &nbsp;&nbsp;<i class="fas fa-envelope"></i>
             </a>
           </p>
         </div>
