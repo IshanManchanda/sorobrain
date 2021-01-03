@@ -11,6 +11,7 @@ from django.utils.text import slugify
 from taggit.managers import TaggableManager
 
 from main.models import User
+from sorobrain.settings import RECENT_TIME_LIMIT
 from .utils import is_answer_valid, evaluate_mcq, evaluate_bool, evaluate_text
 from sorobrain.mixins.payment import PaidObjectMixin
 
@@ -68,7 +69,7 @@ class Quiz(PaidObjectMixin):
 
 	@classmethod
 	def get_recent(cls):
-		return cls.objects.filter(created_on__gte=(timezone.now() - timedelta(days=7)))
+		return cls.objects.filter(created_on__gte=(timezone.now() - RECENT_TIME_LIMIT))
 
 	def get_start_url(self):
 		return reverse('quiz:start', args=[self.slug])

@@ -1,6 +1,7 @@
 import contextlib
 import contextlib
 import os
+from datetime import timedelta
 
 import dj_database_url
 from dotenv import load_dotenv
@@ -325,3 +326,6 @@ JAZZMIN_SETTINGS = {
 	],
 	"show_ui_builder": False,
 }
+
+
+RECENT_TIME_LIMIT = timedelta(days=30)

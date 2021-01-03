@@ -11,6 +11,7 @@ from django.utils.text import slugify
 from taggit.managers import TaggableManager
 
 from main.models import User
+from sorobrain.settings import RECENT_TIME_LIMIT
 from .store import CompetitionAccess
 from quiz.models import Quiz, QuizSubmission
 from sorobrain.mixins.payment import PaidObjectMixin
@@ -78,7 +79,7 @@ class Competition(PaidObjectMixin, models.Model):
 
 	@classmethod
 	def get_recent(cls):
-		return cls.objects.filter(created_on__gte=(timezone.now() - timedelta(days=7)))
+		return cls.objects.filter(created_on__gte=(timezone.now() - RECENT_TIME_LIMIT))
 
 	def user_progress(self, user):
 		state = []

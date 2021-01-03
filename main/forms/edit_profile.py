@@ -56,8 +56,8 @@ class EditProfileForm(forms.Form):
 	                         widget=PhoneNumberPrefixWidget)
 	avatar = forms.ImageField(label='Profile Picture', widget=PictureWidget,
 	                          required=False)
-	school_id = forms.ImageField(label='Picture of School ID Card', widget=PictureWidget,
-	                             required=False)
+	school_id = forms.ImageField(label='Picture of ID Card', widget=PictureWidget,
+	                             required=False, help_text="png, jpeg, jpg are the accepted formats.")
 	education = forms.ChoiceField(label='Education level',
 	                              choices=EDUCATION_CHOICES,
 	                              required=True)

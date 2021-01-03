@@ -15,6 +15,7 @@ from sorobrain.media_storages import PrivateMediaStorage
 from sorobrain.mixins.common import CustomIdMixin
 from sorobrain.mixins.payment import PaidObjectMixin
 from main.models import User
+from sorobrain.settings import RECENT_TIME_LIMIT
 
 
 class Session(models.Model):
@@ -61,7 +62,7 @@ class Workshop(CustomIdMixin, PaidObjectMixin):
 
 	@classmethod
 	def get_recent(cls):
-		return cls.objects.filter(created_on__gte=(timezone.now() - timedelta(days=7)))
+		return cls.objects.filter(created_on__gte=(timezone.now() - RECENT_TIME_LIMIT))
 
 	@property
 	def is_free(self):
