@@ -21,7 +21,7 @@ def give_soromoney_view(request):
 			amt = int(request.POST['amount'])
 			give_soromoney_to_user(user, amt)
 			if amt < 0:
-				add_ledger_debit(user, amt, "Admin removed soromoney")
+				add_ledger_debit(user, abs(amt), "Admin removed soromoney")
 			else:
 				add_ledger_credit(user, amt, "Admin Added Credit")
 		messages.add_message(request, messages.SUCCESS, "Soromoney successfully given to users!")

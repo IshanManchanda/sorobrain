@@ -135,8 +135,9 @@ admin.site.register(ReferralCode, ReferralCodeAdmin)
 
 
 class LedgerAdmin(admin.ModelAdmin):
-	list_display = ('user', 'credit', 'debit', 'description', 'time')
-	readonly_fields = ('user', 'credit', 'debit', 'description', 'time')
+	list_display = ('user', 'credit', 'debit', 'balance', 'description', 'time')
+	readonly_fields = ('user', 'credit', 'debit', 'description', 'time', 'balance')
+	list_filter = ('user',)
 
 
 admin.site.register(Ledger, LedgerAdmin)
@@ -158,6 +159,7 @@ class InvoiceAdmin(admin.ModelAdmin):
 		}),
 	)
 
+	list_filter = ('user',)
 	list_display = ('id', 'user', 'description', 'amount', 'date', 'paid', 'link')
 	readonly_fields = ('link', 'invoice_html')
 

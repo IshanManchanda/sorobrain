@@ -19,6 +19,7 @@ class Ledger(models.Model):
 	user = models.ForeignKey('main.User', on_delete=models.CASCADE)
 	debit = models.IntegerField(null=True, blank=True)
 	credit = models.IntegerField(null=True, blank=True)
+	balance = models.IntegerField(null=True, blank=True)
 	description = models.CharField(max_length=512, null=True, blank=True)
 	time = models.DateTimeField(default=timezone.now)
 
@@ -26,3 +27,7 @@ class Ledger(models.Model):
 		if self.debit is None:
 			return f"{self.description} debited {self.debit}"
 		return f"{self.description} credited {self.credit}"
+
+	def save(self, *args, **kwargs):
+		self.balance = self.user.points
+		super(Ledger, self).save(*args, **kwargs)

@@ -24,7 +24,7 @@ class UserData(models.Model):
 	                           null=True, blank=True)
 	school_id = models.ImageField(storage=PrivateMediaStorage(),
 	                              upload_to='user_data/school_ids/',
-	                              null=True, blank=True)
+	                              null=True, blank=True, verbose_name='ID')
 	education = models.CharField('Education Level', max_length=265, null=True,
 	                             blank=True)
 	school = models.CharField('School', max_length=512, blank=True, null=True)
