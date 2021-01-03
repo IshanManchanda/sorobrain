@@ -100,7 +100,7 @@ class User(AbstractBaseUser, PermissionsMixin, UserData):
 			return None
 	
 	def save(self, *args, **kwargs):
-		if not self.pk:
+		if not self.pk:   # New User is created
 			super(User, self).save(*args, **kwargs)
 			ReferralCode.objects.create(
 				code=ReferralCode.build_code(self),

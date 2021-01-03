@@ -11,7 +11,7 @@ from django.views import View
 
 from main.models import User
 from main.models.code import DiscountCode
-from sorobrain.utils.utils import send_product_bought_mail
+from sorobrain.utils.utils import send_product_bought_mail, add_ledger_debit
 from workshops.models import Workshop, Code, WorkshopAccess
 from .utils import has_access_to_workshop, get_workshop_amount, \
 	grant_access_to_workshop, send_certificate
@@ -131,6 +131,7 @@ class RegisterWithPoints(LoginRequiredMixin, View):
 			request.user.points -= w.sub_total
 			request.user.save()
 			grant_access_to_workshop(request.user, w)
+			add_ledger_debit(request.user, w.sub_total, f"Bought workshop {w.title}")
 			mail_managers(
 					'[eSorobrain.com] New Workshop Registered with Soromoney',
 					f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought workshop: {w.title} at {timezone.now()} with Soromoney.',

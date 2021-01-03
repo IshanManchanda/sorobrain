@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from quiz.models import Quiz
 from .forms import AddUserForm, UpdateUserForm
-from .models import User, BookAccess, OneOnOneClass, ReferralCode
+from .models import User, BookAccess, OneOnOneClass, ReferralCode, Ledger
 from .models.code import DiscountCode
 
 
@@ -72,6 +72,7 @@ class UserAdmin(BaseUserAdmin):
 	search_fields = ('username', 'email', 'name', 'phone')
 	ordering = ('username',)
 	filter_horizontal = ('user_permissions', 'groups')
+	readonly_fields = ('points',)
 	actions = [get_user_emails, give_users_competition_access, give_users_quiz_access,
 	 give_users_workshop_access, give_soromoney]
 
@@ -129,3 +130,11 @@ class ReferralCodeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ReferralCode, ReferralCodeAdmin)
+
+
+class LedgerAdmin(admin.ModelAdmin):
+	list_display = ('user', 'credit', 'debit', 'description', 'time')
+	readonly_fields = ('user', 'credit', 'debit', 'description', 'time')
+
+
+admin.site.register(Ledger, LedgerAdmin)

@@ -17,11 +17,19 @@
 
         <h4>Soromoney will be credited to the following users: </h4>
         <hr>
-        <ul style="list-style-type: none">
+        <table class="table table-light">
+          <tr>
+            <th>User</th>
+            <th>Current SoroMoney</th>
+          </tr>
           {% for user in users %}
-            <li>{{ user }}</li>
+            <tr>
+              <td>{{ user }}</td>
+              <td>Re. {{ user.points }}</td>
+            </tr>
           {% endfor %}
-        </ul>
+        </table>
+
       </div>
     </div>
   </div>

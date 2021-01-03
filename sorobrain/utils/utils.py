@@ -2,6 +2,7 @@ import boto3
 from botocore.client import Config
 from django.core.mail import send_mail
 
+from main.models.ledger import Ledger
 from sorobrain.settings import AWS_PRIVATE_MEDIA_LOCATION
 
 
@@ -28,3 +29,15 @@ def send_product_bought_mail(subject: str, msg: str, msg_html: str, to: list):
 	          'sorobrain.devs@gmail.com',
 	          to,
 	          html_message=msg_html)
+
+
+def _add_ledger_record(user, credit, debit, description='') -> None:
+	Ledger.objects.create(user=user, credit=credit, debit=debit, description=description)
+
+
+def add_ledger_credit(user, credit, description):
+	_add_ledger_record(user, credit, None, description)
+
+
+def add_ledger_debit(user, debit, description):
+	_add_ledger_record(user, None, debit, description)

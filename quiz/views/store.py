@@ -11,7 +11,7 @@ from django.views.generic import TemplateView
 from main.models.code import DiscountCode
 from quiz.models import Quiz, QuizCode
 from quiz.views.utils import has_access_to_quiz, grant_access_to_quiz
-from sorobrain.utils.utils import send_product_bought_mail
+from sorobrain.utils.utils import send_product_bought_mail, add_ledger_debit
 from workshops.froms import RegisterWithCodeForm
 
 
@@ -122,6 +122,7 @@ class RegisterWithPoints(LoginRequiredMixin, View):
 		if request.user.points >= q.sub_total:
 			request.user.points -= q.sub_total
 			request.user.save()
+			add_ledger_debit(request.user, q.sub_total, f"Bought Quiz {q.title}")
 			grant_access_to_quiz(request.user, q)
 			mail_managers(
 					'[eSorobrain.com] New Quiz Registered with Soromoney.',

@@ -3,6 +3,8 @@ from random import randint
 from django.db import models
 from django.utils import timezone
 
+from sorobrain.utils.utils import add_ledger_credit
+
 
 class ReferralCode(models.Model):
     class Meta:
@@ -34,7 +36,9 @@ class ReferralCode(models.Model):
         user_using_code.points += self.referee_incentive
         user_using_code.save()
 
+        add_ledger_credit(self.referrer, self.referrer_incentive, f"Referrer Incentive using code {self.code}")
+        add_ledger_credit(user_using_code, self.referee_incentive, f"Referee Incentive using code {self.code}")
+
         x = user_using_code.referral_code
         x.redeemed = True
-        x.save() 
-        
+        x.save()
