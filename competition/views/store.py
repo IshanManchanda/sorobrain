@@ -13,6 +13,7 @@ from competition.models.store import CompetitionCode
 from competition.views.utils import has_access_to_competition, \
 	grant_access_to_competition, generate_competition_codes
 from main.models.code import DiscountCode
+from main.models.invoices import Invoice
 from sorobrain.utils.utils import send_product_bought_mail
 from workshops.froms import RegisterWithCodeForm
 
@@ -65,9 +66,12 @@ class CompetitionPaymentSuccess(LoginRequiredMixin, View):
 				f'{request.user.username}: {request.user.name} with email: {request.user.email} has bought competition: {competition.title} at {timezone.now()}.',
 				fail_silently=True
 		)
-
+		invoice = Invoice(user=request.user, description=f"Competition bought - {competition.title}", amount=competition.sub_total)
+		invoice.save()
 		msg = render_to_string('mails/txt/product_bought.txt', {'user': request.user, 'content_type': 'competition', 'product': competition})
-		msg_html = render_to_string('mails/html/product_bought.html', {'user': request.user, 'content_type': 'competition', 'product': competition})
+		msg_html = render_to_string('mails/html/invoice.html', {'invoice': invoice})
+		invoice.invoice_html = msg_html
+		invoice.save()
 		send_product_bought_mail('[Sorobrain] New Competition Registered', msg, msg_html, to=[request.user.email])
 		return redirect(competition.get_absolute_url())
 

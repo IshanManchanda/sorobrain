@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from . import views
 from .views.actions.competition import grant_competition_access
+from .views.actions.invoice import view_invoice
 from .views.actions.money import give_soromoney_view, RedeemReferralCode, update_incentive_view
 from .views.actions.quiz import grant_quiz_access
 from .views.actions.workshop import grant_workshop_access
@@ -17,6 +18,7 @@ urlpatterns = [
 	path('grant_workshop_access/', grant_workshop_access, name="grant_workshop_access"),
 	path('give_soromoney/', give_soromoney_view, name="give_soromoney"),
 	path('update_incentives/', update_incentive_view, name="update_incentive"),
+	path('view_invoice/<int:id>/', view_invoice, name="view_invoice"),
 
 	path('referral/', RedeemReferralCode.as_view(), name="referral"),
 

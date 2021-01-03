@@ -3,12 +3,14 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.contenttypes.admin import GenericInlineModelAdmin
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import redirect
-from django.urls import reverse
+from django.urls import reverse, NoReverseMatch
+from django.utils.safestring import mark_safe
 
 from quiz.models import Quiz
 from .forms import AddUserForm, UpdateUserForm
 from .models import User, BookAccess, OneOnOneClass, ReferralCode, Ledger
 from .models.code import DiscountCode
+from .models.invoices import Invoice
 
 
 def get_user_emails(modeladmin, request, queryset):
@@ -55,7 +57,7 @@ class UserAdmin(BaseUserAdmin):
 	fieldsets = (
 		(None, {'fields': ('email', 'password')}),
 		('Personal info', {'fields': ('name', 'avatar', 'school_id', 'points', 'date_of_birth',
-		 'phone', 'gender', 'level', 'education', 'school', 'city', 'country')}),
+		                              'phone', 'gender', 'level', 'education', 'school', 'city', 'country')}),
 		('Permissions', {'fields': ('is_active', 'is_staff', 'notification_level', 'groups', 'user_permissions')}),
 	)
 	add_fieldsets = (
@@ -63,7 +65,7 @@ class UserAdmin(BaseUserAdmin):
 			None,
 			{
 				'classes': ('wide',),
-				'fields': (
+				'fields' : (
 					'email', 'name', 'phone', 'gender', 'level', 'education', 'notification_level'
 				)
 			}
@@ -74,7 +76,7 @@ class UserAdmin(BaseUserAdmin):
 	filter_horizontal = ('user_permissions', 'groups')
 	readonly_fields = ('points',)
 	actions = [get_user_emails, give_users_competition_access, give_users_quiz_access,
-	 give_users_workshop_access, give_soromoney]
+	           give_users_workshop_access, give_soromoney]
 
 
 admin.site.register(User, UserAdmin)
@@ -121,12 +123,12 @@ def update_incentive(modeladmin, request, queryset):
 class ReferralCodeAdmin(admin.ModelAdmin):
 	list_display = ('referrer', 'code', 'uses', 'referrer_incentive', 'referee_incentive')
 	list_filter = ('referrer__is_staff', 'referrer__is_active', 'referrer__level',
-	 'referrer__education', 'referrer__school', 'referrer__country', 'referrer__city',
-	 'referrer_incentive', 'referee_incentive')
+	               'referrer__education', 'referrer__school', 'referrer__country', 'referrer__city',
+	               'referrer_incentive', 'referee_incentive')
 	list_editable = ('referrer_incentive', 'referee_incentive')
 	filter_horizontal = ('used_by',)
 	actions = [update_incentive]
-	# readonly_fields = ("used_by", "code", "referrer", "created")
+# readonly_fields = ("used_by", "code", "referrer", "created")
 
 
 admin.site.register(ReferralCode, ReferralCodeAdmin)
@@ -138,3 +140,26 @@ class LedgerAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Ledger, LedgerAdmin)
+
+
+class InvoiceAdmin(admin.ModelAdmin):
+	def link(self, obj):
+		try:
+			url = reverse('view_invoice', args=[obj.id])
+		except NoReverseMatch:
+			url = '/'
+		return mark_safe(f"<a href='{url}'>Open Invoice</a>")
+
+	link.allow_tags = True
+
+	fieldsets = (
+		(None, {
+			'fields': ('user', 'description', 'amount', 'date', 'paid', 'link')
+		}),
+	)
+
+	list_display = ('id', 'user', 'description', 'amount', 'date', 'paid', 'link')
+	readonly_fields = ('link', 'invoice_html')
+
+
+admin.site.register(Invoice, InvoiceAdmin)

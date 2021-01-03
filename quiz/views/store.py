@@ -9,6 +9,7 @@ from django.utils import timezone
 from django.views.generic import TemplateView
 
 from main.models.code import DiscountCode
+from main.models.invoices import Invoice
 from quiz.models import Quiz, QuizCode
 from quiz.views.utils import has_access_to_quiz, grant_access_to_quiz
 from sorobrain.utils.utils import send_product_bought_mail, add_ledger_debit
@@ -67,13 +68,14 @@ class QuizPaymentSuccess(LoginRequiredMixin, View):
 				fail_silently=True
 		)
 
+		invoice = Invoice(user=request.user, description=f"Quiz bought - {quiz.title}", amount=quiz.sub_total)
+		invoice.save()
 		msg = render_to_string('mails/txt/product_bought.txt',
 		                       {'user'        : request.user,
 		                        'content_type': 'quiz', 'product': quiz})
-		msg_html = render_to_string('mails/html/product_bought.html',
-		                            {'user'        : request.user,
-		                             'content_type': 'quiz',
-		                             'product'     : quiz})
+		msg_html = render_to_string('mails/html/invoice.html', {'invoice': invoice})
+		invoice.invoice_html = msg_html
+		invoice.save()
 		send_product_bought_mail('[Sorobrain] New Quiz Registered',
 		                         msg, msg_html, to=[request.user.email])
 		return redirect(quiz.get_absolute_url())
