@@ -38,7 +38,8 @@ class Competition(PaidObjectMixin, models.Model):
 
 	group_cost = models.IntegerField()
 	title = models.CharField(max_length=256)
-	rank_limit = models.IntegerField(default=25)
+	leaderboard_rank_limit = models.IntegerField(default=25)
+	certificate_rank_limit = models.IntegerField(default=25)
 	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True,
 	                        unique_for_date=True)
 	description = RichTextUploadingField(config_name='minimal')

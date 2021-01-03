@@ -32,7 +32,8 @@ class CompetitionAdmin(admin.ModelAdmin):
 		(None, {
 			'fields': ('title',
 			           'slug',
-			           'rank_limit',
+			           'leaderboard_rank_limit',
+			           'certificate_rank_limit',
 			           'description',
 			           'level',
 			           'thumbnail',
