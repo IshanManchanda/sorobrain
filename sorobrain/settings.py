@@ -4,6 +4,8 @@ import os
 from datetime import timedelta
 
 import dj_database_url
+from django.contrib.auth.validators import ASCIIUsernameValidator
+from django.core.validators import RegexValidator
 from dotenv import load_dotenv
 
 with contextlib.suppress(Exception):
@@ -128,6 +130,7 @@ ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http' if DEBUG else 'https'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Sorobrain] '
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_VALIDATORS = 'main.validators.custom_username_validators'
 
 ACCOUNT_FORMS = {
 	'login'                  : 'allauth.account.forms.LoginForm',

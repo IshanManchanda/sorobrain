@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
 	PermissionsMixin
+from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.utils import timezone
 
@@ -51,8 +52,12 @@ class UserManager(BaseUserManager):
 		)
 
 
+class UsernameValidator(UnicodeUsernameValidator):
+	regex = r'^[\w\.@+\- ]+$'
+
+
 class User(AbstractBaseUser, PermissionsMixin, UserData):
-	username = models.CharField('Username', max_length=128, primary_key=True)
+	username = models.CharField('Username', max_length=128, primary_key=True, validators=[UnicodeUsernameValidator])
 	# password field supplied by AbstractBaseUser
 	# last_login field supplied by AbstractBaseUser
 
