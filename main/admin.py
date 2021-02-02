@@ -20,6 +20,13 @@ def get_user_emails(modeladmin, request, queryset):
 	return redirect(reverse('selected_emails'))
 
 
+def get_user_phone(modeladmin, request, queryset):
+	phones = [user.phone for user in queryset if user.phone is not None]
+	phones_string = "".join([str(p) + ", " for p in phones])
+	request.session['_user_phones'] = phones_string
+	return redirect(reverse('selected_phones'))
+
+
 def give_users_competition_access(modeladmin, request, queryset):
 	usernames = [user.username for user in queryset]
 	string_usernames = "".join([u + ", " for u in usernames])
@@ -75,7 +82,7 @@ class UserAdmin(BaseUserAdmin):
 	ordering = ('username',)
 	filter_horizontal = ('user_permissions', 'groups')
 	readonly_fields = ('points',)
-	actions = [get_user_emails, give_users_competition_access, give_users_quiz_access,
+	actions = [get_user_emails, get_user_phone, give_users_competition_access, give_users_quiz_access,
 	           give_users_workshop_access, manage_soromoney]
 
 

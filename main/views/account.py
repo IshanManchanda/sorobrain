@@ -129,3 +129,12 @@ def selected_emails(request):
 	return render(request, 'main/show_selected_emails.html', {
 		'emails': emails.split(', ')
 	})
+
+
+def selected_phones(request):
+	if not request.user.is_staff:
+		return HttpResponse(403)
+	phones = request.session.get('_user_phones')
+	return render(request, 'main/show_selected_phones.html', {
+		'phones': phones.split(', ')
+	})

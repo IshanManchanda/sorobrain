@@ -13,6 +13,7 @@ from .views.actions.workshop import grant_workshop_access
 urlpatterns = [
 	# admin extend
 	path('selected_emails/', views.selected_emails, name="selected_emails"),
+	path('selected_phones/', views.selected_phones, name="selected_phones"),
 	path('grant_competition_access/', grant_competition_access, name="grant_competition_access"),
 	path('grant_quiz_access/', grant_quiz_access, name="grant_quiz_access"),
 	path('grant_workshop_access/', grant_workshop_access, name="grant_workshop_access"),
