@@ -65,82 +65,82 @@
             </div>
           </div>
           <div class="col-md-8 col-lg-9 content" style="padding-top: 33px;">
-            <div class="row p-3 mb-5 shadow rounded"
-                 style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
-              <div class="col">
-                <h3>New and Recently Added</h3>
-                <hr>
-                <h4>New Competitions</h4>
-                <div class="card-columns">
-                  {% for competition in new_competitions %}
-                    <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"
-                                           src="{% static 'main/img/catalog/competitions-placeholder.png' %}">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ competition.title }}</h5>
-                        <p class="card-text">{{ competition.description|truncatechars_html:300|safe }}...</p>
-                        <a href="{{ competition.get_absolute_url }}">
-                          <button class="btn btn-primary" type="button">Register Now</button>
-                        </a></div>
-                    </div>s
-                  {% empty %}
-                    <div class="card">
-                      <div class="card-body">
-                        <p>No new competitions added in the last month! Checkout current offerings <a
-                            href="#competitions">here</a>!
-                        </p>
-                      </div>
-                    </div>
-                  {% endfor %}
-                </div>
-                <hr>
-                <h4>New Quizzes</h4>
-                <div class="card-columns">
-                  {% for quiz in new_quizzes %}
-                    <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail"
-                                           src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ q.title }}</h5>
-                        <p class="card-text">{{ q.description|truncatechars_html:300|safe }}...</p><a
-                          href="{{ q.get_absolute_url }}">
-                        <button class="btn btn-primary" type="button">Attempt Quiz</button>
-                      </a></div>
-                    </div>
-                  {% empty %}
-                    <div class="card">
-                      <div class="card-body">
-                        <p>No new quizzes added in the last month! Checkout current offerings <a
-                            href="#practice">here</a>!
-                        </p>
-                      </div>
-                    </div>
-                  {% endfor %}
-                </div>
-                <hr>
-                <h4>New Workshops</h4>
-                <div class="card-columns">
-                  {% for quiz in new_quizzes %}
-                    <div class="card"><img class="card-img-top w-100 d-block" alt="workshops thumbnail"
-                                           src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
-                      <div class="card-body">
-                        <h4 class="card-title">{{ w.title }}</h4>
-                        <p class="card-text">{{ w.description|truncatechars:200|safe }}</p><a
-                          href="{{ w.get_absolute_url }}">
-                        <button class="btn btn-primary" type="button">Register Now!</button>
-                      </a></div>
-                    </div>
-                  {% empty %}
-                    <div class="card">
-                      <div class="card-body">
-                        <p>No new workshops added in the last month! Checkout current offerings <a
-                            href="#workshops">here</a>!
-                        </p>
-                      </div>
-                    </div>
-                  {% endfor %}
-                </div>
-
-              </div>
-            </div>
+{#            <div class="row p-3 mb-5 shadow rounded"#}
+{#                 style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">#}
+{#              <div class="col">#}
+{#                <h3>New and Recently Added</h3>#}
+{#                <hr>#}
+{#                <h4>New Competitions</h4>#}
+{#                <div class="card-columns">#}
+{#                  {% for competition in new_competitions %}#}
+{#                    <div class="card"><img class="card-img-top w-100 d-block" alt="competitions thumbnail"#}
+{#                                           src="{% static 'main/img/catalog/competitions-placeholder.png' %}">#}
+{#                      <div class="card-body">#}
+{#                        <h5 class="card-title">{{ competition.title }}</h5>#}
+{#                        <p class="card-text">{{ competition.description|truncatechars_html:300|safe }}...</p>#}
+{#                        <a href="{{ competition.get_absolute_url }}">#}
+{#                          <button class="btn btn-primary" type="button">Register Now</button>#}
+{#                        </a></div>#}
+{#                    </div>s#}
+{#                  {% empty %}#}
+{#                    <div class="card">#}
+{#                      <div class="card-body">#}
+{#                        <p>No new competitions added in the last month! Checkout current offerings <a#}
+{#                            href="#competitions">here</a>!#}
+{#                        </p>#}
+{#                      </div>#}
+{#                    </div>#}
+{#                  {% endfor %}#}
+{#                </div>#}
+{#                <hr>#}
+{#                <h4>New Quizzes</h4>#}
+{#                <div class="card-columns">#}
+{#                  {% for quiz in new_quizzes %}#}
+{#                    <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail"#}
+{#                                           src="{% static 'main/img/catalog/quiz-placeholder.jpg' %}">#}
+{#                      <div class="card-body">#}
+{#                        <h5 class="card-title">{{ q.title }}</h5>#}
+{#                        <p class="card-text">{{ q.description|truncatechars_html:300|safe }}...</p><a#}
+{#                          href="{{ q.get_absolute_url }}">#}
+{#                        <button class="btn btn-primary" type="button">Attempt Quiz</button>#}
+{#                      </a></div>#}
+{#                    </div>#}
+{#                  {% empty %}#}
+{#                    <div class="card">#}
+{#                      <div class="card-body">#}
+{#                        <p>No new quizzes added in the last month! Checkout current offerings <a#}
+{#                            href="#practice">here</a>!#}
+{#                        </p>#}
+{#                      </div>#}
+{#                    </div>#}
+{#                  {% endfor %}#}
+{#                </div>#}
+{#                <hr>#}
+{#                <h4>New Workshops</h4>#}
+{#                <div class="card-columns">#}
+{#                  {% for quiz in new_quizzes %}#}
+{#                    <div class="card"><img class="card-img-top w-100 d-block" alt="workshops thumbnail"#}
+{#                                           src="{% static 'main/img/catalog/workshops-placeholder.png' %}">#}
+{#                      <div class="card-body">#}
+{#                        <h4 class="card-title">{{ w.title }}</h4>#}
+{#                        <p class="card-text">{{ w.description|truncatechars:200|safe }}</p><a#}
+{#                          href="{{ w.get_absolute_url }}">#}
+{#                        <button class="btn btn-primary" type="button">Register Now!</button>#}
+{#                      </a></div>#}
+{#                    </div>#}
+{#                  {% empty %}#}
+{#                    <div class="card">#}
+{#                      <div class="card-body">#}
+{#                        <p>No new workshops added in the last month! Checkout current offerings <a#}
+{#                            href="#workshops">here</a>!#}
+{#                        </p>#}
+{#                      </div>#}
+{#                    </div>#}
+{#                  {% endfor %}#}
+{#                </div>#}
+{##}
+{#              </div>#}
+{#            </div>#}
             <div id="competitions" class="row p-3 mb-5 shadow rounded"
                  style="margin-top: 12px;margin-bottom: 12px;margin-right: 0;margin-left: 0;">
               <div class="col">
@@ -291,19 +291,38 @@
                     the workshop, you'll also get an email with the details!<br></small>
                     <hr>
                   </div>
-                  <div class="col">
+                </div>
+                <div class="col">
                     <div class="card-group">
                       {% for w in workshops|slice:':3' %}
-                        <div class="card"><img class="card-img-top w-100 d-block" alt="workshops thumbnail"
+                        <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail"
                                                src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
                           <div class="card-body">
-                            <h4 class="card-title">{{ w.title }}</h4>
-                            <p class="card-text">{{ w.description|truncatechars:200|safe }}</p><a
+                            <h5 class="card-title">{{ w.title }}</h5>
+                            <p class="card-text">{{ w.description|truncatechars_html:300|safe }}...</p><a
                               href="{{ w.get_absolute_url }}">
-                            <button class="btn btn-primary" type="button">Register Now!</button>
+                            <button class="btn btn-primary" type="button">Register Now</button>
                           </a></div>
                         </div>
+                      {% empty %}
+                        <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail"
+                                               src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                          <div class="card-body">
+                            <h5 class="card-title">Coming Soon</h5>
+                            <p class="card-text">We're always adding new workshops! Stay Tuned!</p>
+                            <button class="btn btn-secondary" type="button">Attempt Quiz</button>
+                          </div>
+                        </div>
+                        <div class="card"><img class="card-img-top w-100 d-block" alt="quiz thumbnail"
+                                               src="{% static 'main/img/catalog/workshops-placeholder.png' %}">
+                          <div class="card-body">
+                            <h5 class="card-title">Coming Soon</h5>
+                            <p class="card-text">We're always adding new workshops! Stay Tuned!</p>
+                            <button class="btn btn-secondary" type="button">Attempt Quiz</button>
+                          </div>
+                        </div>
                       {% endfor %}
+
                     </div>
                     <a href="{% url 'all_workshops' %}">
                       <button class="btn btn-outline-info my-3">View All >></button>
