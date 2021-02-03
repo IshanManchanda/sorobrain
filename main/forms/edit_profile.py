@@ -62,8 +62,8 @@ class EditProfileForm(forms.Form):
 	                              choices=EDUCATION_CHOICES,
 	                              required=True)
 	school = forms.CharField(label='School/College/Institute')
-	city = forms.CharField(label='City')
-	country = forms.CharField(label='Country')
+	city = forms.CharField(label='City where you reside')
+	country = forms.CharField(label='Country where you reside')
 
 
 class UpdateNotification(forms.Form):

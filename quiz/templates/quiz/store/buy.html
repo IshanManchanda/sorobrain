@@ -54,8 +54,7 @@
                     class="fas fa-user-plus"></i>&nbsp;Register Individually
                 </button>
                 <a href="{% url 'quiz:code' slug=quiz.slug %}">
-                  <button class="btn btn-outline-primary w-100" type="button"><i class="fas fa-barcode"></i> Register With
-                    Code
+                  <button class="btn btn-outline-primary w-100" type="button"><i class="fas fa-barcode"></i> Direct Access Code
                   </button>
                 </a>
                 <form method="post" action="{% url 'quiz:register_with_points' slug=quiz.slug %}"
