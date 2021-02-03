@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.contenttypes.admin import GenericInlineModelAdmin
@@ -21,9 +23,8 @@ def get_user_emails(modeladmin, request, queryset):
 
 
 def get_user_phone(modeladmin, request, queryset):
-	phones = [user.phone for user in queryset if user.phone is not None]
-	phones_string = "".join([str(p) + ", " for p in phones])
-	request.session['_user_phones'] = phones_string
+	names_and_phones = [(user.name, str(user.phone)) for user in queryset if user.phone is not None]
+	request.session['_user_phones'] = json.dumps(names_and_phones)
 	return redirect(reverse('selected_phones'))
 
 

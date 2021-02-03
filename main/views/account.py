@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -134,7 +136,7 @@ def selected_emails(request):
 def selected_phones(request):
 	if not request.user.is_staff:
 		return HttpResponse(403)
-	phones = request.session.get('_user_phones')
+	names_and_phones = json.loads(request.session.get('_user_phones'))
 	return render(request, 'main/show_selected_phones.html', {
-		'phones': phones.split(', ')
+		'names_and_phones': names_and_phones
 	})
