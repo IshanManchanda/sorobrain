@@ -50,7 +50,7 @@ class StartCompetitionQuiz(LoginRequiredMixin, View):
 		except QuizSubmission.DoesNotExist:
 			qs = QuizSubmission.objects.create(
 					user=request.user, quiz=quiz, competition=competition,
-					start_time=timezone.now())
+					start_time=timezone.now() + timedelta(seconds=5))
 		if qs.score is not None:
 			messages.add_message(request, messages.WARNING, 'You have already submitted this quiz!')
 			return redirect(competition.get_compete_url())
