@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.urls import path
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
@@ -8,9 +9,12 @@ from .views.actions.invoice import view_invoice
 from .views.actions.money import give_soromoney_view, RedeemReferralCode, update_incentive_view
 from .views.actions.quiz import grant_quiz_access
 from .views.actions.workshop import grant_workshop_access
+from django import views as django_views
 
 
 urlpatterns = [
+	url(r'^jsi18n/$', django_views.i18n.JavaScriptCatalog.as_view(), name='jsi18n'),
+
 	# admin extend
 	path('selected_emails/', views.selected_emails, name="selected_emails"),
 	path('selected_phones/', views.selected_phones, name="selected_phones"),

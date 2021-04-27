@@ -1,4 +1,19 @@
 {% extends 'admin/base_site.html' %}
+{% load static %}
+
+{% block extrahead %}
+  {{ block.super }}
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="{%  static 'admin/js/core.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/SelectFilter2.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/SelectBox.js' %}"></script>
+
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}"/>
+{% endblock %}
 
 {% block content %}
   <div class="container">
@@ -9,13 +24,7 @@
         <hr>
         <form action="{% url 'grant_quiz_access' %}" method="post">
           {% csrf_token %}
-          <label>
-            <select name="quiz_id">
-              {% for quiz in quizzes %}
-              <option value="{{ quiz.id }}">{{ quiz.title }}</option>
-              {% endfor %}
-            </select>
-          </label>
+          {{ form.as_p }}
           <input type="submit" value="Submit" class="btn btn-primary">
         </form>
 
