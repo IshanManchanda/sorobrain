@@ -23,7 +23,7 @@ class WorkshopAdmin(admin.ModelAdmin):
 	list_display = ('title', 'date', 'cost', 'discount', 'created_on')
 	list_filter = ('active', 'include_book',)
 	search_fields = ('title', 'description', 'zoom_link')
-	readonly_fields = ('slug', 'link')
+	readonly_fields = ('link',)
 	exclude = ('sessions',)
 	inlines = (SessionInline,)
 	save_as_new = True

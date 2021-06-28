@@ -47,6 +47,7 @@ class QuizAdmin(admin.ModelAdmin):
 	fieldsets = (
 		(None, {
 			'fields': ('title',
+			           'slug',
 			           'description',
 			           'level',
 			           'thumbnail',
@@ -64,6 +65,8 @@ class QuizAdmin(admin.ModelAdmin):
 
 	# The following must be explicitly set to make sure django doesn't render it
 	exclude = ('questions',)
+
+	# readonly_fields = ('slug',)
 
 
 admin.site.register(Quiz, QuizAdmin)
