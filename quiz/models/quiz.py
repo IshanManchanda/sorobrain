@@ -43,8 +43,7 @@ class Quiz(PaidObjectMixin):
 		verbose_name_plural = 'Quizzes'
 
 	title = models.CharField(max_length=256, verbose_name='Quiz Title')
-	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True,
-	                        unique_for_date=True)
+	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True)
 	description = RichTextUploadingField(config_name='minimal')
 	level = models.CharField(max_length=128, verbose_name='French Level',
 	                         choices=LEVEL_CHOICES)
