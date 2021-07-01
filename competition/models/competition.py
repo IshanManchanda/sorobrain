@@ -41,8 +41,7 @@ class Competition(PaidObjectMixin, models.Model):
 	title = models.CharField(max_length=256)
 	leaderboard_rank_limit = models.IntegerField(default=25)
 	certificate_rank_limit = models.IntegerField(default=25)
-	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True,
-	                        unique_for_date=True)
+	slug = models.SlugField(max_length=256, verbose_name='Slug', blank=True)
 	description = RichTextUploadingField(config_name='minimal')
 	level = models.CharField(max_length=128, verbose_name='French Level',
 	                         choices=LEVEL_CHOICES)
